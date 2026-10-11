@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scène 4 — Expérience institut (18–23 s). -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+      </style>
+      <div id="root" data-composition-id="s4-experience" data-width="1080" data-height="1920">
+        <div class="stack">
+          <div class="display">
+            <span class="mask" data-layout-allow-overflow><span id="s4-l1">Votre moment</span></span>
+            <span class="mask" data-layout-allow-overflow><span id="s4-l2">beauté</span></span>
+          </div>
+          <span class="rule" id="s4-rule"></span>
+          <div class="sub mask" data-layout-allow-overflow><span id="s4-sub">Prenez soin de vous</span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // scene-local seconds; the scene starts at 18 s
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo(["#s4-l1", "#s4-l2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.25 }, 1.25);
+          tl.fromTo("#s4-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 2.2);
+          tl.fromTo("#s4-sub", { opacity: 0, y: 26, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power2.out" }, 2.85);
+          tl.to(["#s4-l1", "#s4-l2", "#s4-rule", "#s4-sub"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.04 }, 4.8);
+          window.__timelines["s4-experience"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
