@@ -29,6 +29,7 @@ donne envie de prendre rendez-vous. Optimisée Reels / TikTok / Stories.
 
 - Aucun geste médical ; univers doux, esthétique, professionnel.
 - Pas de rendu cartoon/enfantin, pas de couleurs criardes, rien de surchargé.
-- Infos manquantes → placeholders clairement identifiés : [NOM DE L'INSTITUT],
-  [LOGO], [INSTAGRAM], [TÉLÉPHONE], [SITE INTERNET] (voir README.md).
+- Marque fournie (affiches) : AMANI SKIN — « Beauté · Soin · Confiance » ; palette
+  bronze/caramel. Logo recréé typographiquement (fichier officiel non fourni).
+- Infos manquantes → placeholders : [INSTAGRAM], [TÉLÉPHONE], [SITE INTERNET].
 - Musique/SFX synthétisés localement (pas de compte HeyGen connecté).

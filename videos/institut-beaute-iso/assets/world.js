@@ -48,7 +48,7 @@ function mat(color, rough = 0.65, metal = 0, extra = {}) {
   if (!mats[key]) mats[key] = rough >= 0.5 && !metal ? new THREE.MeshLambertMaterial({ color, ...extra }) : new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: metal, ...extra });
   return mats[key];
 }
-const GOLD = new THREE.MeshStandardMaterial({ color: 0xd8b47a, metalness: 1, roughness: 0.3, envMapIntensity: 1.4 });
+const GOLD = new THREE.MeshStandardMaterial({ color: 0xcfa36c, metalness: 1, roughness: 0.3, envMapIntensity: 1.4 });
 const GOLD_SOFT = new THREE.MeshStandardMaterial({ color: 0xd9ba86, metalness: 0.85, roughness: 0.42 });
 const GLASS = (tint) => new THREE.MeshStandardMaterial({ color: tint, roughness: 0.06, metalness: 0.1, transparent: true, opacity: 0.62, envMapIntensity: 1.8 });
 const MIRROR = new THREE.MeshStandardMaterial({ color: 0xeef0f0, metalness: 1, roughness: 0.06, envMapIntensity: 1.2 });
@@ -321,7 +321,7 @@ limb([-3.25, 0.02, LASH.z - 0.95], [-3.25, 2.25, LASH.z - 0.95], 0.024, GOLD);
   const arc = new THREE.QuadraticBezierCurve3(new V3(-3.25, 2.25, LASH.z - 0.95), new V3(-3.3, 2.75, LASH.z - 0.35), new V3(LAMP.x, LAMP.y + 0.16, LAMP.z));
   mesh(new THREE.TubeGeometry(arc, 40, 0.02, 10, false), GOLD);
 }
-const shade = mesh(new THREE.SphereGeometry(0.2, 40, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xd8b47a, metalness: 1, roughness: 0.3, side: THREE.DoubleSide }), LAMP.x, LAMP.y, LAMP.z);
+const shade = mesh(new THREE.SphereGeometry(0.2, 40, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xcfa36c, metalness: 1, roughness: 0.3, side: THREE.DoubleSide }), LAMP.x, LAMP.y, LAMP.z);
 shade.scale.y = 0.8;
 const lampGlowMat = new THREE.MeshBasicMaterial({ color: 0xfff1df, toneMapped: false, transparent: true, opacity: 0.6, side: THREE.DoubleSide });
 const lampGlow = new THREE.Mesh(new THREE.CircleGeometry(0.18, 40), lampGlowMat);
@@ -715,8 +715,8 @@ scene.add(cam);
 cam.add(hero);
 const keys = [
   // t, focus P, sx, sy, frustum height, azimuth (deg)
-  { t: 0.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.17, h: 40, az: -16 },
-  { t: 4.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.2, h: 31, az: -7, ease: "sine" },
+  { t: 0.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.21, h: 40, az: -16 },
+  { t: 4.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.25, h: 31, az: -7, ease: "sine" },
   { t: 5.7, P: [-3.75, 0.95, -2.65], sx: -0.07, sy: 0.0, h: 8.4, az: -4, ease: "cubic" },
   { t: 11.0, P: [-3.75, 0.95, -2.65], sx: -0.07, sy: 0.0, h: 7.3, az: 5, ease: "sine" },
   { t: 12.7, P: [2.75, 0.95, -2.85], sx: 0, sy: -0.02, h: 8.6, az: -5, ease: "cubic" },

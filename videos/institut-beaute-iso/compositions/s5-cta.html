@@ -46,16 +46,13 @@
       </style>
       <div id="root" data-composition-id="s5-cta" data-width="1080" data-height="1920">
         <div class="stack" id="s5-top">
-          <div class="medallion" id="s5-medal">
-            <svg viewBox="0 0 150 150">
-              <circle class="ring" cx="75" cy="75" r="72" fill="none" stroke="#b89058" stroke-width="2" />
-              <circle class="ring2" cx="75" cy="75" r="64" fill="rgba(255,251,246,0.75)" stroke="#d8b97f" stroke-width="1" />
-            </svg>
-            <!-- PLACEHOLDER : remplacez par votre logo -->
-            <span class="logo-text" id="s5-logo">[LOGO]</span>
+          <!-- Signature AMANI SKIN (recréation typographique — remplaçable par le fichier logo officiel) -->
+          <div class="lockup" id="s5-lockup">
+            <div class="wordmark" id="s5-word"><span>A</span><span>M</span><span>A</span><span>N</span><span>I</span></div>
+            <div class="skin-row"><span class="line" id="s5-line-l"></span><span class="skin" id="s5-skin">Skin</span><span class="line" id="s5-line-r"></span></div>
+            <span class="brand-dot" id="s5-dot"></span>
+            <div class="values" id="s5-values">Beauté · Soin · Confiance</div>
           </div>
-          <!-- PLACEHOLDER : nom de l'institut -->
-          <div class="name" id="s5-name">[NOM DE L’INSTITUT]</div>
         </div>
         <div id="s5-card"></div>
         <div id="s5-cta">
@@ -81,10 +78,12 @@
           const tl = gsap.timeline({ paused: true });
           const soft = (sel, at, dur, from = {}, to = {}) =>
             tl.fromTo(sel, { opacity: 0, y: 26, filter: "blur(10px)", ...from }, { opacity: 1, y: 0, filter: "blur(0px)", duration: dur, ease: "power2.out", ...to }, at);
-          tl.fromTo("#s5-medal .ring", { strokeDasharray: 453, strokeDashoffset: 453 }, { strokeDashoffset: 0, duration: 1.3, ease: "power2.inOut" }, 1.0);
-          tl.fromTo("#s5-medal .ring2", { opacity: 0, scale: 0.8, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 1.0, ease: "power3.out" }, 1.25);
-          soft("#s5-logo", 1.45, 0.9);
-          soft("#s5-name", 1.7, 1.1, { letterSpacing: "0.6em" }, { letterSpacing: "0.3em" });
+          // AMANI SKIN signature
+          tl.fromTo("#s5-word > span", { opacity: 0, y: 40, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power3.out", stagger: 0.09 }, 1.0);
+          tl.fromTo(["#s5-line-l", "#s5-line-r"], { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 1.55);
+          tl.fromTo("#s5-skin", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 1.0, ease: "power2.out" }, 1.55);
+          tl.fromTo("#s5-dot", { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(3)" }, 1.95);
+          tl.fromTo("#s5-values", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 2.05);
           tl.fromTo("#s5-card", { opacity: 0, y: 60, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" }, 2.0);
           tl.fromTo(["#s5-l1", "#s5-l2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.23 }, 2.35);
           tl.fromTo("#s5-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 3.15);

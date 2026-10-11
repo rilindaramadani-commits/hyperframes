@@ -39,15 +39,22 @@
         font-style: normal;
       }
 
+      @font-face {
+        font-family: "Italiana";
+        src: url("assets/fonts/italiana-latin-400-normal.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+
       :root {
         --ivory: #f7f0e8;
         --nude: #e6d2c3;
         --champagne: #e9d8bc;
         --blush: #efd3cc;
-        --gold: #b89058;
-        --gold-light: #d8b97f;
-        --ink: #3b2c24;
-        --ink-soft: #5c483c;
+        --gold: #a37b4c;
+        --gold-light: #cfa977;
+        --ink: #33241a;
+        --ink-soft: #5a4434;
       }
 
       * {
@@ -69,7 +76,7 @@
         overflow: hidden;
         font-family: "Jost", sans-serif;
         color: var(--ink);
-        background: radial-gradient(120% 80% at 50% 42%, #fbf7f2 0%, #f4eae1 55%, #ead9cc 100%);
+        background: radial-gradient(120% 80% at 50% 42%, #faf4ec 0%, #f1e5d7 55%, #e4d1bd 100%);
       }
 
       #iso {
@@ -89,10 +96,10 @@
         height: 900px;
         background: linear-gradient(
           180deg,
-          rgba(250, 245, 239, 0.97) 0%,
-          rgba(250, 245, 239, 0.9) 38%,
-          rgba(250, 245, 239, 0.55) 66%,
-          rgba(250, 245, 239, 0) 100%
+          rgba(248, 241, 232, 0.97) 0%,
+          rgba(248, 241, 232, 0.9) 38%,
+          rgba(248, 241, 232, 0.55) 66%,
+          rgba(248, 241, 232, 0) 100%
         );
         opacity: 0;
         pointer-events: none;
@@ -105,10 +112,10 @@
         height: 900px;
         background: linear-gradient(
           0deg,
-          rgba(250, 245, 239, 0.97) 0%,
-          rgba(250, 245, 239, 0.9) 40%,
-          rgba(250, 245, 239, 0.5) 70%,
-          rgba(250, 245, 239, 0) 100%
+          rgba(248, 241, 232, 0.97) 0%,
+          rgba(248, 241, 232, 0.9) 40%,
+          rgba(248, 241, 232, 0.5) 70%,
+          rgba(248, 241, 232, 0) 100%
         );
         opacity: 0;
         pointer-events: none;
@@ -177,7 +184,7 @@
       .tagline {
         font-family: "Marcellus", serif;
         font-weight: 400;
-        font-size: 112px;
+        font-size: 104px;
         line-height: 1.02;
         letter-spacing: -0.01em;
         color: var(--ink);
@@ -204,7 +211,7 @@
         width: 220px;
         height: 2px;
         margin: 34px auto 30px;
-        background: linear-gradient(90deg, rgba(184, 144, 88, 0), #b89058 30%, #d8b97f 50%, #b89058 70%, rgba(184, 144, 88, 0));
+        background: linear-gradient(90deg, rgba(163, 123, 76, 0), #a37b4c 30%, #cfa977 50%, #a37b4c 70%, rgba(163, 123, 76, 0));
         transform-origin: 50% 50%;
       }
       .diamond {
@@ -216,40 +223,69 @@
         transform: rotate(45deg);
       }
 
-      /* logo placeholder medallion */
-      .medallion {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        margin: 0 auto 28px;
+      /* AMANI SKIN lockup (typographic recreation of the brand signature) */
+      .lockup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+      .wordmark {
+        display: flex;
+        font-family: "Italiana", serif;
+        font-weight: 400;
+        font-size: 136px;
+        line-height: 1;
+        letter-spacing: 0.06em;
+        color: var(--ink);
+      }
+      .wordmark > span {
+        display: block;
+      }
+      .skin-row {
         display: flex;
         align-items: center;
-        justify-content: center;
+        gap: 26px;
+        margin-top: 10px;
       }
-      .medallion svg {
-        position: absolute;
-        inset: 0;
-        width: 150px;
-        height: 150px;
+      .skin-row .line:first-child {
+        transform-origin: 100% 50%;
       }
-      .medallion .logo-text {
-        position: relative;
-        font-family: "Jost", sans-serif;
-        font-weight: 500;
-        font-size: 22px;
-        letter-spacing: 0.16em;
-        color: var(--ink-soft);
+      .skin-row .line:last-child {
+        transform-origin: 0% 50%;
       }
-      .name {
+      .skin-row .line {
+        display: block;
+        width: 120px;
+        height: 1.5px;
+        background: var(--ink-soft);
+      }
+      .skin {
         font-family: "Jost", sans-serif;
         font-weight: 400;
-        font-size: 34px;
-        letter-spacing: 0.3em;
+        font-size: 36px;
+        letter-spacing: 0.55em;
+        margin-right: -0.55em;
         text-transform: uppercase;
         color: var(--ink-soft);
-        margin-bottom: 34px;
       }
-
+      .brand-dot {
+        display: block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--ink-soft);
+        margin: 16px auto 18px;
+      }
+      .values {
+        font-family: "Jost", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        letter-spacing: 0.42em;
+        margin-right: -0.42em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
       .top-ornament {
         margin-bottom: 30px;
       }
@@ -261,7 +297,7 @@
         color: var(--ink);
       }
       .services .dot {
-        color: #8a6a3e;
+        color: #7d5c36;
         padding: 0 0.4em;
       }
       .contacts {
@@ -280,7 +316,7 @@
         letter-spacing: 0.12em;
         color: var(--ink-soft);
         padding: 12px 24px;
-        border: 1.5px solid rgba(184, 144, 88, 0.7);
+        border: 1.5px solid rgba(163, 123, 76, 0.7);
         border-radius: 999px;
         background: rgba(255, 251, 246, 0.82);
       }
