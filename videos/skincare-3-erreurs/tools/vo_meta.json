@@ -1,0 +1,121 @@
+{
+ "p01": {
+  "dur": 3.691,
+  "speechStart": 0.04,
+  "speechEnd": 3.55,
+  "sr": 24000.0,
+  "peak": 0.744
+ },
+ "p02": {
+  "dur": 2.027,
+  "speechStart": 0.03,
+  "speechEnd": 1.89,
+  "sr": 24000.0,
+  "peak": 0.63
+ },
+ "p03": {
+  "dur": 1.792,
+  "speechStart": 0.03,
+  "speechEnd": 1.63,
+  "sr": 24000.0,
+  "peak": 0.611
+ },
+ "p04": {
+  "dur": 3.307,
+  "speechStart": 0.03,
+  "speechEnd": 3.15,
+  "sr": 24000.0,
+  "peak": 0.681
+ },
+ "p05": {
+  "dur": 3.989,
+  "speechStart": 0.03,
+  "speechEnd": 3.86,
+  "sr": 24000.0,
+  "peak": 0.651
+ },
+ "p06": {
+  "dur": 2.368,
+  "speechStart": 0.04,
+  "speechEnd": 2.25,
+  "sr": 24000.0,
+  "peak": 0.695
+ },
+ "p07": {
+  "dur": 2.176,
+  "speechStart": 0.04,
+  "speechEnd": 2.04,
+  "sr": 24000.0,
+  "peak": 0.825
+ },
+ "p08": {
+  "dur": 2.965,
+  "speechStart": 0.03,
+  "speechEnd": 2.85,
+  "sr": 24000.0,
+  "peak": 0.672
+ },
+ "p09": {
+  "dur": 4.352,
+  "speechStart": 0.03,
+  "speechEnd": 4.22,
+  "sr": 24000.0,
+  "peak": 0.77
+ },
+ "p10": {
+  "dur": 2.987,
+  "speechStart": 0.03,
+  "speechEnd": 2.83,
+  "sr": 24000.0,
+  "peak": 0.855
+ },
+ "p11": {
+  "dur": 2.645,
+  "speechStart": 0.04,
+  "speechEnd": 2.5,
+  "sr": 24000.0,
+  "peak": 0.579
+ },
+ "p12": {
+  "dur": 4.181,
+  "speechStart": 0.03,
+  "speechEnd": 4.06,
+  "sr": 24000.0,
+  "peak": 0.849
+ },
+ "p13": {
+  "dur": 3.648,
+  "speechStart": 0.03,
+  "speechEnd": 3.52,
+  "sr": 24000.0,
+  "peak": 0.678
+ },
+ "p14": {
+  "dur": 2.731,
+  "speechStart": 0.03,
+  "speechEnd": 2.6,
+  "sr": 24000.0,
+  "peak": 0.78
+ },
+ "p15": {
+  "dur": 2.944,
+  "speechStart": 0.03,
+  "speechEnd": 2.83,
+  "sr": 24000.0,
+  "peak": 0.922
+ },
+ "p16": {
+  "dur": 4.587,
+  "speechStart": 0.03,
+  "speechEnd": 4.46,
+  "sr": 24000.0,
+  "peak": 0.761
+ },
+ "p17": {
+  "dur": 2.517,
+  "speechStart": 0.03,
+  "speechEnd": 2.39,
+  "sr": 24000.0,
+  "peak": 0.726
+ }
+}
