@@ -133,8 +133,8 @@ async function build() {
   const MEME = wordAt("p09", "Même", 28.39);
   key_(TAC - 0.35, "d2", { P: [0.2, 1.78, -0.95], h: 3.15, az: 2, el: 4 }, ease.linear);
   key_(TAC + 0.2, "d2", { P: [0.27, 0.98, -0.62], h: 0.55, az: 14, el: 18 }, ease.inOutC);
-  key_(MEME + 0.05, "d2", { P: [0.27, 0.98, -0.62], h: 0.53, az: 16, el: 18 }, ease.linear);
-  key_(MEME + 0.75, "d2", { P: [0.1, 1.8, -1.0], h: 3.2, az: 2, el: 4 }, ease.inOutC);
+  key_(MEME - 0.05, "d2", { P: [0.27, 0.98, -0.62], h: 0.53, az: 16, el: 18 }, ease.linear);
+  key_(MEME + 0.45, "d2", { P: [0.1, 1.8, -1.0], h: 3.2, az: 2, el: 4 }, ease.inOutC);
   key_(CU.rw2[0], "d2", { P: [0.1, 1.82, -1.0], h: 3.25, az: 2, el: 4 }, ease.linear);
   key_(CU.rw2[1] + 0.1, "d2", { P: [-0.1, 0.92, -0.6], h: 0.66, az: 8, el: 18 }, ease.inOutC);
   key_(CU.whip10[0], "d2", { P: [-0.08, 0.92, -0.6], h: 0.6, az: 8, el: 18 }, ease.linear);
@@ -484,7 +484,7 @@ async function build() {
       sparkle("d2", cubeW.clone().add(new V3(0, 0.04, 0)), t, CU.whip10[1] + 0.45, 0.9, 0.13, 0.03);
       const mid = W3("d2", lerp(sunP.x, cubeTop.x, 0.55), lerp(sunP.y, cubeTop.y, 0.55), lerp(sunP.z, cubeTop.z, 0.55));
       ui.callout(project(mid), "UV", fadeWin(t, T("p09", 0.45), CU.rw2[0] - 0.05, 0.2, 0.2), { side: 1, dx: 90, dy: -40, accent: true, size: 32 });
-      ui.callout(project(W3("d2", D2.cloud.position.x, D2.cloud.position.y - 0.22, D2.cloud.position.z)), "Même quand il fait gris", fadeWin(t, MEME + 0.1, CU.rw2[0], 0.2, 0.15), { side: -1, dx: 40, dy: 120 });
+      ui.callout(project(W3("d2", D2.cloud.position.x, D2.cloud.position.y - 0.22, D2.cloud.position.z)), "Même quand il fait gris", fadeWin(t, MEME + 0.4, CU.rw2[0], 0.2, 0.15), { side: -1, dx: 40, dy: 120 });
     }
 
     // ================================================= D3 — changing everything

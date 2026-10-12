@@ -57,8 +57,8 @@ export function createUI(canvas) {
     const lw = g.measureText(text).width + size * 1.5 + 12;
     g.restore();
     let ex = anchor.x + side * dx;
-    if (side > 0) ex = Math.min(ex, 1000 - lw);
-    else ex = Math.max(ex, 80 + lw);
+    if (side > 0) ex = Math.max(80, Math.min(ex, 1000 - lw));
+    else ex = Math.min(1000, Math.max(ex, 80 + lw));
     const ey = Math.min(1480, Math.max(240, anchor.y + dy));
     g.save();
     g.globalAlpha = a;
