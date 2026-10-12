@@ -58,12 +58,12 @@
           tl.fromTo(["#s4-l1", "#s4-l2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.22 }, 0.9);
           tl.fromTo("#s4-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 1.6);
           tl.fromTo("#s4-sub", { opacity: 0, y: 26, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: "power2.out" }, 1.95);
-          tl.to(["#s4-l1", "#s4-l2", "#s4-rule", "#s4-sub"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.55, ease: "power2.in", stagger: 0.03 }, 3.5);
+          tl.to(["#s4-l1", "#s4-l2", "#s4-rule", "#s4-sub"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.5, ease: "power2.in", stagger: 0.03 }, 3.4);
           // B — signature packages while the institute settles higher in frame
-          tl.fromTo("#s4-orn", { opacity: 0, scale: 0, rotation: 45 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.6, ease: "back.out(2)" }, 3.8);
-          tl.fromTo("#s4-pk-title", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: "expo.out" }, 3.9);
-          tl.fromTo("#s4-pk-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 4.3);
-          tl.fromTo(["#s4-card1", "#s4-card2"], { opacity: 0, y: 70, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power3.out", stagger: 0.3 }, 4.25);
+          tl.fromTo("#s4-orn", { opacity: 0, scale: 0, rotation: 45 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.6, ease: "back.out(2)" }, 4.0);
+          tl.fromTo("#s4-pk-title", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: "expo.out" }, 4.05);
+          tl.fromTo("#s4-pk-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 4.45);
+          tl.fromTo(["#s4-card1", "#s4-card2"], { opacity: 0, y: 70, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power3.out", stagger: 0.28 }, 4.35);
           // handoff to the call to action
           tl.to(["#s4-orn", "#s4-pk-title", "#s4-pk-rule", "#s4-card1", "#s4-card2"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.04 }, 6.8);
           window.__timelines["s4-experience"] = tl;
