@@ -84,21 +84,45 @@ for pid, p in PLAN.items():
     breaks = [i for i, t in enumerate(tokens[:-1]) if re.search(r"[,.:;…!?]$", t)]
     cands = pauses(db, hop, s0 + 0.05, s1 - 0.05, thr)
     total = sum(syl)
+    # monotonic assignment of punctuation breaks to detected pauses (dynamic programming)
+    expect = [s0 + (s1 - s0) * sum(syl[: b + 1]) / total for b in breaks]
+    SKIP = 0.35
+    nb, npz = len(breaks), len(cands)
+    INF = 1e9
+    best = [[INF] * (npz + 1) for _ in range(nb + 1)]
+    back = [[None] * (npz + 1) for _ in range(nb + 1)]
+    for j in range(npz + 1):
+        best[0][j] = 0.0
+    for i in range(1, nb + 1):
+        for j in range(npz + 1):
+            # skip pause j-1
+            if j > 0 and best[i][j - 1] < best[i][j]:
+                best[i][j], back[i][j] = best[i][j - 1], ("p", j - 1)
+            # skip break i-1
+            if best[i - 1][j] + SKIP < best[i][j]:
+                best[i][j], back[i][j] = best[i - 1][j] + SKIP, ("b", j)
+            # match break i-1 with pause j-1
+            if j > 0:
+                mid, ln = cands[j - 1]
+                d = abs(mid - expect[i - 1])
+                if d < 0.6:
+                    c = best[i - 1][j - 1] + d - 0.6 * ln
+                    if c < best[i][j]:
+                        best[i][j], back[i][j] = c, ("m", j - 1)
     chosen = []
-    used = set()
-    for b in breaks:
-        expect = s0 + (s1 - s0) * sum(syl[: b + 1]) / total
-        best = None
-        for k, (mid, ln) in enumerate(cands):
-            if k in used or (chosen and mid <= chosen[-1][0]):
-                continue
-            score = abs(mid - expect) - 0.6 * ln
-            if best is None or score < best[0]:
-                best = (score, k)
-        if best is not None and abs(cands[best[1]][0] - expect) < 0.6:
-            used.add(best[1])
-            mid, ln = cands[best[1]]
-            chosen.append((mid, ln, b))
+    i, j = nb, npz
+    while i > 0:
+        kind, jj = back[i][j]
+        if kind == "p":
+            j = jj
+        elif kind == "b":
+            i -= 1
+        else:
+            mid, ln = cands[jj]
+            chosen.append((mid, ln, breaks[i - 1]))
+            i -= 1
+            j = jj
+    chosen.reverse()
     # build chunk spans
     spans = []
     cur_s = s0

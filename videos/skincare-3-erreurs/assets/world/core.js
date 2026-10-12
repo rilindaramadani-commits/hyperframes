@@ -297,7 +297,12 @@ export function plinthGeo(r, h, e = 0.01, s = 64) {
     pts.push([r - e + Math.cos(a) * e, h - e + Math.sin(a) * e]);
   }
   pts.push([0, h]);
-  return lathe(pts, s);
+  const geo = lathe(pts, s);
+  // planar uv (top view) so stone textures don't pinch into a starburst at the centre
+  const pos = geo.attributes.position;
+  const uv = geo.attributes.uv;
+  for (let i = 0; i < pos.count; i++) uv.setXY(i, pos.getX(i) / (2 * r) + 0.5, pos.getZ(i) / (2 * r) + 0.5);
+  return geo;
 }
 
 // ---------------------------------------------------------------- timing helpers

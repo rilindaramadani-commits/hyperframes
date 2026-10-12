@@ -20,12 +20,15 @@ scolaire. 100 % 3D isométrique (labo cosmétique premium), animée dans HyperFr
 
 - Storyboard de production validé : https://claude.ai/code/artifact/4e320ad3-3abb-4169-bc1a-2a5152932673
   (17 plans, voix off, caméra, transitions, textes, sons).
-- Voix off : générée avec une voix Everygen choisie par la cliente.
+- Voix off : voix française locale Kokoro (`ff_siwis`, via `hyperframes tts`) — la voix Everygen
+  « Zara » n'était pas disponible (abonnement requis). Remplaçable par un autre fichier sans toucher
+  au montage : un clip par plan dans `assets/audio/vo/`, puis `tools/build_plan.py` et `tools/align_words.py`.
 
 ## Customizations
 
-- Deux personnages : l'experte (guide, ne commet jamais l'erreur) et « Toi » (avatar du spectateur).
-- Fil rouge : plan de travail du labo avec 3 îlots numérotés ; plongée dans chaque îlot.
+- Direction validée en cours de production : rendu réaliste, élégant, épuré, premium, **sans personnages**
+  (style pub cosmétique haut de gamme) ; la voix off porte l'experte.
+- Fil rouge : table en travertin dans un studio, 3 plateaux ronds numérotés ; plongée dans chaque plateau.
 - Bloc de peau stylisé (tuiles = barrière) réutilisé ; jauge de tolérance ; checklist du matin ;
   rayons UV + film SPF ; calendrier + sablier ; récap 1-2-3 ; phrase finale ; CTA « Enregistre ».
 - Mots-clés à l'écran : « Plus ≠ mieux », « Le SPF, ce n'est pas une option. »,

@@ -161,10 +161,10 @@ async function build() {
   // P15 recap, P16 hero shot of the routine, P17 call to action
   key_(T("p15", 0.4), "lab", { P: [0, 1.0, -0.4], h: 1.25, az: -8, el: 24 }, ease.inOutC);
   key_(T("p16"), "lab", { P: [0, 1.0, -0.4], h: 1.15, az: 12, el: 24 }, ease.linear);
-  key_(T("p16", 0.5), "lab", { P: [0, 1.02, -0.38], h: 0.56, az: -6, el: 8, fov: 20, dof: 0.003 }, ease.inOutC);
-  key_(T("p17"), "lab", { P: [0, 1.02, -0.38], h: 0.48, az: 2, el: 8, fov: 20, dof: 0.003 }, ease.linear);
-  key_(T("p17", 0.85), "lab", { P: [0, 1.1, 0.25], h: 1.6, az: 0, el: 16, fov: 24 }, ease.inOutC);
-  key_(TOTAL, "lab", { P: [0, 1.1, 0.25], h: 1.55, az: 0, el: 16, fov: 24 }, ease.linear);
+  key_(T("p16", 0.5), "lab", { P: [0, 1.02, -0.38], h: 0.6, az: -6, el: 8, fov: 20, dof: 0.003, sy: -0.16 }, ease.inOutC);
+  key_(T("p17"), "lab", { P: [0, 1.02, -0.38], h: 0.52, az: 2, el: 8, fov: 20, dof: 0.003, sy: -0.16 }, ease.linear);
+  key_(T("p17", 0.85), "lab", { P: [0, 1.15, -0.4], h: 1.85, az: 0, el: 20, fov: 24 }, ease.inOutC);
+  key_(TOTAL, "lab", { P: [0, 1.15, -0.4], h: 1.8, az: 0, el: 20, fov: 24 }, ease.linear);
 
   // products raining onto the D1 shelves, synced to the words of plan 04
   const D1S = [
@@ -281,7 +281,7 @@ async function build() {
       const top = LAB.cube.position.y + LAB.cube.topY;
       // golden drop: slow-motion fall in the hook, and again in the last half-second (loop)
       const inHook = t < 1.62;
-      const inLoop = t > TOTAL - 0.55;
+      const inLoop = false;
       gold.visible = goldGlow.visible = inHook || inLoop;
       const gy = inHook ? lerp(top + 0.17, top + 0.004, ease.inQ(prog(t, 0, 1.6, ease.linear))) : lerp(top + 0.5, top + 0.004, ease.inQ(prog(t, TOTAL - 0.55, TOTAL, ease.linear)));
       gold.position.set(0, gy, HZ);
@@ -298,6 +298,8 @@ async function build() {
         rippleT: t - 1.6,
       });
       exitT.forEach((e) => sparkle("lab", W3("lab", 0, top + 0.03, HZ), t, e + 0.15, 0.8, 0.12, 0.025));
+      // the hero skin leaves the stage to the routine for the closing shots
+      LAB.cube.visible = LAB.riser.visible = t < T("p16");
       // best products sink into the table as the plinths rise
       LAB.luxItems.forEach((p, k) => {
         const s = prog(t, T("p02", 0.05) + 0.05 * k, T("p02", 0.55) + 0.05 * k, ease.inQ);
@@ -332,7 +334,7 @@ async function build() {
       const bm = ease.outBack(clamp01((t - T("p17", 0.2)) / 0.55));
       LAB.mark.visible = bm > 0.001;
       LAB.mark.scale.setScalar(Math.max(0.001, bm));
-      LAB.mark.position.y = 1.32 + 0.012 * Math.sin(t * 2.4);
+      LAB.mark.position.y = 1.315 + 0.008 * Math.sin(t * 2.4);
       LAB.mark.rotation.y = 0.18 * Math.sin(t * 1.1);
       const pressT = T("p17", 1.15);
       LAB.mark.set(bump(t, pressT, pressT + 0.36, 0.12), prog(t, pressT + 0.05, pressT + 0.4));
@@ -436,7 +438,7 @@ async function build() {
       D2.ring.visible = t < spfLand;
       D2.ring.scale.setScalar(1 + 0.15 * missing * pulse);
       const checks = [prog(t, w[0], w[0] + 0.3), prog(t, w[1], w[1] + 0.3), prog(t, w[2], w[2] + 0.3), prog(t, spfLand + 0.05, spfLand + 0.35)];
-      const listA = Math.max(fadeWin(t, T("p08", -0.05), T("p08", 3.0), 0.25, 0.3), fadeWin(t, CU.rw2[1], CU.whip10[0] + 0.05, 0.25, 0.2));
+      const listA = Math.max(fadeWin(t, T("p08", -0.05), T("p08", 3.0), 0.25, 0.3), fadeWin(t, CU.rw2[1], spfLand + 0.68, 0.25, 0.22));
       ui.checklist(108, 300, ["Nettoyant", "Sérum", "Hydratant", "SPF"], checks, listA, 3, missing > 0.01 ? 0.4 + 0.6 * pulse : 0);
       // SPF lands in the empty slot (plan 10)
       const slot = new V3(D2.tray.position.x + D2.tray.slotX[3], D2.CY + D2.tray.topY, D2.tray.position.z);

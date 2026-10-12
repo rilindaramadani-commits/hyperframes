@@ -145,7 +145,7 @@ export function buildLab() {
   routineItems.push(rGlass);
 
   const mark = bookmark();
-  mark.position.set(0, 1.32, -0.2);
+  mark.position.set(0, 1.315, -0.42);
   S.add(mark);
 
   return { S, TOP, islands, cube, riser, heroZ, lux, luxItems, routine, rLift, routineItems, rGlass, mark };
