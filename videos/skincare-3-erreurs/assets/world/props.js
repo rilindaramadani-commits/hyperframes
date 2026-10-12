@@ -207,8 +207,9 @@ export function skinBlock(size = 0.26, seed = 3) {
   const glowM = new THREE.MeshBasicMaterial({ color: new THREE.Color(PAL.coral).multiplyScalar(1.6), transparent: true, opacity: 0, toneMapped: false, depthWrite: false });
   const glowSheet = mesh(new THREE.PlaneGeometry(s * 0.96, s * 0.96), glowM, 0, s * 0.641, 0, g, { cast: false, receive: false });
   glowSheet.rotation.x = -Math.PI / 2;
-  const halo = glowSprite(0xffa894, s * 3.0, 0);
-  halo.position.y = s * 0.7;
+  const halo = glowSprite(0xf08f78, s * 2.4, 0);
+  halo.material.blending = THREE.NormalBlending;
+  halo.position.y = s * 0.68;
   g.add(halo);
   // pearly tiles (stratum corneum)
   const N = 6;
@@ -262,8 +263,10 @@ export function skinBlock(size = 0.26, seed = 3) {
       m.position.set(u.x * out, s * 0.651 + lift * s * 0.05 * u.rl + wave * s * 0.02, u.z * out);
       m.rotation.set(lift * 0.22 * (u.rl - 0.5), lift * 0.5 * u.ry, lift * 0.22 * (0.5 - u.rl));
     }
-    glowM.opacity = 0.75 * glow;
-    halo.material.opacity = 0.55 * glow;
+    glowM.opacity = 0.9 * glow;
+    halo.material.opacity = 0.42 * glow;
+    tileM.emissive.setHex(0xe58c7a);
+    tileM.emissiveIntensity = 0.28 * glow;
     crackM.opacity = clamp01(crack);
     cracks.forEach((c, k) => (c.scale.x = Math.max(0.001, clamp01(crack * cracks.length - k))));
     dots.forEach((d) => {
@@ -526,8 +529,8 @@ export function bookmark(w = 0.16, h = 0.21) {
 export function sun(r = 0.32) {
   const g = new THREE.Group();
   mesh(sph(r, 40, 24), emissive(0xfff3da, 1.6), 0, 0, 0, g, { cast: false, receive: false });
-  const h1 = glowSprite(0xffe2b0, r * 9, 0.75);
-  const h2 = glowSprite(0xfff4e0, r * 3.6, 0.9);
+  const h1 = glowSprite(0xffe2b0, r * 6, 0.55);
+  const h2 = glowSprite(0xfff4e0, r * 2.8, 0.85);
   g.add(h1, h2);
   return g;
 }
@@ -554,7 +557,7 @@ export function uvBeam(len, width = 0.05) {
     beamTex = new THREE.CanvasTexture(c);
   }
   const g = new THREE.Group();
-  const m = new THREE.MeshBasicMaterial({ map: beamTex, color: new THREE.Color(PAL.lilac).multiplyScalar(1.4), transparent: true, opacity: 0, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+  const m = new THREE.MeshBasicMaterial({ map: beamTex, color: new THREE.Color(0xa99cf5), transparent: true, opacity: 0, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
   // two crossed planes read as a soft volumetric beam from any angle
   const planes = [0, Math.PI / 2].map((ry) => {
     const p = mesh(new THREE.PlaneGeometry(width, len), m, 0, -len / 2, 0, g, { cast: false, receive: false });
@@ -565,8 +568,8 @@ export function uvBeam(len, width = 0.05) {
   const photons = [];
   for (let k = 0; k < 3; k++) photons.push(mesh(new THREE.CapsuleGeometry(width * 0.16, width * 1.6, 4, 8), pm, 0, 0, 0, g, { cast: false, receive: false }));
   g.set = (op, t, reach = 1) => {
-    m.opacity = 0.7 * op;
-    pm.opacity = 0.85 * op;
+    m.opacity = 0.42 * op;
+    pm.opacity = 0.6 * op;
     const R = clamp01(reach);
     planes.forEach((p) => {
       p.scale.y = Math.max(0.001, R);
@@ -583,7 +586,7 @@ export function uvBeam(len, width = 0.05) {
 }
 export function cloud(seed = 8, s = 1) {
   const g = new THREE.Group();
-  const m = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, metalness: 0, transparent: true, opacity: 0.96 });
+  const m = new THREE.MeshLambertMaterial({ color: 0xffffff, emissive: 0xeef2f6, emissiveIntensity: 0.62, transparent: true, opacity: 0.97 });
   const rnd = mulberry32(seed);
   [[0, 0, 0, 0.3], [0.3, -0.04, 0.04, 0.24], [-0.3, -0.06, 0.02, 0.22], [0.13, 0.15, -0.04, 0.21], [-0.14, 0.12, 0.05, 0.2]].forEach(([x, y, z, r]) => {
     mesh(sph(r * s, 28, 18), m, x * s, y * s, z * s, g, { cast: false, receive: false }).scale.y = 0.8 + rnd() * 0.1;
@@ -593,7 +596,7 @@ export function cloud(seed = 8, s = 1) {
 }
 export function skyDome(radius = 6, tex) {
   const m = new THREE.MeshBasicMaterial({ map: tex, side: THREE.BackSide, toneMapped: true, depthWrite: false });
-  const dome = new THREE.Mesh(new THREE.SphereGeometry(radius, 48, 24, 0, Math.PI * 2, 0, Math.PI * 0.55), m);
+  const dome = new THREE.Mesh(new THREE.SphereGeometry(radius, 48, 24), m);
   dome.renderOrder = -5;
   return dome;
 }

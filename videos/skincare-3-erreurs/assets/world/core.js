@@ -25,7 +25,7 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.NeutralToneMapping;
 renderer.toneMappingExposure = 0.92;
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = FLAGS.vsm ? THREE.VSMShadowMap : THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = FLAGS.vsm ? THREE.VSMShadowMap : THREE.PCFShadowMap;
 if (FLAGS.noshadow) renderer.shadowMap.enabled = false;
 renderer.transmissionResolutionScale = 0.5;
 
@@ -203,15 +203,17 @@ export function oak(seed = 9, repeat = [1, 1]) {
   return out;
 }
 /** Vertical sky gradient (morning). */
-export function skyTexture(top = "#9fc3e6", mid = "#d9e6f1", bottom = "#fbefe2") {
+export function skyTexture(top = "#9fc3e6", mid = "#d9e6f1", bottom = "#fbefe2", ground = "#e7ddd1") {
   const c = document.createElement("canvas");
   c.width = 8;
   c.height = 512;
   const g = c.getContext("2d");
   const grd = g.createLinearGradient(0, 0, 0, 512);
   grd.addColorStop(0, top);
-  grd.addColorStop(0.55, mid);
-  grd.addColorStop(1, bottom);
+  grd.addColorStop(0.32, mid);
+  grd.addColorStop(0.5, bottom);
+  grd.addColorStop(0.56, ground);
+  grd.addColorStop(1, ground);
   g.fillStyle = grd;
   g.fillRect(0, 0, 8, 512);
   return texFromCanvas(c);

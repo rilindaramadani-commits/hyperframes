@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Bloc erreur 01 : titre « Trop de produits » puis le mot-clé de la correction. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #e1-title {
+          top: 250px;
+        }
+        #e1-key {
+          top: 270px;
+        }
+        #e1-key .headline {
+          font-size: 128px;
+        }
+      </style>
+      <div id="root" class="layer" data-composition-id="c-err1" data-width="1080" data-height="1920">
+        <div class="veil" id="e1-veil"></div>
+        <div class="stack" id="e1-title">
+          <span class="kicker" id="e1-kick">Erreur</span>
+          <div class="numeral"><span class="mask" data-layout-allow-overflow><span id="e1-num">01</span></span></div>
+          <span class="hair" id="e1-hair"></span>
+          <div class="headline"><span class="mask" data-layout-allow-overflow><span id="e1-name">Trop de produits</span></span></div>
+        </div>
+        <div class="stack" id="e1-key">
+          <div class="headline"><span class="mask" data-layout-allow-overflow><span class="ln">Plus <svg class="sym" viewBox="0 0 100 100" style="display:inline-block;width:0.62em;height:0.62em;vertical-align:-0.02em;margin:0 0.12em" aria-hidden="true"><path d="M14 38 H86 M14 62 H86" stroke="#a37b4c" stroke-width="7" stroke-linecap="round"/><path d="M66 12 L34 88" stroke="#a37b4c" stroke-width="7" stroke-linecap="round"/></svg> <em>mieux</em></span></span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // block-local seconds
+          const tl = gsap.timeline({ paused: true });
+          const tIn = 0.25;
+          const tOut = 2.0;
+          const kIn = 10.35;
+          const kOut = 12.3;
+          tl.fromTo("#e1-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, tIn - 0.1);
+          tl.fromTo("#e1-kick", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, tIn);
+          tl.fromTo("#e1-num", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, tIn + 0.08);
+          tl.fromTo("#e1-hair", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.inOut" }, tIn + 0.25);
+          tl.fromTo("#e1-name", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.85, ease: "expo.out" }, tIn + 0.3);
+          tl.to("#e1-title", { opacity: 0, y: -30, filter: "blur(8px)", duration: 0.45, ease: "power2.in" }, tOut - 0.45);
+          tl.to("#e1-veil", { opacity: 0, duration: 0.5, ease: "sine.in" }, tOut - 0.4);
+          // the correction's keyword
+          tl.fromTo("#e1-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out", immediateRender: false }, kIn - 0.15);
+          tl.fromTo("#e1-key .ln", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.85, ease: "expo.out", stagger: 0.14 }, kIn);
+          if (document.querySelector("#e1-key .sym")) tl.fromTo("#e1-key .sym", { scale: 0.4, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.7, ease: "back.out(2.2)", immediateRender: false }, kIn + 0.25);
+          tl.to("#e1-key", { opacity: 0, y: -30, filter: "blur(8px)", duration: 0.45, ease: "power2.in" }, kOut - 0.45);
+          tl.to("#e1-veil", { opacity: 0, duration: 0.5, ease: "sine.in" }, kOut - 0.4);
+          window.__timelines["c-err1"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

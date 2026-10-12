@@ -99,7 +99,7 @@ export function buildLab() {
 
   // the three plinths (rise out of the table in plan 02)
   const islands = [];
-  const ISL = [-1.25, -0.4, 0.45];
+  const ISL = [-1.4, -0.45, 0.5];
   ISL.forEach((z, i) => {
     const g = group(S, 0, TOP, z);
     const lift = group(g);
@@ -116,7 +116,7 @@ export function buildLab() {
   cube.position.set(0, TOP + 0.06, heroZ);
   S.add(cube);
   const lux = group(S, 0, TOP, 0);
-  const LUX = [["cleanser", -0.27, 0.86, "Nettoyant"], ["serum", -0.24, 1.36, "Sérum"], ["cream", 0.25, 1.34, "Crème"], ["toner", 0.28, 0.84, "Tonique"], ["retinol", 0.02, 0.78, "Rétinol"]];
+  const LUX = [["cleanser", -0.27, 0.86, "Nettoyant"], ["serum", -0.24, 1.36, "Sérum"], ["cream", 0.25, 1.34, "Crème"], ["toner", 0.28, 0.84, "Tonique"], ["retinol", 0.0, 0.9, "Rétinol"]];
   const luxItems = LUX.map(([k, x, z, label]) => {
     const p = product(k, { label });
     p.position.set(x, 0, z);
@@ -218,7 +218,7 @@ export function buildD2() {
   const S = group(null, STAGE_X.d2, 0, 0);
   const env = group(S);
   const set = group(S);
-  cyclorama(env, 0xe6ddd1, { back: 3.4 });
+  const cyc = cyclorama(env, 0xe6ddd1, { back: 3.4 });
   const sky = skyDome(7.5, skyTexture("#a9c8e4", "#dbe7f0", "#f8ecdf"));
   sky.position.set(0, -0.5, -0.8);
   sky.visible = false;
@@ -270,23 +270,23 @@ export function buildD2() {
     return s;
   });
   // sky elements (visible once the wall has slid away)
-  const sunG = sun(0.26);
+  const sunG = sun(0.2);
   sunG.position.set(0.95, 3.0, -3.2);
   env.add(sunG);
   const cl = cloud(5, 0.9);
   cl.position.set(-0.4, 2.85, -2.8);
   env.add(cl);
   const beams = [0, 1, 2, 3].map(() => {
-    const b = uvBeam(4.5, 0.05);
+    const b = uvBeam(4.5, 0.03);
     env.add(b);
     return b;
   });
   const bounces = [0, 1, 2, 3].map(() => {
-    const b = uvBeam(0.7, 0.035);
+    const b = uvBeam(0.7, 0.025);
     env.add(b);
     return b;
   });
-  return { S, env, set, sky, panel, CY, tray: tr, routine, ring, spf, riser, cube, vase, shafts, sun: sunG, cloud: cl, beams, bounces };
+  return { S, env, set, cyc, sky, panel, CY, tray: tr, routine, ring, spf, riser, cube, vase, shafts, sun: sunG, cloud: cl, beams, bounces };
 }
 
 // ======================================================================= D3 — changing everything

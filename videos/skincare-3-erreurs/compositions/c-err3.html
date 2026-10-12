@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Bloc erreur 03 : titre « Changer tout le temps » puis le mot-clé de la correction. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #e3-title {
+          top: 250px;
+        }
+        #e3-key {
+          top: 270px;
+        }
+        #e3-key .headline {
+          font-size: 92px;
+        }
+      </style>
+      <div id="root" class="layer" data-composition-id="c-err3" data-width="1080" data-height="1920">
+        <div class="veil" id="e3-veil"></div>
+        <div class="stack" id="e3-title">
+          <span class="kicker" id="e3-kick">Erreur</span>
+          <div class="numeral"><span class="mask" data-layout-allow-overflow><span id="e3-num">03</span></span></div>
+          <span class="hair" id="e3-hair"></span>
+          <div class="headline"><span class="mask" data-layout-allow-overflow><span id="e3-name">Changer tout le temps</span></span></div>
+        </div>
+        <div class="stack" id="e3-key">
+          <div class="headline"><span class="mask" data-layout-allow-overflow><span class="ln">La <em>régularité</em></span></span><span class="mask" data-layout-allow-overflow><span class="ln"><span class="sym" style="display:inline-block;color:#a37b4c;font-style:normal">&gt;</span> le changement</span></span><span class="mask" data-layout-allow-overflow><span class="ln">permanent</span></span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // block-local seconds
+          const tl = gsap.timeline({ paused: true });
+          const tIn = 0.3;
+          const tOut = 2.8;
+          const kIn = 11.65;
+          const kOut = 13.9;
+          tl.fromTo("#e3-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, tIn - 0.1);
+          tl.fromTo("#e3-kick", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, tIn);
+          tl.fromTo("#e3-num", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, tIn + 0.08);
+          tl.fromTo("#e3-hair", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.inOut" }, tIn + 0.25);
+          tl.fromTo("#e3-name", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.85, ease: "expo.out" }, tIn + 0.3);
+          tl.to("#e3-title", { opacity: 0, y: -30, filter: "blur(8px)", duration: 0.45, ease: "power2.in" }, tOut - 0.45);
+          tl.to("#e3-veil", { opacity: 0, duration: 0.5, ease: "sine.in" }, tOut - 0.4);
+          // the correction's keyword
+          tl.fromTo("#e3-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out", immediateRender: false }, kIn - 0.15);
+          tl.fromTo("#e3-key .ln", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.85, ease: "expo.out", stagger: 0.14 }, kIn);
+          if (document.querySelector("#e3-key .sym")) tl.fromTo("#e3-key .sym", { scale: 0.4, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.7, ease: "back.out(2.2)", immediateRender: false }, kIn + 0.25);
+          tl.to("#e3-key", { opacity: 0, y: -30, filter: "blur(8px)", duration: 0.45, ease: "power2.in" }, kOut - 0.45);
+          tl.to("#e3-veil", { opacity: 0, duration: 0.5, ease: "sine.in" }, kOut - 0.4);
+          window.__timelines["c-err3"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

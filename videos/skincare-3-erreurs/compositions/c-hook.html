@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Bloc accroche (0–6,45 s) : « 3 erreurs qui sabotent ta skincare » posé au-dessus de la table. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #hk-stack {
+          top: 250px;
+        }
+        #hk-title {
+          font-size: 150px;
+          line-height: 1;
+        }
+        #hk-three {
+          font-style: italic;
+          color: var(--bronze);
+          padding-right: 0.08em;
+        }
+      </style>
+      <div id="root" class="layer" data-composition-id="c-hook" data-width="1080" data-height="1920">
+        <div class="veil" id="hk-veil"></div>
+        <div class="stack" id="hk-stack">
+          <span class="kicker" id="hk-kicker">Skincare</span>
+          <span class="hair" id="hk-hair"></span>
+          <div class="headline" id="hk-title">
+            <span class="mask" data-layout-allow-overflow><span id="hk-l1"><span id="hk-three">3</span> erreurs</span></span>
+          </div>
+          <div class="subline">
+            <span class="mask" data-layout-allow-overflow><span id="hk-l2">qui sabotent ta skincare</span></span>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // block-local seconds (the block starts at 0 s)
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#hk-veil", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, 2.45);
+          tl.fromTo("#hk-kicker", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 2.55);
+          tl.fromTo("#hk-hair", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.inOut" }, 2.6);
+          tl.fromTo("#hk-l1", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 2.62);
+          tl.fromTo("#hk-three", { scale: 0.7, transformOrigin: "50% 70%" }, { scale: 1, duration: 0.9, ease: "back.out(2)" }, 2.62);
+          tl.fromTo("#hk-l2", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out" }, 2.85);
+          // leave before the plinths rise into the upper frame
+          tl.to("#hk-stack", { y: -40, opacity: 0, filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, 4.55);
+          tl.to("#hk-veil", { opacity: 0, duration: 0.6, ease: "sine.in" }, 4.6);
+          window.__timelines["c-hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

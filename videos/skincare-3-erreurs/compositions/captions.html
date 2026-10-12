@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Sous-titres incrustés : phrases courtes, mot prononcé surligné en bronze (calés sur assets/words.js). -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Plus Jakarta Sans";
+          src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2");
+          font-weight: 500;
+        }
+        @font-face {
+          font-family: "Plus Jakarta Sans";
+          src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2");
+          font-weight: 600;
+        }
+        @font-face {
+          font-family: "Cormorant Garamond";
+          src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2");
+          font-weight: 600;
+        }
+        #cap-zone {
+          position: absolute;
+          left: 90px;
+          right: 120px;
+          top: 1268px;
+          height: 200px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+        }
+        .cap {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          max-width: 840px;
+          width: max-content;
+          padding: 16px 34px 18px;
+          border-radius: 30px;
+          background: rgba(251, 248, 243, 0.86);
+          box-shadow: 0 14px 40px rgba(70, 50, 35, 0.12);
+          text-align: center;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-weight: 600;
+          font-size: 48px;
+          line-height: 1.24;
+          letter-spacing: 0.005em;
+          color: var(--ink);
+          opacity: 0;
+        }
+        .cap .w {
+          display: inline-block;
+          opacity: 0.42;
+        }
+      </style>
+      <div id="root" class="layer" data-composition-id="captions" data-width="1080" data-height="1920">
+        <div id="cap-zone"></div>
+      </div>
+      <script>
+        (function () {
+          const W = window.__WORDS || [];
+          // titles, recap cards, final phrase and CTA already show these lines on screen
+          const SKIP = new Set(["p03", "p07", "p11", "p15", "p16", "p17"]);
+          const words = W.filter((w) => !SKIP.has(w.plan));
+          const chunks = [];
+          let cur = [];
+          const flush = () => {
+            if (cur.length) chunks.push(cur);
+            cur = [];
+          };
+          words.forEach((w, i) => {
+            if (cur.length && cur[0].plan !== w.plan) flush();
+            cur.push(w);
+            const chars = cur.reduce((a, x) => a + x.w.length + 1, 0);
+            const endSentence = /[.…!?]$/.test(w.w);
+            const comma = /[,:;]$/.test(w.w);
+            const next = words[i + 1];
+            const gap = next ? next.s - w.e : 1;
+            if (endSentence || (comma && chars > 12) || chars > 26 || gap > 0.45) flush();
+          });
+          flush();
+          const zone = document.getElementById("cap-zone");
+          const tl = gsap.timeline({ paused: true });
+          chunks.forEach((c, k) => {
+            const el = document.createElement("div");
+            el.className = "cap";
+            el.id = "cap-" + k;
+            c.forEach((w, j) => {
+              const s = document.createElement("span");
+              s.className = "w";
+              s.id = `cap-${k}-${j}`;
+              s.textContent = w.w;
+              el.appendChild(s);
+              if (j < c.length - 1) el.appendChild(document.createTextNode(" "));
+            });
+            zone.appendChild(el);
+            const t0 = c[0].s - 0.1;
+            const nextStart = chunks[k + 1] ? chunks[k + 1][0].s - 0.12 : Infinity;
+            const t1 = Math.min(c[c.length - 1].e + 0.45, nextStart);
+            tl.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, t0);
+            tl.to(el, { opacity: 0, y: -8, duration: 0.14, ease: "power1.in" }, Math.max(t0 + 0.2, t1 - 0.14));
+            c.forEach((w, j) => {
+              const sel = `#cap-${k}-${j}`;
+              tl.to(sel, { opacity: 1, color: "#a37b4c", duration: 0.08, ease: "none" }, w.s);
+              tl.to(sel, { color: "#2e231c", duration: 0.12, ease: "none" }, Math.max(w.s + 0.1, w.e));
+            });
+          });
+          window.__timelines["captions"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
