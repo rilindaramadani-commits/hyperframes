@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <!-- Scène 3 — Soins de la peau (11–18 s). Les produits 3D (sérum, crème, gouttes) vivent dans la scène 3D d'index.html. -->
+    <!-- Scène 3 — Soins de la peau (10–16,6 s) ; prestations Soin Glass Skin & HydraSkin Signature. Les produits 3D (sérum, crème, gouttes) vivent dans la scène 3D d'index.html. -->
   </head>
   <body>
     <template>
@@ -22,17 +22,24 @@
             <span class="mask" data-layout-allow-overflow><span id="s3-sub1">Une peau lumineuse,</span></span>
             <span class="mask" data-layout-allow-overflow><span id="s3-sub2">fraîche et sublimée</span></span>
           </div>
+          <!-- prestations -->
+          <div class="svc-row">
+            <span class="svc" id="s3-svc1">Soin Glass Skin</span>
+            <span class="svc-sep" id="s3-sep"></span>
+            <span class="svc" id="s3-svc2">HydraSkin Signature</span>
+          </div>
         </div>
       </div>
       <script>
         (function () {
-          // scene-local seconds; the scene starts at 11 s
+          // scene-local seconds; the scene starts at 10 s
           const tl = gsap.timeline({ paused: true });
           tl.fromTo("#s3-orn", { opacity: 0, scale: 0, rotation: 45 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.7, ease: "back.out(2)" }, 0.7);
           tl.fromTo("#s3-title", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.1, ease: "expo.out" }, 0.9);
           tl.fromTo("#s3-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 1.4);
-          tl.fromTo(["#s3-sub1", "#s3-sub2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: "expo.out", stagger: 0.22 }, 4.35);
-          tl.to(["#s3-orn", "#s3-title", "#s3-rule", "#s3-sub1", "#s3-sub2"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.04 }, 6.8);
+          tl.fromTo(["#s3-sub1", "#s3-sub2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: "expo.out", stagger: 0.22 }, 2.7);
+          tl.fromTo(["#s3-svc1", "#s3-sep", "#s3-svc2"], { opacity: 0, y: 22, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power2.out", stagger: 0.14 }, 3.5);
+          tl.to(["#s3-orn", "#s3-title", "#s3-rule", "#s3-sub1", "#s3-sub2", "#s3-svc1", "#s3-sep", "#s3-svc2"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.03 }, 5.75);
           window.__timelines["s3-peau"] = tl;
         })();
       </script>

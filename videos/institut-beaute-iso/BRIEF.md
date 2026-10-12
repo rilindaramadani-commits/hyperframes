@@ -29,7 +29,10 @@ donne envie de prendre rendez-vous. Optimisée Reels / TikTok / Stories.
 
 - Aucun geste médical ; univers doux, esthétique, professionnel.
 - Pas de rendu cartoon/enfantin, pas de couleurs criardes, rien de surchargé.
-- Marque fournie (affiches) : AMANI SKIN — « Beauté · Soin · Confiance » ; palette
-  bronze/caramel. Logo recréé typographiquement (fichier officiel non fourni).
-- Infos manquantes → placeholders : [INSTAGRAM], [TÉLÉPHONE], [SITE INTERNET].
+- Marque : AMANI SKIN — « Beauté · Soin · Confiance » ; palette bronze/caramel ; logo fourni
+  (photo d'un logo embossé → wordmark extrait dans assets/brand/).
+- Prestations à citer : Lash lift coréen (avec ou sans teinture), Brow lift ; Soin Glass Skin,
+  HydraSkin Signature. Formules : Glow & Gaze (lash lift + soin Glass Skin), Amani Signature
+  (HydraSkin + masque modelant + massage drainant).
+- Contacts : Instagram @amani__skin, tél. 07 66 85 43 74, pas de site internet.
 - Musique/SFX synthétisés localement (pas de compte HeyGen connecté).

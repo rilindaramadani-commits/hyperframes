@@ -717,14 +717,20 @@ const keys = [
   // t, focus P, sx, sy, frustum height, azimuth (deg)
   { t: 0.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.21, h: 40, az: -16 },
   { t: 4.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.25, h: 31, az: -7, ease: "sine" },
-  { t: 5.7, P: [-3.75, 0.95, -2.65], sx: -0.07, sy: 0.0, h: 8.4, az: -4, ease: "cubic" },
-  { t: 11.0, P: [-3.75, 0.95, -2.65], sx: -0.07, sy: 0.0, h: 7.3, az: 5, ease: "sine" },
-  { t: 12.7, P: [2.75, 0.95, -2.85], sx: 0, sy: -0.02, h: 8.6, az: -5, ease: "cubic" },
-  { t: 18.0, P: [2.75, 0.95, -2.85], sx: 0, sy: -0.02, h: 7.6, az: 3, ease: "sine" },
-  { t: 19.9, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.13, h: 30, az: -14, ease: "cubic" },
-  { t: 23.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.13, h: 29, az: 10, ease: "sine" },
-  { t: 24.6, P: [-0.4, 1.0, -0.4], sx: 0, sy: 0.03, h: 42, az: 0, ease: "cubic" },
-  { t: 30.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: 0.03, h: 39, az: 4, ease: "sine" },
+  // lash studio
+  { t: 5.7, P: [-3.75, 0.95, -2.65], sx: -0.07, sy: -0.06, h: 8.4, az: -4, ease: "cubic" },
+  { t: 10.0, P: [-3.75, 0.95, -2.65], sx: -0.07, sy: -0.06, h: 7.4, az: 4, ease: "sine" },
+  // skin-care studio
+  { t: 11.7, P: [2.75, 0.95, -2.85], sx: 0, sy: -0.02, h: 8.6, az: -5, ease: "cubic" },
+  { t: 16.0, P: [2.75, 0.95, -2.85], sx: 0, sy: -0.02, h: 7.7, az: 3, ease: "sine" },
+  // whole institute, then settled higher for the signature packages
+  { t: 17.6, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.13, h: 30, az: -14, ease: "cubic" },
+  { t: 19.5, P: [-0.4, 1.0, -0.4], sx: 0, sy: -0.13, h: 29.4, az: -4, ease: "sine" },
+  { t: 20.7, P: [-0.4, 1.0, -0.4], sx: 0, sy: 0.04, h: 37.5, az: 4, ease: "cubic" },
+  { t: 23.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: 0.04, h: 37, az: 9, ease: "sine" },
+  // call to action
+  { t: 24.6, P: [-0.4, 1.0, -0.4], sx: 0, sy: 0.0, h: 44, az: 0, ease: "cubic" },
+  { t: 30.0, P: [-0.4, 1.0, -0.4], sx: 0, sy: 0.0, h: 41.5, az: 4, ease: "sine" },
 ];
 const easeF = {
   sine: (x) => -(Math.cos(Math.PI * x) - 1) / 2,
@@ -772,16 +778,16 @@ function renderAt(t) {
   const breathe = Math.sin(t * 2.2) * 0.02;
   lashArtist.userData.arms.rotation.x = -0.02 + Math.sin(t * 1.6) * 0.03;
   facialist.userData.arms.rotation.x = -0.02 + Math.sin(t * 1.3 + 1) * 0.035;
-  lounger.userData.arms.rotation.x = -0.05 + smooth(19.0, 20.6, t) * -0.12 + smooth(21.2, 22.6, t) * 0.12;
+  lounger.userData.arms.rotation.x = -0.05 + smooth(17.6, 19.0, t) * -0.12 + smooth(19.6, 21.0, t) * 0.12;
   flame.scale.y = 1.9 + Math.sin(t * 9.1) * 0.18 + Math.sin(t * 13.7) * 0.1;
 
   // the arc lamp warms up during the lash scene
-  const lampOn = smooth(4.6, 5.8, t) * (1 - smooth(11.0, 12.0, t));
+  const lampOn = smooth(4.6, 5.8, t) * (1 - smooth(10.0, 11.0, t));
   lampGlowMat.opacity = 0.55 + 0.45 * lampOn;
-  pendantLight.intensity = 1.1 + 0.8 * smooth(11.4, 12.6, t) * (1 - smooth(18, 19, t));
+  pendantLight.intensity = 1.1 + 0.8 * smooth(10.4, 11.6, t) * (1 - smooth(16, 17, t));
 
   // gold motes drift
-  const moteVis = 0.55 + 0.45 * (1 - smooth(4.5, 5.5, t) + smooth(18.2, 19.4, t));
+  const moteVis = 0.55 + 0.45 * (1 - smooth(4.5, 5.5, t) + smooth(16.2, 17.4, t));
   for (let i = 0; i < MOTES; i++) {
     const [x, y, z, ph, sp] = moteSeed[i];
     tmpP.set(x + Math.sin(t * 0.3 * sp + ph) * 0.3, ((y + t * 0.12 * sp) % 4.8) + 0.2, z + Math.cos(t * 0.25 * sp + ph) * 0.3);
@@ -793,18 +799,18 @@ function renderAt(t) {
   motes.instanceMatrix.needsUpdate = true;
 
   // face mask appears during the skin scene
-  const maskK = smooth(13.4, 14.4, t);
+  const maskK = smooth(12.4, 13.4, t);
   faceMask.visible = maskK > 0.001;
   faceMask.material.opacity = 0.95 * maskK;
 
   // hero skincare objects (camera space, scaled with the frame)
-  const heroOn = t > 11.6 && t < 19.0;
+  const heroOn = t > 10.6 && t < 17.0;
   hero.visible = heroOn;
   if (heroOn) {
     hero.scale.setScalar(h / 8);
-    const out = smooth(17.7, 18.5, t);
+    const out = smooth(15.7, 16.5, t);
     for (const g of heroItems) {
-      const k = clamp01((t - 12.0 - g.userData.delay) / 0.9);
+      const k = clamp01((t - 11.0 - g.userData.delay) / 0.9);
       const s = Math.max(0.0001, backOut(k) * (1 - out));
       g.scale.setScalar(s);
       g.position.y = g.userData.y + Math.sin(t * 1.3 + g.userData.delay * 7) * 0.06 - (1 - k) * 0.4 + out * 0.6;
@@ -812,15 +818,15 @@ function renderAt(t) {
       g.children[0].rotation.set(0.38, spin, 0.06);
     }
     // the cream swirl pipes into the jar
-    const sw = smooth(12.7, 14.0, t);
+    const sw = smooth(11.7, 13.0, t);
     swirl.geometry.setDrawRange(0, Math.max(0, Math.floor((swirlCount * sw) / 3) * 3));
     swirl.visible = sw > 0.002;
-    // a serum drop falls onto the swirl at ~15s, then a soft ripple
-    const f = clamp01((t - 14.4) / 0.55);
-    fallDrop.visible = t > 14.4 && t < 14.95;
+    // a serum drop falls onto the swirl at ~14s, then a soft ripple
+    const f = clamp01((t - 13.4) / 0.55);
+    fallDrop.visible = t > 13.4 && t < 13.95;
     fallDrop.position.set(1.2, -0.75 - 1.4 * f * f, -24.5);
-    const r = clamp01((t - 14.95) / 1.1);
-    ripple.visible = t > 14.95 && t < 16.05;
+    const r = clamp01((t - 13.95) / 1.1);
+    ripple.visible = t > 13.95 && t < 15.05;
     ripple.position.set(1.2, -2.38 + Math.sin(t * 1.3 + 0.25 * 7) * 0.06, -24.4);
     ripple.scale.setScalar(0.4 + 1.6 * r);
     ripple.material.opacity = 0.85 * (1 - r);

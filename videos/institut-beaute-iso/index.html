@@ -39,13 +39,6 @@
         font-style: normal;
       }
 
-      @font-face {
-        font-family: "Italiana";
-        src: url("assets/fonts/italiana-latin-400-normal.woff2") format("woff2");
-        font-weight: 400;
-        font-style: normal;
-      }
-
       :root {
         --ivory: #f7f0e8;
         --nude: #e6d2c3;
@@ -93,12 +86,12 @@
         left: 0;
         right: 0;
         top: 0;
-        height: 900px;
+        height: 1000px;
         background: linear-gradient(
           180deg,
           rgba(248, 241, 232, 0.97) 0%,
-          rgba(248, 241, 232, 0.9) 38%,
-          rgba(248, 241, 232, 0.55) 66%,
+          rgba(248, 241, 232, 0.93) 48%,
+          rgba(248, 241, 232, 0.66) 72%,
           rgba(248, 241, 232, 0) 100%
         );
         opacity: 0;
@@ -223,30 +216,40 @@
         transform: rotate(45deg);
       }
 
-      /* AMANI SKIN lockup (typographic recreation of the brand signature) */
+      /* AMANI SKIN lockup: wordmark from the client's logo, SKIN row redrawn clean */
       .lockup {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 40px;
       }
-      .wordmark {
-        display: flex;
-        font-family: "Italiana", serif;
-        font-weight: 400;
-        font-size: 136px;
-        line-height: 1;
-        letter-spacing: 0.06em;
-        color: var(--ink);
+      .wordmark-wrap {
+        position: relative;
+        width: 600px;
+        height: 156px;
       }
-      .wordmark > span {
+      .wordmark {
         display: block;
+        width: 600px;
+        height: 156px;
+      }
+      /* gold light that sweeps across the letters, masked by the wordmark */
+      .wordmark-sheen {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(100deg, rgba(232, 205, 160, 0) 38%, rgba(240, 214, 168, 0.95) 50%, rgba(232, 205, 160, 0) 62%);
+        background-size: 300% 100%;
+        background-position: 100% 0;
+        -webkit-mask-image: url("assets/brand/amani-wordmark.png");
+        mask-image: url("assets/brand/amani-wordmark.png");
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
       }
       .skin-row {
         display: flex;
         align-items: center;
-        gap: 26px;
-        margin-top: 10px;
+        gap: 34px;
+        margin-top: 30px;
       }
       .skin-row .line:first-child {
         transform-origin: 100% 50%;
@@ -256,26 +259,26 @@
       }
       .skin-row .line {
         display: block;
-        width: 120px;
-        height: 1.5px;
-        background: var(--ink-soft);
+        width: 150px;
+        height: 2px;
+        background: var(--ink);
       }
       .skin {
         font-family: "Jost", sans-serif;
         font-weight: 400;
-        font-size: 36px;
-        letter-spacing: 0.55em;
-        margin-right: -0.55em;
+        font-size: 40px;
+        letter-spacing: 0.5em;
+        margin-right: -0.5em;
         text-transform: uppercase;
-        color: var(--ink-soft);
+        color: var(--ink);
       }
       .brand-dot {
         display: block;
-        width: 7px;
-        height: 7px;
+        width: 11px;
+        height: 11px;
         border-radius: 50%;
-        background: var(--ink-soft);
-        margin: 16px auto 18px;
+        background: var(--ink);
+        margin: 26px auto 22px;
       }
       .values {
         font-family: "Jost", sans-serif;
@@ -284,6 +287,65 @@
         letter-spacing: 0.42em;
         margin-right: -0.42em;
         text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .svc-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px 26px;
+        margin-top: 30px;
+        max-width: 860px;
+      }
+      .svc {
+        display: block;
+        font-family: "Marcellus", serif;
+        font-size: 42px;
+        line-height: 1.15;
+        color: var(--ink);
+      }
+      .svc-sep {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border: 1.5px solid var(--gold);
+        transform: rotate(45deg);
+      }
+      .svc-note {
+        display: block;
+        margin-top: 8px;
+        font-family: "Jost", sans-serif;
+        font-weight: 300;
+        font-size: 30px;
+        letter-spacing: 0.02em;
+        color: var(--ink-soft);
+      }
+      .card {
+        display: block;
+        width: 880px;
+        padding: 26px 40px 28px;
+        border-radius: 34px;
+        background: rgba(252, 248, 243, 0.88);
+        border: 1.5px solid rgba(207, 169, 119, 0.6);
+        box-shadow: 0 24px 60px rgba(110, 80, 56, 0.16);
+        text-align: center;
+      }
+      .card-name {
+        display: block;
+        font-family: "Marcellus", serif;
+        font-size: 46px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+      .card-desc {
+        display: block;
+        margin-top: 8px;
+        font-family: "Jost", sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 1.3;
         color: var(--ink-soft);
       }
       .top-ornament {
@@ -300,6 +362,11 @@
         color: #7d5c36;
         padding: 0 0.4em;
       }
+      .pill svg {
+        width: 34px;
+        height: 34px;
+        display: block;
+      }
       .contacts {
         display: flex;
         flex-wrap: wrap;
@@ -309,11 +376,13 @@
         max-width: 860px;
       }
       .pill {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 14px;
         font-family: "Jost", sans-serif;
         font-weight: 500;
-        font-size: 26px;
-        letter-spacing: 0.12em;
+        font-size: 32px;
+        letter-spacing: 0.06em;
         color: var(--ink-soft);
         padding: 12px 24px;
         border: 1.5px solid rgba(163, 123, 76, 0.7);
@@ -339,32 +408,36 @@
 
       <!-- SCENES — one sub-composition per beat of the script -->
       <div id="scene-1" data-composition-id="s1-intro" data-composition-src="compositions/s1-intro.html" data-start="0" data-duration="4.6" data-track-index="1" data-width="1080" data-height="1920"></div>
-      <div id="scene-2" data-composition-id="s2-regard" data-composition-src="compositions/s2-regard.html" data-start="4" data-duration="7.6" data-track-index="2" data-width="1080" data-height="1920"></div>
-      <div id="scene-3" data-composition-id="s3-peau" data-composition-src="compositions/s3-peau.html" data-start="11" data-duration="7.6" data-track-index="3" data-width="1080" data-height="1920"></div>
-      <div id="scene-4" data-composition-id="s4-experience" data-composition-src="compositions/s4-experience.html" data-start="18" data-duration="5.6" data-track-index="4" data-width="1080" data-height="1920"></div>
+      <div id="scene-2" data-composition-id="s2-regard" data-composition-src="compositions/s2-regard.html" data-start="4" data-duration="6.6" data-track-index="2" data-width="1080" data-height="1920"></div>
+      <div id="scene-3" data-composition-id="s3-peau" data-composition-src="compositions/s3-peau.html" data-start="10" data-duration="6.6" data-track-index="3" data-width="1080" data-height="1920"></div>
+      <div id="scene-4" data-composition-id="s4-experience" data-composition-src="compositions/s4-experience.html" data-start="16" data-duration="7.6" data-track-index="4" data-width="1080" data-height="1920"></div>
       <div id="scene-5" data-composition-id="s5-cta" data-composition-src="compositions/s5-cta.html" data-start="23" data-duration="7" data-track-index="5" data-width="1080" data-height="1920"></div>
 
       <!-- MUSIC & SOUND DESIGN -->
       <audio id="music" src="assets/audio/music.wav" data-start="0" data-duration="30" data-track-index="10" data-volume="0.78"></audio>
-      <audio id="sfx-01" src="assets/audio/sfx-shimmer.wav" data-start="0.15" data-duration="2.8" data-track-index="11" data-volume="0.32"></audio>
-      <audio id="sfx-02" src="assets/audio/sfx-chime.wav" data-start="0.95" data-duration="2.2" data-track-index="12" data-volume="0.26"></audio>
-      <audio id="sfx-03" src="assets/audio/sfx-tick.wav" data-start="1.65" data-duration="1" data-track-index="13" data-volume="0.26"></audio>
+      <audio id="sfx-01" src="assets/audio/sfx-shimmer.wav" data-start="0.15" data-duration="2.8" data-track-index="12" data-volume="0.32"></audio>
+      <audio id="sfx-02" src="assets/audio/sfx-chime.wav" data-start="0.95" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
+      <audio id="sfx-03" src="assets/audio/sfx-tick.wav" data-start="1.75" data-duration="1" data-track-index="13" data-volume="0.24"></audio>
       <audio id="sfx-04" src="assets/audio/sfx-whoosh.wav" data-start="3.75" data-duration="1.3" data-track-index="14" data-volume="0.42"></audio>
       <audio id="sfx-05" src="assets/audio/sfx-chime.wav" data-start="4.75" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
       <audio id="sfx-06" src="assets/audio/sfx-shimmer.wav" data-start="5.4" data-duration="2.8" data-track-index="12" data-volume="0.26"></audio>
-      <audio id="sfx-07" src="assets/audio/sfx-tick.wav" data-start="7.3" data-duration="1" data-track-index="13" data-volume="0.24"></audio>
-      <audio id="sfx-08" src="assets/audio/sfx-whoosh.wav" data-start="10.75" data-duration="1.3" data-track-index="14" data-volume="0.42"></audio>
-      <audio id="sfx-09" src="assets/audio/sfx-chime.wav" data-start="11.9" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
-      <audio id="sfx-10" src="assets/audio/sfx-shimmer.wav" data-start="12.5" data-duration="2.8" data-track-index="12" data-volume="0.2"></audio>
-      <audio id="sfx-11" src="assets/audio/sfx-droplet.wav" data-start="14.95" data-duration="0.6" data-track-index="13" data-volume="0.4"></audio>
-      <audio id="sfx-12" src="assets/audio/sfx-tick.wav" data-start="15.4" data-duration="1" data-track-index="15" data-volume="0.22"></audio>
-      <audio id="sfx-13" src="assets/audio/sfx-whoosh.wav" data-start="17.75" data-duration="1.3" data-track-index="14" data-volume="0.42"></audio>
-      <audio id="sfx-14" src="assets/audio/sfx-chime.wav" data-start="19.3" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
-      <audio id="sfx-15" src="assets/audio/sfx-tick.wav" data-start="20.9" data-duration="1" data-track-index="13" data-volume="0.22"></audio>
-      <audio id="sfx-16" src="assets/audio/sfx-whoosh.wav" data-start="22.75" data-duration="1.3" data-track-index="14" data-volume="0.42"></audio>
-      <audio id="sfx-17" src="assets/audio/sfx-shimmer.wav" data-start="24.2" data-duration="2.8" data-track-index="12" data-volume="0.3"></audio>
-      <audio id="sfx-18" src="assets/audio/sfx-chime.wav" data-start="25.4" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
-      <audio id="sfx-19" src="assets/audio/sfx-tick.wav" data-start="26.9" data-duration="1" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sfx-07" src="assets/audio/sfx-tick.wav" data-start="6.55" data-duration="1" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-08" src="assets/audio/sfx-tick.wav" data-start="7.2" data-duration="1" data-track-index="16" data-volume="0.2"></audio>
+      <audio id="sfx-09" src="assets/audio/sfx-whoosh.wav" data-start="9.75" data-duration="1.3" data-track-index="14" data-volume="0.42"></audio>
+      <audio id="sfx-10" src="assets/audio/sfx-chime.wav" data-start="10.9" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
+      <audio id="sfx-11" src="assets/audio/sfx-shimmer.wav" data-start="11.5" data-duration="2.8" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sfx-12" src="assets/audio/sfx-tick.wav" data-start="12.7" data-duration="1" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-13" src="assets/audio/sfx-tick.wav" data-start="13.5" data-duration="1" data-track-index="16" data-volume="0.2"></audio>
+      <audio id="sfx-14" src="assets/audio/sfx-droplet.wav" data-start="13.95" data-duration="0.6" data-track-index="15" data-volume="0.4"></audio>
+      <audio id="sfx-15" src="assets/audio/sfx-whoosh.wav" data-start="15.75" data-duration="1.3" data-track-index="14" data-volume="0.42"></audio>
+      <audio id="sfx-16" src="assets/audio/sfx-chime.wav" data-start="16.9" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
+      <audio id="sfx-17" src="assets/audio/sfx-tick.wav" data-start="17.95" data-duration="1" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-18" src="assets/audio/sfx-shimmer.wav" data-start="19.8" data-duration="2.8" data-track-index="12" data-volume="0.24"></audio>
+      <audio id="sfx-19" src="assets/audio/sfx-tick.wav" data-start="20.25" data-duration="1" data-track-index="16" data-volume="0.2"></audio>
+      <audio id="sfx-20" src="assets/audio/sfx-whoosh.wav" data-start="22.75" data-duration="1.3" data-track-index="14" data-volume="0.42"></audio>
+      <audio id="sfx-21" src="assets/audio/sfx-shimmer.wav" data-start="24.2" data-duration="2.8" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="sfx-22" src="assets/audio/sfx-chime.wav" data-start="25.4" data-duration="2.2" data-track-index="11" data-volume="0.26"></audio>
+      <audio id="sfx-23" src="assets/audio/sfx-tick.wav" data-start="26.9" data-duration="1" data-track-index="13" data-volume="0.2"></audio>
     </div>
 
     <!-- ===================== ROOT TIMELINE: veils & light leaks ===================== -->
@@ -379,14 +452,14 @@
         // ivory veils keep the titles on a calm ground when the 3D fills the frame
         tl.fromTo("#veil-top", { opacity: 0 }, { opacity: 0.55, duration: 1.2, ease: "sine.out" }, 0.2);
         tl.to("#veil-top", { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 4.0);
-        tl.to("#veil-top", { opacity: 0.5, duration: 1.4, ease: "sine.inOut" }, 18.2);
+        tl.to("#veil-top", { opacity: 0.5, duration: 1.4, ease: "sine.inOut" }, 16.2);
         tl.to("#veil-top", { opacity: 0.35, duration: 1.2, ease: "sine.inOut" }, 23.2);
         tl.fromTo("#veil-bottom", { opacity: 0 }, { opacity: 0.85, duration: 1.4, ease: "sine.inOut" }, 4.2);
-        tl.to("#veil-bottom", { opacity: 0, duration: 1.2, ease: "sine.inOut" }, 10.9);
+        tl.to("#veil-bottom", { opacity: 0, duration: 1.2, ease: "sine.inOut" }, 9.9);
         tl.to("#veil-bottom", { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 23.4);
         leak(3.85, -900, 600, 300);
-        leak(10.85, 1100, -500, 700);
-        leak(17.85, -900, 700, 500);
+        leak(9.85, 1100, -500, 700);
+        leak(15.85, -900, 700, 500);
         leak(22.85, 1000, -600, 200);
         window.__timelines["main"] = tl;
       })();

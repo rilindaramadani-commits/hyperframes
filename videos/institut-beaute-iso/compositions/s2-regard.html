@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <!-- Scène 2 — Soins du regard (4–11 s). Loupe : cils & sourcils dessinés poil par poil. -->
+    <!-- Scène 2 — Soins du regard (4–10,6 s). Loupe : cils & sourcils dessinés poil par poil ; prestations lash lift & brow lift. -->
   </head>
   <body>
     <template>
@@ -15,7 +15,7 @@
         #s2-loupe {
           position: absolute;
           left: 560px;
-          top: 1040px;
+          top: 1080px;
           width: 460px;
           height: 460px;
           border-radius: 50%;
@@ -36,14 +36,21 @@
       </style>
       <div id="root" data-composition-id="s2-regard" data-width="1080" data-height="1920">
         <svg id="s2-link" viewBox="0 0 1080 1920">
-          <path id="s2-link-path" d="M 448 893 C 480 970 560 1035 636 1099" fill="none" stroke="#a37b4c" stroke-width="2" stroke-linecap="round" />
-          <circle id="s2-link-dot" cx="438" cy="879" r="16" fill="none" stroke="#a37b4c" stroke-width="2.5" />
+          <path id="s2-link-path" d="M 449 1006 C 500 1070 560 1120 619 1156" fill="none" stroke="#a37b4c" stroke-width="2" stroke-linecap="round" />
+          <circle id="s2-link-dot" cx="438" cy="994" r="16" fill="none" stroke="#a37b4c" stroke-width="2.5" />
         </svg>
         <div class="stack">
           <span class="diamond top-ornament" id="s2-orn"></span>
           <div class="title mask" data-layout-allow-overflow><span id="s2-title">Soins du regard</span></div>
           <span class="rule" id="s2-rule"></span>
           <div class="sub mask" data-layout-allow-overflow><span id="s2-sub">Sublimez vos cils &amp; vos sourcils</span></div>
+          <!-- prestations -->
+          <div class="svc-row">
+            <span class="svc" id="s2-svc1">Lash lift coréen</span>
+            <span class="svc-sep" id="s2-sep"></span>
+            <span class="svc" id="s2-svc2">Brow lift</span>
+          </div>
+          <span class="svc-note" id="s2-note">Lash lift avec ou sans teinture</span>
         </div>
         <div id="s2-loupe">
           <svg viewBox="0 0 400 400">
@@ -192,13 +199,15 @@
             tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.35, ease: "power1.out" }, 2.6 + i * 0.016);
           });
           tl.fromTo("#s2-lashes", { rotation: 0, transformOrigin: "200px 200px" }, { rotation: -2.2, duration: 1.4, ease: "sine.inOut" }, 3.6);
-          soft("#s2-sub", 3.35, 1.1);
+          soft("#s2-sub", 2.55, 1.0);
+          tl.fromTo(["#s2-svc1", "#s2-sep", "#s2-svc2"], { opacity: 0, y: 22, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power2.out", stagger: 0.14 }, 3.2);
+          tl.fromTo("#s2-note", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 3.6);
           sparks.forEach((s, k) => {
-            tl.fromTo(s, { scale: 0, rotation: -40, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2.2)" }, 4.0 + k * 0.12);
-            tl.to(s, { scale: 0.45, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 2 }, 4.7 + k * 0.12);
+            tl.fromTo(s, { scale: 0, rotation: -40, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2.2)" }, 3.9 + k * 0.12);
+            tl.to(s, { scale: 0.45, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.5 + k * 0.12);
           });
           // handoff toward the skin-care studio
-          tl.to(["#s2-orn", "#s2-title", "#s2-rule", "#s2-sub", "#s2-loupe", "#s2-link"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.04 }, 6.8);
+          tl.to(["#s2-orn", "#s2-title", "#s2-rule", "#s2-sub", "#s2-svc1", "#s2-sep", "#s2-svc2", "#s2-note", "#s2-loupe", "#s2-link"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.03 }, 5.75);
 
           window.__timelines["s2-regard"] = tl;
         })();

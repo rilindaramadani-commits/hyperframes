@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <!-- Scène 4 — Expérience institut (18–23 s). -->
+    <!-- Scène 4 — Expérience institut (16–23,6 s) : « Votre moment beauté », puis les formules signature. -->
   </head>
   <body>
     <template>
@@ -12,8 +12,19 @@
           inset: 0;
           pointer-events: none;
         }
+        #s4-cards {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 1222px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
       </style>
       <div id="root" data-composition-id="s4-experience" data-width="1080" data-height="1920">
+        <!-- temps A -->
         <div class="stack">
           <div class="display">
             <span class="mask" data-layout-allow-overflow><span id="s4-l1">Votre moment</span></span>
@@ -22,15 +33,39 @@
           <span class="rule" id="s4-rule"></span>
           <div class="sub mask" data-layout-allow-overflow><span id="s4-sub">Prenez soin de vous</span></div>
         </div>
+        <!-- temps B : formules signature -->
+        <div class="stack">
+          <span class="diamond top-ornament" id="s4-orn"></span>
+          <div class="display mask" data-layout-allow-overflow><span id="s4-pk-title">Formules signature</span></div>
+          <span class="rule" id="s4-pk-rule"></span>
+        </div>
+        <div id="s4-cards">
+          <div class="card" id="s4-card1">
+            <span class="card-name">Glow &amp; Gaze</span>
+            <span class="card-desc">Lash lift coréen + Soin Glass Skin</span>
+          </div>
+          <div class="card" id="s4-card2">
+            <span class="card-name">Amani Signature</span>
+            <span class="card-desc">HydraSkin + Masque modelant + Massage drainant</span>
+          </div>
+        </div>
       </div>
       <script>
         (function () {
-          // scene-local seconds; the scene starts at 18 s
+          // scene-local seconds; the scene starts at 16 s
           const tl = gsap.timeline({ paused: true });
-          tl.fromTo(["#s4-l1", "#s4-l2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.25 }, 1.25);
-          tl.fromTo("#s4-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 2.2);
-          tl.fromTo("#s4-sub", { opacity: 0, y: 26, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power2.out" }, 2.85);
-          tl.to(["#s4-l1", "#s4-l2", "#s4-rule", "#s4-sub"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.04 }, 4.8);
+          // A — the camera pulls back over the whole institute
+          tl.fromTo(["#s4-l1", "#s4-l2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.22 }, 0.9);
+          tl.fromTo("#s4-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 1.6);
+          tl.fromTo("#s4-sub", { opacity: 0, y: 26, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: "power2.out" }, 1.95);
+          tl.to(["#s4-l1", "#s4-l2", "#s4-rule", "#s4-sub"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.55, ease: "power2.in", stagger: 0.03 }, 3.5);
+          // B — signature packages while the institute settles higher in frame
+          tl.fromTo("#s4-orn", { opacity: 0, scale: 0, rotation: 45 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.6, ease: "back.out(2)" }, 3.8);
+          tl.fromTo("#s4-pk-title", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: "expo.out" }, 3.9);
+          tl.fromTo("#s4-pk-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 4.3);
+          tl.fromTo(["#s4-card1", "#s4-card2"], { opacity: 0, y: 70, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power3.out", stagger: 0.3 }, 4.25);
+          // handoff to the call to action
+          tl.to(["#s4-orn", "#s4-pk-title", "#s4-pk-rule", "#s4-card1", "#s4-card2"], { opacity: 0, y: -24, filter: "blur(8px)", duration: 0.6, ease: "power2.in", stagger: 0.04 }, 6.8);
           window.__timelines["s4-experience"] = tl;
         })();
       </script>

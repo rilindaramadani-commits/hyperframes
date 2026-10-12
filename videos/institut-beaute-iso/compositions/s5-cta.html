@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <!-- Scène 5 — Call to action (23–30 s). Remplacez les PLACEHOLDERS entre crochets par vos informations. -->
+    <!-- Scène 5 — Call to action (23–30 s) : signature AMANI SKIN, réservation, Instagram et téléphone. -->
   </head>
   <body>
     <template>
@@ -46,9 +46,12 @@
       </style>
       <div id="root" data-composition-id="s5-cta" data-width="1080" data-height="1920">
         <div class="stack" id="s5-top">
-          <!-- Signature AMANI SKIN (recréation typographique — remplaçable par le fichier logo officiel) -->
+          <!-- Signature AMANI SKIN : mot « AMANI » issu du logo de la cliente, ligne SKIN redessinée -->
           <div class="lockup" id="s5-lockup">
-            <div class="wordmark" id="s5-word"><span>A</span><span>M</span><span>A</span><span>N</span><span>I</span></div>
+            <div class="wordmark-wrap" id="s5-word">
+              <img class="wordmark" src="assets/brand/amani-wordmark.png" alt="AMANI" />
+              <span class="wordmark-sheen" id="s5-sheen"></span>
+            </div>
             <div class="skin-row"><span class="line" id="s5-line-l"></span><span class="skin" id="s5-skin">Skin</span><span class="line" id="s5-line-r"></span></div>
             <span class="brand-dot" id="s5-dot"></span>
             <div class="values" id="s5-values">Beauté · Soin · Confiance</div>
@@ -64,11 +67,16 @@
           <div class="services mask" data-layout-allow-overflow>
             <span id="s5-services">Soins du regard<span class="dot">•</span>Soins de la peau</span>
           </div>
-          <!-- PLACEHOLDERS : vos coordonnées -->
+          <!-- Coordonnées -->
           <div class="contacts">
-            <span class="pill" id="s5-p1">[INSTAGRAM]</span>
-            <span class="pill" id="s5-p2">[TÉLÉPHONE]</span>
-            <span class="pill" id="s5-p3">[SITE INTERNET]</span>
+            <span class="pill" id="s5-p1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none" /></svg>
+              @amani__skin
+            </span>
+            <span class="pill" id="s5-p2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.6h2.6l1.4 4.1-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.1 1.4v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.8a2 2 0 0 1 2-2.2Z" /></svg>
+              07 66 85 43 74
+            </span>
           </div>
         </div>
       </div>
@@ -79,7 +87,8 @@
           const soft = (sel, at, dur, from = {}, to = {}) =>
             tl.fromTo(sel, { opacity: 0, y: 26, filter: "blur(10px)", ...from }, { opacity: 1, y: 0, filter: "blur(0px)", duration: dur, ease: "power2.out", ...to }, at);
           // AMANI SKIN signature
-          tl.fromTo("#s5-word > span", { opacity: 0, y: 40, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power3.out", stagger: 0.09 }, 1.0);
+          tl.fromTo("#s5-word", { opacity: 0, y: 24, filter: "blur(10px)", clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, y: 0, filter: "blur(0px)", clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "power3.inOut" }, 1.0);
+          tl.fromTo("#s5-sheen", { backgroundPosition: "100% 0%" }, { backgroundPosition: "0% 0%", duration: 1.3, ease: "sine.inOut" }, 2.5);
           tl.fromTo(["#s5-line-l", "#s5-line-r"], { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 1.55);
           tl.fromTo("#s5-skin", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 1.0, ease: "power2.out" }, 1.55);
           tl.fromTo("#s5-dot", { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(3)" }, 1.95);
@@ -88,7 +97,7 @@
           tl.fromTo(["#s5-l1", "#s5-l2"], { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.23 }, 2.35);
           tl.fromTo("#s5-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 3.15);
           tl.fromTo("#s5-services", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: "expo.out" }, 3.4);
-          ["#s5-p1", "#s5-p2", "#s5-p3"].forEach((p, k) => soft(p, 3.95 + k * 0.16, 0.9));
+          ["#s5-p1", "#s5-p2"].forEach((p, k) => soft(p, 3.95 + k * 0.16, 0.9));
           // closing glint on the gold rule
           tl.to("#s5-rule", { filter: "brightness(1.6)", duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.2);
           window.__timelines["s5-cta"] = tl;
