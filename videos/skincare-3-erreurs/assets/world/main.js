@@ -105,8 +105,9 @@ async function build() {
   // P01 hook: macro on the golden drop and the skin, then the table reveals itself
   key_(0, "lab", { P: [0, 1.1, HZ], h: 0.38, az: 16, el: 10, fov: 20, dof: 0.0035 });
   key_(1.6, "lab", { P: [0, 1.08, HZ], h: 0.34, az: 12, el: 11, fov: 20, dof: 0.0035 }, ease.inOutS);
-  key_(1.95, "lab", { P: [0, 1.08, HZ], h: 0.35, az: 11, el: 11, fov: 20, dof: 0.0035 }, ease.linear);
-  key_(2.75, "lab", { P: [0, 1.01, HZ - 0.12], h: 0.95, az: 6, el: 22, fov: 24, dof: 0.0012 }, ease.inOutC);
+  const SAB = wordAt("p01", "saboter", 2.88);
+  key_(Math.max(1.95, SAB - 0.93), "lab", { P: [0, 1.08, HZ], h: 0.35, az: 11, el: 11, fov: 20, dof: 0.0035 }, ease.linear);
+  key_(SAB - 0.13, "lab", { P: [0, 1.01, HZ - 0.12], h: 0.95, az: 6, el: 22, fov: 24, dof: 0.0012 }, ease.inOutC);
   key_(T("p02"), "lab", { P: [0, 0.98, 0.45], h: 2.0, az: 0, el: 28 }, ease.inOutS);
   // P02 the three plinths, slow orbit, push toward 01
   key_(T("p02", 1.1), "lab", { P: [0, 0.97, -0.3], h: 2.7, az: -6, el: 40 }, ease.inOutS);
@@ -167,16 +168,18 @@ async function build() {
   key_(TOTAL, "lab", { P: [0, 1.15, -0.4], h: 1.8, az: 0, el: 20, fov: 24 }, ease.linear);
 
   // products raining onto the D1 shelves, synced to the words of plan 04
+  const TOUT = wordAt("p04", "tout", 11.03);
   const D1S = [
     { i: 0, sh: 1, x: -0.08, tl: wordAt("p04", "Sérum", 8.63) + 0.12, label: "Sérum", side: -1 },
     { i: 1, sh: 2, x: -0.02, tl: wordAt("p04", "exfoliant", 9.01) + 0.12, label: "Exfoliant", side: 1 },
     { i: 2, sh: 1, x: 0.22, tl: wordAt("p04", "rétinol", 9.59) + 0.12, label: "Rétinol", side: 1 },
     { i: 3, sh: 0, x: 0.24, tl: wordAt("p04", "vitamine", 10.31) + 0.15, label: "Vitamine C", side: 1 },
-    { i: 4, sh: 2, x: 0.17, tl: 10.95 },
-    { i: 5, sh: 1, x: -0.24, tl: 11.12 },
-    { i: 6, sh: 0, x: -0.31, tl: 11.3 },
-    { i: 7, sh: 2, x: -0.2, tl: 11.47 },
-    { i: 8, sh: 1, x: 0.08, tl: 11.64 },
+    // the rest piles up on « tout, le même soir »
+    { i: 4, sh: 2, x: 0.17, tl: TOUT - 0.08 },
+    { i: 5, sh: 1, x: -0.24, tl: TOUT + 0.1 },
+    { i: 6, sh: 0, x: -0.31, tl: TOUT + 0.28 },
+    { i: 7, sh: 2, x: -0.2, tl: TOUT + 0.46 },
+    { i: 8, sh: 1, x: 0.08, tl: TOUT + 0.64 },
   ];
   const TIP = D1S[3];
   // micro punch-ins on the beats (products landing, calendar days)
@@ -288,13 +291,12 @@ async function build() {
       gold.scale.set(1, inHook ? 1 + 0.12 * prog(t, 1.2, 1.6) : 1.1, 1);
       goldGlow.position.set(0, gy + 0.015, HZ);
       // the hero skin: impact ripple, crack on « saboter », healed a third after each corrected error
-      const sab = wordAt("p01", "saboter", 2.88);
       const heal = (prog(t, CU.d1Out + 0.1, CU.d1Out + 0.6) + prog(t, CU.d2Out + 0.1, CU.d2Out + 0.6) + prog(t, CU.d3Out + 0.15, CU.d3Out + 0.7)) / 3;
       LAB.cube.set({
-        crack: prog(t, sab, sab + 0.45, ease.outQ) * (1 - heal),
-        glow: 0.7 * prog(t, sab + 0.1, sab + 0.7) * (1 - heal),
-        lift: 0.25 * prog(t, sab, sab + 0.5) * (1 - heal),
-        ripple: t > 1.6 && t < 3.4 ? 1 : 0,
+        crack: prog(t, SAB, SAB + 0.45, ease.outQ) * (1 - heal),
+        glow: 0.7 * prog(t, SAB + 0.1, SAB + 0.7) * (1 - heal),
+        lift: 0.25 * prog(t, SAB, SAB + 0.5) * (1 - heal),
+        ripple: t > 1.6 && t < SAB + 0.52 ? 1 : 0,
         rippleT: t - 1.6,
       });
       exitT.forEach((e) => sparkle("lab", W3("lab", 0, top + 0.03, HZ), t, e + 0.15, 0.8, 0.12, 0.025));

@@ -140,12 +140,16 @@
       </div>
       <script>
         (function () {
-          // block-local seconds; the block starts at 48 s (plan 15)
+          // block-local seconds; the block starts with plan 15
           const W = window.__WORDS || [];
+          const PL = window.__PLAN;
+          const B = PL.p15.start;
           const at = (plan, prefix, fb) => {
             const w = W.find((x) => x.plan === plan && x.w.toLowerCase().startsWith(prefix.toLowerCase()));
-            return (w ? w.s : fb) - 48;
+            return (w ? w.s : fb) - B;
           };
+          const p16 = PL.p16.start - B;
+          const p17 = PL.p17.start - B;
           const tl = gsap.timeline({ paused: true });
           tl.fromTo("#oc-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, 0.1);
           // recap: each card lands on its word
@@ -154,7 +158,7 @@
             tl.fromTo(sel + " .oc-ico", { scale: 0.5, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2.4)" }, t0 + 0.05);
           });
           // the three cards stack and slide up out of frame
-          tl.to("#oc-cards", { y: -160, opacity: 0, filter: "blur(6px)", duration: 0.5, ease: "power2.in" }, 2.95);
+          tl.to("#oc-cards", { y: -160, opacity: 0, filter: "blur(6px)", duration: 0.5, ease: "power2.in" }, p16 - 0.35);
           // final phrase, synced to the voice
           const p1 = at("p16", "Une", 51.48);
           const p2 = at("p16", "C'est", 53.95);
@@ -164,13 +168,13 @@
           tl.to("#oc-p1", { opacity: 0.45, duration: 0.6, ease: "sine.inOut" }, p2 - 0.1);
           tl.fromTo("#oc-final .p2", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.85, ease: "expo.out", stagger: 0.3 }, p2 - 0.05);
           tl.fromTo("#oc-reg", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out", immediateRender: false }, reg - 0.08);
-          tl.to("#oc-final", { opacity: 0, y: -30, filter: "blur(8px)", duration: 0.45, ease: "power2.in" }, 8.05);
+          tl.to("#oc-final", { opacity: 0, y: -30, filter: "blur(8px)", duration: 0.45, ease: "power2.in" }, p17 - 0.2);
           // call to action + discreet signature
-          tl.fromTo("#oc-kick", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.45);
-          tl.fromTo("#oc-hair2", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.inOut" }, 8.55);
-          tl.fromTo("#oc-save", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 8.5);
-          tl.fromTo("#oc-why", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out" }, 8.75);
-          tl.fromTo("#oc-sign", { opacity: 0, y: 20, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power2.out" }, 9.2);
+          tl.fromTo("#oc-kick", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, p17 + 0.2);
+          tl.fromTo("#oc-hair2", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.inOut" }, p17 + 0.3);
+          tl.fromTo("#oc-save", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, p17 + 0.25);
+          tl.fromTo("#oc-why", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out" }, p17 + 0.5);
+          tl.fromTo("#oc-sign", { opacity: 0, y: 20, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power2.out" }, p17 + 0.95);
           window.__timelines["c-outro"] = tl;
         })();
       </script>

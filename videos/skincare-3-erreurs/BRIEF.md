@@ -20,9 +20,10 @@ scolaire. 100 % 3D isométrique (labo cosmétique premium), animée dans HyperFr
 
 - Storyboard de production validé : https://claude.ai/code/artifact/4e320ad3-3abb-4169-bc1a-2a5152932673
   (17 plans, voix off, caméra, transitions, textes, sons).
-- Voix off : voix française locale Kokoro (`ff_siwis`, via `hyperframes tts`) — la voix Everygen
-  « Zara » n'était pas disponible (abonnement requis). Remplaçable par un autre fichier sans toucher
-  au montage : un clip par plan dans `assets/audio/vo/`, puis `tools/build_plan.py` et `tools/align_words.py`.
+- Voix off : enregistrement fourni par la cliente (remplace la première voix de synthèse Kokoro),
+  nettoyé (passe-haut, -16 LUFS), accéléré ×1,08 sans changer le timbre, pauses longues resserrées,
+  découpé en un clip par plan (`tools/import_voice.py`, phrases repérées dans `tools/voice_spans.json`).
+  Tout le montage (caméra, objets, titres, sous-titres, musique, effets) est recalé sur ce minutage : 68,6 s.
 
 ## Customizations
 

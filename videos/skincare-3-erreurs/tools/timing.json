@@ -2,170 +2,170 @@
  "plan": {
   "p01": {
    "start": 0.0,
-   "dur": 3.9,
-   "end": 3.9,
-   "voStart": 0.14,
-   "voEnd": 3.65,
+   "dur": 4.53,
+   "end": 4.53,
+   "voStart": 0.21,
+   "voEnd": 4.175,
    "text": "Tu peux avoir les meilleurs produits du monde… et quand même saboter ta peau."
   },
   "p02": {
-   "start": 3.9,
-   "dur": 2.55,
-   "end": 6.45,
-   "voStart": 3.98,
-   "voEnd": 5.84,
+   "start": 4.53,
+   "dur": 3.08,
+   "end": 7.61,
+   "voStart": 4.69,
+   "voEnd": 7.116,
    "text": "Voici trois erreurs que je vois tout le temps."
   },
   "p03": {
-   "start": 6.45,
-   "dur": 2.1,
-   "end": 8.55,
-   "voStart": 6.68,
-   "voEnd": 8.28,
+   "start": 7.61,
+   "dur": 2.45,
+   "end": 10.06,
+   "voStart": 7.77,
+   "voEnd": 9.484,
    "text": "Erreur numéro un : trop de produits."
   },
   "p04": {
-   "start": 8.55,
-   "dur": 3.4,
-   "end": 11.95,
-   "voStart": 8.63,
-   "voEnd": 11.75,
+   "start": 10.06,
+   "dur": 4.39,
+   "end": 14.45,
+   "voStart": 10.22,
+   "voEnd": 14.086,
    "text": "Sérum, exfoliant, rétinol, vitamine C… tout, le même soir."
   },
   "p05": {
-   "start": 11.95,
-   "dur": 4.4,
-   "end": 16.35,
-   "voStart": 12.03,
-   "voEnd": 15.86,
+   "start": 14.45,
+   "dur": 4.97,
+   "end": 19.42,
+   "voStart": 14.61,
+   "voEnd": 18.726,
    "text": "Trop d'actifs à la fois, ça peut irriter ta peau, et fragiliser sa barrière."
   },
   "p06": {
-   "start": 16.35,
-   "dur": 3.2,
-   "end": 19.55,
-   "voStart": 16.49,
-   "voEnd": 18.7,
+   "start": 19.42,
+   "dur": 3.68,
+   "end": 23.1,
+   "voStart": 19.58,
+   "voEnd": 22.108,
    "text": "Garde l'essentiel. Et un actif à la fois."
   },
   "p07": {
-   "start": 19.55,
-   "dur": 2.45,
-   "end": 22.0,
-   "voStart": 19.84,
-   "voEnd": 21.84,
+   "start": 23.1,
+   "dur": 3.28,
+   "end": 26.38,
+   "voStart": 23.26,
+   "voEnd": 26.023,
    "text": "Erreur numéro deux : oublier le SPF."
   },
   "p08": {
-   "start": 22.0,
-   "dur": 3.2,
-   "end": 25.2,
-   "voStart": 22.08,
-   "voEnd": 24.9,
+   "start": 26.38,
+   "dur": 4.09,
+   "end": 30.47,
+   "voStart": 26.54,
+   "voEnd": 30.111,
    "text": "Nettoyant, sérum, crème… et tu sors. Il manque une étape."
   },
   "p09": {
-   "start": 25.2,
-   "dur": 4.75,
-   "end": 29.95,
-   "voStart": 25.28,
-   "voEnd": 29.47,
+   "start": 30.47,
+   "dur": 5.46,
+   "end": 35.93,
+   "voStart": 30.63,
+   "voEnd": 35.235,
    "text": "Les UV contribuent au vieillissement de la peau, et aux taches. Même quand il fait gris."
   },
   "p10": {
-   "start": 29.95,
-   "dur": 3.55,
-   "end": 33.5,
-   "voStart": 30.08,
-   "voEnd": 32.88,
+   "start": 35.93,
+   "dur": 4.28,
+   "end": 40.21,
+   "voStart": 36.09,
+   "voEnd": 39.22,
    "text": "Le SPF, c'est la dernière étape du matin. Tous les jours."
   },
   "p11": {
-   "start": 33.5,
-   "dur": 2.85,
-   "end": 36.35,
-   "voStart": 33.79,
-   "voEnd": 36.25,
+   "start": 40.21,
+   "dur": 3.47,
+   "end": 43.68,
+   "voStart": 40.37,
+   "voEnd": 43.324,
    "text": "Erreur numéro trois : changer de routine sans arrêt."
   },
   "p12": {
-   "start": 36.35,
-   "dur": 4.25,
-   "end": 40.6,
-   "voStart": 36.43,
-   "voEnd": 40.46,
+   "start": 43.68,
+   "dur": 4.46,
+   "end": 48.14,
+   "voStart": 43.84,
+   "voEnd": 47.775,
    "text": "Nouveau sérum lundi, nouveau nettoyant mercredi, nouvel exfoliant vendredi…"
   },
   "p13": {
-   "start": 40.6,
-   "dur": 4.1,
-   "end": 44.7,
-   "voStart": 40.68,
-   "voEnd": 44.17,
+   "start": 48.14,
+   "dur": 4.47,
+   "end": 52.61,
+   "voStart": 48.3,
+   "voEnd": 51.869,
    "text": "Impossible de savoir ce qui marche vraiment. Ta peau a besoin de temps."
   },
   "p14": {
-   "start": 44.7,
-   "dur": 3.3,
-   "end": 48.0,
-   "voStart": 44.83,
-   "voEnd": 47.4,
+   "start": 52.61,
+   "dur": 3.2,
+   "end": 55.81,
+   "voStart": 52.77,
+   "voEnd": 55.066,
    "text": "Une routine simple, et quelques semaines de patience."
   },
   "p15": {
-   "start": 48.0,
-   "dur": 3.3,
-   "end": 51.3,
-   "voStart": 48.23,
-   "voEnd": 51.03,
+   "start": 55.81,
+   "dur": 3.92,
+   "end": 59.73,
+   "voStart": 55.97,
+   "voEnd": 59.37,
    "text": "Moins d'actifs. Du SPF chaque matin. De la régularité."
   },
   "p16": {
-   "start": 51.3,
-   "dur": 4.95,
-   "end": 56.25,
-   "voStart": 51.48,
-   "voEnd": 55.91,
+   "start": 59.73,
+   "dur": 5.26,
+   "end": 64.99,
+   "voStart": 59.89,
+   "voEnd": 64.63,
    "text": "Une bonne skincare, ce n'est pas d'en faire plus. C'est de faire les bonnes choses, régulièrement."
   },
   "p17": {
-   "start": 56.25,
-   "dur": 3.25,
-   "end": 59.5,
-   "voStart": 56.38,
-   "voEnd": 58.74,
+   "start": 64.99,
+   "dur": 3.62,
+   "end": 68.61,
+   "voStart": 65.15,
+   "voEnd": 67.372,
    "text": "Enregistre cette vidéo pour vérifier ta routine."
   }
  },
  "cue": {
-  "d1In": 6.25,
-  "d1Out": 18.85,
-  "d2In": 19.7,
-  "d2Out": 32.8,
-  "d3In": 33.62,
-  "d3Out": 47.55,
+  "d1In": 7.41,
+  "d1Out": 22.4,
+  "d2In": 23.25,
+  "d2Out": 39.51,
+  "d3In": 40.33,
+  "d3Out": 55.36,
   "rw1": [
-   15.95,
-   16.35
+   19.02,
+   19.42
   ],
   "rw2": [
-   29.55,
-   29.95
+   35.53,
+   35.93
   ],
   "rw3": [
-   44.2,
-   44.7
+   52.11,
+   52.61
   ],
   "whip10": [
-   31.55,
-   31.75
+   38.54,
+   38.74
   ],
   "days": [
-   37.1,
-   38.35,
-   39.5,
-   40.2
+   44.6,
+   45.806,
+   47.297,
+   47.997
   ]
  },
- "total": 59.5
+ "total": 68.61
 }

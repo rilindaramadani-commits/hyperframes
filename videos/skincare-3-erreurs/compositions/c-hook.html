@@ -35,17 +35,20 @@
       </div>
       <script>
         (function () {
-          // block-local seconds (the block starts at 0 s)
+          // block-local seconds (the block starts at 0 s); the title lands just before « saboter »
+          const sab = (window.__WORDS || []).find((w) => w.plan === "p01" && w.w.startsWith("saboter"));
+          const s0 = (sab ? sab.s : 2.88) - 0.43;
+          const out = window.__PLAN.p02.start + 0.65;
           const tl = gsap.timeline({ paused: true });
-          tl.fromTo("#hk-veil", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, 2.45);
-          tl.fromTo("#hk-kicker", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 2.55);
-          tl.fromTo("#hk-hair", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.inOut" }, 2.6);
-          tl.fromTo("#hk-l1", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 2.62);
-          tl.fromTo("#hk-three", { scale: 0.7, transformOrigin: "50% 70%" }, { scale: 1, duration: 0.9, ease: "back.out(2)" }, 2.62);
-          tl.fromTo("#hk-l2", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out" }, 2.85);
+          tl.fromTo("#hk-veil", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, s0);
+          tl.fromTo("#hk-kicker", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, s0 + 0.1);
+          tl.fromTo("#hk-hair", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.inOut" }, s0 + 0.15);
+          tl.fromTo("#hk-l1", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, s0 + 0.17);
+          tl.fromTo("#hk-three", { scale: 0.7, transformOrigin: "50% 70%" }, { scale: 1, duration: 0.9, ease: "back.out(2)" }, s0 + 0.17);
+          tl.fromTo("#hk-l2", { yPercent: 108, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out" }, s0 + 0.4);
           // leave before the plinths rise into the upper frame
-          tl.to("#hk-stack", { y: -40, opacity: 0, filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, 4.55);
-          tl.to("#hk-veil", { opacity: 0, duration: 0.6, ease: "sine.in" }, 4.6);
+          tl.to("#hk-stack", { y: -40, opacity: 0, filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, out);
+          tl.to("#hk-veil", { opacity: 0, duration: 0.6, ease: "sine.in" }, out + 0.05);
           window.__timelines["c-hook"] = tl;
         })();
       </script>

@@ -11,6 +11,7 @@ import wave
 words = json.load(open("tools/words.json"))
 tim = json.load(open("tools/timing.json"))
 P, C = tim["plan"], tim["cue"]
+TOTAL = max(p["end"] for p in P.values())
 
 
 def W(plan, prefix, fb):
@@ -37,19 +38,21 @@ def A(t, n, v):
 
 # P01–P02 hook and plinths
 A(1.52, "drop", 0.55)
-A(1.9, "whoosh", 0.36)
-A(W("p01", "saboter", 2.88) - 0.03, "crack", 0.42)
+sab = W("p01", "saboter", 2.88)
+A(max(1.95, sab - 0.93) - 0.05, "whoosh", 0.36)  # the camera pull-back (main.js)
+A(sab - 0.03, "crack", 0.42)
 for i, n in enumerate(["pop-1", "pop-2", "pop-3"]):
     A(T("p02", 0.15) + 0.12 * i, n, 0.42)
 A(T("p02", 0.6), "tick", 0.3)
 A(C["d1In"] - 0.45, "suck", 0.42)
 # P03–P06 too many products
 A(T("p03", 0.27), "impact", 0.42)
-land = [W("p04", "Sérum", 8.63) + 0.12, W("p04", "exfoliant", 9.01) + 0.12, W("p04", "rétinol", 9.59) + 0.12, W("p04", "vitamine", 10.31) + 0.15, 10.95, 11.12, 11.3, 11.47, 11.64]
+tout = W("p04", "tout", 11.03)
+land = [W("p04", "Sérum", 8.63) + 0.12, W("p04", "exfoliant", 9.01) + 0.12, W("p04", "rétinol", 9.59) + 0.12, W("p04", "vitamine", 10.31) + 0.15] + [tout - 0.08 + 0.18 * k for k in range(5)]
 for t, n in zip(land, ["clink-1", "clink-1", "clink-2", "clink-2", "clink-3", "clink-3", "clink-4", "clink-4", "clink-4"]):
     A(t - 0.02, n, 0.3)
-A(9.3, "gauge", 0.2)
-A(11.72, "creak", 0.32)
+A(T("p04", 0.75), "gauge", 0.2)
+A(land[-1] + 0.08, "creak", 0.32)
 A(T("p05", 0.05), "tink", 0.28)
 A(T("p05", 0.3), "drips", 0.34)
 A(W("p05", "fragiliser", 14.7), "crack", 0.38)
@@ -63,7 +66,7 @@ A(C["d1Out"] + 0.15, "check-1", 0.38)
 A(C["d2In"] - 0.45, "suck", 0.4)
 # P07–P10 forgetting SPF
 A(T("p07", 0.33), "impact", 0.42)
-A(20.2, "birds", 0.15)
+A(T("p07", 0.65), "birds", 0.15)
 for i, (pre, fb) in enumerate([("Nettoyant", 22.08), ("sérum", 22.52), ("crème", 22.96)]):
     A(W("p08", pre, fb) + 0.02, f"check-{i + 1}", 0.38)
 A(T("p08", 1.3), "whoosh", 0.26)
@@ -89,7 +92,7 @@ A(C["d3In"] - 0.45, "suck", 0.4)
 # P11–P14 changing everything
 A(T("p11", 0.33), "impact", 0.42)
 A(T("p11", 0.5), "shimmer", 0.2)
-A(36.4, "hats", 0.2)
+A(T("p12", 0.05), "hats", 0.2)
 for k, f in enumerate(C["days"]):
     A(f - 0.1, "page", 0.36)
     A(f + 0.53, ["pop-1", "pop-2", "pop-3", "pop-3"][k], 0.36)
@@ -118,7 +121,7 @@ A(T("p17", 1.2), "pop-3", 0.42)
 ev.sort()
 tracks, lines, count = [], [], {}
 for t, n, v in ev:
-    d = min(dur[n], round(59.5 - t, 3))
+    d = min(dur[n], round(TOTAL - t, 3))
     tr = next((i for i, end in enumerate(tracks) if end <= t - 0.01), None)
     if tr is None:
         tracks.append(0)

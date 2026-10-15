@@ -31,12 +31,15 @@
       </div>
       <script>
         (function () {
-          // block-local seconds
+          // block-local seconds; the block starts with plan 03, every beat follows the voice timing
+          const PL = window.__PLAN;
+          const CU = window.__CUE;
+          const B = PL.p03.start;
           const tl = gsap.timeline({ paused: true });
           const tIn = 0.25;
-          const tOut = 2.0;
-          const kIn = 10.35;
-          const kOut = 12.3;
+          const tOut = PL.p04.start - 0.1 - B;
+          const kIn = PL.p06.start + 0.45 - B;
+          const kOut = CU.d1Out - 0.1 - B;
           tl.fromTo("#e1-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, tIn - 0.1);
           tl.fromTo("#e1-kick", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, tIn);
           tl.fromTo("#e1-num", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, tIn + 0.08);

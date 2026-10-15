@@ -31,12 +31,17 @@
       </div>
       <script>
         (function () {
-          // block-local seconds
+          // block-local seconds; the block starts with plan 07, every beat follows the voice timing
+          const PL = window.__PLAN;
+          const CU = window.__CUE;
+          const spf = (window.__WORDS || []).find((w) => w.plan === "p10" && w.w.startsWith("SPF"));
+          const B = PL.p07.start;
           const tl = gsap.timeline({ paused: true });
           const tIn = 0.3;
-          const tOut = 2.4;
-          const kIn = 11.82;
-          const kOut = 13.22;
+          const tOut = PL.p08.start - 0.05 - B;
+          // right after the SPF bottle lands and the checklist fades (main.js: spfLand + 0.68)
+          const kIn = (spf ? spf.s : PL.p10.start + 0.3) + 1.13 - B;
+          const kOut = CU.d2Out - 0.05 - B;
           tl.fromTo("#e2-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, tIn - 0.1);
           tl.fromTo("#e2-kick", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, tIn);
           tl.fromTo("#e2-num", { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, tIn + 0.08);
