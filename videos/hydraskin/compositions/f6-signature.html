@@ -24,9 +24,12 @@
         #f6-tag { position: absolute; left: 0; right: 0; top: 880px; text-align: center; font-weight: 300; font-size: 42px; line-height: 1.2; color: var(--bdx-deep); }
         #f6-cta { left: 150px; top: 900px; width: 780px; height: 100px; }
         #f6-cta-t { position: absolute; left: 0; right: 0; top: 930px; text-align: center; font-weight: 400; font-size: 36px; line-height: 1.2; color: var(--bdx-deep); }
-        #f6-hair2 { left: 490px; top: 1210px; width: 100px; }
-        #f6-name { position: absolute; left: 0; right: 0; top: 1250px; text-align: center; font-weight: 500; font-size: 34px; line-height: 1; letter-spacing: 0.28em; color: var(--bdx); padding-left: 0.28em; }
-        #f6-slot { position: absolute; left: 72px; right: 72px; top: 1318px; text-align: center; font-weight: 400; font-size: 34px; line-height: 1; color: var(--bdx-deep); white-space: nowrap; }
+        #f6-name { position: absolute; left: 0; right: 0; top: 1150px; height: 170px; }
+        #f6-name img { position: absolute; left: 350px; top: 0; width: 380px; height: 99px; }
+        #f6-skin { position: absolute; left: 290px; width: 500px; top: 122px; display: flex; align-items: center; gap: 24px; font-weight: 500; font-size: 26px; line-height: 1; letter-spacing: 0.5em; color: var(--bdx); }
+        #f6-skin i { display: block; flex: 1; height: 2px; background: var(--bdx-70); }
+        #f6-skin span { display: block; padding-left: 0.5em; }
+        #f6-slot { position: absolute; left: 72px; right: 72px; top: 1352px; text-align: center; font-weight: 400; font-size: 34px; line-height: 1; color: var(--bdx-deep); white-space: nowrap; }
         #f6-slot .sep { color: var(--bdx); padding: 0 0.5em; }
         #f6-virt { position: absolute; left: 72px; top: 1468px; font-weight: 400; font-size: 22px; line-height: 1; color: var(--bdx); }
         #f6-end { background: var(--cream); opacity: 0; }
@@ -48,8 +51,11 @@
         <div data-hf-id="hf-n4fy" class="glass pill" id="f6-cta"></div>
         <div data-hf-id="hf-vdrf" id="f6-cta-t"><span data-hf-id="hf-2y5p" class="mask"><span data-hf-id="hf-dg0s" id="f6-cta-in" data-layout-allow-occlusion data-layout-allow-overflow>Découvrez votre prochain rituel de soin.</span></span></div>
 
-        <div data-hf-id="hf-c3eb" class="hair" id="f6-hair2"></div>
-        <div data-hf-id="hf-unr2" id="f6-name">AMANI SKIN</div>
+        <!-- AMANI SKIN logo: the client's wordmark (tinted bordeaux) over the SKIN line, as on the embossed logo -->
+        <div data-hf-id="hf-unr2" id="f6-name">
+          <img src="assets/brand/amani-wordmark-bordeaux.png" alt="AMANI" />
+          <div id="f6-skin"><i></i><span>SKIN</span><i></i></div>
+        </div>
         <!-- contact details confirmed by the client -->
         <div data-hf-id="hf-cvup" id="f6-slot">@amani__skin<span class="sep">·</span>07 66 85 43 74</div>
         <div data-hf-id="hf-1g8e" id="f6-virt">Images virtuelles</div>
@@ -78,7 +84,6 @@
           tl.fromTo("#f6-cta-in", { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: "power3.out" }, A(71.4));
 
           // 73.4 — the institute
-          tl.fromTo("#f6-hair2", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, A(73.4));
           tl.fromTo("#f6-name", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, A(73.5));
           tl.fromTo("#f6-slot", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, A(73.9));
           tl.fromTo("#f6-virt", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, A(74.0));

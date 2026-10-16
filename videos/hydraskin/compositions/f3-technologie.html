@@ -15,9 +15,9 @@
         #f3-fade { position: absolute; inset: 0; }
         #f3-veil { background: var(--linen); opacity: 0; }
         #f3-s1 { transform-origin: 540px 980px; }
-        #f3-s2 { transform-origin: 560px 700px; }
-        #f3-s3 { transform-origin: 540px 880px; }
-        #f3-s4 { transform-origin: 640px 900px; }
+        #f3-s2 { transform-origin: 440px 990px; }
+        #f3-s3 { transform-origin: 730px 650px; }
+        #f3-s4 { transform-origin: 675px 730px; }
         #f3-chip { left: 72px; top: 260px; width: 430px; height: 96px; }
         .f3-step { position: absolute; left: 40px; top: 30px; font-size: 36px; line-height: 1; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
         .f3-step b { font-weight: 400; color: var(--bdx); }
@@ -38,16 +38,13 @@
 
           <!-- annotations: point on the gesture → hairline → label in free space -->
           <svg data-hf-id="hf-avut" id="f3-ann" viewBox="0 0 1080 1920">
-            <path data-hf-id="hf-0ix0" id="f3-p2" d="M560 700 L700 560 L900 560" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="398" stroke-dashoffset="398" />
-            <path data-hf-id="hf-2f3k" id="f3-p3" d="M540 880 L720 1140 L980 1140" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="576" stroke-dashoffset="576" />
-            <path data-hf-id="hf-w1sc" id="f3-p4" d="M640 900 L480 1200 L100 1200" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="720" stroke-dashoffset="720" />
+            <path data-hf-id="hf-0ix0" id="f3-p2" d="M440 990 L640 760 L900 760" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="565" stroke-dashoffset="565" />
+            <path data-hf-id="hf-2f3k" id="f3-p3" d="M730 650 L820 430 L560 430" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="498" stroke-dashoffset="498" />
           </svg>
-          <div data-hf-id="hf-4vaz" class="f3-pt" id="f3-pt2" style="left: 560px; top: 700px"></div>
-          <div data-hf-id="hf-dvrb" class="f3-pt" id="f3-pt3" style="left: 540px; top: 880px"></div>
-          <div data-hf-id="hf-ab7u" class="f3-pt" id="f3-pt4" style="left: 640px; top: 900px"></div>
-          <div data-hf-id="hf-5a99" class="f3-tag" id="f3-t2" style="left: 712px; top: 486px">Précision</div>
-          <div data-hf-id="hf-a8e2" class="f3-tag" id="f3-t3" style="left: 580px; top: 1162px">Chaque zone du visage</div>
-          <div data-hf-id="hf-396z" class="f3-tag" id="f3-t4" style="left: 88px; top: 1222px">Technologie professionnelle</div>
+          <div data-hf-id="hf-4vaz" class="f3-pt" id="f3-pt2" style="left: 440px; top: 990px"></div>
+          <div data-hf-id="hf-dvrb" class="f3-pt" id="f3-pt3" style="left: 730px; top: 650px"></div>
+          <div data-hf-id="hf-5a99" class="f3-tag" id="f3-t2" style="left: 652px; top: 686px">Précision</div>
+          <div data-hf-id="hf-a8e2" class="f3-tag" id="f3-t3" style="left: 560px; top: 352px">Chaque zone du visage</div>
 
           <!-- the step chip (scene 2's card, retracted) with its mini rail -->
           <div data-hf-id="hf-ad2h" class="glass pill" id="f3-chip">
@@ -91,9 +88,8 @@
 
           // annotations: drawn 0.6 s, held 1.8 s, folded back — on three shots only
           const ann = [
-            { p: "#f3-p2", pt: "#f3-pt2", t: "#f3-t2", len: 398, at: 23.5 },
-            { p: "#f3-p3", pt: "#f3-pt3", t: "#f3-t3", len: 576, at: 26.5 },
-            { p: "#f3-p4", pt: "#f3-pt4", t: "#f3-t4", len: 720, at: 29.5 },
+            { p: "#f3-p2", pt: "#f3-pt2", t: "#f3-t2", len: 565, at: 23.5 },
+            { p: "#f3-p3", pt: "#f3-pt3", t: "#f3-t3", len: 498, at: 26.5 },
           ];
           ann.forEach((a) => {
             tl.fromTo(a.pt, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2)" }, A(a.at));

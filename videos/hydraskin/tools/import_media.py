@@ -1,0 +1,81 @@
+"""Place the client's own media into the shot slots (assets/media/IMG-xx.mp4).
+
+Photos are cropped to 9:16 around a focus point and encoded as 15 s stills (the scenes add the
+camera move). Clips from the institute footage are cut on its own edit points, slowed down
+(motion-interpolated) and held on their last frame to 15 s. Source files live in assets/source/.
+
+Usage: python3 tools/import_media.py            (all slots)
+       python3 tools/import_media.py IMG-04 ...  (some slots)
+"""
+import os
+import subprocess
+import sys
+
+from PIL import Image
+
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+SRC = os.path.join(ROOT, "assets", "source")
+OUT = os.path.join(ROOT, "assets", "media")
+W, H = 1080, 1920
+
+# slot -> ("photo", file, focus_x, focus_y) | ("clip", file, start, end, slowdown)
+SLOTS = {
+    "IMG-01": ("photo", "peau-macro.png", None, None),          # macro peau, yeux clos
+    "IMG-02": ("photo", "serum-pipette.png", None, None),       # pipette et goutte de sérum
+    "IMG-08": ("photo", "machine-cabine.jpg", 760, None),       # la machine de l'institut
+    "IMG-04": ("clip", "soin-institut.mov", 3.30, 4.48, 3.3),   # nettoyage : vapeur, mains gantées
+    "IMG-05": ("clip", "soin-institut.mov", 4.52, 5.54, 3.6),   # travail de la peau, mains gantées
+    "IMG-06": ("photo", "profil-nez.jpg", 720, None),           # zone du nez (extraction)
+    "IMG-07": ("photo", "serum-joue.jpg", 760, None),           # sérum sur la joue (hydratation)
+    "IMG-09": ("photo", "toucher-joue.png", None, None),        # toucher, observation de la peau
+    "IMG-10": ("photo", "creme-joue.jpg", 520, None),           # texture crème
+    "IMG-11": ("clip", "soin-institut.mov", 5.60, 6.60, 5.0),   # masque
+    "IMG-13": ("clip", "soin-institut.mov", 6.66, 8.78, 2.7),   # massage du visage
+    "IMG-14": ("clip", "soin-institut.mov", 8.82, 10.75, 3.2),  # visage détendu
+    "IMG-15": ("photo", "cabine-amani.png", 540, None),         # cabine AMANI SKIN
+}
+
+
+def crop_916(im, fx, fy):
+    w, h = im.size
+    if w / h > W / H:  # too wide: crop width around fx
+        cw = round(h * W / H)
+        cx = w / 2 if fx is None else fx
+        x0 = int(min(max(cx - cw / 2, 0), w - cw))
+        box = (x0, 0, x0 + cw, h)
+    else:  # too tall: crop height around fy
+        ch = round(w * H / W)
+        cy = h / 2 if fy is None else fy
+        y0 = int(min(max(cy - ch / 2, 0), h - ch))
+        box = (0, y0, w, y0 + ch)
+    return im.crop(box).resize((W, H), Image.LANCZOS)
+
+
+def run(args):
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error"] + args, check=True)
+
+
+def photo(slot, name, fx, fy):
+    im = crop_916(Image.open(os.path.join(SRC, name)).convert("RGB"), fx, fy)
+    png = os.path.join(OUT, f"{slot}.png")
+    im.save(png)
+    run(["-loop", "1", "-i", png, "-t", "15", "-r", "30", "-c:v", "libx264", "-preset", "medium",
+         "-tune", "stillimage", "-crf", "17", "-pix_fmt", "yuv420p", "-g", "450", "-movflags", "+faststart",
+         os.path.join(OUT, f"{slot}.mp4")])
+    os.remove(png)
+
+
+def clip(slot, name, a, b, slow):
+    vf = (f"setpts={slow}*(PTS-STARTPTS),"
+          "minterpolate=fps=30:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,"
+          f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
+          "tpad=stop_mode=clone:stop_duration=15,format=yuv420p")
+    run(["-ss", f"{a}", "-to", f"{b}", "-i", os.path.join(SRC, name), "-an", "-vf", vf, "-t", "15",
+         "-r", "30", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-movflags", "+faststart",
+         os.path.join(OUT, f"{slot}.mp4")])
+
+
+for slot in sys.argv[1:] or SLOTS:
+    spec = SLOTS[slot]
+    (photo if spec[0] == "photo" else clip)(slot, *spec[1:])
+    print(slot, "ok")
