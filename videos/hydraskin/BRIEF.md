@@ -34,8 +34,13 @@ et un glassmorphism maîtrisé. Chaque élément présent à l'écran doit avoir
 
 ## Customizations
 
-- Glassmorphism premium (direction complémentaire de la cliente) : verre dépoli ivoire, blanc
-  laiteux ou nude, flou d'arrière-plan léger, bordures blanches très fines, reflets discrets,
+- Palette HydraSkin « Bordeaux & Beige » : bordeaux lie-de-vin #642D3D (signature, titres secondaires,
+  accents graphiques), beige lin #D8C5B2 (dominante des fonds et panneaux), ivoire crème #F7F2EB
+  (lumière, espaces, éléments doux), bordeaux profond #40232C (textes importants, contrastes).
+  Luxe discret, chaleureux, contemporain ; textures douces. Éviter rouge vif, rose bonbon, dorures
+  excessives, effets trop chargés.
+- Glassmorphism premium (direction complémentaire de la cliente) : verre dépoli beige lin / ivoire
+  crème, flou d'arrière-plan léger, bordures ivoire très fines, reflets discrets,
   ombres douces, profondeur subtile. Usage ponctuel : titre, étapes, mots-clés, personnalisation,
   transitions, écran final.
 - Motion design comme structure : titres fluides, lignes fines, repères et annotations minimalistes,

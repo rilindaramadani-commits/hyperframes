@@ -1,28 +1,26 @@
 ---
-name: HydraSkin — verre ivoire
+name: HydraSkin — Bordeaux & Beige, verre lin
 colors:
-  ivory: "#F6F1EA"        # fond, lumière des images
-  offwhite: "#FBF8F3"     # verre (teinte de remplissage), cartes
-  sand: "#E9DFD2"         # beige clair, plans de fond, filets secondaires
-  nude: "#D8C1AD"         # tons nude, ombres chaudes, aplats de profondeur
-  taupe: "#9C8B7D"        # taupe très doux : numéros, légendes, repères
-  ink: "#352C26"          # texte principal (brun-taupe profond, jamais noir pur)
-  ink-soft: "#5E5249"     # texte secondaire
-  mist: "#CBD8DF"         # bleu très pâle : uniquement les repères « technologie » (scènes 2-3)
-  accent: "#B4866D"       # nude rosé : point focal unique par plan (numéro d'étape actif, point du rail)
+  linen: "#D8C5B2"        # beige lin — couleur dominante des fonds et des panneaux
+  cream: "#F7F2EB"        # ivoire crème — lumière, espaces, éléments doux, voiles
+  bordeaux: "#642D3D"     # bordeaux lie-de-vin — couleur signature : titres secondaires, accents graphiques (rail, numéros, filets, annotations)
+  bordeaux-deep: "#40232C" # bordeaux profond — textes importants et contrastes
+  # Dérivés autorisés (opacités des quatre teintes, jamais de nouvelle teinte) :
+  #   texte secondaire = bordeaux-deep à 78 % · filets = bordeaux à 70 % · ombres = bordeaux-deep à 18 %
 typography:
   display: { family: "Instrument Serif", weights: [400], style: "normal + italic", use: "HydraSkin, deux phrases-clés éditoriales" }
   sans: { family: "Jost", weights: [300, 400, 500], use: "tout le reste : étapes, mots-clés, légendes, CTA" }
   sizes: { hero: "200-230px", statement: "96-112px", step: "64-72px", body: "40-46px", label: "26-30px (500, +0.18em, capitales)" }
   tracking: { display: "-0.02em", labels: "+0.18em" }
 glass:
-  fill: "linear-gradient(160deg, rgba(251,248,243,0.46), rgba(246,241,234,0.22))"
-  backdrop: "blur(22px) saturate(112%)"
-  border: "1.5px solid rgba(255,255,255,0.62)"
-  inner-highlight: "inset 0 1.5px 0 rgba(255,255,255,0.75)"
-  shadow: "0 40px 80px -30px rgba(53,44,38,0.22)"
+  fill: "linear-gradient(160deg, rgba(247,242,235,0.48), rgba(216,197,178,0.26))"
+  backdrop: "blur(22px) saturate(108%)"
+  border: "1.5px solid rgba(247,242,235,0.70)"
+  inner-highlight: "inset 0 1.5px 0 rgba(247,242,235,0.85)"
+  shadow: "0 40px 80px -30px rgba(64,35,44,0.18)"
   radius: "34px (cartes) · 999px (puces) · 0 (lame de transition)"
-  sheen: "bande diagonale blanche 0 → 0.35 → 0, une seule passe par apparition"
+  sheen: "bande diagonale ivoire crème 0 → 0.35 → 0, une seule passe par apparition"
+  texture: "grain doux 3-4 % sur les aplats beige lin (texture papier/lin, déterministe)"
 spacing:
   gutter: 72px
   safe-zone: "contenu texte entre y=240 et y=1500, x=72 à 940 (interface Reels/TikTok)"
@@ -35,7 +33,7 @@ motion:
 
 ## Overview
 
-Verre ivoire sur photographie réaliste et lumineuse. Le verre est un instrument de lecture, pas un décor :
+Luxe discret, chaleureux et contemporain : verre beige lin et ivoire crème sur photographie réaliste et lumineuse, signé d'un bordeaux lie-de-vin. Le verre est un instrument de lecture, pas un décor :
 il apparaît seulement quand une information doit être lue, puis se retire et rend l'image.
 
 ## Tension typographique
@@ -53,6 +51,6 @@ porte le geste et la promesse. Elle n'apparaît que sur « HydraSkin » et sur d
 
 ## Do / Don't
 
-- Do : flou léger qui laisse lire l'image, filets blancs 1.5 px, un seul reflet par apparition, ombres chaudes.
-- Don't : verre opaque, contours lumineux, néon, irisation ou holographie, dégradé de texte, noir ou blanc purs,
+- Do : flou léger qui laisse lire l'image, filets ivoire crème ou bordeaux 1.5 px, un seul reflet par apparition, ombres teintées bordeaux profond, textures douces.
+- Don't : rouge vif, rose bonbon, dorures, verre opaque, contours lumineux, néon, irisation ou holographie, dégradé de texte, noir ou blanc purs,
   interface science-fiction, transitions de banque d'effets.

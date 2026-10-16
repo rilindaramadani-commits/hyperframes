@@ -9,8 +9,8 @@ mention « Images virtuelles ».
 
 - **Format** : vertical 9:16, 4K si possible (ou 1080×1920 minimum), 25 ou 30 i/s, plans de 6 à 8 s pour laisser de la marge au montage.
 - **Lumière** : jour diffus et chaud (fenêtre voilée ou softbox de 120 cm à 45°), un réflecteur blanc côté ombre. Ni néon, ni lumière bleue de LED, ni flash.
-- **Décor** : cabine épurée, tons ivoire, beige et bois clair. Serviettes blanches ou crème. Rien de coloré dans le champ.
-- **Machine** : aucun logo ni nom de marque visible (cache, ruban mat ivoire ou cadrage serré). Écran de la machine hors champ ou éteint.
+- **Décor** : cabine épurée, tons ivoire crème, beige lin et bois clair. Serviettes crème ou lin. Une seule touche bordeaux lie-de-vin possible (serviette pliée, plaid), jamais de rouge vif ni de rose.
+- **Machine** : aucun logo ni nom de marque visible (cache, ruban mat beige ou cadrage serré). Écran de la machine hors champ ou éteint.
 - **Produits** : flacons sans étiquette lisible, ou tournés étiquette vers l'arrière.
 - **Peau** : naturelle, sans retouche excessive. Pas de plan « avant / après ».
 - **Mouvement** : caméra sur trépied ou stabilisée, mouvement lent (glissière de 20 à 30 cm, ou push-in très doux). Le mouvement final est ajouté au montage, ne pas zoomer à la prise.

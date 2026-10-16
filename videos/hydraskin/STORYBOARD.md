@@ -5,10 +5,14 @@ message: "HydraSkin associe la technologie d'une machine professionnelle, des pr
 arc: Accroche → Principe → Technologie en action → Personnalisation → Expérience → Signature
 audience: clientes et futures clientes de l'institut (Instagram, TikTok)
 mode: collaborative
-version: v1
+version: v2
 ---
 
-# HydraSkin — storyboard v1
+# HydraSkin — storyboard v2
+
+## Changes from v1
+
+- Palette remplacée par « Bordeaux & Beige » (demande de la cliente) : « modifier uniquement la palette et l'identité chromatique ». Scénario, contenus, textes, voix off et animations inchangés. Le bleu très pâle des repères techniques est supprimé, ces repères passent en bordeaux lie-de-vin.
 
 ## Décisions
 
@@ -24,16 +28,16 @@ version: v1
 
 ## Direction artistique
 
-- **Univers** : campagne de skincare de luxe éclairée en lumière du jour diffuse. Peau réelle avec son grain (non lissée), cabine épurée ivoire, textures en macro. Les images restent au premier plan. Le motion design structure le film et explique, le verre signe le style.
-- **Palette** (`frame.md`) : ivoire `#F6F1EA` · blanc cassé `#FBF8F3` · beige clair `#E9DFD2` · nude `#D8C1AD` · taupe doux `#9C8B7D` · encre brun-taupe `#352C26` · bleu très pâle `#CBD8DF`, réservé aux repères « technologie » des scènes 2-3 · accent nude rosé `#B4866D`, un seul point focal par plan.
+- **Univers** : campagne de skincare de luxe éclairée en lumière du jour diffuse. Peau réelle avec son grain (non lissée), cabine épurée en beige lin et ivoire crème, textures en macro, une texture douce (grain léger) sur les aplats beige lin. Les images restent au premier plan. Le motion design structure le film et explique, le verre signe le style.
+- **Palette — Bordeaux & Beige** (`frame.md`) : beige lin `#D8C5B2`, couleur dominante des fonds et des panneaux · ivoire crème `#F7F2EB`, lumière, espaces et éléments doux · bordeaux lie-de-vin `#642D3D`, couleur signature, titres secondaires et accents graphiques (rail, numéros, filets, annotations) · bordeaux profond `#40232C`, textes importants et contrastes. Luxe discret et chaleureux : ni rouge vif, ni rose bonbon, ni dorure.
 - **Typographie** :
   - Jost 300/400/500, sans-sérif géométrique, contemporaine et très lisible : étapes, mots-clés, légendes, CTA.
   - Instrument Serif, éditoriale : seulement « HydraSkin » et deux phrases-clés.
   - La tension entre les deux a un sens : Jost porte la technologie, Instrument Serif porte le geste.
   - Tailles minimales : titre 200 px, phrases 96 px, étapes 64 px, texte 40 px, étiquettes 26 px.
 - **Glassmorphism, le système** :
-  - Remplissage blanc laiteux dégradé (46 % → 22 %), flou d'arrière-plan 22 px, saturation 112 %.
-  - Bord blanc 1,5 px à 62 %, liseré intérieur lumineux en haut, ombre chaude douce, rayon de 34 px.
+  - Remplissage dégradé ivoire crème → beige lin (`#F7F2EB` à 48 % → `#D8C5B2` à 26 %), flou d'arrière-plan 22 px, saturation 112 %.
+  - Bord ivoire crème 1,5 px à 70 %, liseré intérieur lumineux en haut, ombre douce teintée bordeaux profond (`#40232C` à 18 %), rayon de 34 px.
   - **Un seul reflet** par apparition : une bande diagonale qui traverse la surface une fois, puis s'arrête.
   - **Révélation** : le verre ne « glisse » pas comme une carte. Il se dépolit sur place, le flou montant de 0 à 22 px pendant que l'opacité suit, comme une buée qui se forme, puis le texte se pose dessus.
   - **Disparition** : le flou retombe et l'image redevient nette dessous.
@@ -54,7 +58,7 @@ version: v1
 | --- | --- | --- | --- |
 | 1 → 2 | 7,2–8,4 s | **Lame de verre** : la plaque du titre s'étire sur tout l'écran et monte. L'image suivante se révèle nette derrière son bord inférieur. | Le verre « emporte » l'accroche et ouvre l'explication. |
 | 2 → 3 | 19,4–20,4 s | **Carte → puce** (`card-morph-anchor`) : la carte d'étape se rétracte en puce en haut à gauche, la photo de la machine cède la place au premier geste (fondu, 0,6 s). | On passe du principe à l'action sans perdre le repère d'étape. |
-| 3 → 4 | 31,4–33,0 s | **Mise au point qui s'ouvre** : l'image se défocalise en un flou crémeux, un voile ivoire monte. | L'attention quitte la machine pour la personne. |
+| 3 → 4 | 31,4–33,0 s | **Mise au point qui s'ouvre** : l'image se défocalise en un flou crémeux, un voile beige lin monte. | L'attention quitte la machine pour la personne. |
 | 4 → 5 | 45,4–46,6 s | **Feuillets qui s'écartent** : les trois feuillets de verre glissent vers le haut, chacun à sa vitesse, et dévoilent la texture produit. | Le soin adapté se « déplie » en expérience. |
 | 5 → 6 | 64,4–65,8 s | **Fondu lumineux** vers une image très claire. La lame de verre remonte à sa place de la scène 1. | Rappel : la boucle se referme sur la signature. |
 
@@ -67,14 +71,14 @@ version: v1
 - Pas de grille de cartes identiques, pas de verre sur un visage, pas de reflet en boucle, pas d'irisation, pas de néon.
 - Deux échecs de mouvement à éviter : **le diaporama**, où chaque plan devient une carte nouvelle sans continuité (d'où le rail et la lame qui persistent), et **l'économiseur d'écran**, des dérives décoratives qui ne disent rien.
 
-## Vérifications de cohérence et de lisibilité (v1)
+## Vérifications de cohérence et de lisibilité (v2)
 
 - **Fidélité au protocole** : les étapes affichées et dites sont exactement celles fournies (nettoyer, exfolier, extraire les impuretés, hydrater, plus produits premium, masques dont modelants selon les besoins, massage du visage). Rien n'est ajouté. « Diagnostic » n'est pas présenté comme une étape : la voix dit seulement que le soin s'adapte au type de peau, à son état et aux préoccupations.
 - **Personnalisation** : la formule « s'adapte à votre peau, et non l'inverse » et la mention « selon les besoins » sur le masque évitent de laisser croire à un protocole identique pour toutes.
 - **Allégations** : aucune promesse de résultat. Les seuls bénéfices évoqués sont l'expérience (« un vrai moment de détente ») et le fait que le soin soit complet et adapté.
 - **Lisibilité verticale** :
   - Chaque texte reste au moins 2,5 s à l'écran pour 6 mots au plus, et au moins 3 s pour une phrase.
-  - Contraste : encre `#352C26` sur verre ivoire au-dessus d'images claires. Un voile ivoire est ajouté sous le verre si une image est trop contrastée. Contrôle WCAG AA par `hyperframes check`.
+  - Contraste : bordeaux profond `#40232C` sur verre beige lin et ivoire crème au-dessus d'images claires (contraste 8,4:1 sur beige lin, 12,6:1 sur ivoire crème) ; bordeaux lie-de-vin `#642D3D` réservé aux titres secondaires et étiquettes (6,3:1 sur beige lin, 9,5:1 sur ivoire crème). Un voile ivoire crème est ajouté sous le verre si une image est trop contrastée. Contrôle WCAG AA par `hyperframes check`.
   - Tout le texte est dans la zone utile.
 - **Images générées par IA** :
   - Machine générique sans logo, mains et peau réalistes, sans avant/après.
@@ -86,7 +90,7 @@ version: v1
 - scene: Macro de peau en lumière du jour, puis texture de sérum ; une plaque de verre se dépolit au centre et « HydraSkin » s'y révèle.
 - duration: 8s
 - poster: 6.2
-- transition_in: fade-from-ivory
+- transition_in: fade-from-cream
 - status: outline
 - src: compositions/f1-accroche.html
 - voiceover: "HydraSkin. Un soin du visage complet, où la technologie rencontre le geste."
@@ -94,10 +98,10 @@ version: v1
 
 **0,0–3,2 s · IMG-01, macro de peau.** Joue en lumière latérale douce, grain réel. Mise au point qui se fait (flou 14 px → 0) et push-in lent de 1,00 à 1,05. Musique seule, aucun texte : on regarde la peau.
 
-**3,2–8,0 s · IMG-02, goutte de sérum translucide** qui roule lentement sur une surface de verre ivoire (fondu de 0,7 s, la goutte continue le mouvement de la lumière).
+**3,2–8,0 s · IMG-02, goutte de sérum translucide** qui roule lentement sur une surface de verre ivoire crème (fondu de 0,7 s, la goutte continue le mouvement de la lumière).
 
 - 3,4 s : la plaque de verre (720 × 520, centrée, y ≈ 760) se dépolit sur place, avec un « tink » doux.
-- 3,6 s : « HydraSkin » (Instrument Serif, 210 px, encre) se pose, lettres qui montent de 24 px avec un léger fondu (power3.out, 1,0 s). Un seul reflet traverse ensuite la plaque (1,2 s).
+- 3,6 s : « HydraSkin » (Instrument Serif, 210 px, bordeaux profond `#40232C`) se pose, lettres qui montent de 24 px avec un léger fondu (power3.out, 1,0 s). Un seul reflet traverse ensuite la plaque (1,2 s).
 - 5,0 s : en dessous, « La technologie au service de votre peau. » (Jost 300, 42 px), qui apparaît par un masque de bas en haut.
 - 3,0–8,0 s : un filet fin de 220 px se trace sous le titre.
 
@@ -120,14 +124,14 @@ version: v1
 - voiceover: "Le principe : quatre étapes, réalisées avec une machine professionnelle de soin de la peau. Nettoyer. Exfolier. Extraire les impuretés. Hydrater."
 - blueprint: fixed-anchor-cycle (une carte fixe dont le contenu change) + rules svg-path-draw, depth-of-field-blur
 
-**8,0–20,0 s · IMG-08, la machine professionnelle dans la cabine**, plan moyen, sans aucun logo. Pendant le texte, l'image passe à un flou de 10 px avec un voile ivoire de 18 %, pour que la carte reste lisible et la machine identifiable.
+**8,0–20,0 s · IMG-08, la machine professionnelle dans la cabine**, plan moyen, sans aucun logo. Pendant le texte, l'image passe à un flou de 10 px avec un voile beige lin de 22 %, pour que la carte reste lisible et la machine identifiable.
 
-- 8,6 s : étiquette « LE PROTOCOLE » (Jost 500, 26 px, capitales, +0,18 em, taupe) en haut à gauche, y = 300.
+- 8,6 s : étiquette « LE PROTOCOLE » (Jost 500, 26 px, capitales, +0,18 em, bordeaux lie-de-vin) en haut à gauche, y = 300.
 - 8,8–10,4 s : le **rail** se trace verticalement (x = 120, y = 560 → 1380), avec 4 points vides.
 - 13,8 s : la **carte d'étape** (x = 200 → 940, y ≈ 820, 740 × 420) se dépolit. Elle contient :
-  - le numéro (Jost 300, 30 px, accent) ;
-  - le verbe (Jost 400, 72 px) ;
-  - un petit schéma au trait de 1,5 px, en bleu très pâle, en bas de la carte.
+  - le numéro (Jost 300, 30 px, bordeaux lie-de-vin) ;
+  - le verbe (Jost 400, 72 px, bordeaux profond) ;
+  - un petit schéma au trait de 1,5 px, en bordeaux lie-de-vin à 70 %, en bas de la carte.
 - Le contenu change sur le mot dit, avec un fondu croisé vertical de 0,4 s :
 
 | Temps | Carte | Schéma au trait (symbolique, non scientifique) |
@@ -135,9 +139,9 @@ version: v1
 | 13,8 s | « 01 — Nettoyer » | une ligne de surface ondulée qui se lisse de gauche à droite |
 | 15,0 s | « 02 — Exfolier » | de fins grains sur la ligne qui s'éclaircissent au passage d'un trait |
 | 16,2 s | « 03 — Extraire » + « les impuretés » (Jost 300, 40 px) | quelques points qui quittent la ligne vers le haut et disparaissent |
-| 17,8 s | « 04 — Hydrater » | une goutte au trait qui se remplit doucement d'un lavis bleu très pâle |
+| 17,8 s | « 04 — Hydrater » | une goutte au trait qui se remplit doucement d'un lavis beige lin |
 
-- À chaque étape, le point correspondant du rail se remplit (accent nude rosé) et son libellé s'inscrit à côté (Jost 400, 30 px) : « Nettoyer », « Exfolier », « Extraire », « Hydrater ».
+- À chaque étape, le point correspondant du rail se remplit (bordeaux lie-de-vin) et son libellé s'inscrit à côté (Jost 400, 30 px) : « Nettoyer », « Exfolier », « Extraire », « Hydrater ».
 - À 19,0 s, les quatre libellés sont visibles sur le rail : on a la vue d'ensemble.
 
 **Couture sortante** : la carte se rétracte en puce en haut à gauche (19,4–20,4 s).
@@ -188,7 +192,7 @@ version: v1
 - voiceover: "Car chaque peau a ses besoins. Son type, son état, ce qui vous préoccupe… Le soin s'adapte à votre peau, et non l'inverse."
 - blueprint: kinetic-type-beats (phrase posée) + registre camera-rig-depth-stack (trois feuillets en profondeur, parallaxe et mise au point) + rule depth-of-field-blur
 
-**32,0–37,0 s · fond, IMG-07 défocalisé** (flou 28 px), voile ivoire de 40 %.
+**32,0–37,0 s · fond, IMG-07 défocalisé** (flou 28 px), voile beige lin de 55 %, avec la texture douce.
 
 - 33,2 s : « Chaque peau a ses besoins. » (Instrument Serif, 104 px, deux lignes, calé à gauche, x = 72, y ≈ 820) apparaît mot à mot en fondu doux (0,9 s, power2.out).
 - **34,0–37,0 s : PLAN MAINTENU**, rien ne bouge.
@@ -200,7 +204,7 @@ version: v1
   - 38,6 s : « État de la peau »
   - 39,8 s : « Vos préoccupations »
 - 42,0 s : les trois feuillets s'alignent en une seule pile nette (mise au point sur le premier plan), et la phrase « Le soin s'adapte à votre peau. » apparaît dessous : Jost 400 et 64 px, avec « votre peau » en Instrument Serif italique.
-- 43,4 s : une étiquette discrète apparaît, « PROTOCOLE ADAPTÉ SELON LES BESOINS IDENTIFIÉS » (Jost 500, 24 px, taupe).
+- 43,4 s : une étiquette discrète apparaît, « PROTOCOLE ADAPTÉ SELON LES BESOINS IDENTIFIÉS » (Jost 500, 24 px, bordeaux lie-de-vin).
 
 **Voix** : 33,2–35,4 s, puis 37,2–41,6 s, puis 42,0–45,4 s.
 
@@ -231,7 +235,7 @@ version: v1
 | 60,0–65,0 s | IMG-14, visage détendu, yeux clos, lumière douce (sans avant/après) | barre de verre : « Technologie · Produits · Gestes » | complet |
 
 - Le rail réapparaît fin à gauche (x = 72, plus discret qu'en scène 2), avec ses 4 premiers points déjà pleins. Il ajoute un point à chaque étiquette.
-- 60,2, 61,4 et 62,4 s : sur la voix, les trois mots s'inscrivent un par un sur une seule barre de verre (840 × 140, y ≈ 1240), séparés par des filets fins. Le premier mot est en bleu très pâle (la technologie), les deux suivants en encre.
+- 60,2, 61,4 et 62,4 s : sur la voix, les trois mots s'inscrivent un par un sur une seule barre de verre (840 × 140, y ≈ 1240), séparés par des filets fins. Les trois mots sont en bordeaux profond, les filets en bordeaux lie-de-vin.
 - 62,8 s : une seule passe de lumière traverse le dernier plan.
 
 **Voix** : 46,6–51,0 s, puis 51,4–54,6 s, puis 55,2–59,6 s, puis 60,0–64,6 s.
@@ -253,7 +257,7 @@ version: v1
 - voiceover: "HydraSkin. Un soin expert, pensé pour votre peau. Découvrez votre prochain rituel de soin."
 - blueprint: titlecard-reveal + logo-assemble-lockup (verrouillage final) ; registre text-shimmer (une passe)
 
-**65,0–78,0 s · IMG-15, cabine ivoire baignée de lumière** (serviette pliée, flacon sans étiquette, plante, tout en flou doux), voile ivoire de 30 %.
+**65,0–78,0 s · IMG-15, cabine ivoire crème et beige lin baignée de lumière** (serviette pliée, flacon sans étiquette, plante, tout en flou doux), voile ivoire crème de 30 %.
 
 - 65,8 s : la plaque de verre se dépolit **à la même position et à la même taille qu'en scène 1** (rappel de la scène 1).
 - 66,2 s : « HydraSkin » (Instrument Serif, 210 px), avec un « tink » et une seule passe de reflet.
@@ -264,8 +268,8 @@ version: v1
   - nom de l'institut (Jost 500, 30 px, capitales, +0,18 em) ;
   - Instagram · téléphone (Jost 400, 30 px).
   - Par défaut, à confirmer : AMANI SKIN · @amani__skin · 07 66 85 43 74.
-- 74,0 s : mention « Images virtuelles » (Jost 400, 22 px, taupe), en bas à gauche dans la zone utile, tant que des images générées sont utilisées.
-- 74,0–77,4 s : tout reste tenu, l'image respire à peine. De 77,4 à 78,0 s, fondu vers l'ivoire.
+- 74,0 s : mention « Images virtuelles » (Jost 400, 22 px, bordeaux lie-de-vin), en bas à gauche dans la zone utile, tant que des images générées sont utilisées.
+- 74,0–77,4 s : tout reste tenu, l'image respire à peine. De 77,4 à 78,0 s, fondu vers l'ivoire crème.
 
 **Voix** : « HydraSkin. » à 66,2 s, puis 67,4–70,4 s et 71,0–73,6 s.
 
