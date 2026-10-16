@@ -31,7 +31,7 @@ SLOTS = {
     "IMG-10": ("photo", "creme-joue.jpg", 520, None),           # texture crème
     "IMG-11": ("clip", "soin-institut.mov", 5.60, 6.60, 5.0),   # masque
     "IMG-13": ("clip", "soin-institut.mov", 6.66, 8.78, 2.7),   # massage du visage
-    "IMG-14": ("clip", "soin-institut.mov", 8.82, 10.75, 3.2),  # visage détendu
+    "IMG-14": ("clip", "soin-institut.mov", 8.82, 9.86, 7.0),   # visage détendu (plan large seulement : la barre de verre reste sous le visage)
     "IMG-15": ("photo", "cabine-amani.png", 540, None),         # cabine AMANI SKIN
 }
 

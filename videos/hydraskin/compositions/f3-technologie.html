@@ -30,10 +30,10 @@
 
       <div data-hf-id="hf-dnux" id="f3" data-composition-id="f3" data-width="1080" data-height="1920">
         <div data-hf-id="hf-lnu3" id="f3-fade">
-          <div data-hf-id="hf-b08k" class="hs-shot" id="f3-s1"><video data-hf-id="hf-p30d" id="f3-v1" class="clip" src="assets/media/IMG-04.mp4" muted playsinline data-start="0" data-duration="4.2" data-track-index="0"></video></div>
-          <div data-hf-id="hf-jo4f" class="hs-shot" id="f3-s2"><video data-hf-id="hf-467n" id="f3-v2" class="clip" src="assets/media/IMG-05.mp4" muted playsinline data-start="3.3" data-duration="3.6" data-track-index="1"></video></div>
-          <div data-hf-id="hf-fq0e" class="hs-shot" id="f3-s3"><video data-hf-id="hf-xzs9" id="f3-v3" class="clip" src="assets/media/IMG-06.mp4" muted playsinline data-start="6.3" data-duration="3.6" data-track-index="2"></video></div>
-          <div data-hf-id="hf-qli1" class="hs-shot" id="f3-s4"><video data-hf-id="hf-6t3t" id="f3-v4" class="clip" src="assets/media/IMG-07.mp4" muted playsinline data-start="9.3" data-duration="4.3" data-track-index="3"></video></div>
+          <div data-hf-id="hf-b08k" class="hs-shot" id="f3-s1"><video data-hf-id="hf-p30d" id="f3-v1" class="clip" src="assets/media/IMG-04.mp4" muted playsinline data-start="0.0" data-duration="3.8" data-track-index="0"></video></div>
+          <div data-hf-id="hf-jo4f" class="hs-shot" id="f3-s2"><video data-hf-id="hf-467n" id="f3-v2" class="clip" src="assets/media/IMG-05.mp4" muted playsinline data-start="3.05" data-duration="3.0" data-track-index="1"></video></div>
+          <div data-hf-id="hf-fq0e" class="hs-shot" id="f3-s3"><video data-hf-id="hf-xzs9" id="f3-v3" class="clip" src="assets/media/IMG-06.mp4" muted playsinline data-start="5.55" data-duration="3.0" data-track-index="2"></video></div>
+          <div data-hf-id="hf-qli1" class="hs-shot" id="f3-s4"><video data-hf-id="hf-6t3t" id="f3-v4" class="clip" src="assets/media/IMG-07.mp4" muted playsinline data-start="8.05" data-duration="3.939" data-track-index="3"></video></div>
           <div data-hf-id="hf-h2a4" class="hs-veil" id="f3-veil"></div>
 
           <!-- annotations: point on the gesture → hairline → label in free space -->
@@ -106,7 +106,8 @@
           tl.fromTo("#f3-veil", { opacity: 0 }, { opacity: 0.55, duration: 1.2, ease: "power2.inOut" }, A(31.4));
           tl.fromTo("#f3-fade", { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "sine.inOut" }, A(32.5));
 
-          window.__timelines["f3"] = tl;
+          // played through the narration time map (assets/timewarp.js)
+          window.__timelines["f3"] = window.hsWarp(tl, 19.4, 13.6);
         })();
       </script>
     </template>

@@ -34,10 +34,10 @@
 
       <div data-hf-id="hf-wbfx" id="f5" data-composition-id="f5" data-width="1080" data-height="1920">
         <div data-hf-id="hf-s4w9" id="f5-fade">
-          <div data-hf-id="hf-3f2u" class="hs-shot" id="f5-s1"><video data-hf-id="hf-4zge" id="f5-v1" class="clip" src="assets/media/IMG-10.mp4" muted playsinline data-start="0" data-duration="5.5" data-track-index="0"></video></div>
-          <div data-hf-id="hf-zgyt" class="hs-shot" id="f5-s2"><video data-hf-id="hf-qmv8" id="f5-v2" class="clip" src="assets/media/IMG-11.mp4" muted playsinline data-start="4.9" data-duration="4.8" data-track-index="1"></video></div>
-          <div data-hf-id="hf-ypb0" class="hs-shot" id="f5-s3"><video data-hf-id="hf-vhfc" id="f5-v3" class="clip" src="assets/media/IMG-13.mp4" muted playsinline data-start="9.1" data-duration="5.8" data-track-index="2"></video></div>
-          <div data-hf-id="hf-m6sj" class="hs-shot" id="f5-s4"><video data-hf-id="hf-he8n" id="f5-v4" class="clip" src="assets/media/IMG-14.mp4" muted playsinline data-start="14.3" data-duration="6.1" data-track-index="3"></video></div>
+          <div data-hf-id="hf-3f2u" class="hs-shot" id="f5-s1"><video data-hf-id="hf-4zge" id="f5-v1" class="clip" src="assets/media/IMG-10.mp4" muted playsinline data-start="0.0" data-duration="7.379" data-track-index="0"></video></div>
+          <div data-hf-id="hf-zgyt" class="hs-shot" id="f5-s2"><video data-hf-id="hf-qmv8" id="f5-v2" class="clip" src="assets/media/IMG-11.mp4" muted playsinline data-start="6.49" data-duration="6.127" data-track-index="1"></video></div>
+          <div data-hf-id="hf-ypb0" class="hs-shot" id="f5-s3"><video data-hf-id="hf-vhfc" id="f5-v3" class="clip" src="assets/media/IMG-13.mp4" muted playsinline data-start="11.877" data-duration="6.023" data-track-index="2"></video></div>
+          <div data-hf-id="hf-m6sj" class="hs-shot" id="f5-s4"><video data-hf-id="hf-he8n" id="f5-v4" class="clip" src="assets/media/IMG-14.mp4" muted playsinline data-start="17.107" data-duration="7.593" data-track-index="3"></video></div>
           <div data-hf-id="hf-ctz4" id="f5-sweep" data-layout-allow-overflow></div>
 
           <!-- the protocol rail returns, finer, and completes: 4 machine steps + 3 care steps -->
@@ -110,7 +110,8 @@
           tl.fromTo("#f5-cream", { opacity: 0 }, { opacity: 0.85, duration: 0.9, ease: "sine.in" }, A(64.4));
           tl.fromTo("#f5-fade", { opacity: 1 }, { opacity: 0, duration: 0.7, ease: "sine.inOut" }, A(65.1));
 
-          window.__timelines["f5"] = tl;
+          // played through the narration time map (assets/timewarp.js)
+          window.__timelines["f5"] = window.hsWarp(tl, 45.4, 20.4);
         })();
       </script>
     </template>

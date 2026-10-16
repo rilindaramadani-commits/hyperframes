@@ -25,10 +25,10 @@
       <div data-hf-id="hf-zafp" id="f1" data-composition-id="f1" data-width="1080" data-height="1920">
         <div data-hf-id="hf-dbt4" id="f1-all">
           <div data-hf-id="hf-efb6" class="hs-shot" id="f1-s1">
-            <video data-hf-id="hf-b862" id="f1-v1" class="clip" src="assets/media/IMG-01.mp4" muted playsinline data-start="0" data-duration="4" data-track-index="0"></video>
+            <video data-hf-id="hf-b862" id="f1-v1" class="clip" src="assets/media/IMG-01.mp4" muted playsinline data-start="0.0" data-duration="4.0" data-track-index="0"></video>
           </div>
           <div data-hf-id="hf-ah75" class="hs-shot" id="f1-s2">
-            <video data-hf-id="hf-lfcv" id="f1-v2" class="clip" src="assets/media/IMG-02.mp4" muted playsinline data-start="3" data-duration="5.4" data-track-index="1"></video>
+            <video data-hf-id="hf-lfcv" id="f1-v2" class="clip" src="assets/media/IMG-02.mp4" muted playsinline data-start="3.0" data-duration="8.9" data-track-index="1"></video>
           </div>
 
           <div data-hf-id="hf-8tba" class="glass" id="f1-plate"><div data-hf-id="hf-g5vj" class="sheen" id="f1-sheen" data-layout-allow-overflow></div></div>
@@ -70,7 +70,8 @@
           tl.fromTo("#f1-all", { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 1.2, ease: "power2.inOut" }, 7.2);
           tl.fromTo("#f1-blade", { y: 1920, "--g": 1 }, { y: -180, duration: 1.2, ease: "power2.inOut" }, 7.2);
 
-          window.__timelines["f1"] = tl;
+          // played through the narration time map (assets/timewarp.js)
+          window.__timelines["f1"] = window.hsWarp(tl, 0, 8.4);
         })();
       </script>
     </template>

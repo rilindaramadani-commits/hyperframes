@@ -11,7 +11,22 @@ import numpy as np
 
 SR = 48000
 OUT = sys.argv[1]
-TOTAL = 78.0
+TOTAL = 88.0
+
+# storyboard time → narration time (same map as assets/timewarp.js)
+MAP = [(0, 0), (3.4, 3.4), (5.0, 5.0), (7.2, 10.7), (8.4, 11.9), (8.6, 12.0), (13.8, 18.83), (15.0, 20.97),
+       (16.2, 22.37), (17.8, 24.49), (19.4, 26.3), (20.6, 27.6), (31.4, 36.6), (33.2, 38.5), (37.0, 42.3),
+       (37.4, 42.7), (38.6, 44.0), (39.8, 45.3), (42.0, 47.2), (43.4, 48.6), (45.4, 50.8), (46.6, 52.0),
+       (47.0, 52.4), (51.4, 58.92), (51.6, 59.1), (55.2, 63.54), (55.6, 63.9), (60.0, 68.2), (60.2, 68.6),
+       (61.4, 69.8), (62.4, 70.9), (64.4, 74.5), (65.8, 75.5), (66.2, 75.9), (67.4, 77.5), (71.0, 81.0),
+       (73.4, 83.4), (74.0, 84.0), (77.4, 87.4), (78.0, 88.0)]
+
+
+def M(t):
+    for (a0, a1), (b0, b1) in zip(MAP, MAP[1:]):
+        if t <= b0:
+            return a1 + (t - a0) * (b1 - a1) / (b0 - a0)
+    return MAP[-1][1] + t - MAP[-1][0]
 BEAT = 60 / 70
 rng = np.random.default_rng(7)
 
@@ -78,8 +93,8 @@ def chord_at(time):
 
 def env_section(time):
     """Overall arrangement level per section of the film (0..1)."""
-    pts = [(0, .55), (3.2, .7), (8, .85), (20, .9), (31.4, .6), (34, .45), (37, .8),
-           (46, .95), (60, 1.0), (65, .8), (74, .6), (78, 0)]
+    pts = [(M(a), v) for a, v in [(0, .55), (3.2, .7), (8, .85), (20, .9), (31.4, .6), (34, .45), (37, .8),
+                                  (46, .95), (60, 1.0), (65, .8), (74, .6), (78, 0)]]
     xs, ys = zip(*pts)
     return np.interp(time, xs, ys)
 
@@ -123,9 +138,9 @@ i = 0
 while s < TOTAL - 3:
     root, tones = chord_at(s)
     sec = s
-    dense = 8 <= sec < 31.4 or 37 <= sec < 65
-    sparse = sec < 8 or 65 <= sec
-    held = 31.4 <= sec < 37
+    dense = M(8) <= sec < M(31.4) or M(37) <= sec < M(65)
+    sparse = sec < M(8) or M(65) <= sec
+    held = M(31.4) <= sec < M(37)
     play = (dense and i % 2 == 0) or (dense and i % 8 in (3, 7)) or (sparse and i % 4 == 0)
     if held:
         play = False
@@ -137,7 +152,7 @@ while s < TOTAL - 3:
 
 # resolution: a held D major chord under the end card
 for m, d in ((62, 0), (66, .12), (69, .24), (74, .36), (78, .5)):
-    note(65.8 + d, m + 12, .16, 6.0)
+    note(M(65.8) + d, m + 12, .16, 6.0)
 
 mix = pad * 0.9 + pno
 mix *= env_section(t)

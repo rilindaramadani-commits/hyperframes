@@ -37,7 +37,7 @@
 
       <div data-hf-id="hf-kdpj" id="f6" data-composition-id="f6" data-width="1080" data-height="1920">
         <div data-hf-id="hf-8va1" class="hs-shot" id="f6-bg" data-layout-allow-overflow>
-          <video data-hf-id="hf-b1pg" id="f6-v1" class="clip" src="assets/media/IMG-15.mp4" muted playsinline data-start="0" data-duration="13.6" data-track-index="0"></video>
+          <video data-hf-id="hf-b1pg" id="f6-v1" class="clip" src="assets/media/IMG-15.mp4" muted playsinline data-start="0.0" data-duration="13.5" data-track-index="0"></video>
         </div>
         <div data-hf-id="hf-o077" class="hs-veil" id="f6-veil"></div>
 
@@ -93,7 +93,8 @@
           // held, breathing; then a soft fade to cream
           tl.fromTo("#f6-end", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.in" }, A(77.4));
 
-          window.__timelines["f6"] = tl;
+          // played through the narration time map (assets/timewarp.js)
+          window.__timelines["f6"] = window.hsWarp(tl, 64.4, 13.6);
         })();
       </script>
     </template>

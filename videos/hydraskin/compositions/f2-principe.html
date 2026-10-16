@@ -16,6 +16,12 @@
         #f2 { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
         #f2-fade { position: absolute; inset: 0; }
         #f2-veil { background: var(--linen); opacity: 0; }
+        /* no photo here (client's choice): a quiet linen field with two soft light orbs,
+           so the glass card still has something to frost */
+        #f2-field { position: absolute; inset: 0; background: radial-gradient(70% 45% at 78% 22%, rgba(247, 242, 235, 0.95) 0%, rgba(247, 242, 235, 0) 70%), linear-gradient(180deg, #e9ddd0 0%, #d8c5b2 100%); }
+        #f2-field::after { content: ""; position: absolute; inset: 0; opacity: 0.35; mix-blend-mode: multiply; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.39 0 0 0 0 0.18 0 0 0 0 0.24 0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+        #f2-orb1 { position: absolute; left: 560px; top: 760px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(100, 45, 61, 0.42) 0%, rgba(100, 45, 61, 0) 70%); }
+        #f2-orb2 { position: absolute; left: 180px; top: 1180px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(247, 242, 235, 0.9) 0%, rgba(247, 242, 235, 0) 70%); }
         #f2-label { position: absolute; left: 72px; top: 292px; padding: 12px 18px 8px; border-radius: 12px; background: rgba(247, 242, 235, 0.8); }
         #f2-rail { left: 119px; top: 560px; height: 820px; }
         .f2-dot { left: 110px; }
@@ -31,7 +37,7 @@
       <div data-hf-id="hf-dzu7" id="f2" data-composition-id="f2" data-width="1080" data-height="1920">
         <div data-hf-id="hf-8bf0" id="f2-fade">
           <div data-hf-id="hf-w8fq" class="hs-shot" id="f2-bg">
-            <video data-hf-id="hf-qqri" id="f2-v1" class="clip" src="assets/media/IMG-08.mp4" muted playsinline data-start="0" data-duration="13.2" data-track-index="0"></video>
+            <div id="f2-field"></div><div id="f2-orb1"></div><div id="f2-orb2"></div>
           </div>
           <div data-hf-id="hf-1x4n" class="hs-veil" id="f2-veil"></div>
 
@@ -110,8 +116,10 @@
 
           // machine in the cabin: slow push-in; frosted back when the card arrives
           tl.fromTo("#f2-bg", { scale: 1.0 }, { scale: 1.05, duration: 13.2, ease: "none" }, 0);
-          tl.fromTo("#f2-bg", { filter: "blur(0px)" }, { filter: "blur(10px)", duration: 0.9, ease: "power2.inOut" }, A(13.4));
-          tl.fromTo("#f2-veil", { opacity: 0 }, { opacity: 0.5, duration: 0.9, ease: "power2.inOut" }, A(13.4));
+                    tl.fromTo("#f2-veil", { opacity: 0 }, { opacity: 0.15, duration: 0.9, ease: "power2.inOut" }, A(13.4));
+          // the light orbs drift slowly behind the card
+          tl.fromTo("#f2-orb1", { x: 0, y: 0 }, { x: -60, y: 40, duration: 13.2, ease: "sine.inOut" }, 0);
+          tl.fromTo("#f2-orb2", { x: 0, y: 0 }, { x: 80, y: -50, duration: 13.2, ease: "sine.inOut" }, 0);
 
           // label, then the rail draws downward and its four empty points appear
           tl.fromTo("#f2-label-in", { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: "power3.out" }, A(8.6));
@@ -147,7 +155,8 @@
           tl.fromTo("#f2-card", { x: 0, scaleX: 1, scaleY: 1 }, { x: -393, y: -622, scaleX: 0.717, scaleY: 0.209, duration: 0.6, ease: "power3.inOut", immediateRender: false }, A(19.5));
           tl.fromTo("#f2-fade", { opacity: 1 }, { opacity: 0, duration: 0.6, ease: "sine.inOut" }, A(19.8));
 
-          window.__timelines["f2"] = tl;
+          // played through the narration time map (assets/timewarp.js)
+          window.__timelines["f2"] = window.hsWarp(tl, 7.2, 13.2);
         })();
       </script>
     </template>

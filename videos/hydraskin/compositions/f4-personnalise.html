@@ -37,13 +37,13 @@
         <div data-hf-id="hf-g4ne" id="f4-fade">
           <!-- 32–38 s: the last gesture, defocused into a creamy linen field -->
           <div data-hf-id="hf-6wlu" class="hs-shot" id="f4-b1">
-            <video data-hf-id="hf-bu61" id="f4-v1" class="clip" src="assets/media/IMG-07.mp4" muted playsinline data-start="0" data-duration="6.8" data-media-start="2.7" data-track-index="0"></video>
+            <video data-hf-id="hf-bu61" id="f4-v1" class="clip" src="assets/media/IMG-07.mp4" muted playsinline data-start="0.0" data-duration="6.967" data-media-start="2.7" data-track-index="0"></video>
           </div>
           <div data-hf-id="hf-6g36" class="hs-veil" id="f4-veil1"></div>
 
           <!-- 37–46.6 s: listening to the skin -->
           <div data-hf-id="hf-2yht" class="hs-shot" id="f4-b2">
-            <video data-hf-id="hf-bs8n" id="f4-v2" class="clip" src="assets/media/IMG-09.mp4" muted playsinline data-start="5.4" data-duration="9.8" data-track-index="1"></video>
+            <video data-hf-id="hf-bs8n" id="f4-v2" class="clip" src="assets/media/IMG-09.mp4" muted playsinline data-start="5.5" data-duration="9.9" data-track-index="1"></video>
           </div>
 
           <div data-hf-id="hf-cp0t" class="serif" id="f4-say">
@@ -107,7 +107,8 @@
           });
           tl.fromTo("#f4-fade", { opacity: 1 }, { opacity: 0, duration: 0.9, ease: "sine.inOut" }, A(45.7));
 
-          window.__timelines["f4"] = tl;
+          // played through the narration time map (assets/timewarp.js)
+          window.__timelines["f4"] = window.hsWarp(tl, 31.4, 15.2);
         })();
       </script>
     </template>
