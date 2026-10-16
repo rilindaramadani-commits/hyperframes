@@ -3,3 +3,5 @@ snapshots/
 renders/
 assets/audio/*.wav
 *.render-tmp*
+.*hf-transaction*/
+work-*/
