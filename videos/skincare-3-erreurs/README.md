@@ -40,8 +40,8 @@ python3 tools/make_audio.py assets/plan.json assets/audio
 python3 tools/duck_music.py && python3 tools/build_sfx.py && python3 tools/sync_index.py
 ```
 
-Voix : légère réverbération de petite pièce (effet `reverb` HyperFrames, `data-fx-chain` sur `#voiceover` dans `index.html` :
-taille 0,35, amortissement 0,6, wet 0,14, dry 0,9 — la première dose, taille 0,6 / wet 0,3, était trop d'écho). Pour la doser après un changement de son uniquement :
+Voix sans effet (essais d'écho de pièce puis de salle de bain abandonnés à la demande de la cliente). Un effet se poserait en
+`data-fx-chain` sur `#voiceover` dans `index.html` ; après un changement de son uniquement :
 `python3 tools/remix_audio.py renders/skincare-3-erreurs.mp4 renders/nouveau.mp4` (le film n'est pas re-rendu).
 
 Le logo AMANI SKIN et `@amani__skin` apparaissent discrètement sur le CTA final (`compositions/c-outro.html`, bloc `#oc-sign`) : supprimer ce bloc pour une version sans marque.
