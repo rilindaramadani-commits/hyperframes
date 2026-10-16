@@ -3,3 +3,4 @@ renders/.tmp*
 *.render-tmp*
 renders/work-*/
 renders/.*hf-transaction*/
+renders/*-defaut-*.mp4
