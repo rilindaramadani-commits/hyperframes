@@ -105,7 +105,7 @@ version: v2
 - duration: 8s
 - poster: 6.2
 - transition_in: fade-from-cream
-- status: built
+- status: animated
 - src: compositions/f1-accroche.html
 - voiceover: "HydraSkin. Un soin du visage complet, où la technologie rencontre le geste."
 - blueprint: titlecard-reveal (adapté) + rules depth-of-field-blur, multi-phase-camera ; registre text-shimmer (une passe)
@@ -133,7 +133,7 @@ version: v2
 - duration: 12s
 - poster: 17.0
 - transition_in: glass-blade-up
-- status: built
+- status: animated
 - src: compositions/f2-principe.html
 - voiceover: "Le principe : quatre étapes, réalisées avec une machine professionnelle de soin de la peau. Nettoyer. Exfolier. Extraire les impuretés. Hydrater."
 - blueprint: fixed-anchor-cycle (une carte fixe dont le contenu change) + rules svg-path-draw, depth-of-field-blur
@@ -170,7 +170,7 @@ version: v2
 - duration: 12s
 - poster: 27.5
 - transition_in: card-to-chip
-- status: built
+- status: animated
 - src: compositions/f3-technologie.html
 - voiceover: "Pendant le soin, la machine accompagne chaque étape. Le geste, lui, reste précis et attentif, zone après zone."
 - blueprint: rules viewport-change (push-in vers le point de contact), svg-path-draw (annotations), card-morph-anchor (puce), depth-of-field-blur
@@ -201,7 +201,7 @@ version: v2
 - duration: 14s
 - poster: 41.0
 - transition_in: focus-pull
-- status: built
+- status: animated
 - src: compositions/f4-personnalise.html
 - voiceover: "Car chaque peau a ses besoins. Son type, son état, ce qui vous préoccupe… Le soin s'adapte à votre peau, et non l'inverse."
 - blueprint: kinetic-type-beats (phrase posée) + registre camera-rig-depth-stack (trois feuillets en profondeur, parallaxe et mise au point) + rule depth-of-field-blur
@@ -234,7 +234,7 @@ version: v2
 - duration: 19s
 - poster: 62.5
 - transition_in: glass-sheets-part
-- status: built
+- status: animated
 - src: compositions/f5-experience.html
 - voiceover: "Viennent ensuite les produits : des cosmétiques de qualité premium, choisis selon vos besoins. Un masque, modelant lorsque votre peau en a besoin. Puis un massage du visage, pour un vrai moment de détente. La technologie, des produits choisis, des gestes manuels : c'est cette alliance qui fait HydraSkin."
 - blueprint: rules multi-phase-camera (gros plans), ambient-glow-bloom (reflet unique sur la texture), svg-path-draw (rail qui se complète) ; registre light-sweep-pass (une passe de lumière sur le dernier plan)
@@ -266,7 +266,7 @@ version: v2
 - duration: 13s
 - poster: 75.0
 - transition_in: luminous-fade
-- status: built
+- status: animated
 - src: compositions/f6-signature.html
 - voiceover: "HydraSkin. Un soin expert, pensé pour votre peau. Découvrez votre prochain rituel de soin."
 - blueprint: titlecard-reveal + logo-assemble-lockup (verrouillage final) ; registre text-shimmer (une passe)

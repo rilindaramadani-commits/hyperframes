@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <!-- Scène 5 — L'expérience premium (45,4–65,8 s ; temps absolus via A()).
+           Les images passent devant : textures, masque modelant, massage. Une seule puce de verre
+           par plan ; le rail du protocole revient et se complète (7 points) ; puis l'alliance
+           Technologie · Produits · Gestes sur une seule barre de verre. -->
+      <link rel="stylesheet" href="assets/hydraskin.css" />
+      <style>
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+        #f5 { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
+        #f5-fade { position: absolute; inset: 0; }
+        #f5-s1 { transform-origin: 540px 1040px; }
+        #f5-s2 { transform-origin: 560px 1040px; }
+        #f5-s3 { transform-origin: 540px 980px; }
+        #f5-s4 { transform-origin: 540px 860px; }
+        #f5-rail { left: 71px; top: 520px; height: 740px; }
+        .f5-dot { left: 62px; }
+        .f5-pill { position: absolute; left: 120px; top: 1360px; height: 92px; padding: 0 44px; display: flex; align-items: center; white-space: nowrap; font-size: 34px; line-height: 1; font-weight: 400; color: var(--bdx-deep); }
+        .f5-pill .glass { inset: 0; }
+        .f5-pill .f5-txt { position: relative; }
+        .f5-pill b { font-weight: 400; color: var(--bdx); }
+        #f5-bar { left: 120px; top: 1240px; width: 840px; height: 140px; }
+        #f5-words { position: absolute; left: 120px; top: 1240px; width: 840px; height: 140px; display: flex; align-items: center; justify-content: space-evenly; font-size: 40px; line-height: 1; font-weight: 400; color: var(--bdx-deep); }
+        #f5-words .f5-w { display: block; }
+        #f5-words .f5-div { display: block; width: 2px; height: 46px; background: var(--bdx-70); transform-origin: 50% 50%; }
+        #f5-sweep { position: absolute; top: -10%; bottom: -10%; left: 0; width: 60%; background: linear-gradient(105deg, rgba(247, 242, 235, 0) 0%, rgba(247, 242, 235, 0.3) 50%, rgba(247, 242, 235, 0) 100%); opacity: 0; }
+        #f5-cream { background: var(--cream); opacity: 0; }
+      </style>
+
+      <div id="f5" data-composition-id="f5" data-width="1080" data-height="1920">
+        <div id="f5-fade">
+          <div class="hs-shot" id="f5-s1"><video id="f5-v1" class="clip" src="assets/media/IMG-10.mp4" muted playsinline data-start="0" data-duration="5.5" data-track-index="0"></video></div>
+          <div class="hs-shot" id="f5-s2"><video id="f5-v2" class="clip" src="assets/media/IMG-11.mp4" muted playsinline data-start="4.9" data-duration="4.8" data-track-index="1"></video></div>
+          <div class="hs-shot" id="f5-s3"><video id="f5-v3" class="clip" src="assets/media/IMG-13.mp4" muted playsinline data-start="9.1" data-duration="5.8" data-track-index="2"></video></div>
+          <div class="hs-shot" id="f5-s4"><video id="f5-v4" class="clip" src="assets/media/IMG-14.mp4" muted playsinline data-start="14.3" data-duration="6.1" data-track-index="3"></video></div>
+          <div id="f5-sweep"></div>
+
+          <!-- the protocol rail returns, finer, and completes: 4 machine steps + 3 care steps -->
+          <div class="rail" id="f5-rail"></div>
+          <div class="dot f5-dot" style="top: 550px"><i class="f5-on"></i></div>
+          <div class="dot f5-dot" style="top: 660px"><i class="f5-on"></i></div>
+          <div class="dot f5-dot" style="top: 770px"><i class="f5-on"></i></div>
+          <div class="dot f5-dot" style="top: 880px"><i class="f5-on"></i></div>
+          <div class="dot f5-dot" style="top: 990px"><i id="f5-d5"></i></div>
+          <div class="dot f5-dot" style="top: 1100px"><i id="f5-d6"></i></div>
+          <div class="dot f5-dot" style="top: 1210px"><i id="f5-d7"></i></div>
+
+          <div class="f5-pill" id="f5-p1"><div class="glass pill"></div><span class="f5-txt">Produits premium</span></div>
+          <div class="f5-pill" id="f5-p2"><div class="glass pill"></div><span class="f5-txt">Masque modelant <b>· selon les besoins</b></span></div>
+          <div class="f5-pill" id="f5-p3"><div class="glass pill"></div><span class="f5-txt">Massage du visage</span></div>
+
+          <div class="glass" id="f5-bar"><div class="sheen" id="f5-sheen"></div></div>
+          <div id="f5-words">
+            <span class="f5-w" id="f5-w1">Technologie</span><span class="f5-div" id="f5-dv1"></span><span class="f5-w" id="f5-w2">Produits</span><span class="f5-div" id="f5-dv2"></span><span class="f5-w" id="f5-w3">Gestes</span>
+          </div>
+          <div class="hs-veil" id="f5-cream"></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const T0 = 45.4;
+          const A = (s) => s - T0;
+          const tl = gsap.timeline({ paused: true });
+
+          // close-ups first: textures, modelling mask, facial massage, the rested face
+          const shots = ["#f5-s1", "#f5-s2", "#f5-s3", "#f5-s4"];
+          const starts = [45.4, 50.3, 54.5, 59.7];
+          const ends = [50.9, 55.1, 60.3, 65.8];
+          shots.forEach((s, i) => {
+            tl.fromTo(s, { scale: 1.0 }, { scale: 1.06, duration: ends[i] - starts[i], ease: "none" }, A(starts[i]));
+            if (i > 0) tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.inOut" }, A(starts[i]));
+          });
+
+          // the rail comes back with the first four points already full
+          tl.fromTo("#f5-rail", { scaleY: 0 }, { scaleY: 1, duration: 0.9, ease: "power2.inOut" }, A(46.6));
+          tl.fromTo(".f5-dot", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out", stagger: 0.08 }, A(46.7));
+          ["#f5-d5", "#f5-d6", "#f5-d7"].forEach((d, i) => {
+            tl.fromTo(d, { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2)" }, A([47.0, 51.6, 55.6][i]) + 0.1);
+          });
+
+          // one glass label per shot, bottom left, never over a face or hands
+          const pills = [["#f5-p1", 47.0, 50.3], ["#f5-p2", 51.6, 54.5], ["#f5-p3", 55.6, 59.6]];
+          pills.forEach(([p, a, b]) => {
+            // fade the glass and the words themselves, never the wrapper: an ancestor at
+            // opacity < 1 becomes a backdrop root and the pane would lose its frost
+            tl.fromTo(`${p} .glass`, { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 0.9, ease: "expo.out" }, A(a));
+            tl.fromTo(`${p} .f5-txt`, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power3.out" }, A(a) + 0.1);
+            tl.fromTo(p, { y: 18 }, { y: 0, duration: 0.7, ease: "power3.out" }, A(a));
+            tl.fromTo([`${p} .glass`, `${p} .f5-txt`], { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.in", immediateRender: false }, A(b));
+          });
+
+          // 60.0 — the alliance: three words land one by one on a single glass bar
+          tl.fromTo("#f5-bar", { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 1.0, ease: "expo.out" }, A(60.0));
+          [["#f5-w1", 60.2], ["#f5-w2", 61.4], ["#f5-w3", 62.4]].forEach(([w, a]) => {
+            tl.fromTo(w, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, A(a));
+          });
+          tl.fromTo("#f5-dv1", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, A(61.2));
+          tl.fromTo("#f5-dv2", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, A(62.2));
+          tl.fromTo("#f5-sheen", { xPercent: -120, opacity: 1 }, { xPercent: 260, opacity: 1, duration: 1.2, ease: "power2.inOut" }, A(62.7));
+          // one pass of light across the last shot
+          tl.fromTo("#f5-sweep", { xPercent: -110, opacity: 1 }, { xPercent: 200, opacity: 1, duration: 1.8, ease: "sine.inOut" }, A(62.8));
+
+          // 64.4–65.8 — luminous fade toward the signature
+          tl.fromTo("#f5-cream", { opacity: 0 }, { opacity: 0.85, duration: 0.9, ease: "sine.in" }, A(64.4));
+          tl.fromTo("#f5-fade", { opacity: 1 }, { opacity: 0, duration: 0.7, ease: "sine.inOut" }, A(65.1));
+
+          window.__timelines["f5"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

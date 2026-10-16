@@ -1,0 +1,59 @@
+/* HydraSkin — shared design layer (frame.md): fonts, palette, frosted glass, type roles.
+   Linked from every scene; the compiler hoists <link> into the assembled page. */
+
+@font-face { font-family: "Jost"; src: url("fonts/jost-latin-300-normal.woff2") format("woff2"); font-weight: 300; font-style: normal; }
+@font-face { font-family: "Jost"; src: url("fonts/jost-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Jost"; src: url("fonts/jost-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; }
+@font-face { font-family: "Instrument Serif"; src: url("fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Instrument Serif"; src: url("fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+
+:root {
+  --linen: #d8c5b2;
+  --cream: #f7f2eb;
+  --bdx: #642d3d;
+  --bdx-deep: #40232c;
+  --bdx-deep-78: rgba(64, 35, 44, 0.78);
+  --bdx-70: rgba(100, 45, 61, 0.7);
+}
+
+/* a scene: full frame, its own stacking context */
+.hs-scene { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
+.hs-layer { position: absolute; inset: 0; }
+
+/* a shot slot: non-timed wrapper (push-in, crossfade, focus) around a timed <video> */
+.hs-shot { position: absolute; inset: 0; overflow: hidden; }
+.hs-shot video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hs-veil { position: absolute; inset: 0; pointer-events: none; }
+
+/* frosted glass. --g (0..1) is how frosted it is: the reveal tweens it, so the pane
+   condenses in place like mist instead of sliding in as a card. */
+.glass {
+  --g: 1;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 34px;
+  background: linear-gradient(160deg, rgba(247, 242, 235, calc(0.48 * var(--g))), rgba(216, 197, 178, calc(0.26 * var(--g))));
+  -webkit-backdrop-filter: blur(calc(22px * var(--g))) saturate(calc(100% + 8% * var(--g)));
+  backdrop-filter: blur(calc(22px * var(--g))) saturate(calc(100% + 8% * var(--g)));
+  border: 2px solid rgba(247, 242, 235, calc(0.72 * var(--g)));
+  box-shadow: inset 0 2px 0 rgba(247, 242, 235, calc(0.85 * var(--g))), 0 40px 80px -30px rgba(64, 35, 44, calc(0.18 * var(--g)));
+}
+.glass.pill { border-radius: 999px; }
+/* one specular pass per appearance: a diagonal cream band travelling across the pane */
+.sheen {
+  position: absolute; top: -20%; bottom: -20%; left: 0; width: 46%;
+  background: linear-gradient(105deg, rgba(247, 242, 235, 0) 0%, rgba(247, 242, 235, 0.36) 50%, rgba(247, 242, 235, 0) 100%);
+  opacity: 0;
+}
+
+/* type roles */
+.serif { font-family: "Instrument Serif", serif; font-weight: 400; letter-spacing: -0.02em; line-height: 1; }
+.lbl { font-family: "Jost", sans-serif; font-weight: 500; font-size: 26px; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bdx); }
+.mask { display: block; overflow: hidden; padding: 0.06em 0.04em 0.14em; }
+.mask > span { display: block; }
+.hair { position: absolute; height: 2px; background: var(--bdx-70); transform-origin: 0 50%; }
+
+/* protocol rail */
+.rail { position: absolute; width: 2px; background: var(--bdx-70); transform-origin: 50% 0; }
+.dot { position: absolute; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--bdx); }
+.dot > i { position: absolute; inset: 2px; border-radius: 50%; background: var(--bdx); display: block; }

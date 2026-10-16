@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <!-- Scène 4 — Un soin personnalisé (31,4–46,6 s ; temps absolus via A()). Séquence essentielle.
+           Plan maintenu « Chaque peau a ses besoins. » sur fond lin crémeux ; puis l'écoute de la peau :
+           trois feuillets de verre à trois profondeurs, qui se rangent en « Le soin s'adapte à votre peau. » -->
+      <link rel="stylesheet" href="assets/hydraskin.css" />
+      <style>
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+        @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+        @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+        #f4 { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
+        #f4-fade { position: absolute; inset: 0; }
+        #f4-b1 { filter: blur(28px); }
+        #f4-veil1 { background: var(--linen); opacity: 0.55; }
+        #f4-say { position: absolute; left: 72px; top: 790px; width: 900px; font-size: 104px; line-height: 1.05; color: var(--bdx-deep); }
+        #f4-say .ln { display: block; white-space: nowrap; }
+        #f4-say .w { display: inline-block; }
+        #f4-hair { left: 72px; top: 1040px; width: 140px; }
+        .f4-sheet { position: absolute; width: 560px; height: 130px; }
+        .f4-sheet .glass { inset: 0; }
+        .f4-sheet .f4-t { position: absolute; left: 48px; top: 45px; font-size: 40px; line-height: 1; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
+        #f4-A { left: 380px; top: 1010px; z-index: 3; }
+        #f4-B { left: 300px; top: 1170px; z-index: 2; }
+        #f4-C { left: 220px; top: 1330px; z-index: 1; }
+        #f4-adapt { position: absolute; left: 72px; top: 1172px; width: 900px; font-size: 64px; line-height: 1.15; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
+        #f4-adapt em { font-family: "Instrument Serif", serif; font-style: italic; font-size: 76px; letter-spacing: -0.01em; }
+        #f4-tag { position: absolute; left: 72px; top: 1300px; font-size: 24px; }
+      </style>
+
+      <div id="f4" data-composition-id="f4" data-width="1080" data-height="1920">
+        <div id="f4-fade">
+          <!-- 32–38 s: the last gesture, defocused into a creamy linen field -->
+          <div class="hs-shot" id="f4-b1">
+            <video id="f4-v1" class="clip" src="assets/media/IMG-07.mp4" muted playsinline data-start="0" data-duration="6.8" data-media-start="2.7" data-track-index="0"></video>
+          </div>
+          <div class="hs-veil" id="f4-veil1"></div>
+
+          <!-- 37–46.6 s: listening to the skin -->
+          <div class="hs-shot" id="f4-b2">
+            <video id="f4-v2" class="clip" src="assets/media/IMG-09.mp4" muted playsinline data-start="5.4" data-duration="9.8" data-track-index="1"></video>
+          </div>
+
+          <div class="serif" id="f4-say">
+            <span class="ln"><span class="w">Chaque</span> <span class="w">peau</span></span>
+            <span class="ln"><span class="w">a</span> <span class="w">ses</span> <span class="w">besoins.</span></span>
+          </div>
+          <div class="hair" id="f4-hair"></div>
+
+          <div class="f4-sheet" id="f4-C"><div class="glass" id="f4-gC"></div><div class="f4-t" id="f4-tC">Vos préoccupations</div></div>
+          <div class="f4-sheet" id="f4-B"><div class="glass" id="f4-gB"></div><div class="f4-t" id="f4-tB">État de la peau</div></div>
+          <div class="f4-sheet" id="f4-A"><div class="glass" id="f4-gA"><div class="sheen" id="f4-sheen"></div></div><div class="f4-t" id="f4-tA">Type de peau</div></div>
+
+          <div id="f4-adapt"><span class="mask"><span id="f4-adapt-in">Le soin s'adapte à <em>votre peau.</em></span></span></div>
+          <div class="lbl" id="f4-tag"><span class="mask"><span id="f4-tag-in">Protocole adapté selon les besoins identifiés</span></span></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const T0 = 31.4;
+          const A = (s) => s - T0;
+          const tl = gsap.timeline({ paused: true });
+
+          // the held line: word by word, then three seconds of stillness (34.0–37.0)
+          tl.fromTo("#f4-say .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out", stagger: 0.16 }, A(33.2));
+          tl.fromTo("#f4-hair", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.out" }, A(33.9));
+          tl.fromTo(["#f4-say", "#f4-hair"], { opacity: 1, y: 0 }, { opacity: 0, y: -14, duration: 0.5, ease: "power2.in", immediateRender: false }, A(37.0));
+
+          // 37.0 — the esthetician observes the skin: focus pulls in, slow push
+          tl.fromTo("#f4-b2", { opacity: 0, filter: "blur(16px)" }, { opacity: 1, filter: "blur(0px)", duration: 1.0, ease: "power2.out" }, A(37.0));
+          tl.fromTo("#f4-b2", { scale: 1.0 }, { scale: 1.04, duration: 9.6, ease: "none" }, A(37.0));
+
+          // three sheets at three depths, each on its spoken word, drifting at its own speed
+          const sheets = [
+            { w: "#f4-A", g: "#f4-gA", t: "#f4-tA", at: 37.4, drift: -20, to: { x: -308, y: 0 } },
+            { w: "#f4-B", g: "#f4-gB", t: "#f4-tB", at: 38.6, drift: -30, to: { x: -228, y: -174 } },
+            { w: "#f4-C", g: "#f4-gC", t: "#f4-tC", at: 39.8, drift: -40, to: { x: -148, y: -348 } },
+          ];
+          sheets.forEach((s) => {
+            tl.fromTo(s.g, { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 1.0, ease: "expo.out" }, A(s.at));
+            tl.fromTo(s.t, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, A(s.at) + 0.15);
+            tl.fromTo(s.w, { x: 0, y: 30 }, { x: 0, y: s.drift, duration: 42.0 - s.at, ease: "sine.out" }, A(s.at));
+          });
+          tl.fromTo("#f4-sheen", { xPercent: -120, opacity: 1 }, { xPercent: 260, opacity: 1, duration: 1.1, ease: "power2.inOut" }, A(37.9));
+
+          // 42.0 — they file into one neat stack; focus on the front sheet
+          sheets.forEach((s, i) => {
+            tl.fromTo(s.w, { x: 0, y: s.drift }, { x: s.to.x, y: s.to.y, duration: 0.9, ease: "power3.inOut", immediateRender: false }, A(42.0) + i * 0.05);
+            if (i > 0) {
+              tl.fromTo(s.t, { opacity: 1 }, { opacity: 0, duration: 0.35, ease: "power2.in", immediateRender: false }, A(42.0));
+              tl.fromTo(s.g, { opacity: 1 }, { opacity: i === 1 ? 0.5 : 0.28, duration: 0.6, ease: "sine.inOut", immediateRender: false }, A(42.2));
+            }
+          });
+          tl.fromTo("#f4-adapt-in", { yPercent: 160 }, { yPercent: 0, duration: 0.9, ease: "power3.out" }, A(42.3));
+          tl.fromTo("#f4-tag-in", { yPercent: 160 }, { yPercent: 0, duration: 0.7, ease: "power3.out" }, A(43.4));
+
+          // 45.4–46.6 — the sheets part upward at three speeds and uncover the product texture
+          tl.fromTo(["#f4-adapt", "#f4-tag"], { opacity: 1, y: 0 }, { opacity: 0, y: -30, duration: 0.5, ease: "power2.in", immediateRender: false }, A(45.3));
+          sheets.forEach((s, i) => {
+            tl.fromTo(s.w, { y: s.to.y }, { y: s.to.y - 1500, duration: 0.85 + i * 0.18, ease: "power2.in", immediateRender: false }, A(45.4) + i * 0.04);
+          });
+          tl.fromTo("#f4-fade", { opacity: 1 }, { opacity: 0, duration: 0.9, ease: "sine.inOut" }, A(45.7));
+
+          window.__timelines["f4"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <!-- Scène 6 — Signature (64,4–78,0 s ; temps absolus via A()).
+           Rappel de la scène 1 : même plaque, même place, même taille. Signature, invitation,
+           puis AMANI SKIN et l'emplacement des coordonnées (uniquement celles fournies par la cliente). -->
+      <link rel="stylesheet" href="assets/hydraskin.css" />
+      <style>
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-300-normal.woff2") format("woff2"); font-weight: 300; }
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+        @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+        #f6 { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
+        #f6-veil { background: var(--cream); opacity: 0.3; }
+        #f6-top { position: absolute; inset: 0; }
+        #f6-plate { left: 180px; top: 500px; width: 720px; height: 520px; }
+        #f6-title { position: absolute; left: 0; right: 0; top: 610px; text-align: center; font-size: 210px; color: var(--bdx-deep); white-space: nowrap; }
+        #f6-title span { display: inline-block; }
+        #f6-hair { left: 430px; top: 850px; width: 220px; }
+        #f6-tag { position: absolute; left: 0; right: 0; top: 880px; text-align: center; font-weight: 300; font-size: 42px; line-height: 1.2; color: var(--bdx-deep); }
+        #f6-cta { left: 150px; top: 900px; width: 780px; height: 100px; }
+        #f6-cta-t { position: absolute; left: 0; right: 0; top: 930px; text-align: center; font-weight: 400; font-size: 36px; line-height: 1.2; color: var(--bdx-deep); }
+        #f6-hair2 { left: 490px; top: 1210px; width: 100px; }
+        #f6-name { position: absolute; left: 0; right: 0; top: 1250px; text-align: center; font-weight: 500; font-size: 34px; line-height: 1; letter-spacing: 0.28em; color: var(--bdx); padding-left: 0.28em; }
+        #f6-slot { position: absolute; left: 240px; right: 240px; top: 1322px; text-align: center; font-weight: 400; font-size: 28px; line-height: 1; color: var(--bdx-deep-78); border: 2px dashed rgba(100, 45, 61, 0.5); border-radius: 12px; padding: 16px 0; }
+        #f6-virt { position: absolute; left: 72px; top: 1468px; font-weight: 400; font-size: 22px; line-height: 1; color: var(--bdx); }
+        #f6-end { background: var(--cream); opacity: 0; }
+      </style>
+
+      <div id="f6" data-composition-id="f6" data-width="1080" data-height="1920">
+        <div class="hs-shot" id="f6-bg">
+          <video id="f6-v1" class="clip" src="assets/media/IMG-15.mp4" muted playsinline data-start="0" data-duration="13.6" data-track-index="0"></video>
+        </div>
+        <div class="hs-veil" id="f6-veil"></div>
+
+        <div id="f6-top">
+          <div class="glass" id="f6-plate"><div class="sheen" id="f6-sheen"></div></div>
+          <div class="serif" id="f6-title" aria-label="HydraSkin"><span>H</span><span>y</span><span>d</span><span>r</span><span>a</span><span>S</span><span>k</span><span>i</span><span>n</span></div>
+          <div class="hair" id="f6-hair"></div>
+          <div id="f6-tag"><span class="mask"><span id="f6-tag-in">Un soin expert, pensé pour votre peau.</span></span></div>
+        </div>
+
+        <div class="glass pill" id="f6-cta"></div>
+        <div id="f6-cta-t"><span class="mask"><span id="f6-cta-in">Découvrez votre prochain rituel de soin.</span></span></div>
+
+        <div class="hair" id="f6-hair2"></div>
+        <div id="f6-name">AMANI SKIN</div>
+        <!-- contact details: only those the client provides; none are invented -->
+        <div id="f6-slot">Coordonnées · à confirmer</div>
+        <div id="f6-virt">Images virtuelles</div>
+
+        <div class="hs-veil" id="f6-end"></div>
+      </div>
+
+      <script>
+        (function () {
+          const T0 = 64.4;
+          const A = (s) => s - T0;
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#f6-bg", { scale: 1.0 }, { scale: 1.03, duration: 13.6, ease: "none" }, 0);
+
+          // 65.8 — the pane returns to scene 1's place (with the glass tink)
+          tl.fromTo("#f6-plate", { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 1.4, ease: "expo.out" }, A(65.8));
+          tl.fromTo("#f6-title span", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0, ease: "power3.out", stagger: 0.045 }, A(66.2));
+          tl.fromTo("#f6-sheen", { xPercent: -120, opacity: 1 }, { xPercent: 260, opacity: 1, duration: 1.2, ease: "power2.inOut" }, A(66.8));
+          tl.fromTo("#f6-hair", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, A(66.9));
+          tl.fromTo("#f6-tag-in", { yPercent: 160 }, { yPercent: 0, duration: 0.9, ease: "power3.out" }, A(67.4));
+
+          // 71.0 — the signature rises to make room for the invitation
+          tl.fromTo("#f6-top", { y: 0 }, { y: -200, duration: 0.9, ease: "power3.inOut" }, A(71.0));
+          tl.fromTo("#f6-cta", { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 1.0, ease: "expo.out" }, A(71.2));
+          tl.fromTo("#f6-cta-in", { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: "power3.out" }, A(71.4));
+
+          // 73.4 — the institute
+          tl.fromTo("#f6-hair2", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, A(73.4));
+          tl.fromTo("#f6-name", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, A(73.5));
+          tl.fromTo("#f6-slot", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, A(73.9));
+          tl.fromTo("#f6-virt", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, A(74.0));
+
+          // held, breathing; then a soft fade to cream
+          tl.fromTo("#f6-end", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.in" }, A(77.4));
+
+          window.__timelines["f6"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

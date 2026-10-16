@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <!-- Scène 1 — L'accroche (0–8,4 s, sortie par la lame de verre 7,2–8,4 s).
+           La peau d'abord, seule ; puis la plaque de verre se dépolit sur la goutte de sérum
+           et « HydraSkin » se pose sur le mot dit. -->
+      <link rel="stylesheet" href="assets/hydraskin.css" />
+      <style>
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-300-normal.woff2") format("woff2"); font-weight: 300; }
+        @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+        #f1 { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
+        #f1-all { position: absolute; inset: 0; clip-path: inset(0 0 0% 0); }
+        #f1-plate { left: 180px; top: 500px; width: 720px; height: 520px; }
+        #f1-title { position: absolute; left: 0; right: 0; top: 610px; text-align: center; font-size: 210px; color: var(--bdx-deep); white-space: nowrap; }
+        #f1-title span { display: inline-block; }
+        #f1-hair { left: 430px; top: 850px; width: 220px; }
+        #f1-tag { position: absolute; left: 0; right: 0; top: 880px; text-align: center; font-weight: 300; font-size: 42px; line-height: 1.2; color: var(--bdx-deep); }
+        #f1-blade { left: -40px; right: -40px; top: 0; height: 180px; border-radius: 0; border-left: 0; border-right: 0; }
+      </style>
+
+      <div id="f1" data-composition-id="f1" data-width="1080" data-height="1920">
+        <div id="f1-all">
+          <div class="hs-shot" id="f1-s1">
+            <video id="f1-v1" class="clip" src="assets/media/IMG-01.mp4" muted playsinline data-start="0" data-duration="4" data-track-index="0"></video>
+          </div>
+          <div class="hs-shot" id="f1-s2">
+            <video id="f1-v2" class="clip" src="assets/media/IMG-02.mp4" muted playsinline data-start="3" data-duration="5.4" data-track-index="1"></video>
+          </div>
+
+          <div class="glass" id="f1-plate"><div class="sheen" id="f1-sheen"></div></div>
+          <div class="serif" id="f1-title" aria-label="HydraSkin"><span>H</span><span>y</span><span>d</span><span>r</span><span>a</span><span>S</span><span>k</span><span>i</span><span>n</span></div>
+          <div class="hair" id="f1-hair"></div>
+          <div id="f1-tag"><span class="mask"><span id="f1-tag-in">La technologie au service de votre peau.</span></span></div>
+        </div>
+
+        <!-- the glass blade: rides the edge of the wipe, frosting the next scene beneath it -->
+        <div class="glass" id="f1-blade"></div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          // 0–3.2 s — macro skin: focus pulls in, slow push-in, no text
+          tl.fromTo("#f1-s1", { filter: "blur(14px)" }, { filter: "blur(0px)", duration: 1.8, ease: "power2.out" }, 0);
+          tl.fromTo("#f1-s1", { scale: 1.0 }, { scale: 1.05, duration: 4, ease: "none" }, 0);
+
+          // 3.2 s — serum drop, crossfade carried by the light
+          tl.fromTo("#f1-s2", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "sine.inOut" }, 3.2);
+          tl.fromTo("#f1-s2", { scale: 1.0 }, { scale: 1.04, duration: 5.2, ease: "none" }, 3.2);
+
+          // 3.4 s — the pane condenses in place (with the glass tink)
+          tl.fromTo("#f1-plate", { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 1.4, ease: "expo.out" }, 3.4);
+          tl.fromTo("#f1-plate", { y: 18 }, { y: 0, duration: 1.6, ease: "power3.out" }, 3.4);
+
+          // 3.6 s — « HydraSkin » lands on the spoken word, letter by letter
+          tl.fromTo("#f1-title span", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0, ease: "power3.out", stagger: 0.045 }, 3.6);
+          tl.fromTo("#f1-sheen", { xPercent: -120, opacity: 1 }, { xPercent: 260, opacity: 1, duration: 1.2, ease: "power2.inOut" }, 4.4);
+          tl.fromTo("#f1-hair", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 4.3);
+          tl.fromTo("#f1-tag-in", { yPercent: 160 }, { yPercent: 0, duration: 0.9, ease: "power3.out" }, 5.0);
+
+          // breathing parallax: glass moves at ~60 % of the photo's push
+          tl.fromTo("#f1-plate", { scale: 1 }, { scale: 1.015, duration: 2.6, ease: "sine.inOut" }, 4.8);
+
+          // 7.2–8.4 s — glass blade wipe upward; scene 2 appears sharp beneath its edge
+          tl.fromTo("#f1-all", { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 1.2, ease: "power2.inOut" }, 7.2);
+          tl.fromTo("#f1-blade", { y: 1920, "--g": 1 }, { y: -180, duration: 1.2, ease: "power2.inOut" }, 7.2);
+
+          window.__timelines["f1"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

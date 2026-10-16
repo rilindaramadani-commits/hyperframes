@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <!-- Scène 3 — La technologie en action (19,4–33,0 s ; temps absolus via A()).
+           Quatre gros plans de gestes ; la carte de la scène 2 devenue puce indique l'étape ;
+           trois annotations au trait fin partent du point de contact vers l'espace libre. -->
+      <link rel="stylesheet" href="assets/hydraskin.css" />
+      <style>
+        @font-face { font-family: "Jost"; src: url("assets/fonts/jost-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+        #f3 { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
+        #f3-fade { position: absolute; inset: 0; }
+        #f3-veil { background: var(--linen); opacity: 0; }
+        #f3-s1 { transform-origin: 540px 980px; }
+        #f3-s2 { transform-origin: 560px 700px; }
+        #f3-s3 { transform-origin: 540px 880px; }
+        #f3-s4 { transform-origin: 640px 900px; }
+        #f3-chip { left: 72px; top: 260px; width: 430px; height: 96px; }
+        .f3-step { position: absolute; left: 40px; top: 30px; font-size: 36px; line-height: 1; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
+        .f3-step b { font-weight: 400; color: var(--bdx); }
+        .f3-mini { position: absolute; top: 41px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--bdx); }
+        .f3-mini > i { position: absolute; inset: 1px; border-radius: 50%; background: var(--bdx); display: block; }
+        #f3-ann { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+        .f3-pt { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: var(--cream); box-shadow: 0 0 0 7px rgba(247, 242, 235, 0.35); }
+        .f3-tag { position: absolute; font-size: 32px; line-height: 1; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; background: rgba(247, 242, 235, 0.66); border-radius: 10px; padding: 12px 18px; }
+      </style>
+
+      <div id="f3" data-composition-id="f3" data-width="1080" data-height="1920">
+        <div id="f3-fade">
+          <div class="hs-shot" id="f3-s1"><video id="f3-v1" class="clip" src="assets/media/IMG-04.mp4" muted playsinline data-start="0" data-duration="4.2" data-track-index="0"></video></div>
+          <div class="hs-shot" id="f3-s2"><video id="f3-v2" class="clip" src="assets/media/IMG-05.mp4" muted playsinline data-start="3.3" data-duration="3.6" data-track-index="1"></video></div>
+          <div class="hs-shot" id="f3-s3"><video id="f3-v3" class="clip" src="assets/media/IMG-06.mp4" muted playsinline data-start="6.3" data-duration="3.6" data-track-index="2"></video></div>
+          <div class="hs-shot" id="f3-s4"><video id="f3-v4" class="clip" src="assets/media/IMG-07.mp4" muted playsinline data-start="9.3" data-duration="4.3" data-track-index="3"></video></div>
+          <div class="hs-veil" id="f3-veil"></div>
+
+          <!-- annotations: point on the gesture → hairline → label in free space -->
+          <svg id="f3-ann" viewBox="0 0 1080 1920">
+            <path id="f3-p2" d="M560 700 L700 560 L900 560" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="398" stroke-dashoffset="398" />
+            <path id="f3-p3" d="M540 880 L720 1140 L980 1140" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="576" stroke-dashoffset="576" />
+            <path id="f3-p4" d="M640 900 L480 1200 L100 1200" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="720" stroke-dashoffset="720" />
+          </svg>
+          <div class="f3-pt" id="f3-pt2" style="left: 560px; top: 700px"></div>
+          <div class="f3-pt" id="f3-pt3" style="left: 540px; top: 880px"></div>
+          <div class="f3-pt" id="f3-pt4" style="left: 640px; top: 900px"></div>
+          <div class="f3-tag" id="f3-t2" style="left: 712px; top: 486px">Précision</div>
+          <div class="f3-tag" id="f3-t3" style="left: 580px; top: 1162px">Chaque zone du visage</div>
+          <div class="f3-tag" id="f3-t4" style="left: 88px; top: 1222px">Technologie professionnelle</div>
+
+          <!-- the step chip (scene 2's card, retracted) with its mini rail -->
+          <div class="glass pill" id="f3-chip">
+            <div class="f3-step" id="f3-c1"><b>01</b> · Nettoyer</div>
+            <div class="f3-step" id="f3-c2"><b>02</b> · Exfolier</div>
+            <div class="f3-step" id="f3-c3"><b>03</b> · Extraire</div>
+            <div class="f3-step" id="f3-c4"><b>04</b> · Hydrater</div>
+            <div class="f3-mini" style="left: 312px"><i id="f3-m1"></i></div>
+            <div class="f3-mini" style="left: 336px"><i id="f3-m2"></i></div>
+            <div class="f3-mini" style="left: 360px"><i id="f3-m3"></i></div>
+            <div class="f3-mini" style="left: 384px"><i id="f3-m4"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const T0 = 19.4;
+          const A = (s) => s - T0;
+          const tl = gsap.timeline({ paused: true });
+
+          // four gestures, each a slow push toward its point of contact
+          const shots = ["#f3-s1", "#f3-s2", "#f3-s3", "#f3-s4"];
+          const starts = [19.4, 22.7, 25.7, 28.7];
+          shots.forEach((s, i) => {
+            tl.fromTo(s, { scale: 1.0 }, { scale: 1.07, duration: (i === 3 ? 33.0 : starts[i + 1] + 0.6) - starts[i], ease: "none" }, A(starts[i]));
+            if (i > 0) {
+              // motivated dissolve: the incoming gesture resolves out of a slight blur
+              tl.fromTo(s, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "sine.inOut" }, A(starts[i] + 0.0));
+            }
+          });
+
+          // chip condenses where scene 2's card retracted
+          tl.fromTo("#f3-chip", { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 0.6, ease: "expo.out" }, A(19.9));
+          const C = [19.95, 23.0, 26.0, 29.0];
+          ["#f3-c1", "#f3-c2", "#f3-c3", "#f3-c4"].forEach((c, i) => {
+            tl.fromTo(c, { opacity: 0, yPercent: 60 }, { opacity: 1, yPercent: 0, duration: 0.35, ease: "power3.out" }, A(C[i]) + 0.05);
+            if (i < 3) tl.fromTo(c, { opacity: 1, yPercent: 0 }, { opacity: 0, yPercent: -60, duration: 0.3, ease: "power2.in", immediateRender: false }, A(C[i + 1]) - 0.3);
+            tl.fromTo(`#f3-m${i + 1}`, { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, A(C[i]) + 0.25);
+          });
+
+          // annotations: drawn 0.6 s, held 1.8 s, folded back — on three shots only
+          const ann = [
+            { p: "#f3-p2", pt: "#f3-pt2", t: "#f3-t2", len: 398, at: 23.5 },
+            { p: "#f3-p3", pt: "#f3-pt3", t: "#f3-t3", len: 576, at: 26.5 },
+            { p: "#f3-p4", pt: "#f3-pt4", t: "#f3-t4", len: 720, at: 29.5 },
+          ];
+          ann.forEach((a) => {
+            tl.fromTo(a.pt, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2)" }, A(a.at));
+            tl.fromTo(a.p, { strokeDashoffset: a.len }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, A(a.at) + 0.1);
+            tl.fromTo(a.t, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, A(a.at) + 0.55);
+            tl.fromTo(a.t, { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, A(a.at) + 2.4);
+            tl.fromTo(a.p, { strokeDashoffset: 0 }, { strokeDashoffset: -a.len, duration: 0.45, ease: "power2.in", immediateRender: false }, A(a.at) + 2.45);
+            tl.fromTo(a.pt, { scale: 1, opacity: 1 }, { scale: 0, opacity: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, A(a.at) + 2.75);
+          });
+
+          // 31.4–33.0 — focus opens: the last gesture melts into a creamy linen blur
+          tl.fromTo("#f3-chip", { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.in", immediateRender: false }, A(31.4));
+          tl.fromTo("#f3-s4", { filter: "blur(0px)" }, { filter: "blur(28px)", duration: 1.2, ease: "power2.inOut", immediateRender: false }, A(31.4));
+          tl.fromTo("#f3-veil", { opacity: 0 }, { opacity: 0.55, duration: 1.2, ease: "power2.inOut" }, A(31.4));
+          tl.fromTo("#f3-fade", { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "sine.inOut" }, A(32.5));
+
+          window.__timelines["f3"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
