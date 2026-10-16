@@ -38,13 +38,13 @@
 
           <!-- annotations: point on the gesture → hairline → label in free space -->
           <svg data-hf-id="hf-avut" id="f3-ann" viewBox="0 0 1080 1920">
-            <path data-hf-id="hf-0ix0" id="f3-p2" d="M440 990 L640 760 L900 760" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="565" stroke-dashoffset="565" />
-            <path data-hf-id="hf-2f3k" id="f3-p3" d="M730 650 L820 430 L560 430" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="498" stroke-dashoffset="498" />
+            <path data-hf-id="hf-0ix0" id="f3-p2" d="M460 565 L640 420 L900 420" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="491" stroke-dashoffset="491" />
+            <path data-hf-id="hf-2f3k" id="f3-p3" d="M630 806 L560 470 L200 470" fill="none" stroke="#F7F2EB" stroke-width="3" stroke-dasharray="703" stroke-dashoffset="703" />
           </svg>
-          <div data-hf-id="hf-4vaz" class="f3-pt" id="f3-pt2" style="left: 440px; top: 990px"></div>
-          <div data-hf-id="hf-dvrb" class="f3-pt" id="f3-pt3" style="left: 730px; top: 650px"></div>
-          <div data-hf-id="hf-5a99" class="f3-tag" id="f3-t2" style="left: 652px; top: 686px">Précision</div>
-          <div data-hf-id="hf-a8e2" class="f3-tag" id="f3-t3" style="left: 560px; top: 352px">Chaque zone du visage</div>
+          <div data-hf-id="hf-4vaz" class="f3-pt" id="f3-pt2" style="left: 460px; top: 565px"></div>
+          <div data-hf-id="hf-dvrb" class="f3-pt" id="f3-pt3" style="left: 630px; top: 806px"></div>
+          <div data-hf-id="hf-5a99" class="f3-tag" id="f3-t2" style="left: 652px; top: 346px">Précision</div>
+          <div data-hf-id="hf-a8e2" class="f3-tag" id="f3-t3" style="left: 200px; top: 392px">Chaque zone du visage</div>
 
           <!-- the step chip (scene 2's card, retracted) with its mini rail -->
           <div data-hf-id="hf-ad2h" class="glass pill" id="f3-chip">
@@ -88,8 +88,8 @@
 
           // annotations: drawn 0.6 s, held 1.8 s, folded back — on three shots only
           const ann = [
-            { p: "#f3-p2", pt: "#f3-pt2", t: "#f3-t2", len: 565, at: 23.5 },
-            { p: "#f3-p3", pt: "#f3-pt3", t: "#f3-t3", len: 498, at: 26.5 },
+            { p: "#f3-p2", pt: "#f3-pt2", t: "#f3-t2", len: 491, at: 23.5 },
+            { p: "#f3-p3", pt: "#f3-pt3", t: "#f3-t3", len: 703, at: 26.5 },
           ];
           ann.forEach((a) => {
             tl.fromTo(a.pt, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2)" }, A(a.at));

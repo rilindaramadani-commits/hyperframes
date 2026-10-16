@@ -25,12 +25,12 @@
         .f4-sheet { position: absolute; width: 560px; height: 130px; }
         .f4-sheet .glass { inset: 0; }
         .f4-sheet .f4-t { position: absolute; left: 48px; top: 45px; font-size: 40px; line-height: 1; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
-        #f4-A { left: 380px; top: 950px; z-index: 3; }
-        #f4-B { left: 300px; top: 1110px; z-index: 2; }
-        #f4-C { left: 220px; top: 1270px; z-index: 1; }
-        #f4-adapt { position: absolute; left: 220px; top: 1112px; width: 720px; font-size: 56px; line-height: 1.15; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
+        #f4-A { left: 380px; top: 1140px; z-index: 3; }
+        #f4-B { left: 300px; top: 1280px; z-index: 2; }
+        #f4-C { left: 220px; top: 1420px; z-index: 1; }
+        #f4-adapt { position: absolute; left: 220px; top: 1302px; width: 720px; font-size: 56px; line-height: 1.15; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
         #f4-adapt em { font-family: "Instrument Serif", serif; font-style: italic; font-size: 66px; letter-spacing: -0.01em; }
-        #f4-tag { position: absolute; left: 220px; top: 1240px; font-size: 24px; }
+        #f4-tag { position: absolute; left: 220px; top: 1430px; font-size: 24px; }
       </style>
 
       <div data-hf-id="hf-5dg7" id="f4" data-composition-id="f4" data-width="1080" data-height="1920">
@@ -79,8 +79,8 @@
           // three sheets at three depths, each on its spoken word, drifting at its own speed
           const sheets = [
             { w: "#f4-A", g: "#f4-gA", t: "#f4-tA", at: 37.4, drift: -20, to: { x: -160, y: 0 } },
-            { w: "#f4-B", g: "#f4-gB", t: "#f4-tB", at: 38.6, drift: -30, to: { x: -80, y: -174 } },
-            { w: "#f4-C", g: "#f4-gC", t: "#f4-tC", at: 39.8, drift: -40, to: { x: 0, y: -348 } },
+            { w: "#f4-B", g: "#f4-gB", t: "#f4-tB", at: 38.6, drift: -30, to: { x: -80, y: -140 } },
+            { w: "#f4-C", g: "#f4-gC", t: "#f4-tC", at: 39.8, drift: -40, to: { x: 0, y: -280 } },
           ];
           sheets.forEach((s) => {
             tl.fromTo(s.g, { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 1.0, ease: "expo.out" }, A(s.at));

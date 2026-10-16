@@ -6,16 +6,15 @@ la voix off dans `SCRIPT.md`, les plans à tourner ou à générer dans `PLANS-A
 
 ## État
 
-- **Animation, verre, textes, rail, transitions, musique** : faits.
-- **Images** : les 13 fichiers `assets/media/IMG-xx.mp4` sont des **plans provisoires** (études de ton
-  étiquetées). Pour mettre les vrais plans, remplacez chaque fichier par le clip réel (même nom, 9:16,
-  5 s ou plus), sans toucher au code. Les annotations de la scène 3 (`compositions/f3-technologie.html`)
-  pointent des points de contact provisoires : à recaler sur les vrais clips.
-- **Voix off** : pas encore enregistrée (aucun service de synthèse vocale disponible dans cette session).
-  Elle viendra sur sa propre piste dans `index.html`. La durée réelle de la voix fera foi : les scènes seront
-  recalées dessus et la musique creusée sous la voix.
-- **Écran final** : AMANI SKIN ; l'emplacement des coordonnées affiche « Coordonnées · à confirmer » tant
-  que la cliente ne les a pas fournies.
+- **Film final** : `hydraskin_promo.mp4` (88 s, 1080×1920, SDR), avec la voix off `hydraskin_voiceover_v2.mp3`
+  (Google Cloud TTS, fr-FR-Chirp3-HD-Despina, utilisée telle quelle, à partir de 3,4 s) et la musique `assets/audio/music.wav`.
+- **Images** : 12 images générées par IA avec Lovable (1088×1920), à la demande de la cliente de ne pas
+  utiliser ses propres photos. Les originaux sont dans `assets/generated/lovable/` ;
+  `tools/import_media.py` les place dans les plans `assets/media/IMG-xx.mp4`. L'écran final affiche
+  « Images virtuelles ». Les médias de la cliente (`assets/source/`) sont conservés, mais ne sont plus utilisés.
+- **Temps** : les scènes sont écrites sur la grille du storyboard (78 s) et calées sur la narration (88 s) par
+  la carte de temps `assets/timewarp.js`.
+- **Écran final** : AMANI SKIN, @amani__skin · 07 66 85 43 74 (coordonnées fournies par la cliente).
 
 ## Structure
 

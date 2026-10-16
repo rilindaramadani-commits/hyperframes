@@ -26,9 +26,8 @@ et un glassmorphism maîtrisé. Chaque élément présent à l'écran doit avoir
 
 ## Assets
 
-- Aucun visuel fourni. Plan validé le 16/10 : **clips vidéo générés par IA** pour les gestes du soin
-  (IMG-04, 05, 06, 07, 09, 11, 13), images fixes animées en complément seulement si nécessaire ;
-  éviter tout effet diaporama. Plans remplaçables un par un par des prises réelles (PLANS-A-TOURNER.md).
+- Images : 12 images générées par IA (Lovable), même cliente virtuelle dans tous les plans ; la cliente a
+  demandé de ne pas utiliser ses propres photos. Mention « Images virtuelles » à l'écran final.
 - Écran final : nom de l'institut **AMANI SKIN**. Coordonnées : uniquement celles fournies par la cliente,
   aucune inventée. Confirmées : @amani__skin · 07 66 85 43 74.
 

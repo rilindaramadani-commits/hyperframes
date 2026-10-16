@@ -1,4 +1,4 @@
-"""Place the client's own media into the shot slots (assets/media/IMG-xx.mp4).
+"""Place the shot media into the slots (assets/media/IMG-xx.mp4).
 
 Photos are cropped to 9:16 around a focus point and encoded as 15 s stills (the scenes add the
 camera move). Clips from the institute footage are cut on its own edit points, slowed down
@@ -15,11 +15,30 @@ from PIL import Image
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 SRC = os.path.join(ROOT, "assets", "source")
+GEN = os.path.join(ROOT, "assets", "generated", "lovable")
 OUT = os.path.join(ROOT, "assets", "media")
 W, H = 1080, 1920
 
-# slot -> ("photo", file, focus_x, focus_y) | ("clip", file, start, end, slowdown)
+# Current set: AI-generated images (Lovable, 1088x1920, same virtual client in every shot), at the
+# client's request not to use her own photos. slot -> ("photo", file in assets/generated/lovable, fx, fy)
 SLOTS = {
+    "IMG-01": ("photo", "img-01-peau-macro.jpg", None, None),    # macro peau, yeux clos
+    "IMG-02": ("photo", "img-02-serum.jpg", None, None),         # pipette et goutte de sérum
+    "IMG-04": ("photo", "img-04-nettoyage.jpg", None, None),     # nettoyage aux mains
+    "IMG-05": ("photo", "img-05-exfoliation.jpg", None, None),   # embout sur le front
+    "IMG-06": ("photo", "img-06-extraction.jpg", None, None),    # embout sur l'aile du nez
+    "IMG-07": ("photo", "img-07-hydratation.jpg", None, None),   # embout sur la joue
+    "IMG-09": ("photo", "img-09-observation.jpg", None, None),   # toucher, observation de la peau
+    "IMG-10": ("photo", "img-10-produits.jpg", None, None),      # texture crème, flacons sans étiquette
+    "IMG-11": ("photo", "img-11-masque.jpg", None, None),        # masque au pinceau
+    "IMG-13": ("photo", "img-13-massage.jpg", None, None),       # massage du visage
+    "IMG-14": ("photo", "img-14-detendu.jpg", None, None),       # visage détendu après le soin
+    "IMG-15": ("photo", "img-15-cabine.jpg", None, None),        # cabine vide
+}
+
+# Previous set: the client's own media in assets/source/ (kept for reference, not used).
+# slot -> ("photo", file, focus_x, focus_y) | ("clip", file, start, end, slowdown)
+SLOTS_CLIENT = {
     "IMG-01": ("photo", "peau-macro.png", None, None),          # macro peau, yeux clos
     "IMG-02": ("photo", "serum-pipette.png", None, None),       # pipette et goutte de sérum
     "IMG-08": ("photo", "machine-cabine.jpg", 760, None),       # la machine de l'institut
@@ -56,7 +75,8 @@ def run(args):
 
 
 def photo(slot, name, fx, fy):
-    im = crop_916(Image.open(os.path.join(SRC, name)).convert("RGB"), fx, fy)
+    src = os.path.join(GEN, name) if os.path.exists(os.path.join(GEN, name)) else os.path.join(SRC, name)
+    im = crop_916(Image.open(src).convert("RGB"), fx, fy)
     png = os.path.join(OUT, f"{slot}.png")
     im.save(png)
     run(["-loop", "1", "-i", png, "-t", "15", "-r", "30", "-c:v", "libx264", "-preset", "medium",
