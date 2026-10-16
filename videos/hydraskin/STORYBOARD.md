@@ -25,7 +25,7 @@ version: v2
 ## Still open
 
 - Validation de la planche de croquis (`storyboard.html`).
-- Coordonnées de l'écran final.
+- (réglé) Coordonnées confirmées : @amani__skin · 07 66 85 43 74.
 - Accès à un service de génération (images et clips) et de voix.
 
 ## Décisions

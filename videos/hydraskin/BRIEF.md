@@ -30,7 +30,7 @@ et un glassmorphism maîtrisé. Chaque élément présent à l'écran doit avoir
   (IMG-04, 05, 06, 07, 09, 11, 13), images fixes animées en complément seulement si nécessaire ;
   éviter tout effet diaporama. Plans remplaçables un par un par des prises réelles (PLANS-A-TOURNER.md).
 - Écran final : nom de l'institut **AMANI SKIN**. Coordonnées : uniquement celles fournies par la cliente,
-  aucune inventée (en attente de confirmation).
+  aucune inventée. Confirmées : @amani__skin · 07 66 85 43 74.
 
 ## Customizations
 
