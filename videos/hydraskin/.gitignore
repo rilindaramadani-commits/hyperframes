@@ -1,3 +1,5 @@
 .hyperframes/
 renders/.tmp*
 *.render-tmp*
+renders/work-*/
+renders/.*hf-transaction*/
