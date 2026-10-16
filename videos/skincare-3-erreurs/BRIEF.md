@@ -25,7 +25,7 @@ scolaire. 100 % 3D isométrique (labo cosmétique premium), animée dans HyperFr
   découpé en un clip par plan (`tools/import_voice.py`, phrases repérées dans `tools/voice_spans.json`).
   Tout le montage (caméra, objets, titres, sous-titres, musique, effets) est recalé sur ce minutage : 68,6 s.
   Demande ensuite : « comme dans un endroit avec un peu d'écho » → réverbération de pièce sur la voix, puis « trop d'écho », puis précision : « comme dans un couloir profond, type salle de bain »
-  → réflexions rapides + réverbération courte et brillante (carrelage), quantité modérée.
+  → réflexions rapides + réverbération courte et brillante (carrelage) ; finalement « sans écho » : voix sans effet.
 
 ## Customizations
 
