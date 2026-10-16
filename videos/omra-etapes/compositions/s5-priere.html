@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #s5-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #s5-all {
+          position: absolute;
+          inset: 0;
+        }
+        #s5-visual {
+          position: absolute;
+          left: 0;
+          top: 500px;
+          width: 1080px;
+          height: 660px;
+        }
+        #s5-visual svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+          overflow: visible;
+        }
+        .s5-num {
+          font: 400 46px "Marcellus", serif;
+          fill: #f5efe2;
+        }
+        .s5-lab {
+          font: 500 26px "Jost", sans-serif;
+          letter-spacing: 0.08em;
+          fill: #d9c7a3;
+        }
+        .s5-card {
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s5-root" data-composition-id="s5-priere" data-width="1080" data-height="1920">
+        <div id="s5-all">
+          <div class="o-head">
+            <div class="o-step"><span class="o-rule" id="s5-rule"></span><span id="s5-stepl">Étape 3</span></div>
+            <div class="o-title" id="s5-title">Deux unités de prière</div>
+            <div><span class="o-badge" id="s5-badge">Sunna <span class="o-badge-sub">· selon la majorité des savants</span></span></div>
+          </div>
+
+          <div id="s5-visual">
+            <svg viewBox="0 0 1080 660" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="s5-halo">
+                  <stop offset="0" stop-color="#e6c98a" stop-opacity="0.42" />
+                  <stop offset="0.5" stop-color="#c9a45c" stop-opacity="0.12" />
+                  <stop offset="1" stop-color="#c9a45c" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="s5-orb">
+                  <stop offset="0" stop-color="#fff6dc" stop-opacity="1" />
+                  <stop offset="0.45" stop-color="#e6c98a" stop-opacity="0.55" />
+                  <stop offset="1" stop-color="#e6c98a" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="s5-glass" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f5efe2" stop-opacity="0.28" />
+                  <stop offset="1" stop-color="#c9a45c" stop-opacity="0.08" />
+                </linearGradient>
+              </defs>
+              <circle id="s5-haloc" cx="540" cy="360" r="330" fill="url(#s5-halo)" />
+              <!-- prayer niche (mihrab) outline -->
+              <path id="s5-arch1" d="M 300 620 L 300 300 Q 300 150 540 70 Q 780 150 780 300 L 780 620" fill="none" stroke="#e6c98a" stroke-width="4" stroke-linecap="round" />
+              <path id="s5-arch2" d="M 330 620 L 330 306 Q 330 180 540 108 Q 750 180 750 306 L 750 620" fill="none" stroke="#c9a45c" stroke-opacity="0.55" stroke-width="2.5" stroke-linecap="round" />
+              <line id="s5-floor" x1="180" y1="622" x2="900" y2="622" stroke="#e6c98a" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round" />
+              <!-- Maqam Ibrahim: gilded enclosure with glass dome -->
+              <g id="s5-maqam">
+                <rect x="470" y="440" width="140" height="22" rx="4" fill="#d9cdb4" />
+                <rect x="458" y="462" width="164" height="18" rx="4" fill="#bfb194" />
+                <path d="M 486 440 L 486 330 Q 486 262 540 248 Q 594 262 594 330 L 594 440 Z" fill="url(#s5-glass)" stroke="#e6c98a" stroke-width="3.5" />
+                <g stroke="#e6c98a" stroke-opacity="0.7" stroke-width="2">
+                  <line x1="513" y1="262" x2="513" y2="440" />
+                  <line x1="540" y1="248" x2="540" y2="440" />
+                  <line x1="567" y1="262" x2="567" y2="440" />
+                  <line x1="486" y1="330" x2="594" y2="330" />
+                  <line x1="486" y1="385" x2="594" y2="385" />
+                </g>
+                <path d="M 540 248 L 540 218" stroke="#e6c98a" stroke-width="3" />
+                <circle cx="540" cy="212" r="7" fill="#e6c98a" />
+                <text class="s5-lab" x="540" y="522" text-anchor="middle">MAQAM IBRAHIM</text>
+              </g>
+              <!-- two units of prayer -->
+              <g id="s5-o1">
+                <circle id="s5-o1g" cx="410" cy="580" r="70" fill="url(#s5-orb)" opacity="0" />
+                <circle cx="410" cy="580" r="34" fill="#050d0a" stroke="#e6c98a" stroke-width="3" />
+                <text class="s5-num" x="410" y="596" text-anchor="middle">1</text>
+              </g>
+              <g id="s5-o2">
+                <circle id="s5-o2g" cx="670" cy="580" r="70" fill="url(#s5-orb)" opacity="0" />
+                <circle cx="670" cy="580" r="34" fill="#050d0a" stroke="#e6c98a" stroke-width="3" />
+                <text class="s5-num" x="670" y="596" text-anchor="middle">2</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="o-card s5-card" id="s5-c1">
+            <div class="o-text">Après le Tawaf, il est recommandé d'accomplir <strong>deux unités de prière</strong> (rak‘a), derrière le <strong>Maqam Ibrahim</strong> si possible.</div>
+          </div>
+          <div class="o-card s5-card" id="s5-c2">
+            <div class="o-text">Sinon, ailleurs dans la mosquée — toujours <strong>sans gêner</strong> les autres fidèles.</div>
+            <div class="o-note">On peut y réciter les sourates Al-Kâfirûn et Al-Ikhlâs, puis boire de l'eau de Zamzam (sunna).</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          ["s5-arch1", "s5-arch2"].forEach((id) => {
+            const p = document.getElementById(id);
+            const L = p.getTotalLength();
+            p.style.strokeDasharray = L;
+            p.style.strokeDashoffset = L;
+          });
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s5-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.2);
+          tl.fromTo("#s5-stepl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 0.4);
+          tl.fromTo("#s5-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.6);
+          tl.fromTo("#s5-badge", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" }, 1.1);
+
+          tl.fromTo("#s5-haloc", { opacity: 0, scale: 0.7, transformOrigin: "540px 360px" }, { opacity: 1, scale: 1, duration: 2.4, ease: "sine.out" }, 0.6);
+          tl.fromTo("#s5-haloc", { scale: 1 }, { scale: 1.08, duration: 2.8, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 3.0);
+          tl.to("#s5-arch1", { strokeDashoffset: 0, duration: 2.4, ease: "power2.inOut" }, 0.8);
+          tl.to("#s5-arch2", { strokeDashoffset: 0, duration: 2.4, ease: "power2.inOut" }, 1.1);
+          tl.fromTo("#s5-floor", { scaleX: 0, transformOrigin: "540px 622px" }, { scaleX: 1, duration: 1.4, ease: "power3.out" }, 1.4);
+          tl.fromTo("#s5-maqam", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.3, ease: "power2.out" }, 2.0);
+          tl.fromTo(["#s5-o1", "#s5-o2"], { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(2)", stagger: 0.2 }, 2.8);
+          tl.fromTo("#s5-o1g", { opacity: 0, scale: 0.5, transformOrigin: "410px 580px" }, { opacity: 1, scale: 1, duration: 1.0, ease: "power2.out" }, 3.8);
+          tl.fromTo("#s5-o2g", { opacity: 0, scale: 0.5, transformOrigin: "670px 580px" }, { opacity: 1, scale: 1, duration: 1.0, ease: "power2.out" }, 5.4);
+
+          tl.fromTo("#s5-c1", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.5);
+          tl.to("#s5-c1", { opacity: 0, y: -18, duration: 0.5, ease: "power1.in" }, 6.5);
+          tl.fromTo("#s5-c2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 7.1);
+
+          tl.to("#s5-all", { opacity: 0, y: -24, duration: 0.9, ease: "power1.in" }, 13.1);
+          window.__timelines["s5-priere"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

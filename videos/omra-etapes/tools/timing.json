@@ -1,0 +1,46 @@
+{
+  "fps": 30,
+  "total": 167,
+  "scenes": [
+    {
+      "id": "s1-intro",
+      "start": 0,
+      "end": 12
+    },
+    {
+      "id": "s2-ihram",
+      "start": 12,
+      "end": 45
+    },
+    {
+      "id": "s3-arrivee",
+      "start": 45,
+      "end": 61
+    },
+    {
+      "id": "s4-tawaf",
+      "start": 61,
+      "end": 93
+    },
+    {
+      "id": "s5-priere",
+      "start": 93,
+      "end": 107
+    },
+    {
+      "id": "s6-sai",
+      "start": 107,
+      "end": 135
+    },
+    {
+      "id": "s7-cheveux",
+      "start": 135,
+      "end": 151
+    },
+    {
+      "id": "s8-conclusion",
+      "start": 151,
+      "end": 167
+    }
+  ]
+}

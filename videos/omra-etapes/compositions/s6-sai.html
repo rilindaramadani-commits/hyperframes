@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #s6-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #s6-all {
+          position: absolute;
+          inset: 0;
+        }
+        #s6-map {
+          position: absolute;
+          left: 0;
+          top: 560px;
+          width: 1080px;
+          height: 650px;
+        }
+        #s6-map svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+          overflow: visible;
+        }
+        .s6-hill {
+          font: 400 46px "Marcellus", serif;
+          fill: #f5efe2;
+        }
+        .s6-tag {
+          font: 500 24px "Jost", sans-serif;
+          letter-spacing: 0.24em;
+          fill: #e6c98a;
+        }
+        .s6-lab {
+          font: 500 26px "Jost", sans-serif;
+          letter-spacing: 0.04em;
+          fill: #9fd6bd;
+        }
+        .s6-ctr-lab {
+          font: 500 26px "Jost", sans-serif;
+          letter-spacing: 0.3em;
+          fill: #e6c98a;
+        }
+        .s6-ctr-num {
+          font: 400 132px "Marcellus", serif;
+          fill: #f5efe2;
+        }
+        .s6-ctr-of {
+          font: 400 44px "Marcellus", serif;
+          fill: #d9c7a3;
+        }
+        .s6-ctr-dir {
+          font: 400 30px "Jost", sans-serif;
+          fill: #d9c7a3;
+        }
+        .s6-card {
+          opacity: 0;
+        }
+        .s6-card sup {
+          font-size: 0.6em;
+          line-height: 0;
+        }
+      </style>
+
+      <div id="s6-root" data-composition-id="s6-sai" data-width="1080" data-height="1920">
+        <div id="s6-all">
+          <div class="o-head">
+            <div class="o-step"><span class="o-rule" id="s6-rule"></span><span id="s6-stepl">Étape 4</span></div>
+            <div class="o-title" id="s6-title">Le Sa‘i entre Safa et Marwa</div>
+            <div><span class="o-badge" id="s6-badge">Pilier <span class="o-badge-sub">· selon la majorité des savants</span></span></div>
+          </div>
+
+          <div id="s6-map">
+            <svg viewBox="0 0 1080 720" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="s6-hillglow">
+                  <stop offset="0" stop-color="#e6c98a" stop-opacity="0.45" />
+                  <stop offset="1" stop-color="#e6c98a" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="s6-dotglow">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity="0.95" />
+                  <stop offset="0.35" stop-color="#f0d9a0" stop-opacity="0.5" />
+                  <stop offset="1" stop-color="#f0d9a0" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="s6-green" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2fae7d" stop-opacity="0" />
+                  <stop offset="0.5" stop-color="#2fae7d" stop-opacity="0.38" />
+                  <stop offset="1" stop-color="#2fae7d" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <!-- gallery between the two hills -->
+              <g id="s6-gallery">
+                <rect x="392" y="120" width="296" height="480" rx="26" fill="#f5efe2" fill-opacity="0.05" stroke="#d9c7a3" stroke-opacity="0.35" stroke-width="2" />
+                <rect id="s6-greenband" x="394" y="300" width="292" height="120" fill="url(#s6-green)" />
+                <g id="s6-lamps" fill="#5be0a6"></g>
+                <text class="s6-lab" x="372" y="352" text-anchor="end">Lumières</text>
+                <text class="s6-lab" x="372" y="386" text-anchor="end">vertes</text>
+              </g>
+              <!-- hills -->
+              <g id="s6-marwa">
+                <circle id="s6-mglow" cx="540" cy="72" r="110" fill="url(#s6-hillglow)" />
+                <path d="M 470 104 Q 500 52 540 46 Q 584 50 612 104 Z" fill="#cdbb9a" />
+                <path d="M 470 104 Q 500 52 540 46 Q 584 50 612 104" fill="none" stroke="#f0d9a0" stroke-width="3" />
+                <text class="s6-hill" x="640" y="78">Marwa</text>
+                <text class="s6-tag" x="642" y="112">ARRIVÉE</text>
+              </g>
+              <g id="s6-safa">
+                <circle id="s6-sglow" cx="540" cy="640" r="110" fill="url(#s6-hillglow)" />
+                <path d="M 466 668 Q 498 612 540 606 Q 586 610 616 668 Z" fill="#cdbb9a" />
+                <path d="M 466 668 Q 498 612 540 606 Q 586 610 616 668" fill="none" stroke="#f0d9a0" stroke-width="3" />
+                <text class="s6-hill" x="640" y="648">Safa</text>
+                <text class="s6-tag" x="642" y="682">DÉPART</text>
+              </g>
+              <g id="s6-lanes" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="s6-walker">
+                <circle id="s6-wglow" cx="0" cy="0" r="34" fill="url(#s6-dotglow)" />
+                <circle id="s6-wdot" cx="0" cy="0" r="10" fill="#ffffff" />
+              </g>
+              <!-- counter -->
+              <g transform="translate(750 250)"><g id="s6-counter">
+                <text class="s6-ctr-lab" x="0" y="0">TRAJET</text>
+                <text class="s6-ctr-num" id="s6-num" x="-4" y="128">1</text>
+                <text class="s6-ctr-of" x="92" y="128">/ 7</text>
+                <text class="s6-ctr-dir" id="s6-dir" x="0" y="184">Safa → Marwa</text>
+              </g></g>
+            </svg>
+          </div>
+
+          <div class="o-card s6-card" id="s6-c1">
+            <div class="o-text">Le Sa‘i consiste à parcourir <strong>sept trajets</strong> entre Safa et Marwa, en commençant à <strong>Safa</strong>.</div>
+          </div>
+          <div class="o-card s6-card" id="s6-c2">
+            <div class="o-text">Safa → Marwa&nbsp;: <strong>1<sup>er</sup> trajet</strong>. Marwa → Safa&nbsp;: <strong>2<sup>e</sup> trajet</strong>.</div>
+            <div class="o-note">Il s'agit donc de sept trajets, et non de sept allers-retours.</div>
+          </div>
+          <div class="o-card s6-card" id="s6-c3">
+            <div class="o-text">Le <strong>septième trajet</strong> se termine à <strong>Marwa</strong>.</div>
+          </div>
+          <div class="o-card s6-card" id="s6-c4">
+            <div class="o-text">Entre les lumières vertes, les hommes <strong>pressent le pas</strong> (sunna).</div>
+            <div class="o-note">Sur Safa et Marwa, on se tourne vers la Kaaba pour invoquer Allah&nbsp;; les invocations restent libres tout au long du parcours.</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const NS = "http://www.w3.org/2000/svg";
+          const lamps = document.getElementById("s6-lamps");
+          for (let i = 0; i < 5; i++) {
+            [400, 680].forEach((x) => {
+              const c = document.createElementNS(NS, "circle");
+              c.setAttribute("cx", x);
+              c.setAttribute("cy", 312 + i * 24);
+              c.setAttribute("r", "4.5");
+              lamps.appendChild(c);
+            });
+          }
+          // seven lanes, one per trip; even = Safa -> Marwa (up), odd = Marwa -> Safa (down)
+          const Y_SAFA = 590, Y_MARWA = 128;
+          const laneX = [438, 472, 506, 540, 574, 608, 642];
+          const lanesG = document.getElementById("s6-lanes");
+          const lanes = [], heads = [];
+          laneX.forEach((x, k) => {
+            const up = k % 2 === 0;
+            const y0 = up ? Y_SAFA : Y_MARWA, y1 = up ? Y_MARWA : Y_SAFA;
+            const p = document.createElementNS(NS, "path");
+            p.setAttribute("d", `M ${x} ${y0} L ${x} ${y1}`);
+            p.setAttribute("stroke", "#e6c98a");
+            p.setAttribute("stroke-width", "3.5");
+            p.setAttribute("stroke-opacity", "0.85");
+            const L = Math.abs(y1 - y0);
+            p.style.strokeDasharray = L;
+            p.style.strokeDashoffset = L;
+            lanesG.appendChild(p);
+            lanes.push({ p, L, x, y0, y1 });
+            const h = document.createElementNS(NS, "path");
+            const dy = up ? 1 : -1;
+            h.setAttribute("d", `M ${x - 9} ${y1 + 12 * dy} L ${x} ${y1} L ${x + 9} ${y1 + 12 * dy}`);
+            h.setAttribute("stroke", "#f0d9a0");
+            h.setAttribute("stroke-width", "3");
+            h.setAttribute("opacity", "0");
+            h.setAttribute("id", "s6-h" + k);
+            lanesG.appendChild(h);
+            heads.push(h);
+          });
+
+          const wdot = document.getElementById("s6-wdot");
+          const wglow = document.getElementById("s6-wglow");
+          const num = document.getElementById("s6-num");
+          const dir = document.getElementById("s6-dir");
+          const walk = { p: 0 };
+          const ease = (f) => 0.5 - 0.5 * Math.cos(Math.PI * f);
+          function place() {
+            const p = Math.max(0, Math.min(7, walk.p));
+            const k = Math.min(6, Math.floor(p));
+            const f = ease(Math.min(1, p - k));
+            lanes.forEach((ln, i) => {
+              const done = i < k ? 1 : i === k ? f : 0;
+              ln.p.style.strokeDashoffset = (ln.L * (1 - done)).toFixed(2);
+            });
+            const ln = lanes[k];
+            const y = ln.y0 + (ln.y1 - ln.y0) * f;
+            wdot.setAttribute("cx", ln.x); wdot.setAttribute("cy", y.toFixed(2));
+            wglow.setAttribute("cx", ln.x); wglow.setAttribute("cy", y.toFixed(2));
+            const trip = Math.min(7, Math.floor(p + 1e-6) + 1);
+            num.textContent = String(trip);
+            dir.textContent = trip % 2 === 1 ? "Safa → Marwa" : "Marwa → Safa";
+          }
+          place();
+
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s6-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.2);
+          tl.fromTo("#s6-stepl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 0.4);
+          tl.fromTo("#s6-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.6);
+          tl.fromTo("#s6-badge", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" }, 1.1);
+
+          tl.fromTo("#s6-gallery", { opacity: 0, scaleY: 0.85, transformOrigin: "540px 360px" }, { opacity: 1, scaleY: 1, duration: 1.4, ease: "power2.out" }, 0.8);
+          tl.fromTo("#s6-safa", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 1.2);
+          tl.fromTo("#s6-marwa", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 1.5);
+          tl.fromTo("#s6-lamps circle", { opacity: 0.35 }, { opacity: 1, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 9, stagger: 0.05 }, 2.0);
+          tl.fromTo("#s6-counter", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }, 3.6);
+          tl.fromTo("#s6-walker", { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 3.9);
+
+          const T0 = 4.6, TRIP = 2.3;
+          tl.fromTo(walk, { p: 0 }, { p: 7, duration: TRIP * 7, ease: "none", onUpdate: place }, T0);
+          for (let k = 0; k < 7; k++) {
+            const t = T0 + k * TRIP;
+            tl.fromTo("#s6-num", { scale: 1.25, opacity: 0.4, transformOrigin: "0px 80px" }, { scale: 1, opacity: 1, duration: 0.5, ease: "power2.out" }, t);
+            tl.to("#s6-h" + k, { opacity: 1, duration: 0.3 }, t + TRIP - 0.2);
+            const glow = k % 2 === 0 ? "#s6-mglow" : "#s6-sglow";
+            tl.fromTo(glow, { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.35, duration: 0.45, ease: "power2.out", yoyo: true, repeat: 1 }, t + TRIP - 0.25);
+          }
+
+          const cards = [["#s6-c1", 1.5, 5.6], ["#s6-c2", 6.0, 12.8], ["#s6-c3", 13.2, 21.2], ["#s6-c4", 21.6, 28]];
+          cards.forEach(([id, a, b]) => {
+            tl.fromTo(id, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, a);
+            if (b < 27.5) tl.to(id, { opacity: 0, y: -18, duration: 0.5, ease: "power1.in" }, b - 0.5);
+          });
+
+          tl.to("#s6-all", { opacity: 0, y: -24, duration: 0.9, ease: "power1.in" }, 27.1);
+          window.__timelines["s6-sai"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

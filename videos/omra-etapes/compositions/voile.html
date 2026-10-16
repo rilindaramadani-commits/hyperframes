@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #voile-root {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+        #voile-black {
+          position: absolute;
+          inset: 0;
+          background: #000;
+          opacity: 0;
+        }
+      </style>
+      <div id="voile-root" data-composition-id="voile" data-width="1080" data-height="1920">
+        <div id="voile-black"></div>
+      </div>
+      <script>
+        (function () {
+          const TOTAL = 167;
+          const tl = gsap.timeline({ paused: true });
+          // opening from black, closing to black (image and sound end together)
+          tl.fromTo("#voile-black", { opacity: 1 }, { opacity: 0, duration: 2.2, ease: "power1.inOut" }, 0);
+          tl.fromTo("#voile-black", { opacity: 0 }, { opacity: 1, duration: 4.5, ease: "power1.in", immediateRender: false }, TOTAL - 4.6);
+          window.__timelines["voile"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

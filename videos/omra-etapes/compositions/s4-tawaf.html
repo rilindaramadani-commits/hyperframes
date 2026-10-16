@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #s4-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #s4-all {
+          position: absolute;
+          inset: 0;
+        }
+        #s4-diagram {
+          position: absolute;
+          left: 0;
+          top: 470px;
+          width: 1080px;
+          height: 720px;
+        }
+        #s4-diagram svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+          overflow: visible;
+        }
+        .s4-lab {
+          font: 500 27px "Jost", sans-serif;
+          letter-spacing: 0.04em;
+          fill: #d9c7a3;
+          paint-order: stroke;
+          stroke: #050d0a;
+          stroke-width: 7px;
+          stroke-linejoin: round;
+        }
+        .s4-lab-gold {
+          fill: #e6c98a;
+        }
+        .s4-ctr-lab {
+          font: 500 26px "Jost", sans-serif;
+          letter-spacing: 0.3em;
+          fill: #e6c98a;
+        }
+        .s4-ctr-num {
+          font: 400 132px "Marcellus", serif;
+          fill: #f5efe2;
+        }
+        .s4-ctr-of {
+          font: 400 44px "Marcellus", serif;
+          fill: #d9c7a3;
+        }
+        .s4-card {
+          opacity: 0;
+        }
+        .s4-q-lab {
+          font: 400 32px/1.4 "Jost", sans-serif;
+          color: var(--sand);
+        }
+        .s4-q-tr {
+          margin-top: 14px;
+          font: 400 38px/1.36 "Jost", sans-serif;
+          color: var(--gold-l);
+        }
+        .s4-q-fr {
+          margin-top: 14px;
+          font: 300 40px/1.34 "Jost", sans-serif;
+          color: var(--ivory);
+        }
+        .s4-q-src {
+          margin-top: 12px;
+          font: 400 28px/1.3 "Jost", sans-serif;
+          letter-spacing: 0.1em;
+          color: var(--gold);
+        }
+      </style>
+
+      <div id="s4-root" data-composition-id="s4-tawaf" data-width="1080" data-height="1920">
+        <div id="s4-all">
+          <div class="o-head" id="s4-head">
+            <div class="o-step"><span class="o-rule" id="s4-rule"></span><span id="s4-stepl">Étape 2</span></div>
+            <div class="o-title" id="s4-title">Le Tawaf</div>
+            <div><span class="o-badge" id="s4-badge">Pilier <span class="o-badge-sub">· en état de pureté (ablutions)</span></span></div>
+          </div>
+
+          <div id="s4-diagram">
+            <svg viewBox="0 0 1080 720" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="s4-floor">
+                  <stop offset="0" stop-color="#f5efe2" stop-opacity="0.16" />
+                  <stop offset="0.7" stop-color="#d9c7a3" stop-opacity="0.07" />
+                  <stop offset="1" stop-color="#d9c7a3" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="s4-dotglow">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity="0.95" />
+                  <stop offset="0.35" stop-color="#f0d9a0" stop-opacity="0.5" />
+                  <stop offset="1" stop-color="#f0d9a0" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="s4-kglow">
+                  <stop offset="0" stop-color="#e6c98a" stop-opacity="0.5" />
+                  <stop offset="1" stop-color="#e6c98a" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+
+              <g id="s4-mataf">
+                <circle cx="540" cy="360" r="330" fill="url(#s4-floor)" />
+                <circle cx="540" cy="360" r="330" fill="none" stroke="#c9a45c" stroke-opacity="0.35" stroke-width="2" />
+                <circle cx="540" cy="360" r="196" fill="none" stroke="#d9c7a3" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="3 12" />
+              </g>
+
+              <!-- Black Stone start line -->
+              <line id="s4-bsline" x1="628" y1="360" x2="870" y2="360" stroke="#e6c98a" stroke-width="4" stroke-linecap="round" />
+              <line id="s4-bsflash" x1="628" y1="360" x2="870" y2="360" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity="0" />
+
+              <!-- 7-turn spiral trail -->
+              <path id="s4-spiral" d="M 768 360 L 768 361" fill="none" stroke="#e6c98a" stroke-width="3" stroke-opacity="0.75" stroke-linecap="round" />
+              <g id="s4-chevrons" fill="none" stroke="#e6c98a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"></g>
+
+              <!-- Kaaba from above, with Hijr Ismail and Maqam Ibrahim -->
+              <g id="s4-kaaba-g">
+                <circle cx="540" cy="360" r="150" fill="url(#s4-kglow)" id="s4-kglowc" />
+                <g transform="translate(540 360) rotate(45)">
+                  <path d="M -64 -50 C -152 -50, -152 50, -64 50" fill="#f5efe2" fill-opacity="0.07" stroke="#e6c98a" stroke-width="5" stroke-opacity="0.85" />
+                  <rect x="-60" y="-60" width="120" height="120" fill="#0d0d0f" stroke="#e6c98a" stroke-width="2.5" stroke-opacity="0.7" />
+                  <rect x="-60" y="-60" width="120" height="120" fill="none" stroke="#d4b06a" stroke-width="7" stroke-opacity="0.25" />
+                  <rect x="14" y="-60" width="28" height="7" fill="#e6c98a" />
+                  <circle cx="60" cy="-60" r="7" fill="#1d1d20" stroke="#c9c6be" stroke-width="2.5" />
+                  <g transform="translate(20 -132)">
+                    <circle r="15" fill="#e6c98a" fill-opacity="0.25" />
+                    <circle r="8" fill="#e6c98a" />
+                  </g>
+                </g>
+              </g>
+
+              <!-- labels -->
+              <g id="s4-labels">
+                <g class="s4-lg">
+                  <text class="s4-lab s4-lab-gold" x="680" y="342">Pierre noire</text>
+                </g>
+                <g class="s4-lg">
+                  <line x1="436" y1="290" x2="226" y2="452" stroke="#d9c7a3" stroke-opacity="0.6" stroke-width="2" />
+                  <text class="s4-lab" x="214" y="468" text-anchor="end">Hijr</text>
+                  <text class="s4-lab" x="214" y="502" text-anchor="end">Ismaïl</text>
+                </g>
+                <g class="s4-lg">
+                  <line x1="649" y1="292" x2="830" y2="138" stroke="#d9c7a3" stroke-opacity="0.6" stroke-width="2" />
+                  <text class="s4-lab" x="842" y="122">Maqam</text>
+                  <text class="s4-lab" x="842" y="156">Ibrahim</text>
+                </g>
+                <g class="s4-lg">
+                  <text class="s4-lab" x="540" y="486" text-anchor="middle">Coin yéménite</text>
+                </g>
+              </g>
+
+              <!-- the pilgrim's light -->
+              <g id="s4-walker">
+                <circle id="s4-wglow" cx="0" cy="0" r="36" fill="url(#s4-dotglow)" />
+                <circle id="s4-wdot" cx="0" cy="0" r="10" fill="#ffffff" />
+              </g>
+
+              <!-- counter -->
+              <g transform="translate(90 64)"><g id="s4-counter">
+                <text class="s4-ctr-lab" x="0" y="0">TOUR</text>
+                <text class="s4-ctr-num" id="s4-num" x="-4" y="128">1</text>
+                <text class="s4-ctr-of" x="92" y="128">/ 7</text>
+                <g id="s4-pips" transform="translate(4 168)"></g>
+              </g></g>
+            </svg>
+          </div>
+
+          <div class="o-card s4-card" id="s4-c1">
+            <div class="o-text">Le Tawaf consiste à effectuer <strong>sept tours</strong> autour de la Kaaba, en commençant au niveau de la <strong>Pierre noire</strong>.</div>
+          </div>
+          <div class="o-card s4-card" id="s4-c2">
+            <div class="o-text">La Kaaba reste à votre <strong>gauche</strong>&nbsp;: on tourne dans le sens inverse des aiguilles d'une montre.</div>
+          </div>
+          <div class="o-card s4-card" id="s4-c3">
+            <div class="o-text">Chaque tour commence et s'achève au niveau de la <strong>Pierre noire</strong>.</div>
+            <div class="o-note">Sunna pour les hommes&nbsp;: épaule droite découverte et pas pressé lors des trois premiers tours.</div>
+          </div>
+          <div class="o-card s4-card" id="s4-c4">
+            <div class="o-text">Les <strong>invocations sont libres</strong>&nbsp;: il n'existe pas d'invocation obligatoire propre à chaque tour.</div>
+          </div>
+          <div class="o-card s4-card" id="s4-c5">
+            <div class="s4-q-lab">Entre le coin yéménite et la Pierre noire, il est rapporté de dire&nbsp;:</div>
+            <div class="s4-q-tr">Rabbana atina fid-dunya hasanah, wa fil-akhirati hasanah, wa qina ‘adhaban-nar.</div>
+            <div class="s4-q-fr">«&nbsp;Seigneur&nbsp;! Accorde-nous belle part ici-bas, et belle part aussi dans l'au-delà, et protège-nous du châtiment du Feu.&nbsp;»</div>
+            <div class="s4-q-src">CORAN · SOURATE 2, VERSET 201</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const NS = "http://www.w3.org/2000/svg";
+          const CX = 540, CY = 360;
+          const R0 = 228, DR = 8.5; // spiral: one ring per tour, slowly widening
+          const TURNS = 7, STEPS = 140;
+          // counter-clockwise on screen = decreasing angle (y axis points down)
+          const pts = [];
+          for (let i = 0; i <= TURNS * STEPS; i++) {
+            const p = i / STEPS;
+            const a = -2 * Math.PI * p;
+            const r = R0 + DR * p;
+            pts.push([CX + r * Math.cos(a), CY + r * Math.sin(a)]);
+          }
+          const spiral = document.getElementById("s4-spiral");
+          spiral.setAttribute("d", "M " + pts.map((q) => q[0].toFixed(1) + " " + q[1].toFixed(1)).join(" L "));
+          const SL = spiral.getTotalLength();
+          spiral.style.strokeDasharray = SL;
+          spiral.style.strokeDashoffset = SL;
+          // cumulative length per sample (computed once)
+          const cum = [0];
+          for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+          const scale = SL / cum[cum.length - 1];
+
+          // direction chevrons on the walking ring
+          const chev = document.getElementById("s4-chevrons");
+          [-0.125, -0.375, -0.625, -0.875].forEach((f) => {
+            const ang = Math.PI * 2 * f;
+            const r = 296;
+            const x = CX + r * Math.cos(ang), y = CY + r * Math.sin(ang);
+            const dir = (Math.atan2(-Math.cos(ang), Math.sin(ang)) * 180) / Math.PI;
+            const p = document.createElementNS(NS, "path");
+            p.setAttribute("d", "M -9 -12 L 7 0 L -9 12");
+            p.setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${dir.toFixed(1)})`);
+            p.setAttribute("class", "s4-chev");
+            chev.appendChild(p);
+          });
+
+          // pips for the counter
+          const pips = document.getElementById("s4-pips");
+          for (let i = 0; i < 7; i++) {
+            const c = document.createElementNS(NS, "circle");
+            c.setAttribute("cx", (i * 26).toString());
+            c.setAttribute("cy", "0");
+            c.setAttribute("r", "8");
+            c.setAttribute("fill", "#e6c98a");
+            c.setAttribute("fill-opacity", "0.18");
+            c.setAttribute("stroke", "#e6c98a");
+            c.setAttribute("stroke-width", "2");
+            c.setAttribute("id", "s4-pip" + i);
+            pips.appendChild(c);
+          }
+
+          const wdot = document.getElementById("s4-wdot");
+          const wglow = document.getElementById("s4-wglow");
+          const num = document.getElementById("s4-num");
+          const walk = { p: 0 };
+          function place() {
+            const f = Math.min(pts.length - 1, Math.max(0, walk.p * STEPS));
+            const i = Math.floor(f), t = f - i;
+            const a = pts[i], b = pts[Math.min(pts.length - 1, i + 1)];
+            const x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t;
+            wdot.setAttribute("cx", x.toFixed(2)); wdot.setAttribute("cy", y.toFixed(2));
+            wglow.setAttribute("cx", x.toFixed(2)); wglow.setAttribute("cy", y.toFixed(2));
+            const c = cum[i] + (cum[Math.min(cum.length - 1, i + 1)] - cum[i]) * t;
+            spiral.style.strokeDashoffset = (SL - c * scale).toFixed(2);
+            num.textContent = String(Math.min(7, Math.floor(walk.p + 1e-6) + 1));
+          }
+          place();
+
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s4-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.2);
+          tl.fromTo("#s4-stepl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 0.4);
+          tl.fromTo("#s4-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.6);
+          tl.fromTo("#s4-badge", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" }, 1.1);
+
+          // diagram build
+          tl.fromTo("#s4-mataf", { opacity: 0, scale: 0.85, transformOrigin: "540px 360px" }, { opacity: 1, scale: 1, duration: 1.4, ease: "power2.out" }, 0.6);
+          tl.fromTo("#s4-kaaba-g", { opacity: 0, scale: 0.6, transformOrigin: "540px 360px" }, { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.5)" }, 1.0);
+          tl.fromTo("#s4-kglowc", { scale: 0.9, transformOrigin: "540px 360px" }, { scale: 1.12, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: 10 }, 2.2);
+          tl.fromTo("#s4-bsline", { opacity: 0, scaleX: 0, transformOrigin: "628px 360px" }, { opacity: 1, scaleX: 1, duration: 0.9, ease: "power3.out" }, 2.2);
+          tl.fromTo(".s4-lg", { opacity: 0 }, { opacity: 1, duration: 0.7, stagger: 0.3, ease: "sine.out" }, 2.6);
+          tl.fromTo(".s4-chev", { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.12 }, 4.6);
+          tl.fromTo("#s4-counter", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }, 4.4);
+          tl.fromTo("#s4-walker", { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, 4.9);
+
+          // seven tours, constant pace, each starting at the Black Stone line
+          const T0 = 5.6, LAP = 16 / 7;
+          tl.fromTo(walk, { p: 0 }, { p: 7, duration: LAP * 7, ease: "none", onUpdate: place }, T0);
+          for (let k = 0; k < 7; k++) {
+            const t = T0 + k * LAP;
+            tl.fromTo("#s4-num", { scale: 1.25, opacity: 0.4, transformOrigin: "0px 80px" }, { scale: 1, opacity: 1, duration: 0.5, ease: "power2.out" }, t);
+            tl.fromTo("#s4-bsflash", { opacity: 0 }, { opacity: 0.85, duration: 0.1 }, t);
+            tl.to("#s4-bsflash", { opacity: 0, duration: 0.7, ease: "power2.out" }, t + 0.1);
+            tl.to("#s4-pip" + k, { attr: { "fill-opacity": 1 }, duration: 0.4, ease: "power2.out" }, t + LAP - 0.25);
+          }
+          tl.to("#s4-walker", { scale: 1.3, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, T0 + 7 * LAP);
+
+          // texts
+          const cards = [["#s4-c1", 1.4, 5.3], ["#s4-c2", 5.7, 12.9], ["#s4-c3", 13.3, 21.3], ["#s4-c4", 21.7, 25.3], ["#s4-c5", 25.7, 32]];
+          cards.forEach(([id, a, b]) => {
+            tl.fromTo(id, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, a);
+            if (b < 31.5) tl.to(id, { opacity: 0, y: -18, duration: 0.5, ease: "power1.in" }, b - 0.5);
+          });
+
+          tl.to("#s4-all", { opacity: 0, y: -24, duration: 0.9, ease: "power1.in" }, 31.1);
+          window.__timelines["s4-tawaf"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

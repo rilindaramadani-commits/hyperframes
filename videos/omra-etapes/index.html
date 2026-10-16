@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Les étapes de la Omra — motion design</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/art/art.js"></script>
+    <style>
+      @font-face {
+        font-family: "Marcellus";
+        src: url("assets/fonts/marcellus-latin-400-normal.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Jost";
+        src: url("assets/fonts/jost-latin-200-normal.woff2") format("woff2");
+        font-weight: 200;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Jost";
+        src: url("assets/fonts/jost-latin-300-normal.woff2") format("woff2");
+        font-weight: 300;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Jost";
+        src: url("assets/fonts/jost-latin-400-normal.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Jost";
+        src: url("assets/fonts/jost-latin-500-normal.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Amiri";
+        src: url("assets/fonts/amiri-arabic-400-normal.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+      }
+      @font-face {
+        font-family: "Amiri";
+        src: url("assets/fonts/amiri-arabic-700-normal.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+      }
+
+      :root {
+        --night: #050d0a;
+        --night-2: #0a1a14;
+        --emerald: #0f3d2e;
+        --emerald-l: #1f7a5a;
+        --ivory: #f5efe2;
+        --sand: #d9c7a3;
+        --gold: #c9a45c;
+        --gold-l: #e6c98a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--night);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--night);
+        font-family: "Jost", sans-serif;
+        color: var(--ivory);
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+      }
+      /* ---- shared scene typography (used by every sub-composition) */
+      .o-head {
+        position: absolute;
+        left: 90px;
+        right: 120px;
+        top: 210px;
+      }
+      .o-step {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        font: 500 30px/1 "Jost", sans-serif;
+        letter-spacing: 0.32em;
+        color: var(--gold-l);
+        text-transform: uppercase;
+      }
+      .o-step .o-rule {
+        display: block;
+        width: 96px;
+        height: 2px;
+        background: var(--gold);
+        transform-origin: left center;
+      }
+      .o-title {
+        margin-top: 26px;
+        font: 400 90px/1.06 "Marcellus", serif;
+        letter-spacing: -0.005em;
+        color: var(--ivory);
+        text-wrap: balance;
+      }
+      .o-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 30px;
+        padding: 12px 26px 12px 22px;
+        border: 2px solid rgba(201, 164, 92, 0.75);
+        border-radius: 44px;
+        background: rgba(15, 61, 46, 0.55);
+        font: 500 27px/1 "Jost", sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold-l);
+      }
+      .o-badge::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--gold-l);
+        box-shadow: 0 0 14px rgba(230, 201, 138, 0.9);
+      }
+      .o-badge .o-badge-sub {
+        color: var(--sand);
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        text-transform: none;
+      }
+      .o-card {
+        position: absolute;
+        left: 90px;
+        right: 120px;
+        bottom: 370px;
+      }
+      .o-text {
+        font: 300 46px/1.34 "Jost", sans-serif;
+        color: var(--ivory);
+      }
+      .o-text strong {
+        font-weight: 500;
+        color: var(--gold-l);
+      }
+      .o-note {
+        margin-top: 26px;
+        font: 400 32px/1.4 "Jost", sans-serif;
+        color: var(--sand);
+      }
+      .o-ar {
+        font-family: "Amiri", serif;
+        direction: rtl;
+        unicode-bidi: isolate;
+      }
+      .o-label {
+        font: 500 26px/1.2 "Jost", sans-serif;
+        letter-spacing: 0.08em;
+        color: var(--sand);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="167"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="bg" class="scene clip" data-composition-id="bg" data-composition-src="compositions/bg.html"
+        data-start="0" data-duration="167" data-track-index="0" data-width="1080" data-height="1920"></div>
+
+      <div id="s1-intro" class="scene clip" data-composition-id="s1-intro" data-composition-src="compositions/s1-intro.html"
+        data-start="0" data-duration="12" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="s2-ihram" class="scene clip" data-composition-id="s2-ihram" data-composition-src="compositions/s2-ihram.html"
+        data-start="12" data-duration="33" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="s3-arrivee" class="scene clip" data-composition-id="s3-arrivee" data-composition-src="compositions/s3-arrivee.html"
+        data-start="45" data-duration="16" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="s4-tawaf" class="scene clip" data-composition-id="s4-tawaf" data-composition-src="compositions/s4-tawaf.html"
+        data-start="61" data-duration="32" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="s5-priere" class="scene clip" data-composition-id="s5-priere" data-composition-src="compositions/s5-priere.html"
+        data-start="93" data-duration="14" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="s6-sai" class="scene clip" data-composition-id="s6-sai" data-composition-src="compositions/s6-sai.html"
+        data-start="107" data-duration="28" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="s7-cheveux" class="scene clip" data-composition-id="s7-cheveux" data-composition-src="compositions/s7-cheveux.html"
+        data-start="135" data-duration="16" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="s8-conclusion" class="scene clip" data-composition-id="s8-conclusion" data-composition-src="compositions/s8-conclusion.html"
+        data-start="151" data-duration="16" data-track-index="1" data-width="1080" data-height="1920"></div>
+
+      <div id="voile" class="scene clip" data-composition-id="voile" data-composition-src="compositions/voile.html"
+        data-start="0" data-duration="167" data-track-index="3" data-width="1080" data-height="1920"></div>
+
+      <!-- Background bed: original hummed-voices piece (see README). To use a licensed nashid instead,
+           replace the src below with your file (167 s or longer): the fade-in / fade-out below still apply. -->
+      <audio id="nashid" src="assets/audio/fond-vocal.mp3" data-start="0" data-duration="167" data-track-index="4"
+        data-volume="1"
+        data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":4,"v":1},{"t":160,"v":1},{"t":167,"v":0}]}]}'></audio>
+    </div>
+
+    <script>
+      // Scenes, backdrop and fades live in compositions/; the root timeline only anchors them.
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

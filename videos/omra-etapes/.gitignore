@@ -1,0 +1,5 @@
+.hyperframes/
+snapshots/
+renders/
+assets/audio/*.wav
+*.render-tmp*

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #s2-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #s2-all {
+          position: absolute;
+          inset: 0;
+        }
+        .s2-badges {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0 18px;
+        }
+        .s2-swap {
+          position: relative;
+        }
+        .s2-swap > div {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+        }
+        #s2-titles {
+          height: 112px;
+        }
+        #s2-badgerow {
+          height: 82px;
+        }
+        /* ---- map */
+        #s2-map {
+          position: absolute;
+          left: 0;
+          top: 590px;
+          width: 1080px;
+          height: 640px;
+        }
+        #s2-map svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+          overflow: visible;
+        }
+        .s2-lab {
+          font: 500 27px "Jost", sans-serif;
+          letter-spacing: 0.04em;
+          fill: #d9c7a3;
+        }
+        .s2-lab-city {
+          font: 400 34px "Marcellus", serif;
+          fill: #f5efe2;
+        }
+        .s2-lab-small {
+          font: 400 24px "Jost", sans-serif;
+          fill: #d9c7a3;
+          fill-opacity: 0.7;
+        }
+        .s2-ihram-tag {
+          font: 500 26px "Jost", sans-serif;
+          letter-spacing: 0.1em;
+          fill: #050d0a;
+        }
+        /* ---- text cards */
+        .s2-card {
+          opacity: 0;
+        }
+        /* ---- talbiya */
+        #s2-tal {
+          position: absolute;
+          left: 70px;
+          right: 70px;
+          top: 600px;
+          height: 960px;
+          opacity: 0;
+        }
+        #s2-arwrap {
+          position: relative;
+          height: 230px;
+        }
+        .s2-arp {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 230px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font: 700 82px/1.45 "Amiri", serif;
+          color: var(--gold-l);
+          opacity: 0;
+        }
+        #s2-translit {
+          margin-top: 34px;
+          text-align: center;
+          font: 400 46px/1.42 "Jost", sans-serif;
+          color: var(--ivory);
+        }
+        .s2-tp {
+          opacity: 0;
+          display: inline;
+        }
+        #s2-sub {
+          position: relative;
+          margin-top: 46px;
+          height: 170px;
+          border-top: 2px solid rgba(201, 164, 92, 0.6);
+        }
+        .s2-fr {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 28px;
+          text-align: center;
+          font: 300 46px/1.34 "Jost", sans-serif;
+          color: var(--ivory);
+          opacity: 0;
+        }
+        #s2-talnote {
+          margin-top: 10px;
+          text-align: center;
+          font: 400 32px/1.4 "Jost", sans-serif;
+          color: var(--sand);
+          opacity: 0;
+        }
+      </style>
+
+      <div id="s2-root" data-composition-id="s2-ihram" data-width="1080" data-height="1920">
+        <div id="s2-all">
+          <div class="o-head" id="s2-head">
+            <div class="o-step"><span class="o-rule" id="s2-rule"></span><span id="s2-stepl">Étape 1</span></div>
+            <div class="s2-swap" id="s2-titles">
+              <div class="o-title" id="s2-t1">L'ihram et le Miqat</div>
+              <div class="o-title" id="s2-t2" style="opacity: 0">La Talbiya</div>
+            </div>
+            <div class="s2-swap" id="s2-badgerow">
+              <div class="s2-badges" id="s2-b1">
+                <span class="o-badge">Intention · pilier</span>
+                <span class="o-badge">Miqat · obligation</span>
+              </div>
+              <div class="s2-badges" id="s2-b2" style="opacity: 0">
+                <span class="o-badge">Sunna <span class="o-badge-sub">· obligatoire selon certaines écoles</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div id="s2-map">
+            <svg viewBox="0 0 1080 640" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="s2-mglow">
+                  <stop offset="0" stop-color="#e6c98a" stop-opacity="0.75" />
+                  <stop offset="0.4" stop-color="#c9a45c" stop-opacity="0.22" />
+                  <stop offset="1" stop-color="#c9a45c" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="s2-dotglow">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity="0.95" />
+                  <stop offset="0.35" stop-color="#f5efe2" stop-opacity="0.45" />
+                  <stop offset="1" stop-color="#f5efe2" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <!-- faint geographic texture: concentric guides around Makkah -->
+              <g id="s2-guides" fill="none" stroke="#1f7a5a" stroke-opacity="0.35" stroke-width="2">
+                <circle cx="540" cy="330" r="110" />
+                <circle cx="540" cy="330" r="210" stroke-dasharray="4 14" />
+                <circle cx="540" cy="330" r="310" stroke-dasharray="2 18" />
+              </g>
+              <!-- the Miqat boundary -->
+              <path id="s2-ring-glow" d="M 505 40 L 700 172" fill="none" stroke="#c9a45c" stroke-opacity="0.25" stroke-width="12" stroke-linecap="round" />
+              <path id="s2-ring" d="M 505 40 L 700 172" fill="none" stroke="#e6c98a" stroke-width="3.5" stroke-linecap="round" />
+              <!-- traveller route (from Madinah, through Dhul-Hulayfa) -->
+              <path id="s2-route" d="M 430 -60 C 470 -20, 498 10, 505 40 C 512 140, 532 240, 540 314" fill="none"
+                stroke="#f5efe2" stroke-opacity="0.85" stroke-width="3" stroke-linecap="round" />
+              <g id="s2-mecca">
+                <circle cx="540" cy="330" r="120" fill="url(#s2-mglow)" id="s2-mglowc" />
+                <rect x="522" y="312" width="36" height="36" fill="#0b0b0c" stroke="#e6c98a" stroke-width="2" />
+                <rect x="522" y="320" width="36" height="5" fill="#d4b06a" />
+                <text class="s2-lab-city" x="540" y="404" text-anchor="middle">La Mecque</text>
+              </g>
+              <g id="s2-points"></g>
+              <g id="s2-pulse-g">
+                <circle id="s2-pulse" cx="505" cy="40" r="20" fill="none" stroke="#f5efe2" stroke-width="3" opacity="0" />
+              </g>
+              <g transform="translate(140 -14)"><g id="s2-tag">
+                <rect x="0" y="-25" width="304" height="50" rx="25" fill="#e6c98a" />
+                <text class="s2-ihram-tag" x="152" y="9" text-anchor="middle">ENTRÉE EN IHRAM</text>
+              </g></g>
+              <g id="s2-traveller">
+                <circle id="s2-dot-glow" cx="0" cy="0" r="34" fill="url(#s2-dotglow)" />
+                <circle id="s2-dot" cx="0" cy="0" r="9" fill="#d9c7a3" />
+              </g>
+              <text class="s2-lab-small" id="s2-scale" x="990" y="-44" text-anchor="end">Carte stylisée — distances non à l'échelle</text>
+            </svg>
+          </div>
+
+          <div class="o-card s2-card" id="s2-c1">
+            <div class="o-text">Avant de franchir le <strong>Miqat</strong>, on entre en état d'<strong>ihram</strong> et l'on formule l'<strong>intention</strong> de la Omra.</div>
+            <div class="o-note">L'intention est dans le cœur&nbsp;; on peut dire&nbsp;: «&nbsp;Labbayka ‘umratan&nbsp;».</div>
+          </div>
+          <div class="o-card s2-card" id="s2-c2">
+            <div class="o-text"><strong>Hommes</strong>&nbsp;: deux pièces de tissu non cousues, de préférence blanches. <strong>Femmes</strong>&nbsp;: des vêtements amples et pudiques.</div>
+            <div class="o-note">En ihram, certains actes sont interdits&nbsp;: se parfumer, se couper les cheveux ou les ongles…</div>
+          </div>
+
+          <div id="s2-tal">
+            <div id="s2-arwrap">
+              <div class="s2-arp o-ar" lang="ar" id="s2-a1">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ</div>
+              <div class="s2-arp o-ar" lang="ar" id="s2-a2">لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ</div>
+              <div class="s2-arp o-ar" lang="ar" id="s2-a3">إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ</div>
+              <div class="s2-arp o-ar" lang="ar" id="s2-a4">لَا شَرِيكَ لَكَ</div>
+            </div>
+            <div id="s2-translit">
+              <span class="s2-tp" id="s2-p1">Labbayka Allahumma labbayk,</span>
+              <span class="s2-tp" id="s2-p2">labbayka la sharika laka labbayk,</span>
+              <span class="s2-tp" id="s2-p3">innal-hamda wan-ni‘mata laka wal-mulk,</span>
+              <span class="s2-tp" id="s2-p4">la sharika lak.</span>
+            </div>
+            <div id="s2-sub">
+              <div class="s2-fr" id="s2-f1">«&nbsp;Me voici, ô Allah, me voici.&nbsp;»</div>
+              <div class="s2-fr" id="s2-f2">«&nbsp;Me voici, Tu n'as pas d'associé, me voici.&nbsp;»</div>
+              <div class="s2-fr" id="s2-f3">«&nbsp;Certes, la louange, le bienfait et la royauté T'appartiennent.&nbsp;»</div>
+              <div class="s2-fr" id="s2-f4">«&nbsp;Tu n'as pas d'associé.&nbsp;»</div>
+            </div>
+            <div id="s2-talnote">Les hommes l'élèvent, les femmes la disent à voix basse — jusqu'au début du Tawaf.</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const NS = "http://www.w3.org/2000/svg";
+          // Five Miqat (stylised positions around Makkah, map centre 540,330)
+          const MIQAT = [
+            { name: "Dhul-Hulayfa", x: 505, y: 40, lx: 28, ly: 9, anchor: "start" },
+            { name: "Dhat ‘Irq", x: 700, y: 172, lx: 22, ly: -14, anchor: "start" },
+            { name: "Qarn|al-Manazil", x: 790, y: 318, lx: 26, ly: -6, anchor: "start" },
+            { name: "Yalamlam", x: 612, y: 540, lx: 30, ly: 36, anchor: "start" },
+            { name: "Al-Juhfa", x: 300, y: 178, lx: -24, ly: -14, anchor: "end" },
+          ];
+          // closed Catmull-Rom curve through the five points
+          const P = MIQAT.map((m) => [m.x, m.y]);
+          let d = `M ${P[0][0]} ${P[0][1]}`;
+          for (let i = 0; i < P.length; i++) {
+            const p0 = P[(i - 1 + P.length) % P.length], p1 = P[i], p2 = P[(i + 1) % P.length], p3 = P[(i + 2) % P.length];
+            const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+            const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+            d += ` C ${c1[0].toFixed(1)} ${c1[1].toFixed(1)}, ${c2[0].toFixed(1)} ${c2[1].toFixed(1)}, ${p2[0]} ${p2[1]}`;
+          }
+          document.getElementById("s2-ring").setAttribute("d", d);
+          document.getElementById("s2-ring-glow").setAttribute("d", d);
+
+          const pg = document.getElementById("s2-points");
+          MIQAT.forEach((m, i) => {
+            const g = document.createElementNS(NS, "g");
+            g.setAttribute("class", "s2-pt");
+            g.innerHTML =
+              `<circle cx="${m.x}" cy="${m.y}" r="16" fill="#050d0a" stroke="#e6c98a" stroke-width="3"/>` +
+              `<circle cx="${m.x}" cy="${m.y}" r="6" fill="#e6c98a"/>` +
+              `<text class="s2-lab" x="${m.x + m.lx}" y="${m.y + m.ly}" text-anchor="${m.anchor}">` +
+              m.name.split("|").map((t, k) => `<tspan x="${m.x + m.lx}" dy="${k ? 32 : 0}">${t}</tspan>`).join("") + `</text>`;
+            pg.appendChild(g);
+          });
+
+          // path-draw setup
+          const ring = document.getElementById("s2-ring");
+          const ringGlow = document.getElementById("s2-ring-glow");
+          const rl = ring.getTotalLength();
+          [ring, ringGlow].forEach((p) => { p.style.strokeDasharray = rl; p.style.strokeDashoffset = rl; });
+          const route = document.getElementById("s2-route");
+          const L = route.getTotalLength();
+          route.style.strokeDasharray = L;
+          route.style.strokeDashoffset = L;
+          // sample the route once (no DOM reads at tween time)
+          const SAMPLES = 240;
+          const pts = [];
+          for (let i = 0; i <= SAMPLES; i++) {
+            const q = route.getPointAtLength((L * i) / SAMPLES);
+            pts.push([q.x, q.y]);
+          }
+          // fraction of the route where it crosses Dhul-Hulayfa
+          let cross = 0, best = 1e9;
+          pts.forEach((q, i) => { const dd = Math.hypot(q[0] - 505, q[1] - 40); if (dd < best) { best = dd; cross = i / SAMPLES; } });
+          const dot = document.getElementById("s2-dot");
+          const dotGlow = document.getElementById("s2-dot-glow");
+          const trav = { p: 0 };
+          function place() {
+            const f = Math.min(SAMPLES, Math.max(0, trav.p * SAMPLES));
+            const i = Math.floor(f), t = f - i;
+            const a = pts[i], b = pts[Math.min(SAMPLES, i + 1)];
+            const x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t;
+            dot.setAttribute("cx", x.toFixed(2)); dot.setAttribute("cy", y.toFixed(2));
+            dotGlow.setAttribute("cx", x.toFixed(2)); dotGlow.setAttribute("cy", y.toFixed(2));
+            route.style.strokeDashoffset = (L * (1 - trav.p)).toFixed(2);
+          }
+          place();
+
+          const tl = gsap.timeline({ paused: true });
+          // header
+          tl.fromTo("#s2-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.2);
+          tl.fromTo("#s2-stepl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 0.4);
+          tl.fromTo("#s2-t1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.6);
+          tl.fromTo("#s2-b1 .o-badge", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "back.out(1.6)", stagger: 0.25 }, 1.2);
+
+          // map
+          tl.fromTo("#s2-map", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "sine.out" }, 0.8);
+          tl.fromTo("#s2-guides circle", { scale: 0.6, opacity: 0, transformOrigin: "540px 330px" },
+            { scale: 1, opacity: 1, duration: 1.6, ease: "power2.out", stagger: 0.15 }, 0.9);
+          tl.fromTo("#s2-mecca", { opacity: 0, scale: 0.7, transformOrigin: "540px 330px" }, { opacity: 1, scale: 1, duration: 1.0, ease: "back.out(1.4)" }, 1.2);
+          tl.fromTo("#s2-mglowc", { scale: 0.9, transformOrigin: "540px 330px" }, { scale: 1.15, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 2.2);
+          tl.to([ring, ringGlow], { strokeDashoffset: 0, duration: 2.4, ease: "power2.inOut" }, 1.2);
+          tl.fromTo(".s2-pt", { opacity: 0, scale: 0.4, transformOrigin: "center center" },
+            { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)", stagger: 0.28 }, 1.7);
+          tl.fromTo("#s2-scale", { opacity: 0 }, { opacity: 1, duration: 1 }, 3.2);
+
+          // traveller reaches the Miqat, enters ihram, continues to Makkah
+          tl.fromTo("#s2-traveller", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.3);
+          tl.fromTo(trav, { p: 0 }, { p: cross, duration: 1.8, ease: "power1.inOut", onUpdate: place }, 3.4);
+          tl.fromTo("#s2-pulse", { attr: { r: 16 } }, { attr: { r: 90 }, duration: 1.4, ease: "power2.out" }, 5.2);
+          tl.fromTo("#s2-pulse", { opacity: 0 }, { opacity: 0.9, duration: 0.1 }, 5.2);
+          tl.to("#s2-pulse", { opacity: 0, duration: 1.2, ease: "power2.out" }, 5.35);
+          tl.fromTo("#s2-dot", { attr: { r: 9 }, fill: "#d9c7a3" }, { attr: { r: 12 }, fill: "#ffffff", duration: 0.6, ease: "power2.out" }, 5.2);
+          tl.fromTo("#s2-dot-glow", { attr: { r: 34 } }, { attr: { r: 52 }, duration: 0.8, ease: "power2.out" }, 5.2);
+          tl.fromTo("#s2-tag", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }, 5.4);
+          tl.fromTo(trav, { p: cross }, { p: 1, duration: 3.0, ease: "power1.inOut", onUpdate: place, immediateRender: false }, 6.2);
+          tl.to("#s2-tag", { opacity: 0, duration: 0.6 }, 9.6);
+
+          // explanation cards
+          tl.fromTo("#s2-c1", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 3.0);
+          tl.to("#s2-c1", { opacity: 0, y: -18, duration: 0.6, ease: "power1.in" }, 9.4);
+          tl.fromTo("#s2-c2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 10.0);
+          tl.to("#s2-c2", { opacity: 0, y: -18, duration: 0.6, ease: "power1.in" }, 15.8);
+
+          // ---- the Talbiya
+          tl.to("#s2-map", { opacity: 0, scale: 0.92, duration: 1.0, ease: "power2.in" }, 15.9);
+          tl.to("#s2-t1", { opacity: 0, y: -20, duration: 0.6, ease: "power1.in" }, 16.0);
+          tl.to("#s2-b1", { opacity: 0, duration: 0.5 }, 16.0);
+          tl.fromTo("#s2-t2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 16.5);
+          tl.fromTo("#s2-b2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 16.9);
+          tl.fromTo("#s2-tal", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 16.8);
+
+          const PH = [17.2, 20.6, 24.0, 27.6];
+          PH.forEach((t0, i) => {
+            const n = i + 1;
+            tl.fromTo(`#s2-a${n}`, { opacity: 0, y: 18, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power2.out" }, t0);
+            tl.fromTo(`#s2-p${n}`, { opacity: 0, color: "#f5efe2" }, { opacity: 1, color: "#e6c98a", duration: 0.8, ease: "sine.out" }, t0 + 0.2);
+            tl.fromTo(`#s2-f${n}`, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, t0 + 0.35);
+            if (i < PH.length - 1) {
+              const t1 = PH[i + 1] - 0.45;
+              tl.to(`#s2-a${n}`, { opacity: 0, y: -14, duration: 0.45, ease: "power1.in" }, t1);
+              tl.to(`#s2-p${n}`, { color: "#f5efe2", opacity: 0.72, duration: 0.6 }, t1 + 0.2);
+              tl.to(`#s2-f${n}`, { opacity: 0, duration: 0.4 }, t1);
+            }
+          });
+          tl.fromTo("#s2-talnote", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 28.6);
+
+          tl.to("#s2-all", { opacity: 0, y: -24, duration: 0.9, ease: "power1.in" }, 32.1);
+          window.__timelines["s2-ihram"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

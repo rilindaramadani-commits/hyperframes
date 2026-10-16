@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #s3-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #s3-all {
+          position: absolute;
+          inset: 0;
+        }
+        #s3-world {
+          position: absolute;
+          left: 0;
+          top: 640px;
+          width: 1080px;
+          height: 640px;
+        }
+        #s3-world svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+          overflow: visible;
+        }
+        #s3-inner {
+          position: absolute;
+          left: 0;
+          top: 380px;
+          width: 1080px;
+          height: 860px;
+          opacity: 0;
+        }
+        #s3-rings {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1080px;
+          height: 860px;
+        }
+        #s3-kaaba {
+          position: absolute;
+          left: 150px;
+          top: 120px;
+          width: 780px;
+          height: 702px;
+        }
+        #s3-halo {
+          position: absolute;
+          left: 90px;
+          top: 40px;
+          width: 900px;
+          height: 900px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(230, 201, 138, 0.36), rgba(201, 164, 92, 0.12) 50%, rgba(201, 164, 92, 0) 100%);
+        }
+        .s3-card {
+          opacity: 0;
+        }
+        .s3-dua-ar {
+          font: 700 60px/1.5 "Amiri", serif;
+          color: var(--gold-l);
+          text-align: center;
+        }
+        .s3-dua-tr {
+          margin-top: 6px;
+          text-align: center;
+          font: 400 38px/1.35 "Jost", sans-serif;
+          color: var(--sand);
+        }
+        .s3-dua-fr {
+          margin-top: 18px;
+          text-align: center;
+          font: 300 46px/1.34 "Jost", sans-serif;
+          color: var(--ivory);
+        }
+        .s3-src {
+          margin-top: 14px;
+          text-align: center;
+          font: 400 28px/1.3 "Jost", sans-serif;
+          letter-spacing: 0.1em;
+          color: var(--gold);
+        }
+      </style>
+
+      <div id="s3-root" data-composition-id="s3-arrivee" data-width="1080" data-height="1920">
+        <div id="s3-all">
+          <div id="s3-world">
+            <svg viewBox="0 0 1080 640" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="s3-wall" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#7d6f57" />
+                  <stop offset="1" stop-color="#b6a487" />
+                </linearGradient>
+                <linearGradient id="s3-wall2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#8f7f63" />
+                  <stop offset="1" stop-color="#cdbb9a" />
+                </linearGradient>
+                <radialGradient id="s3-arch-light" cx="0.5" cy="0.75" r="0.8">
+                  <stop offset="0" stop-color="#f6e3b2" />
+                  <stop offset="0.6" stop-color="#d9b066" />
+                  <stop offset="1" stop-color="#8a6a33" />
+                </radialGradient>
+                <radialGradient id="s3-gate-light" cx="0.5" cy="0.62" r="0.7">
+                  <stop offset="0" stop-color="#3b3018" />
+                  <stop offset="0.5" stop-color="#1a160d" />
+                  <stop offset="1" stop-color="#0a0907" />
+                </radialGradient>
+                <radialGradient id="s3-gate-glow" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="#f0d9a0" stop-opacity="0.55" />
+                  <stop offset="1" stop-color="#f0d9a0" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <!-- ground glow -->
+              <ellipse cx="540" cy="640" rx="560" ry="60" fill="#e6c98a" fill-opacity="0.12" />
+              <g id="s3-wings"></g>
+              <!-- central gate block -->
+              <rect x="400" y="230" width="280" height="410" fill="url(#s3-wall2)" />
+              <rect x="400" y="222" width="280" height="14" fill="#d9c7a3" />
+              <path d="M 446 640 L 446 380 Q 446 300 540 286 Q 634 300 634 380 L 634 640 Z" fill="url(#s3-gate-light)" stroke="#e6c98a" stroke-opacity="0.8" stroke-width="3" />
+              <ellipse cx="540" cy="540" rx="120" ry="110" fill="url(#s3-gate-glow)" />
+              <!-- Kaaba glimpsed through the gate -->
+              <g id="s3-glimpse">
+                <polygon points="492,520 540,508 588,520 588,590 540,600 492,590" fill="#0b0b0c" />
+                <polygon points="492,532 540,520 588,532 588,538 540,526 492,538" fill="#d4b06a" />
+                <ellipse cx="540" cy="606" rx="90" ry="10" fill="#f0d9a0" fill-opacity="0.35" />
+              </g>
+              <path d="M 466 240 L 614 240" stroke="#e6c98a" stroke-opacity="0.6" stroke-width="2" />
+              <!-- minarets flanking the gate -->
+              <g id="s3-mins" fill="#c4b190">
+                <g transform="translate(372 0)">
+                  <path d="M 28 0 L 33 34 L 38 48 L 38 70 L 18 70 L 18 48 L 23 34 Z" />
+                  <rect x="12" y="70" width="32" height="120" />
+                  <rect x="4" y="186" width="48" height="12" rx="3" />
+                  <rect x="8" y="198" width="40" height="442" />
+                  <rect x="22" y="100" width="12" height="40" rx="6" fill="#f6e3b2" />
+                  <rect x="22" y="250" width="12" height="60" rx="6" fill="#f6e3b2" fill-opacity="0.8" />
+                </g>
+                <g transform="translate(652 0)">
+                  <path d="M 28 0 L 33 34 L 38 48 L 38 70 L 18 70 L 18 48 L 23 34 Z" />
+                  <rect x="12" y="70" width="32" height="120" />
+                  <rect x="4" y="186" width="48" height="12" rx="3" />
+                  <rect x="8" y="198" width="40" height="442" />
+                  <rect x="22" y="100" width="12" height="40" rx="6" fill="#f6e3b2" />
+                  <rect x="22" y="250" width="12" height="60" rx="6" fill="#f6e3b2" fill-opacity="0.8" />
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <div id="s3-inner">
+            <div id="s3-halo"></div>
+            <svg id="s3-rings" viewBox="0 0 1080 860" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" stroke="#e6c98a">
+                <ellipse class="s3-ring" cx="540" cy="700" rx="300" ry="62" stroke-opacity="0.5" stroke-width="2.5" />
+                <ellipse class="s3-ring" cx="540" cy="700" rx="400" ry="86" stroke-opacity="0.32" stroke-width="2" />
+                <ellipse class="s3-ring" cx="540" cy="700" rx="500" ry="110" stroke-opacity="0.18" stroke-width="2" />
+              </g>
+            </svg>
+            <div id="s3-kaaba"></div>
+          </div>
+
+          <div class="o-head" id="s3-head">
+            <div class="o-step"><span class="o-rule" id="s3-rule"></span><span id="s3-stepl">Arrivée</span></div>
+            <div class="o-title" id="s3-title">L'arrivée à la Masjid al-Haram</div>
+          </div>
+
+          <div class="o-card s3-card" id="s3-c1">
+            <div class="o-text">On entre dans la mosquée sacrée avec <strong>respect</strong> et <strong>recueillement</strong>, de préférence du pied droit.</div>
+          </div>
+          <div class="o-card s3-card" id="s3-c2">
+            <div class="s3-dua-ar o-ar" lang="ar">اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</div>
+            <div class="s3-dua-tr">Allahumma-ftah li abwaba rahmatik</div>
+            <div class="s3-dua-fr">«&nbsp;Ô Allah, ouvre-moi les portes de Ta miséricorde.&nbsp;»</div>
+            <div class="s3-src">INVOCATION D'ENTRÉE À LA MOSQUÉE · MUSLIM</div>
+          </div>
+          <div class="o-card s3-card" id="s3-c3">
+            <div class="o-text">Puis on se dirige vers la <strong>Kaaba</strong> pour commencer le <strong>Tawaf</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // arcade wings: two storeys of lit arches each side of the gate
+          const wings = document.getElementById("s3-wings");
+          let w = "";
+          const side = (x0, x1) => {
+            w += `<rect x="${x0}" y="300" width="${x1 - x0}" height="340" fill="url(#s3-wall)"/>`;
+            w += `<rect x="${x0}" y="292" width="${x1 - x0}" height="10" fill="#cdbb9a"/>`;
+            const n = 5, cw = (x1 - x0) / n;
+            for (let i = 0; i < n; i++) {
+              const cx = x0 + cw * (i + 0.5), hw = cw * 0.3;
+              // upper storey
+              w += `<path d="M ${cx - hw} 440 L ${cx - hw} 372 Q ${cx - hw} 336 ${cx} 330 Q ${cx + hw} 336 ${cx + hw} 372 L ${cx + hw} 440 Z" fill="url(#s3-arch-light)" fill-opacity="0.9"/>`;
+              // lower storey
+              const lw = cw * 0.36;
+              w += `<path d="M ${cx - lw} 640 L ${cx - lw} 530 Q ${cx - lw} 478 ${cx} 470 Q ${cx + lw} 478 ${cx + lw} 530 L ${cx + lw} 640 Z" fill="url(#s3-arch-light)"/>`;
+              // crenellation
+              w += `<rect x="${cx - 8}" y="278" width="16" height="16" fill="#cdbb9a"/>`;
+            }
+            w += `<rect x="${x0}" y="452" width="${x1 - x0}" height="6" fill="#d9c7a3" fill-opacity="0.8"/>`;
+          };
+          side(0, 400);
+          side(680, 1080);
+          wings.innerHTML = w;
+
+          document.getElementById("s3-kaaba").innerHTML = window.OmraArt.kaaba("s3k");
+
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s3-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.3);
+          tl.fromTo("#s3-stepl", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 0.5);
+          tl.fromTo("#s3-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.1, ease: "power3.out" }, 0.7);
+
+          // approach, then pass through the gate
+          tl.fromTo("#s3-world", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.4, ease: "power2.out" }, 0.2);
+          tl.fromTo("#s3-world", { scale: 1, transformOrigin: "540px 500px" }, { scale: 1.22, duration: 5.4, ease: "sine.inOut" }, 1.0);
+          tl.to("#s3-world", { scale: 6, duration: 2.0, ease: "power3.in" }, 6.4);
+          tl.to("#s3-world", { opacity: 0, duration: 0.8, ease: "power1.in" }, 7.0);
+          tl.fromTo("#s3-inner", { opacity: 0, scale: 0.7, transformOrigin: "540px 600px" }, { opacity: 1, scale: 1, duration: 2.4, ease: "power2.out" }, 7.85);
+          tl.fromTo(".s3-ring", { scale: 0.7, opacity: 0, transformOrigin: "540px 700px" }, { scale: 1, opacity: 1, duration: 1.8, ease: "power2.out", stagger: 0.25 }, 8.4);
+          tl.fromTo("#s3-halo", { scale: 0.95 }, { scale: 1.08, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.6);
+          tl.fromTo("#s3-kaaba", { scale: 1 }, { scale: 1.04, duration: 6, ease: "sine.inOut" }, 9.8);
+
+          // texts
+          tl.fromTo("#s3-c1", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 1.4);
+          tl.to("#s3-c1", { opacity: 0, y: -18, duration: 0.6, ease: "power1.in" }, 6.4);
+          tl.fromTo("#s3-c2", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 8.4);
+          tl.to("#s3-c2", { opacity: 0, y: -18, duration: 0.6, ease: "power1.in" }, 12.6);
+          tl.fromTo("#s3-c3", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 13.0);
+
+          tl.to("#s3-all", { opacity: 0, y: -24, duration: 0.9, ease: "power1.in" }, 15.1);
+          window.__timelines["s3-arrivee"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

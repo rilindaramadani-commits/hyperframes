@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #s1-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #s1-all {
+          position: absolute;
+          inset: 0;
+        }
+        #s1-halo {
+          position: absolute;
+          left: 40px;
+          top: 300px;
+          width: 1000px;
+          height: 1000px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(230, 201, 138, 0.42), rgba(201, 164, 92, 0.16) 45%, rgba(201, 164, 92, 0) 100%);
+        }
+        #s1-floor {
+          position: absolute;
+          left: -60px;
+          top: 960px;
+          width: 1200px;
+          height: 300px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(240, 225, 190, 0.30), rgba(201, 164, 92, 0.10) 55%, rgba(201, 164, 92, 0) 100%);
+        }
+        .s1-min {
+          position: absolute;
+          display: block;
+        }
+        #s1-kaaba {
+          position: absolute;
+          left: 40px;
+          top: 330px;
+          width: 1000px;
+          height: 900px;
+        }
+        #s1-ar-wrap {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 190px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 34px;
+        }
+        .s1-arrule {
+          display: block;
+          width: 120px;
+          height: 2px;
+          background: var(--gold);
+        }
+        #s1-ar {
+          font: 700 92px/1.3 "Amiri", serif;
+          color: var(--gold-l);
+        }
+        #s1-titles {
+          position: absolute;
+          left: 80px;
+          right: 80px;
+          top: 1165px;
+          text-align: center;
+        }
+        .s1-line {
+          display: block;
+          font: 400 98px/1.08 "Marcellus", serif;
+          color: var(--ivory);
+          letter-spacing: -0.01em;
+        }
+        #s1-l1 {
+          color: var(--gold-l);
+        }
+        #s1-trule {
+          display: block;
+          width: 300px;
+          height: 2px;
+          margin: 40px auto 0;
+          background: linear-gradient(90deg, rgba(201, 164, 92, 0), var(--gold) 50%, rgba(201, 164, 92, 0));
+        }
+        #s1-sub {
+          margin-top: 34px;
+          font: 300 46px/1.3 "Jost", sans-serif;
+          color: var(--sand);
+        }
+      </style>
+
+      <div id="s1-root" data-composition-id="s1-intro" data-width="1080" data-height="1920">
+        <div id="s1-all">
+          <div id="s1-halo"></div>
+          <div id="s1-floor"></div>
+          <div class="s1-min" id="s1-m1" style="left: 18px; top: 330px; width: 92px; height: 860px"></div>
+          <div class="s1-min" id="s1-m2" style="left: 150px; top: 520px; width: 70px; height: 660px"></div>
+          <div class="s1-min" id="s1-m3" style="left: 864px; top: 500px; width: 72px; height: 680px"></div>
+          <div class="s1-min" id="s1-m4" style="left: 972px; top: 360px; width: 92px; height: 830px"></div>
+          <div id="s1-kaaba"></div>
+
+          <div id="s1-ar-wrap">
+            <span class="s1-arrule" id="s1-arl"></span>
+            <div id="s1-ar" class="o-ar" lang="ar">العُمْرَة</div>
+            <span class="s1-arrule" id="s1-arr"></span>
+          </div>
+
+          <div id="s1-titles">
+            <span class="s1-line" id="s1-l1">La Omra&nbsp;:</span>
+            <span class="s1-line" id="s1-l2">les étapes essentielles</span>
+            <span id="s1-trule"></span>
+            <div id="s1-sub">Un guide pour accomplir ce voyage spirituel</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          document.getElementById("s1-kaaba").innerHTML = window.OmraArt.kaaba("s1k");
+          ["s1-m1", "s1-m2", "s1-m3", "s1-m4"].forEach((id) => {
+            document.getElementById(id).innerHTML = window.OmraArt.minaret("#0c261d");
+          });
+
+          const tl = gsap.timeline({ paused: true });
+          // the Kaaba rises out of the night
+          tl.fromTo("#s1-kaaba", { opacity: 0, scale: 1.08, y: 40, filter: "brightness(0.35)" },
+            { opacity: 1, scale: 1, y: 0, filter: "brightness(1)", duration: 3.6, ease: "power2.out" }, 0.3);
+          tl.fromTo("#s1-floor", { opacity: 0, scaleX: 0.6 }, { opacity: 1, scaleX: 1, duration: 3.2, ease: "power2.out" }, 0.8);
+          tl.fromTo("#s1-halo", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 3.8, ease: "sine.out" }, 1.0);
+          tl.fromTo("#s1-halo", { scale: 1 }, { scale: 1.07, duration: 3.3, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 4.8);
+          tl.fromTo(".s1-min", { opacity: 0, y: 50 }, { opacity: 0.95, y: 0, duration: 2.6, ease: "power2.out", stagger: 0.25 }, 1.6);
+          // slow, reverent push
+          tl.fromTo("#s1-kaaba", { scale: 1 }, { scale: 1.035, duration: 7.6, ease: "sine.inOut", immediateRender: false }, 3.9);
+
+          // Arabic word, then title
+          tl.fromTo("#s1-ar", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.6, ease: "power2.out" }, 2.4);
+          tl.fromTo(["#s1-arl", "#s1-arr"], { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: "power3.inOut" }, 2.8);
+          tl.fromTo("#s1-l1", { opacity: 0, y: 34, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.4, ease: "power3.out" }, 4.0);
+          tl.fromTo("#s1-l2", { opacity: 0, y: 34, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.5, ease: "power3.out" }, 4.6);
+          tl.fromTo("#s1-trule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.3, ease: "power2.inOut" }, 5.5);
+          tl.fromTo("#s1-sub", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1.4, ease: "sine.out" }, 6.1);
+
+          // dissolve into the next step
+          tl.to("#s1-all", { opacity: 0, y: -24, duration: 1.0, ease: "power1.in" }, 11.0);
+          window.__timelines["s1-intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
