@@ -16,7 +16,7 @@
         #f2 { position: absolute; inset: 0; overflow: hidden; font-family: "Jost", sans-serif; color: var(--bdx-deep); }
         #f2-fade { position: absolute; inset: 0; }
         #f2-veil { background: var(--linen); opacity: 0; }
-        #f2-label { position: absolute; left: 72px; top: 300px; }
+        #f2-label { position: absolute; left: 72px; top: 292px; padding: 12px 18px 8px; border-radius: 12px; background: rgba(247, 242, 235, 0.8); }
         #f2-rail { left: 119px; top: 560px; height: 820px; }
         .f2-dot { left: 110px; }
         .f2-rl { position: absolute; left: 156px; font-size: 30px; line-height: 1; font-weight: 400; color: var(--bdx-deep); white-space: nowrap; }
@@ -111,7 +111,7 @@
           // machine in the cabin: slow push-in; frosted back when the card arrives
           tl.fromTo("#f2-bg", { scale: 1.0 }, { scale: 1.05, duration: 13.2, ease: "none" }, 0);
           tl.fromTo("#f2-bg", { filter: "blur(0px)" }, { filter: "blur(10px)", duration: 0.9, ease: "power2.inOut" }, A(13.4));
-          tl.fromTo("#f2-veil", { opacity: 0 }, { opacity: 0.22, duration: 0.9, ease: "power2.inOut" }, A(13.4));
+          tl.fromTo("#f2-veil", { opacity: 0 }, { opacity: 0.5, duration: 0.9, ease: "power2.inOut" }, A(13.4));
 
           // label, then the rail draws downward and its four empty points appear
           tl.fromTo("#f2-label-in", { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: "power3.out" }, A(8.6));

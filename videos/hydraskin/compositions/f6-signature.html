@@ -31,7 +31,7 @@
         #f6-skin span { display: block; padding-left: 0.5em; }
         #f6-slot { position: absolute; left: 72px; right: 72px; top: 1352px; text-align: center; font-weight: 400; font-size: 34px; line-height: 1; color: var(--bdx-deep); white-space: nowrap; }
         #f6-slot .sep { color: var(--bdx); padding: 0 0.5em; }
-        #f6-virt { position: absolute; left: 72px; top: 1468px; font-weight: 400; font-size: 22px; line-height: 1; color: var(--bdx); }
+        #f6-virt { position: absolute; left: 72px; top: 1462px; font-weight: 400; font-size: 22px; line-height: 1; color: var(--bdx-deep); padding: 6px 10px; border-radius: 8px; background: rgba(247, 242, 235, 0.6); }
         #f6-end { background: var(--cream); opacity: 0; }
       </style>
 
@@ -80,6 +80,8 @@
 
           // 71.0 — the signature rises to make room for the invitation
           tl.fromTo("#f6-top", { y: 0 }, { y: -200, duration: 0.9, ease: "power3.inOut" }, A(71.0));
+          tl.fromTo("#f6-bg", { filter: "blur(0px)" }, { filter: "blur(9px)", duration: 1.4, ease: "sine.inOut" }, A(71.0));
+          tl.fromTo("#f6-veil", { opacity: 0.3 }, { opacity: 0.5, duration: 1.4, ease: "sine.inOut" }, A(71.0));
           tl.fromTo("#f6-cta", { "--g": 0, opacity: 0 }, { "--g": 1, opacity: 1, duration: 1.0, ease: "expo.out" }, A(71.2));
           tl.fromTo("#f6-cta-in", { yPercent: 160 }, { yPercent: 0, duration: 0.8, ease: "power3.out" }, A(71.4));
 
