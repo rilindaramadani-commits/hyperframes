@@ -60,18 +60,26 @@ def photo(slot, name, fx, fy):
     png = os.path.join(OUT, f"{slot}.png")
     im.save(png)
     run(["-loop", "1", "-i", png, "-t", "15", "-r", "30", "-c:v", "libx264", "-preset", "medium",
-         "-tune", "stillimage", "-crf", "17", "-pix_fmt", "yuv420p", "-g", "450", "-movflags", "+faststart",
+         "-tune", "stillimage", "-crf", "17", "-pix_fmt", "yuv420p", *GOP, *SDR, "-movflags", "+faststart",
          os.path.join(OUT, f"{slot}.mp4")])
     os.remove(png)
 
 
+# iPhone footage is HDR (HLG / BT.2020). Tone-map it to SDR BT.709 first: an HDR-tagged clip
+# switches the whole render to the layered HDR path, which drops the glass and text layers.
+TONEMAP = ("zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:t=linear:npl=203,format=gbrpf32le,"
+           "zscale=p=bt709,tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,")
+SDR = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709"]
+GOP = ["-g", "30", "-keyint_min", "30"]  # dense keyframes: frame-exact seeking in render
+
+
 def clip(slot, name, a, b, slow):
-    vf = (f"setpts={slow}*(PTS-STARTPTS),"
+    vf = (TONEMAP + f"setpts={slow}*(PTS-STARTPTS),"
           "minterpolate=fps=30:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,"
           f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
           "tpad=stop_mode=clone:stop_duration=15,format=yuv420p")
     run(["-ss", f"{a}", "-to", f"{b}", "-i", os.path.join(SRC, name), "-an", "-vf", vf, "-t", "15",
-         "-r", "30", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-movflags", "+faststart",
+         "-r", "30", "-c:v", "libx264", "-preset", "medium", "-crf", "18", *GOP, *SDR, "-movflags", "+faststart",
          os.path.join(OUT, f"{slot}.mp4")])
 
 
