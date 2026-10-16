@@ -26,11 +26,11 @@ et un glassmorphism maîtrisé. Chaque élément présent à l'écran doit avoir
 
 ## Assets
 
-- Aucun visuel fourni pour l'instant. Images réalistes du soin générées par IA (choix de la cliente),
-  remplaçables plan par plan par des images tournées à l'institut (voir PLANS-A-TOURNER.md).
-- Logo, nom de l'institut et coordonnées : la cliente les communiquera. Un emplacement leur est
-  réservé dans l'écran final. Proposition par défaut, à confirmer : AMANI SKIN
-  (`../institut-beaute-iso/assets/brand/amani-wordmark.png`, @amani__skin, 07 66 85 43 74).
+- Aucun visuel fourni. Plan validé le 16/10 : **clips vidéo générés par IA** pour les gestes du soin
+  (IMG-04, 05, 06, 07, 09, 11, 13), images fixes animées en complément seulement si nécessaire ;
+  éviter tout effet diaporama. Plans remplaçables un par un par des prises réelles (PLANS-A-TOURNER.md).
+- Écran final : nom de l'institut **AMANI SKIN**. Coordonnées : uniquement celles fournies par la cliente,
+  aucune inventée (en attente de confirmation).
 
 ## Customizations
 
@@ -45,7 +45,7 @@ et un glassmorphism maîtrisé. Chaque élément présent à l'écran doit avoir
   transitions, écran final.
 - Motion design comme structure : titres fluides, lignes fines, repères et annotations minimalistes,
   schéma explicatif uniquement s'il aide à comprendre.
-- Voix off française naturelle, élégante, pédagogique et rassurante (SCRIPT.md).
+- Voix off : **voix de synthèse féminine**, douce, naturelle et professionnelle, diction claire, ton rassurant (SCRIPT.md).
 - Musique instrumentale discrète et contemporaine ; effets sonores très sobres.
 
 ## Notes

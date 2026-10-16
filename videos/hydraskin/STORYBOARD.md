@@ -5,6 +5,7 @@ message: "HydraSkin associe la technologie d'une machine professionnelle, des pr
 arc: Accroche → Principe → Technologie en action → Personnalisation → Expérience → Signature
 audience: clientes et futures clientes de l'institut (Instagram, TikTok)
 mode: collaborative
+sketch: storyboard.html
 version: v2
 ---
 
@@ -13,6 +14,19 @@ version: v2
 ## Changes from v1
 
 - Palette remplacée par « Bordeaux & Beige » (demande de la cliente) : « modifier uniquement la palette et l'identité chromatique ». Scénario, contenus, textes, voix off et animations inchangés. Le bleu très pâle des repères techniques est supprimé, ces repères passent en bordeaux lie-de-vin.
+
+## Locked
+
+- Plan v2 validé par la cliente (scénario, textes, voix off, transitions, palette Bordeaux & Beige).
+- Images : clips vidéo IA pour les gestes, images fixes en complément seulement si nécessaire.
+- Voix : synthèse féminine, douce, naturelle, professionnelle.
+- Écran final : AMANI SKIN ; coordonnées uniquement celles fournies par la cliente.
+
+## Still open
+
+- Validation de la planche de croquis (`storyboard.html`).
+- Coordonnées de l'écran final.
+- Accès à un service de génération (images et clips) et de voix.
 
 ## Décisions
 
@@ -91,7 +105,7 @@ version: v2
 - duration: 8s
 - poster: 6.2
 - transition_in: fade-from-cream
-- status: outline
+- status: built
 - src: compositions/f1-accroche.html
 - voiceover: "HydraSkin. Un soin du visage complet, où la technologie rencontre le geste."
 - blueprint: titlecard-reveal (adapté) + rules depth-of-field-blur, multi-phase-camera ; registre text-shimmer (une passe)
@@ -119,7 +133,7 @@ version: v2
 - duration: 12s
 - poster: 17.0
 - transition_in: glass-blade-up
-- status: outline
+- status: built
 - src: compositions/f2-principe.html
 - voiceover: "Le principe : quatre étapes, réalisées avec une machine professionnelle de soin de la peau. Nettoyer. Exfolier. Extraire les impuretés. Hydrater."
 - blueprint: fixed-anchor-cycle (une carte fixe dont le contenu change) + rules svg-path-draw, depth-of-field-blur
@@ -156,7 +170,7 @@ version: v2
 - duration: 12s
 - poster: 27.5
 - transition_in: card-to-chip
-- status: outline
+- status: built
 - src: compositions/f3-technologie.html
 - voiceover: "Pendant le soin, la machine accompagne chaque étape. Le geste, lui, reste précis et attentif, zone après zone."
 - blueprint: rules viewport-change (push-in vers le point de contact), svg-path-draw (annotations), card-morph-anchor (puce), depth-of-field-blur
@@ -187,7 +201,7 @@ version: v2
 - duration: 14s
 - poster: 41.0
 - transition_in: focus-pull
-- status: outline
+- status: built
 - src: compositions/f4-personnalise.html
 - voiceover: "Car chaque peau a ses besoins. Son type, son état, ce qui vous préoccupe… Le soin s'adapte à votre peau, et non l'inverse."
 - blueprint: kinetic-type-beats (phrase posée) + registre camera-rig-depth-stack (trois feuillets en profondeur, parallaxe et mise au point) + rule depth-of-field-blur
@@ -220,7 +234,7 @@ version: v2
 - duration: 19s
 - poster: 62.5
 - transition_in: glass-sheets-part
-- status: outline
+- status: built
 - src: compositions/f5-experience.html
 - voiceover: "Viennent ensuite les produits : des cosmétiques de qualité premium, choisis selon vos besoins. Un masque, modelant lorsque votre peau en a besoin. Puis un massage du visage, pour un vrai moment de détente. La technologie, des produits choisis, des gestes manuels : c'est cette alliance qui fait HydraSkin."
 - blueprint: rules multi-phase-camera (gros plans), ambient-glow-bloom (reflet unique sur la texture), svg-path-draw (rail qui se complète) ; registre light-sweep-pass (une passe de lumière sur le dernier plan)
@@ -252,7 +266,7 @@ version: v2
 - duration: 13s
 - poster: 75.0
 - transition_in: luminous-fade
-- status: outline
+- status: built
 - src: compositions/f6-signature.html
 - voiceover: "HydraSkin. Un soin expert, pensé pour votre peau. Découvrez votre prochain rituel de soin."
 - blueprint: titlecard-reveal + logo-assemble-lockup (verrouillage final) ; registre text-shimmer (une passe)
@@ -262,12 +276,12 @@ version: v2
 - 65,8 s : la plaque de verre se dépolit **à la même position et à la même taille qu'en scène 1** (rappel de la scène 1).
 - 66,2 s : « HydraSkin » (Instrument Serif, 210 px), avec un « tink » et une seule passe de reflet.
 - 67,4 s : « Un soin expert, pensé pour votre peau. » (Jost 300, 42 px).
-- 71,0 s : la plaque descend de 220 px (nudge, 0,9 s). Une puce de verre apparaît dessous : « Découvrez votre prochain rituel de soin. » (Jost 400, 36 px).
+- 71,0 s : la plaque remonte de 200 px (nudge, 0,9 s) pour faire de la place. Une puce de verre apparaît dessous : « Découvrez votre prochain rituel de soin. » (Jost 400, 36 px).
 - 73,4 s : **emplacement de l'institut**, en bas de la zone utile (y ≈ 1240 → 1480) :
   - logo (hauteur 90 px), avec un filet fin au-dessus ;
   - nom de l'institut (Jost 500, 30 px, capitales, +0,18 em) ;
   - Instagram · téléphone (Jost 400, 30 px).
-  - Par défaut, à confirmer : AMANI SKIN · @amani__skin · 07 66 85 43 74.
+  - Par défaut, à confirmer : AMANI SKIN ; coordonnées : uniquement celles fournies par la cliente.
 - 74,0 s : mention « Images virtuelles » (Jost 400, 22 px, bordeaux lie-de-vin), en bas à gauche dans la zone utile, tant que des images générées sont utilisées.
 - 74,0–77,4 s : tout reste tenu, l'image respire à peine. De 77,4 à 78,0 s, fondu vers l'ivoire crème.
 

@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HydraSkin — storyboard v2</title>
+<style>
+@font-face{font-family:"Jost";src:url("assets/fonts/jost-latin-300-normal.woff2") format("woff2");font-weight:300}
+@font-face{font-family:"Jost";src:url("assets/fonts/jost-latin-400-normal.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Jost";src:url("assets/fonts/jost-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Instrument Serif";src:url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
+
+:root{
+  --linen:#D8C5B2; --cream:#F7F2EB; --bdx:#642D3D; --bdx-deep:#40232C;
+  --bdx-deep-78:rgba(64,35,44,.78); --bdx-70:rgba(100,45,61,.7);
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25 0 0 0 0 0.14 0 0 0 0 0.17 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.35'/></svg>");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--bdx-deep);font-family:"Jost",system-ui,sans-serif;font-weight:400;padding:48px 40px 80px;line-height:1.45}
+header{max-width:1500px;margin:0 auto 36px;display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--bdx-70);padding-bottom:22px}
+header h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:56px;line-height:1;letter-spacing:-.02em}
+header h1 em{font-style:italic;color:var(--bdx)}
+header p{max-width:640px;font-size:16px;color:var(--bdx-deep-78)}
+.tag{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--bdx);border:1px solid var(--bdx-70);border-radius:999px;padding:7px 14px;white-space:nowrap}
+.act{max-width:1500px;margin:34px auto 14px;display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,45,61,.25);padding-top:14px}
+.act b{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--bdx)}
+.act span{font-family:"Instrument Serif",serif;font-size:26px}
+.act i{font-style:normal;font-size:14px;color:var(--bdx-deep-78);margin-left:auto}
+.grid{max-width:1500px;margin:0 auto 10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){body{padding:24px 16px 60px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}header h1{font-size:40px}.tag{white-space:normal}.scn{font-size:10.5px;letter-spacing:.1em}}
+.cell{display:flex;flex-direction:column;gap:10px}
+.scn{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--bdx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-top:1px solid rgba(100,45,61,.18);padding-top:8px;min-height:30px}
+.scn b{font-weight:500}
+.scn i{font-style:normal;margin-left:auto;color:var(--bdx-deep-78);letter-spacing:.06em}
+.scn.first{border-top:2px solid var(--bdx)}
+.label{display:flex;justify-content:space-between;gap:8px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--bdx)}
+.label span:last-child{color:var(--bdx-deep-78);letter-spacing:.06em}
+.note{font-size:13.5px;color:var(--bdx-deep-78)}
+.note b{color:var(--bdx-deep);font-weight:500}
+.chip{align-self:flex-start;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--bdx);background:rgba(216,197,178,.45);border-radius:999px;padding:5px 11px}
+
+/* ---------- the 1080×1920 canvas, scaled ---------- */
+.cv{position:relative;aspect-ratio:9/16;container-type:inline-size;overflow:hidden;border-radius:6px;background:var(--linen);box-shadow:0 18px 40px -22px rgba(64,35,44,.45)}
+.cv *{position:absolute}
+.cv{--u:calc(100cqw / 1080)}
+.ph{inset:0}
+.ph::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.55;mix-blend-mode:multiply}
+.imgtag{top:calc(var(--u)*36);right:calc(var(--u)*36);font:500 calc(var(--u)*24)/1 "Jost";letter-spacing:.1em;color:var(--bdx-deep-78);border:max(1px,calc(var(--u)*2)) dashed rgba(64,35,44,.45);border-radius:calc(var(--u)*10);padding:calc(var(--u)*10) calc(var(--u)*14);background:rgba(247,242,235,.4)}
+.veil{inset:0}
+.glass{background:linear-gradient(160deg,rgba(247,242,235,.48),rgba(216,197,178,.26));-webkit-backdrop-filter:blur(calc(var(--u)*22)) saturate(108%);backdrop-filter:blur(calc(var(--u)*22)) saturate(108%);border:max(1px,calc(var(--u)*1.5)) solid rgba(247,242,235,.7);box-shadow:inset 0 max(1px,calc(var(--u)*1.5)) 0 rgba(247,242,235,.85),0 calc(var(--u)*40) calc(var(--u)*80) calc(var(--u)*-30) rgba(64,35,44,.18);border-radius:calc(var(--u)*34)}
+.glass.pill{border-radius:calc(var(--u)*999)}
+.sheen{inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 30%,rgba(247,242,235,.38) 45%,transparent 60%)}
+.t{position:absolute;white-space:nowrap}
+.serif{font-family:"Instrument Serif",serif;font-weight:400;letter-spacing:-.02em;line-height:1}
+.lbl{font:500 calc(var(--u)*26)/1 "Jost";letter-spacing:.18em;text-transform:uppercase;color:var(--bdx)}
+.hair{height:max(1px,calc(var(--u)*1.5));background:var(--bdx-70)}
+.safe{left:calc(var(--u)*72);right:calc(var(--u)*140);top:calc(var(--u)*240);bottom:calc(var(--u)*420);border:max(1px,calc(var(--u)*2)) dashed rgba(100,45,61,.0)}
+.dot{width:calc(var(--u)*18);height:calc(var(--u)*18);border-radius:50%;border:max(1px,calc(var(--u)*2)) solid var(--bdx);background:transparent}
+.dot.on{background:var(--bdx)}
+.rail{width:max(1px,calc(var(--u)*1.5));background:var(--bdx-70)}
+.rl{font:400 calc(var(--u)*30)/1 "Jost";color:var(--bdx-deep)}
+.rl.off{color:rgba(64,35,44,.35)}
+
+/* ---------- media placeholders: palette-true tone studies of each shot ---------- */
+.skin{background:radial-gradient(60% 40% at 55% 45%,#E6C3AA 0%,#D9AD92 45%,#C79A80 100%)}
+.skin2{background:radial-gradient(70% 50% at 40% 40%,#EBCDB6 0%,#D8B096 50%,#B98A72 100%)}
+.serum{background:radial-gradient(18% 10% at 52% 47%,rgba(247,242,235,.95) 0%,rgba(247,242,235,.35) 60%,transparent 100%),radial-gradient(80% 60% at 50% 50%,#EFE5D9 0%,#DCCBB8 70%,#CDB59E 100%)}
+.cabin{background:linear-gradient(90deg,#E8DCCD 0%,#F3EBE0 42%,#DCC9B5 100%)}
+.face{background:radial-gradient(28% 18% at 46% 46%,#E2B99E 0%,#D3A88D 60%,transparent 100%),radial-gradient(55% 35% at 50% 40%,#EFE3D4 0%,transparent 100%),linear-gradient(180deg,#E7D9C8,#D8C5B2)}
+.duo{background:radial-gradient(18% 12% at 34% 34%,#D9AF95 0%,transparent 100%),radial-gradient(16% 11% at 62% 30%,#C99E86 0%,transparent 100%),radial-gradient(30% 25% at 64% 60%,rgba(100,45,61,.55) 0%,transparent 100%),linear-gradient(180deg,#EDE2D5,#D8C5B2)}
+.mask{background:radial-gradient(28% 18% at 48% 44%,#CDBBA6 0%,#BCA58E 60%,transparent 100%),radial-gradient(14% 12% at 70% 60%,rgba(100,45,61,.35) 0%,transparent 100%),linear-gradient(180deg,#EAE0D3,#D8C5B2)}
+.rest{background:radial-gradient(30% 20% at 50% 40%,#E9C6AE 0%,#D7AE95 60%,transparent 100%),linear-gradient(180deg,#F1E8DD,#DCC9B5)}
+.bright{background:radial-gradient(60% 40% at 70% 22%,#FBF7F1 0%,transparent 100%),radial-gradient(20% 10% at 26% 82%,rgba(100,45,61,.55) 0%,transparent 100%),linear-gradient(180deg,#F5EEE5,#E1D2C1)}
+.blur28{filter:blur(calc(var(--u)*28))}
+.blur10{filter:blur(calc(var(--u)*10))}
+
+/* seam map + tokens */
+.wide{grid-column:span 2}
+@media (max-width:760px){.wide{grid-column:span 2}}
+.panel{background:rgba(216,197,178,.32);border-radius:10px;padding:22px 22px 20px}
+.panel h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:28px;margin-bottom:12px}
+.seam{display:grid;grid-template-columns:62px 1fr;gap:4px 14px;padding:10px 0;border-top:1px solid rgba(100,45,61,.2);font-size:13.5px}
+.seam b{font-weight:500;color:var(--bdx);font-size:12px;letter-spacing:.1em}
+.seam svg{width:100%;height:46px;display:block;margin-top:6px}
+.sw{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+.sw div{flex:1 1 90px;border-radius:8px;padding:46px 10px 10px;font-size:11.5px;line-height:1.3}
+.panel ul{list-style:none;font-size:13.5px}
+.panel li{padding:5px 0;border-top:1px solid rgba(100,45,61,.18)}
+.panel li b{font-weight:500}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>HydraSkin <em>— storyboard v2</em></h1>
+    <p>Planche de croquis : chaque cellule montre l'instant clé d'une scène, avec la mise en page, les textes exacts, les polices et la palette Bordeaux &amp; Beige définitives. Les zones d'image sont des études de ton : les vrais plans (clips IA ou tournage) viendront à la fabrication. Aucun mouvement ici, il est décrit sous chaque cellule.</p>
+  </div>
+  <span class="tag">1080 × 1920 · 78 s · 6 scènes · 11 instants</span>
+</header>
+
+<div class="grid">
+
+  <div class="cell" id="frame-01a">
+    <div class="scn first"><b>Scène 1</b> · L'accroche</div>
+    <div class="cv">
+      <div class="ph skin"></div>
+      <div class="imgtag">IMG-01</div>
+    </div>
+    <div class="label"><span>01a · Peau</span><span>0,0–3,2 s</span></div>
+    <p class="note"><b>D'abord l'image, seule.</b> Macro de joue en lumière latérale, grain de peau réel. La mise au point se fait (flou → net) et la caméra avance très lentement. Musique seule, aucun texte.</p>
+    <span class="chip">Fondu enchaîné 0,7 s</span>
+  </div>
+
+  <div class="cell" id="frame-01">
+    <div class="scn"><b>Scène 1</b> · L'accroche</div>
+    <div class="cv">
+      <div class="ph serum"></div>
+      <div class="imgtag">IMG-02</div>
+      <div class="glass" style="left:calc(var(--u)*180);top:calc(var(--u)*500);width:calc(var(--u)*720);height:calc(var(--u)*520)"><div class="sheen"></div></div>
+      <div class="t serif" style="left:0;right:0;text-align:center;top:calc(var(--u)*610);font-size:calc(var(--u)*210);color:var(--bdx-deep)">HydraSkin</div>
+      <div class="hair" style="left:calc(var(--u)*430);width:calc(var(--u)*220);top:calc(var(--u)*850)"></div>
+      <div class="t" style="left:0;right:0;text-align:center;top:calc(var(--u)*888);font:300 calc(var(--u)*42)/1.2 Jost;color:var(--bdx-deep)">La technologie au service de votre peau.</div>
+    </div>
+    <div class="label"><span>01 · Le nom</span><span>3,4–8,0 s</span></div>
+    <p class="note"><b>Le verre se dépolit sur place</b>, comme une buée, avec un « tink » doux. « HydraSkin » se pose sur le mot dit (3,6 s), puis un seul reflet traverse la plaque. Le filet se trace, et la phrase monte par un masque à 5,0 s.</p>
+    <span class="chip">Sortie : lame de verre ↑</span>
+  </div>
+
+
+  <div class="cell" id="frame-02">
+    <div class="scn first"><b>Scène 2</b> · Le principe</div>
+    <div class="cv">
+      <div class="ph cabin blur10"></div>
+      <div class="veil" style="background:rgba(216,197,178,.22)"></div>
+      <div class="imgtag">IMG-08 · flou</div>
+      <div class="t lbl" style="left:calc(var(--u)*72);top:calc(var(--u)*300)">Le protocole</div>
+      <div class="rail" style="left:calc(var(--u)*120);top:calc(var(--u)*560);height:calc(var(--u)*820)"></div>
+      <div class="dot on" style="left:calc(var(--u)*111);top:calc(var(--u)*600)"></div>
+      <div class="dot on" style="left:calc(var(--u)*111);top:calc(var(--u)*800)"></div>
+      <div class="dot on" style="left:calc(var(--u)*111);top:calc(var(--u)*1000)"></div>
+      <div class="dot" style="left:calc(var(--u)*111);top:calc(var(--u)*1200)"></div>
+      <div class="t rl" style="left:calc(var(--u)*156);top:calc(var(--u)*596)">Nettoyer</div>
+      <div class="t rl" style="left:calc(var(--u)*156);top:calc(var(--u)*796)">Exfolier</div>
+      <div class="t rl" style="left:calc(var(--u)*156);top:calc(var(--u)*996)">Extraire</div>
+      <div class="t rl off" style="left:calc(var(--u)*156);top:calc(var(--u)*1196)">Hydrater</div>
+      <div class="glass" style="left:calc(var(--u)*380);top:calc(var(--u)*700);width:calc(var(--u)*600);height:calc(var(--u)*460)"><div class="sheen"></div></div>
+      <div class="t" style="left:calc(var(--u)*430);top:calc(var(--u)*748);font:300 calc(var(--u)*30)/1 Jost;color:var(--bdx);letter-spacing:.08em">03</div>
+      <div class="t" style="left:calc(var(--u)*430);top:calc(var(--u)*796);font:400 calc(var(--u)*72)/1 Jost;color:var(--bdx-deep)">Extraire</div>
+      <div class="t" style="left:calc(var(--u)*430);top:calc(var(--u)*884);font:300 calc(var(--u)*40)/1 Jost;color:var(--bdx-deep)">les impuretés</div>
+      <svg style="left:calc(var(--u)*430);top:calc(var(--u)*980);width:calc(var(--u)*500);height:calc(var(--u)*140)" viewBox="0 0 500 140">
+        <path d="M0 110 C 80 100, 160 120, 250 108 S 420 102, 500 110" fill="none" stroke="#642D3D" stroke-opacity=".7" stroke-width="2.5"/>
+        <circle cx="120" cy="80" r="5" fill="#642D3D" fill-opacity=".55"/><circle cx="210" cy="56" r="4.5" fill="#642D3D" fill-opacity=".4"/>
+        <circle cx="300" cy="30" r="4" fill="#642D3D" fill-opacity=".25"/><circle cx="380" cy="72" r="5" fill="#642D3D" fill-opacity=".5"/>
+        <path d="M120 96 L120 86 M210 100 L210 64 M380 98 L380 80" stroke="#642D3D" stroke-opacity=".35" stroke-width="1.5" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+    <div class="label"><span>02 · Une carte, quatre étapes</span><span>8,0–20,0 s · ici 17,0 s</span></div>
+    <p class="note"><b>Une seule carte de verre</b> dont le contenu change sur chaque verbe dit : 01 Nettoyer (13,8 s) · 02 Exfolier (15,0) · 03 Extraire (16,2) · 04 Hydrater (17,8). Le rail se trace d'abord (8,8 s), puis chaque point se remplit en bordeaux et son libellé s'inscrit. Un schéma au trait symbolise chaque étape : ici, des points qui quittent la surface.</p>
+    <span class="chip">Sortie : carte → puce</span>
+  </div>
+
+  <div class="cell">
+    <div class="scn"><b>Scène 2</b> · Le principe</div>
+    <div class="cv" style="background:var(--cream)">
+      <svg style="inset:0;width:100%;height:100%" viewBox="0 0 1080 1920">
+        <g font-family="Jost" fill="#40232C">
+          <text x="72" y="300" font-size="26" font-weight="500" letter-spacing="4.7" fill="#642D3D">LES 4 SCHÉMAS AU TRAIT</text>
+          <g transform="translate(72,420)"><text font-size="30" fill="#642D3D">01</text><text x="70" font-size="52">Nettoyer</text>
+            <path d="M0 120 C 90 70, 180 170, 270 110 S 450 120, 540 118 L 936 118" fill="none" stroke="#642D3D" stroke-opacity=".7" stroke-width="3"/>
+            <text y="200" font-size="28" fill="#40232C" fill-opacity=".78">une surface ondulée qui se lisse</text></g>
+          <g transform="translate(72,780)"><text font-size="30" fill="#642D3D">02</text><text x="70" font-size="52">Exfolier</text>
+            <path d="M0 120 L936 120" stroke="#642D3D" stroke-opacity=".7" stroke-width="3"/>
+            <g fill="#642D3D"><circle cx="60" cy="108" r="5"/><circle cx="130" cy="110" r="4"/><circle cx="210" cy="107" r="5"/><circle cx="300" cy="109" r="4"/><circle cx="380" cy="108" r="3" fill-opacity=".5"/><circle cx="470" cy="110" r="2" fill-opacity=".3"/></g>
+            <text y="200" font-size="28" fill="#40232C" fill-opacity=".78">des grains qui s'éclaircissent au passage</text></g>
+          <g transform="translate(72,1140)"><text font-size="30" fill="#642D3D">03</text><text x="70" font-size="52">Extraire</text>
+            <path d="M0 120 L936 120" stroke="#642D3D" stroke-opacity=".7" stroke-width="3"/>
+            <g fill="#642D3D"><circle cx="150" cy="80" r="5" fill-opacity=".6"/><circle cx="260" cy="50" r="4" fill-opacity=".4"/><circle cx="370" cy="24" r="3" fill-opacity=".22"/></g>
+            <text y="200" font-size="28" fill="#40232C" fill-opacity=".78">quelques points qui quittent la surface</text></g>
+          <g transform="translate(72,1500)"><text font-size="30" fill="#642D3D">04</text><text x="70" font-size="52">Hydrater</text>
+            <path d="M80 70 C 80 70, 40 120, 40 140 a40 40 0 0 0 80 0 C 120 120, 80 70, 80 70 Z" fill="#D8C5B2" stroke="#642D3D" stroke-opacity=".8" stroke-width="3" transform="translate(0,-10)"/>
+            <text x="160" y="140" font-size="28" fill="#40232C" fill-opacity=".78">une goutte qui se remplit de lin</text></g>
+        </g>
+      </svg>
+    </div>
+    <div class="label"><span>02 · Détail des schémas</span><span>référence</span></div>
+    <p class="note"><b>Symboliques, pas scientifiques.</b> Une seule ligne de 1,5 px par étape, en bordeaux à 70 %. Ce sont des repères pour comprendre, sans coupe de peau ni flèche pseudo-médicale.</p>
+  </div>
+
+
+  <div class="cell" id="frame-03">
+    <div class="scn first"><b>Scène 3</b> · La technologie en action</div>
+    <div class="cv">
+      <div class="ph face"></div>
+      <div class="imgtag">IMG-06 · clip IA</div>
+      <div class="glass pill" style="left:calc(var(--u)*72);top:calc(var(--u)*260);width:calc(var(--u)*430);height:calc(var(--u)*96)"></div>
+      <div class="t" style="left:calc(var(--u)*112);top:calc(var(--u)*290);font:400 calc(var(--u)*36)/1 Jost;color:var(--bdx-deep)"><span style="color:var(--bdx);position:static">03</span> · Extraire</div>
+      <div class="dot on" style="left:calc(var(--u)*380);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*404);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*428);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot" style="left:calc(var(--u)*452);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div style="left:calc(var(--u)*486);top:calc(var(--u)*870);width:calc(var(--u)*22);height:calc(var(--u)*22);border-radius:50%;background:var(--cream);box-shadow:0 0 0 calc(var(--u)*6) rgba(247,242,235,.35)"></div>
+      <svg style="left:calc(var(--u)*497);top:calc(var(--u)*881);width:calc(var(--u)*420);height:calc(var(--u)*330)" viewBox="0 0 420 330"><path d="M0 0 L180 260 L420 260" fill="none" stroke="#F7F2EB" stroke-width="3"/></svg>
+      <div class="t" style="left:calc(var(--u)*560);top:calc(var(--u)*1092);font:400 calc(var(--u)*32)/1 Jost;color:var(--bdx-deep);background:rgba(247,242,235,.62);padding:calc(var(--u)*10) calc(var(--u)*16);border-radius:calc(var(--u)*8)">Chaque zone du visage</div>
+    </div>
+    <div class="label"><span>03 · Le geste</span><span>20,0–32,0 s · ici 27,5 s</span></div>
+    <p class="note"><b>Quatre gros plans de 3 s</b> (nettoyage, exfoliation, extraction, hydratation), chacun avec une lente avancée vers le point de contact. La carte de la scène 2 s'est réduite en puce, avec son mini-rail. L'annotation part du point de contact et va vers l'espace libre : tracée en 0,6 s, tenue 1,8 s, puis repliée. Elle n'apparaît que sur trois plans : « Précision », « Chaque zone du visage », « Technologie professionnelle ».</p>
+    <span class="chip">Intra : fondus 0,5 s · Sortie : la mise au point s'ouvre</span>
+  </div>
+
+  <div class="cell">
+    <div class="scn"><b>Scène 3</b> · La technologie en action</div>
+    <div class="cv">
+      <div class="ph face" style="filter:hue-rotate(-4deg) brightness(1.03)"></div>
+      <div class="imgtag">IMG-07 · clip IA</div>
+      <div class="glass pill" style="left:calc(var(--u)*72);top:calc(var(--u)*260);width:calc(var(--u)*430);height:calc(var(--u)*96)"></div>
+      <div class="t" style="left:calc(var(--u)*112);top:calc(var(--u)*290);font:400 calc(var(--u)*36)/1 Jost;color:var(--bdx-deep)"><span style="color:var(--bdx);position:static">04</span> · Hydrater</div>
+      <div class="dot on" style="left:calc(var(--u)*380);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*404);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*428);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*452);top:calc(var(--u)*300);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div style="left:calc(var(--u)*640);top:calc(var(--u)*900);width:calc(var(--u)*22);height:calc(var(--u)*22);border-radius:50%;background:var(--cream);box-shadow:0 0 0 calc(var(--u)*6) rgba(247,242,235,.35)"></div>
+      <svg style="left:calc(var(--u)*200);top:calc(var(--u)*911);width:calc(var(--u)*452);height:calc(var(--u)*360)" viewBox="0 0 452 360"><path d="M452 0 L300 300 L0 300" fill="none" stroke="#F7F2EB" stroke-width="3"/></svg>
+      <div class="t" style="left:calc(var(--u)*72);top:calc(var(--u)*1170);font:400 calc(var(--u)*32)/1 Jost;color:var(--bdx-deep);background:rgba(247,242,235,.62);padding:calc(var(--u)*10) calc(var(--u)*16);border-radius:calc(var(--u)*8)">Technologie professionnelle</div>
+    </div>
+    <div class="label"><span>03 · Dernier geste</span><span>29,0–32,0 s</span></div>
+    <p class="note"><b>Le mini-rail est complet</b> : les quatre étapes sont faites. L'annotation change de côté selon l'espace libre de l'image, sans jamais croiser le visage. De 28 à 32 s, la voix se tait et la musique respire.</p>
+  </div>
+
+
+  <div class="cell" id="frame-04a">
+    <div class="scn first"><b>Scène 4</b> · Un soin personnalisé</div>
+    <div class="cv">
+      <div class="ph face blur28"></div>
+      <div class="veil" style="background:rgba(216,197,178,.55)"></div>
+      <div class="ph" style="background:none"></div>
+      <div class="t serif" style="left:calc(var(--u)*72);top:calc(var(--u)*790);font-size:calc(var(--u)*104);line-height:1.05;color:var(--bdx-deep);white-space:normal;width:calc(var(--u)*860)">Chaque peau<br>a ses besoins.</div>
+      <div class="hair" style="left:calc(var(--u)*72);width:calc(var(--u)*140);top:calc(var(--u)*1040)"></div>
+    </div>
+    <div class="label"><span>04a · Plan maintenu</span><span>33,2–37,0 s</span></div>
+    <p class="note"><b>Le seul plan immobile du film.</b> L'image du dernier geste se défocalise en un fond lin crémeux. La phrase apparaît mot à mot (0,9 s), puis rien ne bouge pendant 3 s. Pas de verre ici : la phrase se suffit.</p>
+    <span class="chip">Entrée : mise au point qui s'ouvre</span>
+  </div>
+
+  <div class="cell" id="frame-04">
+    <div class="scn"><b>Scène 4</b> · Un soin personnalisé</div>
+    <div class="cv">
+      <div class="ph duo"></div>
+      <div class="imgtag">IMG-09 · clip IA</div>
+      <div class="glass" style="left:calc(var(--u)*380);top:calc(var(--u)*1010);width:calc(var(--u)*560);height:calc(var(--u)*130);opacity:.92"></div>
+      <div class="t" style="left:calc(var(--u)*428);top:calc(var(--u)*1054);font:400 calc(var(--u)*40)/1 Jost;color:var(--bdx-deep)">Type de peau</div>
+      <div class="glass" style="left:calc(var(--u)*300);top:calc(var(--u)*1170);width:calc(var(--u)*560);height:calc(var(--u)*130)"></div>
+      <div class="t" style="left:calc(var(--u)*348);top:calc(var(--u)*1214);font:400 calc(var(--u)*40)/1 Jost;color:var(--bdx-deep)">État de la peau</div>
+      <div class="glass" style="left:calc(var(--u)*220);top:calc(var(--u)*1330);width:calc(var(--u)*560);height:calc(var(--u)*130)"><div class="sheen"></div></div>
+      <div class="t" style="left:calc(var(--u)*268);top:calc(var(--u)*1374);font:400 calc(var(--u)*40)/1 Jost;color:var(--bdx-deep)">Vos préoccupations</div>
+    </div>
+    <div class="label"><span>04 · Écouter la peau</span><span>37,0–42,0 s · ici 41,0 s</span></div>
+    <p class="note"><b>Trois feuillets de verre à trois profondeurs</b>, posés sur les mots dits (37,4 / 38,6 / 39,8 s). Chacun bouge à une vitesse différente quand l'image avance, ce qui crée la profondeur. Ils restent en bas à droite, loin des visages.</p>
+  </div>
+
+  <div class="cell" id="frame-04b">
+    <div class="scn"><b>Scène 4</b> · Un soin personnalisé</div>
+    <div class="cv">
+      <div class="ph duo"></div>
+      <div class="imgtag">IMG-09</div>
+      <div class="glass" style="left:calc(var(--u)*72);top:calc(var(--u)*1010);width:calc(var(--u)*560);height:calc(var(--u)*110)"></div>
+      <div class="t" style="left:calc(var(--u)*116);top:calc(var(--u)*1046);font:400 calc(var(--u)*36)/1 Jost;color:var(--bdx-deep)">Type de peau</div>
+      <div class="glass" style="left:calc(var(--u)*72);top:calc(var(--u)*1010);width:calc(var(--u)*560);height:calc(var(--u)*110);opacity:0"></div>
+      <div class="t" style="left:calc(var(--u)*72);top:calc(var(--u)*1150);font:400 calc(var(--u)*64)/1.1 Jost;color:var(--bdx-deep);white-space:normal;width:calc(var(--u)*860)">Le soin s'adapte à <span class="serif" style="position:static;font-style:italic;font-size:calc(var(--u)*76)">votre peau.</span></div>
+      <div class="t lbl" style="left:calc(var(--u)*72);top:calc(var(--u)*1330);font-size:calc(var(--u)*24)">Protocole adapté selon les besoins identifiés</div>
+      <div class="glass" style="left:calc(var(--u)*86);top:calc(var(--u)*996);width:calc(var(--u)*560);height:calc(var(--u)*110);opacity:.5;z-index:-1"></div>
+    </div>
+    <div class="label"><span>04b · L'adaptation</span><span>42,0–46,0 s</span></div>
+    <p class="note"><b>Les trois feuillets se rangent en une pile nette</b>, avec la mise au point sur le premier plan. La phrase se pose dessous : Jost, avec « votre peau » en Instrument Serif italique. L'étiquette bordeaux arrive à 43,4 s.</p>
+    <span class="chip">Sortie : les feuillets s'écartent ↑</span>
+  </div>
+
+
+  <div class="cell" id="frame-05">
+    <div class="scn first"><b>Scène 5</b> · L'expérience premium</div>
+    <div class="cv">
+      <div class="ph mask"></div>
+      <div class="imgtag">IMG-11 · clip IA</div>
+      <div class="rail" style="left:calc(var(--u)*72);top:calc(var(--u)*520);height:calc(var(--u)*860);opacity:.8"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*560);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*680);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*800);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*920);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*1040);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*1160);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot" style="left:calc(var(--u)*65);top:calc(var(--u)*1280);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="glass pill" style="left:calc(var(--u)*120);top:calc(var(--u)*1360);width:calc(var(--u)*720);height:calc(var(--u)*92)"></div>
+      <div class="t" style="left:calc(var(--u)*160);top:calc(var(--u)*1388);font:400 calc(var(--u)*34)/1 Jost;color:var(--bdx-deep)">Masque modelant <span style="position:static;color:var(--bdx)">· selon les besoins</span></div>
+    </div>
+    <div class="label"><span>05 · Les soins</span><span>46,0–60,0 s · ici 52,0 s</span></div>
+    <p class="note"><b>Les images passent devant.</b> Trois gros plans : textures produits (« Produits premium »), masque modelant, massage du visage (« Massage du visage »). Une seule puce de verre par plan, en bas à gauche. Le rail revient, plus fin, et gagne un point à chaque étiquette (5, 6, 7).</p>
+    <span class="chip">Entrée : feuillets qui s'écartent · Intra : fondus 0,6 s</span>
+  </div>
+
+  <div class="cell" id="frame-05b">
+    <div class="scn"><b>Scène 5</b> · L'expérience premium</div>
+    <div class="cv">
+      <div class="ph rest"></div>
+      <div class="imgtag">IMG-14</div>
+      <div class="sheen" style="background:linear-gradient(115deg,transparent 35%,rgba(247,242,235,.28) 48%,transparent 60%)"></div>
+      <div class="rail" style="left:calc(var(--u)*72);top:calc(var(--u)*520);height:calc(var(--u)*660);opacity:.8"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*560);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*660);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*760);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*860);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*960);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*1060);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="dot on" style="left:calc(var(--u)*65);top:calc(var(--u)*1160);width:calc(var(--u)*14);height:calc(var(--u)*14)"></div>
+      <div class="glass" style="left:calc(var(--u)*120);top:calc(var(--u)*1240);width:calc(var(--u)*840);height:calc(var(--u)*140)"><div class="sheen"></div></div>
+      <div class="t" style="left:calc(var(--u)*120);width:calc(var(--u)*840);top:calc(var(--u)*1290);display:flex;justify-content:space-evenly;align-items:center;font:400 calc(var(--u)*40)/1 Jost;color:var(--bdx-deep)"><span style="position:static">Technologie</span><span style="position:static;width:max(1px,calc(var(--u)*1.5));height:calc(var(--u)*44);background:var(--bdx-70)"></span><span style="position:static">Produits</span><span style="position:static;width:max(1px,calc(var(--u)*1.5));height:calc(var(--u)*44);background:var(--bdx-70)"></span><span style="position:static">Gestes</span></div>
+    </div>
+    <div class="label"><span>05b · L'alliance</span><span>60,0–65,0 s · ici 63,0 s</span></div>
+    <p class="note"><b>Le message du film.</b> Le rail du protocole est complet (7 points). Les trois mots s'inscrivent un par un sur une seule barre de verre, sur la voix (60,2 / 61,4 / 62,4 s). Une seule passe de lumière traverse ensuite le plan.</p>
+    <span class="chip">Sortie : fondu lumineux · la lame remonte</span>
+  </div>
+
+
+  <div class="cell" id="frame-06">
+    <div class="scn first"><b>Scène 6</b> · Signature</div>
+    <div class="cv">
+      <div class="ph bright"></div>
+      <div class="veil" style="background:rgba(247,242,235,.30)"></div>
+      <div class="imgtag">IMG-15</div>
+      <div class="glass" style="left:calc(var(--u)*180);top:calc(var(--u)*500);width:calc(var(--u)*720);height:calc(var(--u)*520)"><div class="sheen"></div></div>
+      <div class="t serif" style="left:0;right:0;text-align:center;top:calc(var(--u)*610);font-size:calc(var(--u)*210);color:var(--bdx-deep)">HydraSkin</div>
+      <div class="hair" style="left:calc(var(--u)*430);width:calc(var(--u)*220);top:calc(var(--u)*850)"></div>
+      <div class="t" style="left:0;right:0;text-align:center;top:calc(var(--u)*888);font:300 calc(var(--u)*42)/1.2 Jost;color:var(--bdx-deep)">Un soin expert, pensé pour votre peau.</div>
+    </div>
+    <div class="label"><span>06 · Le retour du verre</span><span>65,8–71,0 s</span></div>
+    <p class="note"><b>Rappel de la scène 1 :</b> même plaque, même place, même taille. « HydraSkin » revient sur le mot dit (66,2 s), avec un « tink » et un reflet. La signature suit à 67,4 s.</p>
+    <span class="chip">Entrée : fondu lumineux</span>
+  </div>
+
+  <div class="cell" id="frame-06b">
+    <div class="scn"><b>Scène 6</b> · Signature</div>
+    <div class="cv">
+      <div class="ph bright"></div>
+      <div class="veil" style="background:rgba(247,242,235,.30)"></div>
+      <div class="glass" style="left:calc(var(--u)*180);top:calc(var(--u)*300);width:calc(var(--u)*720);height:calc(var(--u)*520)"></div>
+      <div class="t serif" style="left:0;right:0;text-align:center;top:calc(var(--u)*410);font-size:calc(var(--u)*210);color:var(--bdx-deep)">HydraSkin</div>
+      <div class="hair" style="left:calc(var(--u)*430);width:calc(var(--u)*220);top:calc(var(--u)*650)"></div>
+      <div class="t" style="left:0;right:0;text-align:center;top:calc(var(--u)*688);font:300 calc(var(--u)*42)/1.2 Jost;color:var(--bdx-deep)">Un soin expert, pensé pour votre peau.</div>
+      <div class="glass pill" style="left:calc(var(--u)*150);top:calc(var(--u)*900);width:calc(var(--u)*780);height:calc(var(--u)*100)"></div>
+      <div class="t" style="left:0;right:0;text-align:center;top:calc(var(--u)*932);font:400 calc(var(--u)*36)/1 Jost;color:var(--bdx-deep)">Découvrez votre prochain rituel de soin.</div>
+      <div class="hair" style="left:calc(var(--u)*490);width:calc(var(--u)*100);top:calc(var(--u)*1210)"></div>
+      <div class="t" style="left:0;right:0;text-align:center;top:calc(var(--u)*1250);font:500 calc(var(--u)*34)/1 Jost;letter-spacing:.28em;color:var(--bdx)">AMANI SKIN</div>
+      <div class="t" style="left:calc(var(--u)*240);right:calc(var(--u)*240);text-align:center;top:calc(var(--u)*1322);font:400 calc(var(--u)*28)/1 Jost;color:var(--bdx-deep-78);border:max(1px,calc(var(--u)*2)) dashed rgba(100,45,61,.5);border-radius:calc(var(--u)*12);padding:calc(var(--u)*14) 0">Coordonnées · à confirmer</div>
+      <div class="t" style="left:calc(var(--u)*72);top:calc(var(--u)*1468);font:400 calc(var(--u)*22)/1 Jost;color:var(--bdx)">Images virtuelles</div>
+    </div>
+    <div class="label"><span>06b · Fin et institut</span><span>71,0–78,0 s</span></div>
+    <p class="note"><b>La plaque glisse de 200 px vers le haut</b> pour faire de la place. La puce d'invitation arrive à 71,0 s, puis AMANI SKIN et l'emplacement des coordonnées à 73,4 s. L'ensemble reste tenu 4 s, puis fondu vers l'ivoire crème. Seules les coordonnées que vous confirmerez seront affichées.</p>
+  </div>
+
+</div>
+
+<!-- ================= SEAM MAP + TOKENS ================= -->
+<div class="act"><b>Repères</b><span>Transitions, palette et règles</span><i>tout le film</i></div>
+<div class="grid">
+
+  <div class="cell wide">
+    <div class="panel">
+      <h3>Carte des transitions</h3>
+      <div class="seam"><b>1 → 2<br>7,2 s</b><div><b style="color:var(--bdx-deep);font-size:13.5px;letter-spacing:0">Lame de verre ↑</b> · la plaque du titre s'étire sur tout l'écran et monte. L'image suivante apparaît nette derrière son bord.
+        <svg viewBox="0 0 300 46"><rect x="0" y="4" width="60" height="38" rx="3" fill="#E6C3AA"/><rect x="120" y="4" width="60" height="38" rx="3" fill="#E8DCCD"/><rect x="120" y="4" width="60" height="22" fill="#F7F2EB" fill-opacity=".75" stroke="#F7F2EB"/><path d="M150 40 L150 10 M144 16 L150 10 L156 16" stroke="#642D3D" stroke-width="1.5" fill="none"/><rect x="240" y="4" width="60" height="38" rx="3" fill="#E8DCCD"/><path d="M66 23 H112 M188 23 H232" stroke="#642D3D" stroke-opacity=".5" stroke-dasharray="3 4"/></svg></div></div>
+      <div class="seam"><b>2 → 3<br>19,4 s</b><div><b style="color:var(--bdx-deep);font-size:13.5px;letter-spacing:0">Carte → puce</b> · la carte se rétracte en puce en haut à gauche, et le premier geste apparaît en fondu.
+        <svg viewBox="0 0 300 46"><rect x="0" y="4" width="60" height="38" rx="3" fill="#E8DCCD"/><rect x="18" y="16" width="38" height="20" rx="4" fill="#F7F2EB" fill-opacity=".8"/><rect x="120" y="4" width="60" height="38" rx="3" fill="#DDB9A0"/><rect x="124" y="8" width="26" height="8" rx="4" fill="#F7F2EB" fill-opacity=".85"/><path d="M56 26 C 90 26, 100 12, 122 12" stroke="#642D3D" stroke-opacity=".6" fill="none"/><rect x="240" y="4" width="60" height="38" rx="3" fill="#DDB9A0"/><rect x="244" y="8" width="26" height="8" rx="4" fill="#F7F2EB" fill-opacity=".85"/></svg></div></div>
+      <div class="seam"><b>3 → 4<br>31,4 s</b><div><b style="color:var(--bdx-deep);font-size:13.5px;letter-spacing:0">Mise au point qui s'ouvre</b> · l'image se défocalise en un fond lin crémeux, et la phrase arrive.
+        <svg viewBox="0 0 300 46"><defs><filter id="b"><feGaussianBlur stdDeviation="4"/></filter></defs><rect x="0" y="4" width="60" height="38" rx="3" fill="#DDB9A0"/><circle cx="30" cy="22" r="9" fill="#C99E86"/><rect x="120" y="4" width="60" height="38" rx="3" fill="#DDB9A0"/><circle cx="150" cy="22" r="10" fill="#C99E86" filter="url(#b)"/><rect x="240" y="4" width="60" height="38" rx="3" fill="#D8C5B2"/><rect x="248" y="18" width="40" height="4" fill="#40232C"/><rect x="248" y="26" width="28" height="4" fill="#40232C"/></svg></div></div>
+      <div class="seam"><b>4 → 5<br>45,4 s</b><div><b style="color:var(--bdx-deep);font-size:13.5px;letter-spacing:0">Feuillets qui s'écartent ↑</b> · les trois feuillets montent à trois vitesses et découvrent la texture produit.
+        <svg viewBox="0 0 300 46"><rect x="0" y="4" width="60" height="38" rx="3" fill="#E5D6C5"/><rect x="10" y="22" width="40" height="5" rx="2" fill="#F7F2EB"/><rect x="10" y="29" width="40" height="5" rx="2" fill="#F7F2EB"/><rect x="10" y="36" width="40" height="4" rx="2" fill="#F7F2EB"/><rect x="120" y="4" width="60" height="38" rx="3" fill="#E9D8C6"/><rect x="128" y="8" width="40" height="5" rx="2" fill="#F7F2EB"/><rect x="136" y="18" width="40" height="5" rx="2" fill="#F7F2EB"/><rect x="124" y="28" width="40" height="5" rx="2" fill="#F7F2EB" fill-opacity=".5"/><rect x="240" y="4" width="60" height="38" rx="3" fill="#EFE5D9"/></svg></div></div>
+      <div class="seam"><b>5 → 6<br>64,4 s</b><div><b style="color:var(--bdx-deep);font-size:13.5px;letter-spacing:0">Fondu lumineux, et la lame revient</b> · l'image s'éclaircit et la plaque remonte à sa place de la scène 1.
+        <svg viewBox="0 0 300 46"><rect x="0" y="4" width="60" height="38" rx="3" fill="#DCC2AC"/><rect x="120" y="4" width="60" height="38" rx="3" fill="#F3EBE0"/><rect x="240" y="4" width="60" height="38" rx="3" fill="#F3EBE0"/><rect x="252" y="14" width="36" height="18" rx="3" fill="#F7F2EB" stroke="#F7F2EB"/><rect x="258" y="20" width="24" height="4" fill="#40232C"/></svg></div></div>
+      <p class="note" style="margin-top:10px">Une seule direction pour tout le film : de bas en haut. Dans les scènes, des fondus de 0,5 à 0,7 s qui suivent le geste. Ni flash, ni zoom brusque, ni volet de banque d'effets.</p>
+    </div>
+  </div>
+
+  <div class="cell wide">
+    <div class="panel">
+      <h3>Palette, typographie, verre</h3>
+      <div class="sw">
+        <div style="background:#D8C5B2;color:#40232C"><b>Beige lin</b><br>#D8C5B2<br>fonds, panneaux</div>
+        <div style="background:#F7F2EB;color:#40232C;box-shadow:inset 0 0 0 1px rgba(100,45,61,.2)"><b>Ivoire crème</b><br>#F7F2EB<br>lumière, bords du verre</div>
+        <div style="background:#642D3D;color:#F7F2EB"><b>Bordeaux lie-de-vin</b><br>#642D3D<br>signature, accents</div>
+        <div style="background:#40232C;color:#F7F2EB"><b>Bordeaux profond</b><br>#40232C<br>textes, contrastes</div>
+      </div>
+      <ul>
+        <li><b style="font-family:'Instrument Serif',serif;font-size:22px;font-weight:400">Instrument Serif</b> : « HydraSkin » et deux phrases-clés seulement (le geste, la promesse)</li>
+        <li><b>Jost 300 · 400 · 500</b> : étapes, mots-clés, légendes, invitation (la technologie, le protocole)</li>
+        <li><b>Verre</b> : dégradé ivoire crème → beige lin, flou 22 px, bord ivoire 1,5 px, ombre bordeaux profond à 18 %, un seul reflet par apparition</li>
+        <li><b>Au plus une plaque et une puce à la fois</b>, jamais sur un visage, des mains ou l'appareil</li>
+        <li><b>Zone utile</b> : textes entre y 240 et y 1500, x 72 à 940 (l'interface Reels/TikTok recouvre le reste)</li>
+        <li><b>Contrastes</b> : bordeaux profond sur lin 8,4:1 · bordeaux lie-de-vin sur lin 6,3:1</li>
+        <li><b>À éviter</b> : rouge vif, rose bonbon, dorures, néon, irisation, effets chargés, diaporama</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
