@@ -21,6 +21,7 @@ skincare ». Rendu 100 % HyperFrames : Three.js (monde 3D) + GSAP (titres, sous-
 | `tools/duck_music.py` | Musique abaissée automatiquement sous la voix (`music-bed.wav`) |
 | `tools/build_sfx.py` | Placement des effets sonores dans `index.html` à partir du minutage plans + mots |
 | `tools/sync_index.py` | Début / durée des blocs texte, de la voix et de la musique, durée totale de la composition |
+| `tools/remix_audio.py` | Nouvelle bande-son sur le film sans refaire les images : rend le mixage seul (~1 min) puis le pose sur la vidéo |
 
 ## Commandes
 
@@ -38,5 +39,9 @@ python3 tools/build_plan.py && python3 tools/align_words.py && python3 tools/bui
 python3 tools/make_audio.py assets/plan.json assets/audio
 python3 tools/duck_music.py && python3 tools/build_sfx.py && python3 tools/sync_index.py
 ```
+
+Voix : légère réverbération de pièce (effet `reverb` HyperFrames, `data-fx-chain` sur `#voiceover` dans `index.html` :
+taille 0,6, amortissement 0,45, wet 0,3). Pour la doser après un changement de son uniquement :
+`python3 tools/remix_audio.py renders/skincare-3-erreurs.mp4 renders/nouveau.mp4` (le film n'est pas re-rendu).
 
 Le logo AMANI SKIN et `@amani__skin` apparaissent discrètement sur le CTA final (`compositions/c-outro.html`, bloc `#oc-sign`) : supprimer ce bloc pour une version sans marque.
