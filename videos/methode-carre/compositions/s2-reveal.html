@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scène 2 — 4 à 7 s : « Découvre la méthode CARRÉ. » ; les 5 lettres tombent comme les cubes. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; pointer-events: none; }
+        #s2-root .ttl { font-size: 80px; }
+        #s2-tiles .tile { font-size: 124px; }
+      </style>
+      <div id="root" data-composition-id="s2-reveal" data-width="1080" data-height="1920">
+        <div class="stack" id="s2-root">
+          <span class="mask" data-layout-allow-overflow><span class="kicker" id="s2-k">5 blocs · 1 prompt efficace</span></span>
+          <div class="ttl">
+            <span class="mask" data-layout-allow-overflow><span id="s2-l1">Découvre la méthode</span></span>
+          </div>
+          <div class="ttl" style="margin-top: 24px">
+            <span class="tiles" id="s2-tiles">
+              <span class="tile" id="s2-t0">C</span><span class="tile" id="s2-t1">A</span><span class="tile" id="s2-t2">R</span><span class="tile" id="s2-t3">R</span><span class="tile" id="s2-t4">É</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const R = window.Remotion;
+          const pop = { damping: 11, stiffness: 150, mass: 1 };
+          tl.fromTo("#s2-k", { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, 0.05);
+          tl.fromTo("#s2-l1", { yPercent: 110 }, { yPercent: 0, duration: 0.6, ease: "expo.out" }, 0.12);
+          // letters land with the 3D cubes (cube i lands ~0.85 + 0.16 i s into the scene)
+          for (let i = 0; i < 5; i++) {
+            tl.fromTo("#s2-t" + i, { y: -180, opacity: 0, rotation: -12 }, { y: 0, opacity: 1, rotation: 0, duration: R.springDuration(pop), ease: R.springEase(pop) }, 0.85 + i * 0.16);
+          }
+          tl.to(["#s2-k", "#s2-l1"], { yPercent: -110, duration: 0.28, ease: "power2.in" }, 2.72);
+          tl.to(["#s2-t0", "#s2-t1", "#s2-t2", "#s2-t3", "#s2-t4"], { y: -60, opacity: 0, duration: 0.26, ease: "power2.in", stagger: 0.03 }, 2.7);
+          window.__timelines["s2-reveal"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

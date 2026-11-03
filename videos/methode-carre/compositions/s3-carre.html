@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scène 3 — 7 à 17 s : les 5 composantes, une station 3D toutes les 2 s. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; pointer-events: none; }
+        #s3-progress { position: absolute; left: 0; right: 0; top: 214px; display: flex; justify-content: center; gap: 12px; font-family: "Sora", sans-serif; font-size: 40px; }
+        #s3-progress .pg {
+          display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 9px;
+          border: 3px solid rgba(201, 169, 106, 0.45); color: rgba(248, 245, 239, 0.55); font-weight: 800;
+        }
+        .s3-step { position: absolute; left: 50px; right: 50px; top: 314px; text-align: center; }
+        .s3-head { display: flex; align-items: center; justify-content: center; gap: 28px; }
+        .s3-head .tile { font-family: "Sora", sans-serif; font-size: 132px; }
+        .s3-word { font-family: "Archivo Black", "Sora", sans-serif; font-weight: 400; font-size: 70px; letter-spacing: 0.02em; color: var(--gold); }
+        .s3-say { margin-top: 22px; font-size: 66px; }
+      </style>
+      <div id="root" data-composition-id="s3-carre" data-width="1080" data-height="1920">
+        <div id="s3-progress">
+          <span class="pg" id="s3-p0">C</span><span class="pg" id="s3-p1">A</span><span class="pg" id="s3-p2">R</span><span class="pg" id="s3-p3">R</span><span class="pg" id="s3-p4">É</span>
+        </div>
+
+        <div class="s3-step" id="s3-s0">
+          <div class="s3-head"><span class="tile" id="s3-tile0">C</span><span class="mask" data-layout-allow-overflow><span class="s3-word" id="s3-w0">CONTEXTE</span></span></div>
+          <div class="ttl s3-say"><span class="mask" data-layout-allow-overflow><span id="s3-say0">Explique ta situation.</span></span></div>
+        </div>
+        <div class="s3-step" id="s3-s1">
+          <div class="s3-head"><span class="tile" id="s3-tile1">A</span><span class="mask" data-layout-allow-overflow><span class="s3-word" id="s3-w1">ACTION</span></span></div>
+          <div class="ttl s3-say"><span class="mask" data-layout-allow-overflow><span id="s3-say1">Précise ce que tu veux.</span></span></div>
+        </div>
+        <div class="s3-step" id="s3-s2">
+          <div class="s3-head"><span class="tile" id="s3-tile2">R</span><span class="mask" data-layout-allow-overflow><span class="s3-word" id="s3-w2">RÔLE</span></span></div>
+          <div class="ttl s3-say"><span class="mask" data-layout-allow-overflow><span id="s3-say2">Donne un rôle à ton IA.</span></span></div>
+        </div>
+        <div class="s3-step" id="s3-s3">
+          <div class="s3-head"><span class="tile" id="s3-tile3">R</span><span class="mask" data-layout-allow-overflow><span class="s3-word" id="s3-w3">RÉSULTAT</span></span></div>
+          <div class="ttl s3-say"><span class="mask" data-layout-allow-overflow><span id="s3-say3">Décris le résultat attendu.</span></span></div>
+        </div>
+        <div class="s3-step" id="s3-s4">
+          <div class="s3-head"><span class="tile" id="s3-tile4">É</span><span class="mask" data-layout-allow-overflow><span class="s3-word" id="s3-w4">EXEMPLE</span></span></div>
+          <div class="ttl s3-say"><span class="mask" data-layout-allow-overflow><span id="s3-say4">Montre-lui un exemple.</span></span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const R = window.Remotion;
+          const pop = { damping: 12, stiffness: 160, mass: 1 };
+          tl.set([".s3-step"], { opacity: 0 }, 0);
+          tl.fromTo("#s3-progress", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.05);
+          for (let i = 0; i < 5; i++) {
+            const t0 = i * 2;
+            // progress: the current letter fills gold, done letters stay gold-outlined
+            tl.to("#s3-p" + i, { backgroundColor: "#C9A96A", borderColor: "#C9A96A", color: "#3B2418", duration: 0.25, ease: "power2.out" }, t0 + 0.15);
+            if (i > 0) tl.to("#s3-p" + (i - 1), { backgroundColor: "rgba(201,169,106,0.28)", borderColor: "rgba(201,169,106,0.9)", duration: 0.25 }, t0 + 0.15);
+            tl.set("#s3-s" + i, { opacity: 1 }, t0);
+            if (i < 4) tl.set("#s3-s" + i, { opacity: 0 }, t0 + 2.0);
+            tl.fromTo("#s3-tile" + i, { scale: 0, rotation: -20 }, { scale: 1, rotation: 0, duration: R.springDuration(pop), ease: R.springEase(pop) }, t0 + 0.12);
+            tl.fromTo("#s3-w" + i, { yPercent: 110 }, { yPercent: 0, duration: 0.55, ease: "expo.out" }, t0 + 0.24);
+            // the sentence lands on the spoken instruction (after "Contexte :", "Action :" ...)
+            tl.fromTo("#s3-say" + i, { yPercent: 110 }, { yPercent: 0, duration: 0.55, ease: "expo.out" }, t0 + 0.3);
+            if (i < 4) {
+              tl.to(["#s3-tile" + i], { scale: 0.6, opacity: 0, duration: 0.16, ease: "power2.in" }, t0 + 1.84);
+              tl.to(["#s3-w" + i, "#s3-say" + i], { yPercent: -110, duration: 0.16, ease: "power2.in" }, t0 + 1.84);
+            }
+          }
+          tl.to(["#s3-tile4"], { scale: 0.6, opacity: 0, duration: 0.2, ease: "power2.in" }, 9.8);
+          tl.to(["#s3-w4", "#s3-say4"], { yPercent: -110, duration: 0.22, ease: "power2.in" }, 9.78);
+          tl.to("#s3-progress", { opacity: 0, duration: 0.2 }, 9.8);
+          window.__timelines["s3-carre"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

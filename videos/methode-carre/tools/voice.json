@@ -1,0 +1,16 @@
+{
+  "voice": "ff_siwis (Kokoro, local)",
+  "speed": 1.05,
+  "lines": [
+    {"id": "l1", "at": 0.30, "say": "Tu utilises Tchatte GPT, mais tes réponses sont trop vagues ?", "text": "Tu utilises ChatGPT, mais tes réponses sont trop vagues ?"},
+    {"id": "l2", "at": 4.20, "say": "Essaie la méthode carré !", "text": "Essaie la méthode CARRÉ !"},
+    {"id": "l3", "at": 7.10, "say": "Contexte : explique ta situation.", "text": "Contexte : explique ta situation."},
+    {"id": "l4", "at": 9.10, "say": "Action : précise ta demande.", "text": "Action : précise ta demande."},
+    {"id": "l5", "at": 11.05, "say": "Rôle : donne une expertise à ton I A.", "text": "Rôle : donne une expertise à ton IA."},
+    {"id": "l6", "at": 13.05, "say": "Résultat : décris ce que tu attends.", "text": "Résultat : décris ce que tu attends."},
+    {"id": "l7", "at": 15.00, "say": "Exemple : montre-lui ce que tu souhaites.", "text": "Exemple : montre-lui ce que tu souhaites."},
+    {"id": "l8", "at": 18.10, "say": "Cinq éléments pour structurer tes prommptes, et mieux guider ton I A.", "text": "Cinq éléments pour structurer tes prompts et mieux guider ton IA."},
+    {"id": "l8b", "at": 24.15, "say": "Structure tes prommptes. Améliore tes résultats.", "text": "Structure tes prompts. Améliore tes résultats."},
+    {"id": "l9", "at": 28.05, "say": "Rili Saksèss.", "text": "RILI SUCCESS."}
+  ]
+}

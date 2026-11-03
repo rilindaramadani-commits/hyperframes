@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Scène 1 — 0 à 4 s : l'accroche, déjà à l'écran à la frame 0 (vignette du Reel). -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; pointer-events: none; }
+        #s1-title { font-size: 90px; }
+      </style>
+      <div id="root" data-composition-id="s1-hook" data-width="1080" data-height="1920">
+        <div class="stack">
+          <span class="mask" data-layout-allow-overflow><span class="kicker" id="s1-k">Tuto IA pour débutants</span></span>
+          <div class="ttl" id="s1-title">
+            <span class="mask" data-layout-allow-overflow><span id="s1-l1">Tu n'obtiens pas</span></span>
+            <span class="mask" data-layout-allow-overflow><span id="s1-l2">les <span class="hl" id="s1-hl">bonnes réponses</span></span></span>
+            <span class="mask" data-layout-allow-overflow><span id="s1-l3">avec ChatGPT ?</span></span>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // frame 0 already reads; the highlight block wipes in under the key words
+          tl.fromTo("#s1-hl", { color: "#F8F5EF" }, { color: "#C9A96A", duration: 0.4, ease: "power2.out" }, 0.25);
+          // handoff: lines leave upward as the camera pulls back to the AI hub
+          tl.to(["#s1-k", "#s1-l1", "#s1-l2", "#s1-l3"], { yPercent: -110, duration: 0.32, ease: "power2.in", stagger: 0.05 }, 3.62);
+          window.__timelines["s1-hook"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
