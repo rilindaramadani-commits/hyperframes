@@ -1,4 +1,4 @@
-// RILI SUCCESS — « La méthode CARRÉ en 30 secondes »
+// « La méthode CARRÉ en 30 secondes »
 // One continuous isometric 3D world (Three.js), drawn only from HyperFrames time (`hf-seek`).
 // Motion springs are Remotion's own spring() (assets/vendor/remotion-motion.js → window.Remotion).
 import * as THREE from "three";
@@ -788,8 +788,8 @@ const logoTex = (() => {
   g.fillStyle = grd; g.fillRect(0, 0, 512, 512);
   g.strokeStyle = "rgba(59,36,24,0.85)"; g.lineWidth = 14; g.strokeRect(60, 60, 392, 392);
   font(g, 800, 210, FD); g.textAlign = "center"; g.textBaseline = "middle";
-  g.fillStyle = "rgba(255,236,200,0.55)"; g.fillText("RS", 260, 266);
-  g.fillStyle = CSS.choco; g.fillText("RS", 256, 262);
+  g.fillStyle = "rgba(255,236,200,0.55)"; g.fillText("IA", 260, 266);
+  g.fillStyle = CSS.choco; g.fillText("IA", 256, 262);
   return tex;
 })();
 const logoFace = goldFaceMat(logoTex);
@@ -842,7 +842,7 @@ function drawHub(t) {
   const key = mode === "open" ? "o" + Math.round(clamp01((t - 4.6) / 1.6) * 30) + (Math.floor(t * 2.4) % 2) : "p" + Math.round(t * 30);
   if (hubTex.key === key) return;
   hubTex.key = key;
-  const bar = chrome(g, w, h, "Assistant IA · RILI SUCCESS");
+  const bar = chrome(g, w, h, "Assistant IA");
   if (mode === "open") {
     const k = clamp01((t - 4.6) / 1.6);
     font(g, 600, 50); g.fillStyle = "#A99E92";
@@ -1034,7 +1034,7 @@ function renderAt(t) {
   endCard.visible = endMode;
 
   if (endMode) {
-    // ---- logo: five cubes converge and fuse into the RILI SUCCESS cube
+    // ---- end card: five cubes converge and fuse into one gold "IA" cube
     const ecam = { P: new V3(60, 0.55, 60), sx: 0, sy: 0.115, h: 6.4 + (1 - smooth(27.62, 30, t)) * 0.4, az: 0 };
     placeCamera(ecam);
     const m = smooth(28.15, 28.75, t);

@@ -2,7 +2,7 @@
 import json, re, html
 
 vo = json.loads(re.search(r"window\.VO = (.*);", open("assets/vo.js", encoding="utf-8").read(), re.S).group(1))
-SKIP = {"l9"}  # the end card shows RILI SUCCESS itself
+SKIP = {"l9"}  # the end card shows the closing line itself
 groups = []
 for L in vo:
     if L["id"] in SKIP:

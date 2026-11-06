@@ -27,7 +27,7 @@ Un seul monde 3D continu (plateau de conseil tech isométrique) que la caméra t
 | 3e | 15–17 s | **É · Exemple** : écran « Exemples » ; deux modèles de documents (Modèle A / Modèle B) sortent de l'écran, une coche dorée se pose. | Idem. | **É — EXEMPLE** · « Montre-lui un exemple. » | Pop sur la coche |
 | 4 | 17–24 s | L'écran géant du hub plein cadre : le prompt complet se tape, chaque bloc précédé de sa pastille-lettre ; les cubes viennent se placer juste sous l'écran. À partir de 20,8 s, les 5 parties s'illuminent dans l'ordre C, A, R, R, É et chaque cube se soulève avec sa partie. | Plongée dans l'écran, puis cadrage frontal, très lente avancée. | Le prompt lui-même (voir §5) | Frappe clavier, 5 clics sur les illuminations, montée (riser) à 23 s |
 | 5 | 24–27 s | L'écran se divise en deux : à gauche « Demande vague » (gris, lignes floues, « ✕ Générique, peu utile ») ; à droite « Méthode CARRÉ » (or, tableau 7 jours net, « ✓ Précis, prêt à publier »). | Léger recul. | « Structure tes prompts. Améliore tes **résultats**. » | Whoosh au partage, groove complet |
-| 6 | 27–30 s | Rideau chocolat en diagonale ; les 5 cubes reviennent puis fusionnent en un grand cube doré gravé « RS » qui pivote et se pose ; logotype RILI SUCCESS avec reflet doré ; phrase finale. | Fixe, très léger recul. | **RILI SUCCESS** · « L'IA devient plus simple quand tu sais l'utiliser. » | Accord final + impact grave sur le cube |
+| 6 | 27–30 s | Rideau chocolat en diagonale ; les 5 cubes reviennent puis fusionnent en un grand cube doré gravé « IA » qui pivote et se pose ; la phrase de fin apparaît en doré avec un reflet, puis la phrase finale. | Fixe, très léger recul. | **Et si l'IA pouvait convenir à tous** · « L'IA devient plus simple quand tu sais l'utiliser. » | Accord final + impact grave sur le cube |
 
 ---
 
@@ -52,7 +52,7 @@ Un seul monde 3D continu (plateau de conseil tech isométrique) que la caméra t
 | 3e Exemple | A wide black monitor shows "Exemples"; two document templates (Modèle A, Modèle B) step out of the screen towards the camera, a gold check mark disc lands on the first one. A gold cube with the letter É floats beside it. + STYLE |
 | 4 (17–24 s) | Front view of a giant black AI screen with a thin gold frame on a hub pedestal. A long prompt types itself line by line; five segments light up one after another in gold. Below the screen, five gold cubes C A R R É lift one by one in sync. Very slow push-in. (Le texte exact doit être incrusté au montage : les IA vidéo déforment le texte.) + STYLE |
 | 5 (24–27 s) | The giant screen splits into two screens side by side: left one grey and dull with blurry lines, right one dark with gold accents showing a neat 7-day content table. Slight pull-back. + STYLE |
-| 6 (27–30 s) | A deep chocolate background (#3B2418 to #1E120B). Five gold cubes converge and fuse into one larger brushed-gold cube engraved "RS", which rotates a quarter turn and settles with a soft light sweep. Elegant, minimal, premium. Leave the lower third empty for the logo text. |
+| 6 (27–30 s) | A deep chocolate background (#3B2418 to #1E120B). Five gold cubes converge and fuse into one larger brushed-gold cube engraved "IA", which rotates a quarter turn and settles with a soft light sweep. Elegant, minimal, premium. Leave the lower third empty for the closing line. |
 
 > Astuce : générer chaque plan 2 à 3 fois et garder la meilleure prise ; les lettres sur les cubes et tout le texte des écrans sont plus fiables en incrustation CapCut qu'en génération.
 
@@ -73,7 +73,7 @@ Un seul monde 3D continu (plateau de conseil tech isométrique) que la caméra t
 
 ## 4. Voix off chronométrée
 
-Voix féminine française (synthèse locale Kokoro « Siwis », vitesse 1,05). Le texte de la cliente est conservé ; la ligne de la scène 5 reprend son texte écran pour éviter 6 s sans voix.
+Voix féminine française (synthèse locale Kokoro « Siwis », vitesse 1,05). Le texte de la cliente est conservé ; la ligne de la scène 5 reprend son texte écran pour éviter 6 s sans voix, et la dernière phrase remplace « RILI SUCCESS » (demande de la cliente : plus de nom de marque dans la vidéo).
 
 | Début | Fin | Texte |
 | --- | --- | --- |
@@ -86,7 +86,7 @@ Voix féminine française (synthèse locale Kokoro « Siwis », vitesse 1,05). L
 | 15,00 | 17,02 | Exemple : montre-lui ce que tu souhaites. |
 | 18,10 | 21,30 | Cinq éléments pour structurer tes prompts et mieux guider ton IA. |
 | 24,15 | 26,58 | Structure tes prompts. Améliore tes résultats. *(ajout)* |
-| 28,05 | 29,07 | RILI SUCCESS. |
+| 27,90 | 29,61 | Et si l'IA pouvait convenir à tous ? *(remplace « RILI SUCCESS »)* |
 
 Pour l'enregistrer toi-même ou avec une autre voix (ElevenLabs, CapCut « Texte en voix ») : garde ces débuts de phrase, le montage est calé dessus. Avec un nouvel enregistrement, remplace `assets/audio/voiceover.wav` (même minutage) ou envoie-le-moi pour recaler.
 
@@ -106,7 +106,7 @@ Pour l'enregistrer toi-même ou avec une autre voix (ElevenLabs, CapCut « Texte
 | 17,7–24 s (écran) | **[R]** Tu es un expert en marketing digital. **[C]** Je lance un compte Instagram sur l'IA. **[A]** Crée un calendrier de contenu de 7 jours **[R]** sous forme de tableau, avec des exemples de publications dans un style pédagogique et professionnel. **[É]** Voici un exemple du ton souhaité… |
 | 24–27 s | Structure tes prompts. Améliore tes **résultats**. |
 | 24–27 s (écrans) | Demande vague · « Écris un post sur l'IA. » · ✕ Générique, peu utile — Méthode CARRÉ · tableau Lun→Dim · ✓ Précis, prêt à publier |
-| 27–30 s | **RILI SUCCESS** · L'IA devient plus simple quand tu sais l'utiliser. |
+| 27–30 s | **Et si l'IA pouvait convenir à tous** · L'IA devient plus simple quand tu sais l'utiliser. |
 
 Sous-titres : incrustés dans la vidéo (groupes de 2 à 5 mots, Plus Jakarta Sans ExtraBold 48 px, blanc cassé sur bande chocolat).
 

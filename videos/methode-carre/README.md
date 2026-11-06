@@ -4,6 +4,8 @@ Reel Instagram 1080 × 1920, 30 s, 30 i/s. Rendu final : `renders/methode-carre-
 Couverture : `renders/couverture-instagram.png` (Remotion, projet `../methode-carre-cover`).
 Livrables écrits (storyboard, prompts Kling/Runway, voix off chronométrée, CapCut, légende) : `LIVRABLES.md`.
 
+Fin : « Et si l'IA pouvait convenir à tous » (aucun nom de marque dans la vidéo).
+
 Style : scène sombre inspirée de la référence de la cliente (fond noir, sol en grille dorée en perspective,
 grands titres blancs centrés, surtitre doré espacé, mot-clé doré), palette RILI SUCCESS, fin sur fond chocolat.
 

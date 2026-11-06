@@ -359,19 +359,44 @@ window.VO = [
  },
  {
   "id": "l9",
-  "text": "RILI SUCCESS.",
-  "start": 28.05,
-  "end": 29.07,
+  "text": "Et si l'IA pouvait convenir à tous ?",
+  "start": 27.9,
+  "end": 29.61,
   "words": [
    {
-    "text": "RILI",
-    "start": 28.05,
-    "end": 28.451
+    "text": "Et",
+    "start": 27.9,
+    "end": 28.034
    },
    {
-    "text": "SUCCESS.",
-    "start": 28.451,
-    "end": 29.07
+    "text": "si",
+    "start": 28.034,
+    "end": 28.167
+   },
+   {
+    "text": "l'IA",
+    "start": 28.167,
+    "end": 28.339
+   },
+   {
+    "text": "pouvait",
+    "start": 28.339,
+    "end": 28.664
+   },
+   {
+    "text": "convenir",
+    "start": 28.664,
+    "end": 29.027
+   },
+   {
+    "text": "à",
+    "start": 29.027,
+    "end": 29.123
+   },
+   {
+    "text": "tous ?",
+    "start": 29.123,
+    "end": 29.333
    }
   ]
  }
