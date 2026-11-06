@@ -1,0 +1,145 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .phrase {
+      position: absolute;
+      left: 110px;
+      right: 110px;
+      bottom: 640px;
+      text-align: center;
+    }
+    .ligne {
+      font-family: var(--font-display, "EB Garamond"), serif;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 1.12;
+      color: var(--color-ink, #fbf6ec);
+      text-shadow: 0 2px 22px rgba(0, 0, 0, 0.65), 0 0 2px rgba(0, 0, 0, 0.35);
+      letter-spacing: 0.005em;
+    }
+    .ligne .m {
+      display: inline-block;
+      white-space: pre;
+    }
+    .ligne em {
+      font-style: italic;
+      color: var(--color-accent, #e7c77e);
+    }
+    .ligne.douce {
+      font-size: 76px;
+    }
+  </style>
+  <div id="root" data-composition-id="phrases" data-width="1080" data-height="1920">
+    <div id="phrase-1" class="phrase clip" data-start="0" data-duration="4.05" data-track-index="0">
+      <div class="ligne douce" id="ligne-1">
+        <span class="m">Faire </span><span class="m">ce </span><span class="m">voyage </span><span class="m">seule</span><br />
+        <span class="m">a </span><span class="m">été </span><span class="m">la </span><span class="m"><em>meilleure</em> </span><span class="m">expérience</span><br />
+        <span class="m">de </span><span class="m">ma </span><span class="m">vie.</span>
+      </div>
+    </div>
+
+    <div id="phrase-2" class="phrase clip" data-start="4.4" data-duration="2.3" data-track-index="0">
+      <div class="ligne" id="ligne-2">
+        <span class="m">Seule </span><span class="m">avec </span><span class="m">mon</span><br />
+        <span class="m"><em>Créateur</em>,</span>
+      </div>
+    </div>
+
+    <div id="phrase-3" class="phrase clip" data-start="6.95" data-duration="2.2" data-track-index="0">
+      <div class="ligne" id="ligne-3">
+        <span class="m">à </span><span class="m">L'implorer</span><br />
+        <span class="m">de </span><span class="m"><em>changer</em> </span><span class="m">ma </span><span class="m">vie.</span>
+      </div>
+    </div>
+
+    <div id="phrase-4" class="phrase clip" data-start="9.35" data-duration="1.8" data-track-index="0">
+      <div class="ligne" id="ligne-4">
+        <span class="m">Un </span><span class="m">voyage </span><span class="m"><em>seule</em>…</span>
+      </div>
+    </div>
+
+    <div id="phrase-5" class="phrase clip" data-start="11.35" data-duration="3.1" data-track-index="0">
+      <div class="ligne" id="ligne-5">
+        <span class="m">mais </span><span class="m">à </span><span class="m"><em>aucun </em></span><span class="m"><em>moment</em></span><br />
+        <span class="m">je </span><span class="m">ne </span><span class="m">me </span><span class="m">suis </span><span class="m">sentie</span><br />
+        <span class="m">seule.</span>
+      </div>
+    </div>
+
+    <div id="phrase-6" class="phrase clip" data-start="14.65" data-duration="1.8" data-track-index="0">
+      <div class="ligne" id="ligne-6">
+        <span class="m">Un </span><span class="m"><em>départ</em> </span><span class="m">à </span><span class="m">zéro.</span>
+      </div>
+    </div>
+
+    <div id="phrase-7" class="phrase clip" data-start="16.7" data-duration="3.05" data-track-index="0">
+      <div class="ligne" id="ligne-7">
+        <span class="m"><em>Allah</em> </span><span class="m">m'accompagne</span><br />
+        <span class="m">à </span><span class="m">chaque </span><span class="m">étape</span><br />
+        <span class="m">de </span><span class="m">mon </span><span class="m">existence.</span>
+      </div>
+    </div>
+
+    <div id="phrase-8" class="phrase clip" data-start="20" data-duration="3.65" data-track-index="0">
+      <div class="ligne" id="ligne-8">
+        <span class="m">Je </span><span class="m">n'avais </span><span class="m">jamais </span><span class="m">été</span><br />
+        <span class="m">aussi </span><span class="m"><em>comblée</em></span><br />
+        <span class="m">dans </span><span class="m">mon </span><span class="m">âme.</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // Entrée : chaque mot sort du flou, l'un après l'autre. Pas de glissement.
+    const entree = (ligne, start, stagger = 0.085, dur = 0.6) => {
+      tl.fromTo(
+        `${ligne} .m`,
+        { opacity: 0, filter: "blur(10px)" },
+        { opacity: 1, filter: "blur(0px)", duration: dur, ease: "power2.out", stagger },
+        start,
+      );
+    };
+    // Sortie : la phrase entière se dissout dans un léger flou.
+    const sortie = (ligne, end, dur = 0.3) => {
+      tl.fromTo(
+        ligne,
+        { opacity: 1, filter: "blur(0px)" },
+        { opacity: 0, filter: "blur(8px)", duration: dur, ease: "power2.in", immediateRender: false },
+        end - dur - 0.02,
+      );
+    };
+
+    // 1 — déjà à l'écran dès la première image (vignette du Reel).
+    tl.fromTo("#ligne-1", { opacity: 1, filter: "blur(0px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.01 }, 0);
+    sortie("#ligne-1", 4.05, 0.35);
+
+    entree("#ligne-2", 4.4, 0.1);
+    sortie("#ligne-2", 6.7);
+
+    entree("#ligne-3", 6.95);
+    sortie("#ligne-3", 9.15, 0.25);
+
+    entree("#ligne-4", 9.35, 0.12, 0.7);
+    sortie("#ligne-4", 11.15, 0.25);
+
+    entree("#ligne-5", 11.35, 0.075);
+    sortie("#ligne-5", 14.45, 0.2);
+
+    entree("#ligne-6", 14.65, 0.1, 0.5);
+    sortie("#ligne-6", 16.45, 0.25);
+
+    entree("#ligne-7", 16.7, 0.08);
+    sortie("#ligne-7", 19.75, 0.3);
+
+    entree("#ligne-8", 20.0, 0.11, 0.75);
+    // La dernière phrase reste, puis s'éteint avec l'image.
+    tl.fromTo("#ligne-8", { opacity: 1 }, { opacity: 0, duration: 0.7, ease: "sine.inOut", immediateRender: false }, 22.9);
+
+    window.__timelines["phrases"] = tl;
+  </script>
+</template>

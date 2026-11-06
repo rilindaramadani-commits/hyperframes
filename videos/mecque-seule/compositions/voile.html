@@ -1,0 +1,56 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #voile-ombre {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 85% 34% at 50% 62%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 55%, rgba(0, 0, 0, 0) 100%);
+    }
+    #voile-noir,
+    #voile-fin {
+      position: absolute;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+    }
+    #voile-eclair {
+      position: absolute;
+      inset: 0;
+      background: #fff4e0;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="voile" data-width="1080" data-height="1920">
+    <div id="voile-ombre"></div>
+    <div id="voile-noir"></div>
+    <div id="voile-eclair"></div>
+    <div id="voile-fin"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // Fondu au noir bref autour d'une coupe : l'image s'assombrit, coupe, puis se rallume.
+    const dip = (seam, depth, inDur, outDur) => {
+      tl.fromTo("#voile-noir", { opacity: 0 }, { opacity: depth, duration: inDur, ease: "power2.in", immediateRender: false }, seam - inDur);
+      tl.fromTo("#voile-noir", { opacity: depth }, { opacity: 0, duration: outDur, ease: "power2.out", immediateRender: false }, seam);
+    };
+    tl.fromTo("#voile-noir", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    dip(4.2, 0.85, 0.25, 0.5);
+    dip(9.2, 0.6, 0.15, 0.4);
+    dip(16.5, 0.7, 0.2, 0.45);
+    dip(19.8, 0.85, 0.3, 0.6);
+
+    // L'éclair : un flash chaud qui ouvre « Un départ à zéro ».
+    tl.fromTo("#voile-eclair", { opacity: 0 }, { opacity: 0.8, duration: 0.06, ease: "power1.in" }, 14.44);
+    tl.fromTo("#voile-eclair", { opacity: 0.8 }, { opacity: 0, duration: 0.45, ease: "expo.out", immediateRender: false }, 14.5);
+
+    // Fin : tout s'éteint doucement.
+    tl.fromTo("#voile-fin", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "sine.inOut" }, 22.75);
+
+    window.__timelines["voile"] = tl;
+  </script>
+</template>
