@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Carrousel IA FACILE — slide 4/5 (image fixe). Généré par tools/build.py. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #c4-bg {
+          position: absolute;
+          inset: 0;
+          background: var(--ground);
+          color: var(--ink);
+        }
+
+        #c4-title { top: 140px; }
+        #c4-eq { position: absolute; left: 60px; right: 60px; top: 400px; display: flex; flex-wrap: wrap;
+          align-items: center; row-gap: 26px; column-gap: 18px; }
+        .tag { display: inline-block; padding: 10px 24px 14px; border: 5px solid var(--ink); border-radius: 16px;
+          box-shadow: 8px 8px 0 var(--ink); font-family: var(--font-display); font-size: 50px; line-height: 1;
+          text-transform: uppercase; }
+        .plus { font-family: var(--font-display); font-size: 56px; line-height: 1; }
+        .tag.role { background: var(--ai); color: #fff; } .tag.tache { background: var(--tomato); }
+        .tag.ctx { background: var(--mint); } .tag.fmt { background: var(--pink); }
+        #c4-bub { top: 680px; left: 60px; right: 72px; font-size: 46px; line-height: 1.42; }
+        .hl { padding: 2px 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+        .hl.role { background: var(--t-ai); } .hl.tache { background: var(--t-tomato); }
+        .hl.ctx { background: var(--t-mint); } .hl.fmt { background: var(--t-pink); }
+
+      </style>
+      <div id="root" data-composition-id="c4" data-width="1080" data-height="1350">
+        <div id="c4-bg">
+          <div class="pg" id="c4-pg"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+
+          <div class="h1" id="c4-title">La formule<br />du bon prompt</div>
+          <div id="c4-eq">
+            <span class="tag role">Rôle</span><span class="plus">+</span>
+            <span class="tag tache">Tâche</span><span class="plus">+</span>
+            <span class="tag ctx">Contexte</span><span class="plus">+</span>
+            <span class="tag fmt">Format</span>
+          </div>
+          <div class="bubble me" id="c4-bub">
+            <span class="hl role">Tu es coach sportif.</span>
+            <span class="hl tache">Crée-moi un programme de 20&nbsp;min</span>
+            <span class="hl ctx">pour débutant, sans matériel.</span>
+            <span class="hl fmt">Présente-le en liste.</span>
+          </div>
+
+          <div class="swipe" id="c4-swipe"><span>Swipe</span><span class="arr"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 H33 M22 8 L34 20 L22 32" /></svg></span></div>
+        </div>
+      </div>
+      <script>
+        window.__timelines["c4"] = gsap.timeline({ paused: true });
+      </script>
+    </template>
+  </body>
+</html>

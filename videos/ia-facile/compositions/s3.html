@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Slide 3 — « 3 usages pour démarrer » sur fond cobalt, en liste verticale. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #s3-wrap {
+          position: absolute;
+          inset: 0;
+          background: var(--ai);
+          color: #fff;
+        }
+        #s3-title {
+          top: 250px;
+        }
+        #s3-title .y {
+          color: var(--ground);
+        }
+        .s3-row {
+          position: absolute;
+          left: 60px;
+          width: 948px;
+          height: 236px;
+          display: flex;
+          align-items: center;
+          gap: 34px;
+          padding: 0 36px;
+          background: var(--paper);
+          color: var(--ink);
+          border: 5px solid var(--ink);
+          border-radius: 30px;
+          box-shadow: 12px 12px 0 var(--ink);
+        }
+        .s3-ico {
+          flex: 0 0 140px;
+          height: 140px;
+          border: 5px solid var(--ink);
+          border-radius: 26px;
+          background: var(--ground);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .s3-txt b {
+          display: block;
+          font-family: var(--font-display);
+          font-size: 54px;
+          line-height: 1.05;
+          text-transform: uppercase;
+        }
+        .s3-txt span {
+          display: block;
+          margin-top: 10px;
+          font-size: 34px;
+          font-weight: 500;
+          line-height: 1.25;
+        }
+        #s3-r1 {
+          top: 540px;
+        }
+        #s3-r2 {
+          top: 810px;
+        }
+        #s3-r3 {
+          top: 1080px;
+        }
+      </style>
+      <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+        <div id="s3-wrap">
+          <div class="h1" id="s3-title"><span class="w y">3 usages</span><br /><span class="w">pour</span> <span class="w">démarrer</span></div>
+          <div class="s3-row" id="s3-r1">
+            <div class="s3-ico">
+              <svg class="ico" width="86" height="86" viewBox="0 0 86 86" fill="none" stroke="#121212" stroke-width="6" stroke-linejoin="round"><rect x="6" y="16" width="74" height="54" rx="8" /><path d="M8 20 L43 47 L78 20" /></svg>
+            </div>
+            <div class="s3-txt"><b>Écrire</b><span>« Rédige un mail poli pour décaler mon rendez-vous. »</span></div>
+          </div>
+          <div class="s3-row" id="s3-r2">
+            <div class="s3-ico">
+              <svg class="ico" width="86" height="86" viewBox="0 0 86 86" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6 H54 L72 24 V80 H16 Z" /><path d="M54 6 V24 H72" /><path d="M28 40 H60 M28 54 H60 M28 68 H48" /></svg>
+            </div>
+            <div class="s3-txt"><b>Résumer</b><span>« Résume ce texte en 5 points simples. »</span></div>
+          </div>
+          <div class="s3-row" id="s3-r3">
+            <div class="s3-ico">
+              <svg class="ico" width="86" height="86" viewBox="0 0 86 86" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M43 8 C26 8 16 20 16 34 C16 45 23 51 28 57 V64 H58 V57 C63 51 70 45 70 34 C70 20 60 8 43 8 Z" /><path d="M31 74 H55 M35 82 H51" /></svg>
+            </div>
+            <div class="s3-txt"><b>Trouver des idées</b><span>« 10 idées de repas rapides pour la semaine. »</span></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo(
+            "#s3-title .w",
+            { opacity: 0, filter: "blur(6px)" },
+            { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" },
+            0.15,
+          );
+          ["#s3-r1", "#s3-r2", "#s3-r3"].forEach(function (sel, i) {
+            const t = 0.6 + i * 1.2;
+            tl.fromTo(sel, { x: -160, opacity: 0, filter: "blur(10px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, t);
+            tl.fromTo(sel + " .s3-ico", { scale: 0.5, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.4)" }, t + 0.12);
+          });
+          // exit: carousel swipe to the left
+          tl.to("#s3-wrap", { x: -1080, filter: "blur(12px)", duration: 0.4, ease: "power3.in" }, 7.1);
+          window.__timelines["s3"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

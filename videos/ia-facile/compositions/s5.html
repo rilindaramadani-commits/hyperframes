@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Slide 5 — « Ton défi du jour » : 3 cases cochées, le rappel, le CTA « Enregistre ». -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #s5-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s5-title {
+          top: 250px;
+        }
+        .s5-item {
+          position: absolute;
+          left: 60px;
+          right: 60px;
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          font-size: 42px;
+          font-weight: 600;
+          line-height: 1.22;
+        }
+        .s5-box {
+          flex: 0 0 76px;
+          height: 76px;
+          border: 5px solid var(--ink);
+          border-radius: 16px;
+          background: var(--paper);
+          box-shadow: 6px 6px 0 var(--ink);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #s5-i1 {
+          top: 530px;
+        }
+        #s5-i2 {
+          top: 680px;
+        }
+        #s5-i3 {
+          top: 830px;
+        }
+        #s5-warn {
+          position: absolute;
+          left: 60px;
+          right: 60px;
+          top: 1000px;
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          font-size: 36px;
+          font-weight: 600;
+        }
+        #s5-warn .bang {
+          flex: 0 0 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: var(--tomato);
+          border: 4px solid var(--ink);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: var(--font-display);
+          font-size: 34px;
+        }
+        #s5-tilt {
+          position: absolute;
+          left: 60px;
+          right: 60px;
+          top: 1120px;
+          transform: rotate(-2deg);
+        }
+        #s5-cta {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          padding: 26px 36px;
+          background: var(--ai);
+          color: #fff;
+          border: 6px solid var(--ink);
+          box-shadow: 14px 14px 0 var(--ink);
+        }
+        #s5-cta b {
+          display: block;
+          font-family: var(--font-display);
+          font-size: 84px;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+        #s5-cta span {
+          display: block;
+          margin-top: 8px;
+          font-size: 34px;
+          font-weight: 600;
+          line-height: 1.2;
+        }
+      </style>
+      <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+        <div id="s5-wrap">
+          <div class="h1" id="s5-title"><span class="w">Ton</span> <span class="w">défi</span><br /><span class="w">du</span> <span class="w">jour</span></div>
+          <div class="s5-item" id="s5-i1">
+            <div class="s5-box"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path class="chk" d="M7 25 L19 37 L41 11" stroke="#2B44FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+            <div>Ouvre l'assistant IA de ton choix.</div>
+          </div>
+          <div class="s5-item" id="s5-i2">
+            <div class="s5-box"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path class="chk" d="M7 25 L19 37 L41 11" stroke="#2B44FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+            <div>Teste la formule sur un vrai besoin.</div>
+          </div>
+          <div class="s5-item" id="s5-i3">
+            <div class="s5-box"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path class="chk" d="M7 25 L19 37 L41 11" stroke="#2B44FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+            <div>Ajuste&nbsp;: « plus court », « plus simple ».</div>
+          </div>
+          <div id="s5-warn"><span class="bang">!</span><span>Vérifie toujours les infos importantes.</span></div>
+          <div id="s5-tilt">
+            <div id="s5-cta">
+              <svg width="70" height="90" viewBox="0 0 70 90" fill="#FFE24A" stroke="#121212" stroke-width="5" stroke-linejoin="round"><path d="M8 6 H62 V84 L35 64 L8 84 Z" /></svg>
+              <div><b>Enregistre</b><span>ce post, et partage-le à quelqu'un qui débute.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s5-wrap", { x: 360, filter: "blur(14px)" }, { x: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, 0);
+          tl.fromTo(
+            "#s5-title .w",
+            { opacity: 0, filter: "blur(6px)" },
+            { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07, ease: "power2.out" },
+            0.1,
+          );
+          ["#s5-i1", "#s5-i2", "#s5-i3"].forEach(function (sel, i) {
+            const t = 0.55 + i * 0.8;
+            tl.fromTo(sel, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, t);
+            tl.fromTo(sel + " .chk", { strokeDasharray: 60, strokeDashoffset: 60 }, { strokeDasharray: 60, strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, t + 0.18);
+          });
+          tl.fromTo("#s5-warn", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 3.0);
+          // the payoff: the save card lands hard
+          tl.fromTo(
+            "#s5-cta",
+            { scale: 1.3, opacity: 0, filter: "blur(10px)" },
+            { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power4.out" },
+            3.68,
+          );
+          window.__timelines["s5"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

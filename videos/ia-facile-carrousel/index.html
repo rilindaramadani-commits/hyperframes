@@ -1,0 +1,178 @@
+<!doctype html>
+<html
+  lang="fr"
+  data-composition-variables='[
+    {"id":"ground","type":"color","label":"Fond","default":"#FFE24A"},
+    {"id":"ink","type":"color","label":"Encre","default":"#121212"},
+    {"id":"ai","type":"color","label":"Couleur IA (accent)","default":"#2B44FF"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <!-- IA FACILE — carrousel Instagram 4:5. Une seconde par slide ; export PNG : tools/export.sh -->
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #ffe24a;
+        --ink: #121212;
+        --paper: #ffffff;
+        --ai: #2b44ff;
+        --tomato: #ff5b3a;
+        --mint: #1fc48a;
+        --pink: #ff7cc6;
+        --t-ai: #c9d0ff;
+        --t-tomato: #ffd0c4;
+        --t-mint: #bdf0da;
+        --t-pink: #ffd3ec;
+        --font-display: "Archivo Black";
+        --font-body: "Poppins";
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1350px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: var(--font-body);
+        color: var(--ink);
+      }
+      #ground {
+        position: absolute;
+        inset: 0;
+        background: var(--ground);
+      }
+      /* ---- shared scene vocabulary ---- */
+      .layer {
+        position: absolute;
+        inset: 0;
+      }
+      .h1 {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        font-family: var(--font-display);
+        font-size: 96px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+      }
+      .h1 .w {
+        display: inline-block;
+      }
+      .bubble {
+        position: absolute;
+        padding: 30px 40px 32px;
+        border: 5px solid var(--ink);
+        border-radius: 36px;
+        box-shadow: 12px 12px 0 var(--ink);
+        font-size: 44px;
+        font-weight: 600;
+        line-height: 1.28;
+      }
+      .bubble.me {
+        right: 72px;
+        background: var(--paper);
+        border-bottom-right-radius: 8px;
+      }
+      .bubble.ai {
+        left: 60px;
+        background: var(--ai);
+        color: #fff;
+        border-bottom-left-radius: 8px;
+      }
+      .bubble .w {
+        display: inline-block;
+      }
+      .who {
+        position: absolute;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .lede {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        font-size: 46px;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .lede .w {
+        display: inline-block;
+      }
+      .mark {
+        background: var(--paper);
+        padding: 0 10px;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
+      svg.ico {
+        display: block;
+      }
+      /* carrousel: progress bar + swipe hint */
+      .pg {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        top: 56px;
+        height: 12px;
+        display: flex;
+        gap: 12px;
+      }
+      .pg i {
+        flex: 1;
+        border-radius: 6px;
+        background: rgba(18, 18, 18, 0.2);
+      }
+      .pg i.on {
+        background: var(--ink);
+      }
+      .swipe {
+        position: absolute;
+        right: 60px;
+        bottom: 56px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-size: 34px;
+        font-weight: 700;
+      }
+      .swipe .arr {
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: var(--ai);
+        border: 4px solid var(--ink);
+        box-shadow: 6px 6px 0 var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1350" data-fps="30">
+      <div id="ground"></div>
+      <div id="c1" data-composition-id="c1" data-composition-src="compositions/c1.html" data-start="0" data-duration="1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1350" style="z-index: 1"></div>
+      <div id="c2" data-composition-id="c2" data-composition-src="compositions/c2.html" data-start="1" data-duration="1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1350" style="z-index: 1"></div>
+      <div id="c3" data-composition-id="c3" data-composition-src="compositions/c3.html" data-start="2" data-duration="1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1350" style="z-index: 1"></div>
+      <div id="c4" data-composition-id="c4" data-composition-src="compositions/c4.html" data-start="3" data-duration="1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1350" style="z-index: 1"></div>
+      <div id="c5" data-composition-id="c5" data-composition-src="compositions/c5.html" data-start="4" data-duration="1" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1350" style="z-index: 1"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

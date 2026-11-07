@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Carrousel IA FACILE — slide 2/5 (image fixe). Généré par tools/build.py. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #c2-bg {
+          position: absolute;
+          inset: 0;
+          background: var(--ground);
+          color: var(--ink);
+        }
+
+        #c2-title { top: 140px; }
+        #c2-me { top: 400px; max-width: 700px; }
+        #c2-ai { top: 640px; max-width: 900px; }
+        #c2-lede { top: 930px; }
+
+      </style>
+      <div id="root" data-composition-id="c2" data-width="1080" data-height="1350">
+        <div id="c2-bg">
+          <div class="pg" id="c2-pg"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+
+          <div class="h1" id="c2-title">C'est quoi,<br />l'IA&nbsp;?</div>
+          <div class="bubble me" id="c2-me">Explique-moi l'IA simplement.</div>
+          <div class="bubble ai" id="c2-ai">Un programme qui a lu des tonnes de textes. Tu lui écris, il te répond.</div>
+          <p class="lede" id="c2-lede">Pas besoin de coder&nbsp;:<br />tu écris <span class="mark">comme tu parles.</span></p>
+
+          <div class="swipe" id="c2-swipe"><span>Swipe</span><span class="arr"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 H33 M22 8 L34 20 L22 32" /></svg></span></div>
+        </div>
+      </div>
+      <script>
+        window.__timelines["c2"] = gsap.timeline({ paused: true });
+      </script>
+    </template>
+  </body>
+</html>

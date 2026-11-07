@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Carrousel IA FACILE — slide 3/5 (image fixe). Généré par tools/build.py. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #c3-bg {
+          position: absolute;
+          inset: 0;
+          background: var(--ai);
+          color: #fff;
+        }
+
+        #c3-title { top: 140px; }
+        #c3-title .y { color: var(--ground); }
+        .c3-row { position: absolute; left: 60px; width: 948px; height: 236px; display: flex; align-items: center;
+          gap: 34px; padding: 0 36px; background: var(--paper); color: var(--ink); border: 5px solid var(--ink);
+          border-radius: 30px; box-shadow: 12px 12px 0 var(--ink); }
+        .c3-ico { flex: 0 0 140px; height: 140px; border: 5px solid var(--ink); border-radius: 26px;
+          background: var(--ground); display: flex; align-items: center; justify-content: center; }
+        .c3-txt b { display: block; font-family: var(--font-display); font-size: 54px; line-height: 1.05; text-transform: uppercase; }
+        .c3-txt span { display: block; margin-top: 10px; font-size: 34px; font-weight: 500; line-height: 1.25; }
+        #c3-r1 { top: 400px; } #c3-r2 { top: 662px; } #c3-r3 { top: 924px; }
+
+      </style>
+      <div id="root" data-composition-id="c3" data-width="1080" data-height="1350">
+        <div id="c3-bg">
+          <div class="pg" id="c3-pg"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+
+          <div class="h1" id="c3-title"><span class="y">3 usages</span><br />pour démarrer</div>
+          <div class="c3-row" id="c3-r1"><div class="c3-ico"><svg class="ico" width="86" height="86" viewBox="0 0 86 86" fill="none" stroke="#121212" stroke-width="6" stroke-linejoin="round"><rect x="6" y="16" width="74" height="54" rx="8" /><path d="M8 20 L43 47 L78 20" /></svg></div><div class="c3-txt"><b>Écrire</b><span>« Rédige un mail poli pour décaler mon rendez-vous. »</span></div></div>
+          <div class="c3-row" id="c3-r2"><div class="c3-ico"><svg class="ico" width="86" height="86" viewBox="0 0 86 86" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6 H54 L72 24 V80 H16 Z" /><path d="M54 6 V24 H72" /><path d="M28 40 H60 M28 54 H60 M28 68 H48" /></svg></div><div class="c3-txt"><b>Résumer</b><span>« Résume ce texte en 5 points simples. »</span></div></div>
+          <div class="c3-row" id="c3-r3"><div class="c3-ico"><svg class="ico" width="86" height="86" viewBox="0 0 86 86" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M43 8 C26 8 16 20 16 34 C16 45 23 51 28 57 V64 H58 V57 C63 51 70 45 70 34 C70 20 60 8 43 8 Z" /><path d="M31 74 H55 M35 82 H51" /></svg></div><div class="c3-txt"><b>Trouver des idées</b><span>« 10 idées de repas rapides pour la semaine. »</span></div></div>
+
+          <div class="swipe" id="c3-swipe"><span>Swipe</span><span class="arr"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 H33 M22 8 L34 20 L22 32" /></svg></span></div>
+        </div>
+      </div>
+      <script>
+        window.__timelines["c3"] = gsap.timeline({ paused: true });
+      </script>
+    </template>
+  </body>
+</html>

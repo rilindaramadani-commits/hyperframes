@@ -1,0 +1,177 @@
+<!doctype html>
+<html
+  lang="fr"
+  data-composition-variables='[
+    {"id":"ground","type":"color","label":"Fond","default":"#FFE24A"},
+    {"id":"ink","type":"color","label":"Encre","default":"#121212"},
+    {"id":"ai","type":"color","label":"Couleur IA (accent)","default":"#2B44FF"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!-- IA FACILE — version vidéo (Reels / TikTok / Shorts) du carrousel 5 slides. -->
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #ffe24a;
+        --ink: #121212;
+        --paper: #ffffff;
+        --ai: #2b44ff;
+        --tomato: #ff5b3a;
+        --mint: #1fc48a;
+        --pink: #ff7cc6;
+        --t-ai: #c9d0ff;
+        --t-tomato: #ffd0c4;
+        --t-mint: #bdf0da;
+        --t-pink: #ffd3ec;
+        --font-display: "Archivo Black";
+        --font-body: "Poppins";
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: var(--font-body);
+        color: var(--ink);
+      }
+      #ground {
+        position: absolute;
+        inset: 0;
+        background: var(--ground);
+      }
+      /* ---- shared scene vocabulary ---- */
+      .layer {
+        position: absolute;
+        inset: 0;
+      }
+      .h1 {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        font-family: var(--font-display);
+        font-size: 96px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+      }
+      .h1 .w {
+        display: inline-block;
+      }
+      .bubble {
+        position: absolute;
+        padding: 30px 40px 32px;
+        border: 5px solid var(--ink);
+        border-radius: 36px;
+        box-shadow: 12px 12px 0 var(--ink);
+        font-size: 44px;
+        font-weight: 600;
+        line-height: 1.28;
+      }
+      .bubble.me {
+        right: 72px;
+        background: var(--paper);
+        border-bottom-right-radius: 8px;
+      }
+      .bubble.ai {
+        left: 60px;
+        background: var(--ai);
+        color: #fff;
+        border-bottom-left-radius: 8px;
+      }
+      .bubble .w {
+        display: inline-block;
+      }
+      .who {
+        position: absolute;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .lede {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        font-size: 46px;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .lede .w {
+        display: inline-block;
+      }
+      .mark {
+        background: var(--paper);
+        padding: 0 10px;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
+      svg.ico {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="34"
+      data-width="1080"
+      data-height="1920"
+      data-fps="30"
+    >
+      <div id="ground"></div>
+
+      <!-- scenes -->
+      <div id="s1" data-composition-id="s1" data-composition-src="compositions/s1.html" data-start="0" data-duration="4.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s2" data-composition-id="s2" data-composition-src="compositions/s2.html" data-start="4.5" data-duration="7.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s3" data-composition-id="s3" data-composition-src="compositions/s3.html" data-start="12" data-duration="7.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s4" data-composition-id="s4" data-composition-src="compositions/s4.html" data-start="19.5" data-duration="8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s5" data-composition-id="s5" data-composition-src="compositions/s5.html" data-start="27.5" data-duration="6.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+
+      <!-- persistent overlays -->
+      <div id="chatbar" data-composition-id="chatbar" data-composition-src="compositions/chatbar.html" data-start="0" data-duration="34" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 5"></div>
+      <div id="progress" data-composition-id="progress" data-composition-src="compositions/progress.html" data-start="0" data-duration="34" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 6"></div>
+
+      <!-- sound: each peak lands one frame after its picture -->
+      <audio id="a-pop-s1" class="clip" src="assets/audio/sfx-pop-1.wav" data-start="0.52" data-duration="0.3" data-track-index="4" data-volume="0.8"></audio>
+      <audio id="a-wh-1" class="clip" src="assets/audio/sfx-whoosh.wav" data-start="4.03" data-duration="0.9" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="a-send-1" class="clip" src="assets/audio/sfx-click.wav" data-start="5.37" data-duration="0.08" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-pop-me1" class="clip" src="assets/audio/sfx-pop-2.wav" data-start="5.45" data-duration="0.3" data-track-index="6" data-volume="0.8"></audio>
+      <audio id="a-pop-ai1" class="clip" src="assets/audio/sfx-pop-3.wav" data-start="6.35" data-duration="0.3" data-track-index="4" data-volume="0.8"></audio>
+      <audio id="a-wh-2" class="clip" src="assets/audio/sfx-whoosh.wav" data-start="11.53" data-duration="0.9" data-track-index="5" data-volume="0.6"></audio>
+      <audio id="a-row-1" class="clip" src="assets/audio/sfx-pop-1.wav" data-start="12.65" data-duration="0.3" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-row-2" class="clip" src="assets/audio/sfx-pop-3.wav" data-start="13.85" data-duration="0.3" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-row-3" class="clip" src="assets/audio/sfx-pop-2.wav" data-start="15.05" data-duration="0.3" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-wh-3" class="clip" src="assets/audio/sfx-whoosh.wav" data-start="19.03" data-duration="0.9" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="a-tag-1" class="clip" src="assets/audio/sfx-plop-1.wav" data-start="20.15" data-duration="0.12" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-tag-2" class="clip" src="assets/audio/sfx-plop-2.wav" data-start="20.35" data-duration="0.12" data-track-index="6" data-volume="0.7"></audio>
+      <audio id="a-tag-3" class="clip" src="assets/audio/sfx-plop-1.wav" data-start="20.55" data-duration="0.12" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-tag-4" class="clip" src="assets/audio/sfx-plop-2.wav" data-start="20.75" data-duration="0.12" data-track-index="6" data-volume="0.7"></audio>
+      <audio id="a-send-2" class="clip" src="assets/audio/sfx-click.wav" data-start="21.47" data-duration="0.08" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-pop-me2" class="clip" src="assets/audio/sfx-pop-1.wav" data-start="21.55" data-duration="0.3" data-track-index="6" data-volume="0.8"></audio>
+      <audio id="a-wh-4" class="clip" src="assets/audio/sfx-whoosh.wav" data-start="27.03" data-duration="0.9" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="a-chk-1" class="clip" src="assets/audio/sfx-check-1.wav" data-start="28.25" data-duration="0.6" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-chk-2" class="clip" src="assets/audio/sfx-check-2.wav" data-start="29.05" data-duration="0.6" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-chk-3" class="clip" src="assets/audio/sfx-check-3.wav" data-start="29.85" data-duration="0.6" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="a-riser" class="clip" src="assets/audio/sfx-riser.wav" data-start="30.29" data-duration="1.1" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="a-impact" class="clip" src="assets/audio/sfx-impact.wav" data-start="31.24" data-duration="0.9" data-track-index="6" data-volume="0.8"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

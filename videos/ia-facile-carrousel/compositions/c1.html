@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Carrousel IA FACILE — slide 1/5 (image fixe). Généré par tools/build.py. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #c1-bg {
+          position: absolute;
+          inset: 0;
+          background: var(--ground);
+          color: var(--ink);
+        }
+
+        #c1-ia { position: absolute; left: 52px; top: 150px; font-family: var(--font-display);
+          font-size: 300px; line-height: 0.9; letter-spacing: -0.02em; }
+        #c1-tilt { position: absolute; left: 44px; top: 440px; transform: rotate(-4deg); transform-origin: left center; }
+        #c1-facile { display: inline-block; padding: 4px 34px 18px; background: var(--ai); color: #fff;
+          border: 6px solid var(--ink); box-shadow: 16px 16px 0 var(--ink); font-family: var(--font-display);
+          font-size: 214px; line-height: 1; letter-spacing: -0.02em; }
+        #c1-bub { top: 800px; max-width: 760px; }
+        #c1-lede { top: 1030px; }
+
+      </style>
+      <div id="root" data-composition-id="c1" data-width="1080" data-height="1350">
+        <div id="c1-bg">
+          <div class="pg" id="c1-pg"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+
+          <div id="c1-ia">L'IA</div>
+          <div id="c1-tilt"><div id="c1-facile">FACILE</div></div>
+          <div class="bubble ai" id="c1-bub">Promis, c'est plus simple que tu crois.</div>
+          <p class="lede" id="c1-lede">5 étapes pour t'y mettre.<br />Sans jargon. Sans coder.</p>
+
+          <div class="swipe" id="c1-swipe"><span>Swipe</span><span class="arr"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 H33 M22 8 L34 20 L22 32" /></svg></span></div>
+        </div>
+      </div>
+      <script>
+        window.__timelines["c1"] = gsap.timeline({ paused: true });
+      </script>
+    </template>
+  </body>
+</html>

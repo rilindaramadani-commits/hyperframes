@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Slide 2 — « C'est quoi, l'IA ? » : question envoyée, réponse de l'IA, puis la bulle IA envahit l'écran. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #s2-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s2-title {
+          top: 250px;
+        }
+        #s2-me {
+          top: 490px;
+          max-width: 700px;
+        }
+        #s2-dots {
+          top: 740px;
+          padding: 34px 40px;
+          display: flex;
+          gap: 16px;
+        }
+        #s2-dots i {
+          display: block;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: #fff;
+        }
+        #s2-ai {
+          top: 740px;
+          max-width: 900px;
+        }
+        #s2-lede {
+          top: 1150px;
+        }
+        #s2-flood {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1080px;
+          height: 1920px;
+          background: var(--ai);
+          clip-path: circle(0% at 50% 44%);
+        }
+      </style>
+      <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+        <div id="s2-wrap">
+          <div class="h1" id="s2-title"><span class="w">C'est</span> <span class="w">quoi,</span><br /><span class="w">l'IA&nbsp;?</span></div>
+          <div class="bubble me" id="s2-me">Explique-moi l'IA simplement.</div>
+          <div class="bubble ai" id="s2-dots"><i></i><i></i><i></i></div>
+          <div class="bubble ai" id="s2-ai" data-layout-allow-overflow>
+            <span class="w">Un</span> <span class="w">programme</span> <span class="w">qui</span> <span class="w">a</span>
+            <span class="w">lu</span> <span class="w">des</span> <span class="w">tonnes</span> <span class="w">de</span>
+            <span class="w">textes.</span> <span class="w">Tu</span> <span class="w">lui</span> <span class="w">écris,</span>
+            <span class="w">il</span> <span class="w">te</span> <span class="w">répond.</span>
+          </div>
+          <p class="lede" id="s2-lede">
+            <span class="w">Pas</span> <span class="w">besoin</span> <span class="w">de</span> <span class="w">coder&nbsp;:</span><br />
+            <span class="w">tu</span> <span class="w">écris</span> <span class="w mark">comme</span> <span class="w mark">tu</span> <span class="w mark">parles.</span>
+          </p>
+        </div>
+        <div id="s2-flood"></div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // enter: the thread keeps scrolling up from below
+          tl.fromTo("#s2-wrap", { y: 440, filter: "blur(10px)" }, { y: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, 0);
+          tl.fromTo(
+            "#s2-title .w",
+            { opacity: 0, filter: "blur(6px)" },
+            { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07, ease: "power2.out" },
+            0.1,
+          );
+          // the question, sent from the chat bar
+          tl.fromTo(
+            "#s2-me",
+            { scale: 0.6, opacity: 0, y: 60, transformOrigin: "100% 100%" },
+            { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.2)" },
+            0.9,
+          );
+          // the AI is typing…
+          tl.fromTo("#s2-dots", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.2)" }, 1.35);
+          tl.fromTo("#s2-dots i", { y: 0 }, { y: -12, duration: 0.16, ease: "sine.inOut", stagger: 0.09, yoyo: true, repeat: 1 }, 1.45);
+          tl.to("#s2-dots", { opacity: 0, duration: 0.08 }, 1.78);
+          // the answer
+          tl.fromTo(
+            "#s2-ai",
+            { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" },
+            { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.2)" },
+            1.8,
+          );
+          tl.fromTo("#s2-ai .w", { opacity: 0 }, { opacity: 1, duration: 0.1, stagger: 0.045, ease: "none" }, 1.9);
+          tl.fromTo(
+            "#s2-lede .w",
+            { opacity: 0, filter: "blur(6px)" },
+            { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07, ease: "power2.out" },
+            4.2,
+          );
+          // exit: the AI bubble becomes the world (cobalt) — scene 3 opens on it
+          tl.to(["#s2-title", "#s2-me", "#s2-lede"], { opacity: 0, filter: "blur(14px)", duration: 0.3, ease: "power2.in" }, 6.9);
+          tl.to("#s2-ai .w", { opacity: 0, duration: 0.15, ease: "power2.in" }, 6.9);
+          tl.to("#s2-ai", { scale: 9, transformOrigin: "50% 50%", duration: 0.6, ease: "power3.in" }, 6.9);
+          tl.fromTo("#s2-flood", { opacity: 1, clipPath: "circle(0% at 50% 44%)" }, { opacity: 1, clipPath: "circle(120% at 50% 44%)", duration: 0.5, ease: "power3.in" }, 6.98);
+          window.__timelines["s2"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

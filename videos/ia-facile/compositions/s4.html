@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Slide 4 — « La formule du bon prompt » : 4 étiquettes, puis l'exemple surligné morceau par morceau. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #s4-wrap {
+          position: absolute;
+          inset: 0;
+        }
+        #s4-title {
+          top: 250px;
+        }
+        #s4-eq {
+          position: absolute;
+          left: 60px;
+          right: 60px;
+          top: 520px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          row-gap: 26px;
+          column-gap: 18px;
+        }
+        .tag {
+          display: inline-block;
+          padding: 10px 24px 14px;
+          border: 5px solid var(--ink);
+          border-radius: 16px;
+          box-shadow: 8px 8px 0 var(--ink);
+          font-family: var(--font-display);
+          font-size: 50px;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+        .plus {
+          font-family: var(--font-display);
+          font-size: 56px;
+          line-height: 1;
+        }
+        .tag.role {
+          background: var(--ai);
+          color: #fff;
+        }
+        .tag.tache {
+          background: var(--tomato);
+        }
+        .tag.ctx {
+          background: var(--mint);
+        }
+        .tag.fmt {
+          background: var(--pink);
+        }
+        #s4-bub {
+          top: 800px;
+          left: 60px;
+          right: 72px;
+          font-size: 46px;
+          line-height: 1.42;
+          border-bottom-right-radius: 8px;
+        }
+        .hl {
+          background-repeat: no-repeat;
+          background-size: 0% 100%;
+          background-position: 0 0;
+          padding: 2px 4px;
+          box-decoration-break: clone;
+          -webkit-box-decoration-break: clone;
+        }
+        .hl.role {
+          background-image: linear-gradient(var(--t-ai), var(--t-ai));
+        }
+        .hl.tache {
+          background-image: linear-gradient(var(--t-tomato), var(--t-tomato));
+        }
+        .hl.ctx {
+          background-image: linear-gradient(var(--t-mint), var(--t-mint));
+        }
+        .hl.fmt {
+          background-image: linear-gradient(var(--t-pink), var(--t-pink));
+        }
+      </style>
+      <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+        <div id="s4-wrap">
+          <div class="h1" id="s4-title"><span class="w">La</span> <span class="w">formule</span><br /><span class="w">du</span> <span class="w">bon</span> <span class="w">prompt</span></div>
+          <div id="s4-eq">
+            <span class="tag role" id="s4-t1">Rôle</span><span class="plus" id="s4-p1">+</span>
+            <span class="tag tache" id="s4-t2">Tâche</span><span class="plus" id="s4-p2">+</span>
+            <span class="tag ctx" id="s4-t3">Contexte</span><span class="plus" id="s4-p3">+</span>
+            <span class="tag fmt" id="s4-t4">Format</span>
+          </div>
+          <div class="bubble me" id="s4-bub">
+            <span class="hl role" id="s4-h1">Tu es coach sportif.</span>
+            <span class="hl tache" id="s4-h2">Crée-moi un programme de 20&nbsp;min</span>
+            <span class="hl ctx" id="s4-h3">pour débutant, sans matériel.</span>
+            <span class="hl fmt" id="s4-h4">Présente-le en liste.</span>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // enter: swipe in from the right, landing blurred then sharp
+          tl.fromTo("#s4-wrap", { x: 360, filter: "blur(14px)" }, { x: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, 0);
+          tl.fromTo(
+            "#s4-title .w",
+            { opacity: 0, filter: "blur(6px)" },
+            { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07, ease: "power2.out" },
+            0.1,
+          );
+          ["#s4-t1", "#s4-t2", "#s4-t3", "#s4-t4"].forEach(function (sel, i) {
+            tl.fromTo(sel, { scale: 0.4, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "back.out(1.5)" }, 0.6 + i * 0.2);
+          });
+          tl.fromTo("#s4-eq .plus", { opacity: 0 }, { opacity: 1, duration: 0.15, stagger: 0.2, ease: "none" }, 0.75);
+          // the example prompt is sent from the chat bar
+          tl.fromTo(
+            "#s4-bub",
+            { scale: 0.6, opacity: 0, y: 60, transformOrigin: "100% 100%" },
+            { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.2)" },
+            2.0,
+          );
+          // each part lights up in its tag's colour
+          ["1", "2", "3", "4"].forEach(function (n, i) {
+            const t = 2.8 + i * 0.6;
+            tl.fromTo("#s4-h" + n, { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: 0.35, ease: "power2.inOut" }, t);
+            tl.fromTo("#s4-t" + n, { y: 0 }, { y: -14, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, t);
+          });
+          // exit: swipe left
+          tl.to("#s4-wrap", { x: -1080, filter: "blur(12px)", duration: 0.4, ease: "power3.in" }, 7.6);
+          window.__timelines["s4"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

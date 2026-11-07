@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Décor persistant : la barre de saisie de l'appli. Les questions y sont tapées puis envoyées
+         (elles réapparaissent en bulle dans la zone lisible ; ici ce n'est que de la texture). -->
+  </head>
+  <body>
+    <template>
+      <style>
+        #cb-bar {
+          position: absolute;
+          left: 60px;
+          right: 60px;
+          top: 1400px;
+          height: 124px;
+          background: var(--paper);
+          border: 5px solid var(--ink);
+          border-radius: 30px;
+          box-shadow: 10px 10px 0 var(--ink);
+        }
+        .cb-line {
+          position: absolute;
+          left: 38px;
+          right: 130px;
+          top: 34px;
+          font-size: 36px;
+          font-weight: 500;
+          line-height: 46px;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        #cb-ph {
+          color: #8a8a8a;
+        }
+        #cb-send {
+          position: absolute;
+          right: 18px;
+          top: 15px;
+          width: 84px;
+          height: 84px;
+          border-radius: 50%;
+          background: var(--ai);
+          border: 4px solid var(--ink);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      </style>
+      <div id="root" data-composition-id="chatbar" data-width="1080" data-height="1920" data-layout-allow-caption-zone>
+        <div id="cb-bar" data-layout-allow-caption-zone>
+          <div class="cb-line" id="cb-ph">Écris ton message…</div>
+          <div class="cb-line" id="cb-q1">Explique-moi l'IA simplement.</div>
+          <div class="cb-line" id="cb-q2">Tu es coach sportif. Crée-moi un…</div>
+          <div id="cb-send">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 34 V7 M8 18 L20 6 L32 18" /></svg>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.set(["#cb-q1", "#cb-q2"], { clipPath: "inset(0 100% 0 0)" }, 0);
+          function typeAndSend(sel, t0, t1, chars) {
+            tl.set("#cb-ph", { opacity: 0 }, t0);
+            tl.fromTo(sel, { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: t1 - t0, ease: "steps(" + chars + ")" }, t0);
+            tl.fromTo("#cb-send", { scale: 1 }, { scale: 0.86, duration: 0.06, ease: "power2.in", yoyo: true, repeat: 1 }, t1 + 0.03);
+            tl.set(sel, { clipPath: "inset(0 100% 0 0)" }, t1 + 0.08);
+            tl.set("#cb-ph", { opacity: 1 }, t1 + 0.1);
+          }
+          typeAndSend("#cb-q1", 4.6, 5.3, 29);
+          typeAndSend("#cb-q2", 20.5, 21.4, 33);
+          window.__timelines["chatbar"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

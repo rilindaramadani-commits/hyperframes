@@ -1,0 +1,5 @@
+.hyperframes/
+renders/work-*/
+renders/.*hf-transaction*/
+renders/.hf-segments/
+snapshots/
