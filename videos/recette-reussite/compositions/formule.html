@@ -1,0 +1,100 @@
+<template>
+  <style>
+    #formule-root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #formule-scene {
+      position: absolute;
+      left: 110px;
+      right: 290px;
+      top: 330px;
+      height: 920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #formule-label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 36px;
+      letter-spacing: 0.34em;
+      color: #e4c47f;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+    .formule-ligne {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 96px;
+      line-height: 1.1;
+      color: #f8f2e4;
+    }
+    .formule-plus {
+      color: #e4c47f;
+      font-weight: 600;
+      margin-right: 18px;
+    }
+    #formule-regle {
+      margin-top: 34px;
+      width: 560px;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(228, 196, 127, 0), #e4c47f 20%, #f6e3b4 50%, #e4c47f 80%, rgba(228, 196, 127, 0));
+    }
+    #formule-resultat {
+      margin-top: 34px;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 132px;
+      line-height: 1;
+      padding: 0 20px 16px;
+      background-image: linear-gradient(100deg, #c99f52 0%, #f6e3b4 18%, #e4c47f 34%, #c99f52 50%, #f6e3b4 68%, #e4c47f 84%, #c99f52 100%);
+      background-size: 300% 100%;
+      background-position: 100% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 6px 30px rgba(228, 196, 127, 0.3));
+    }
+    #formule-quotidienne {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 88px;
+      line-height: 1;
+      color: #f8f2e4;
+    }
+  </style>
+  <div id="formule-root" data-composition-id="formule" data-width="1080" data-height="1920">
+    <div id="formule-scene">
+      <div id="formule-label">La recette</div>
+      <div class="formule-ligne" id="formule-l1">Al-Baqara</div>
+      <div class="formule-ligne" id="formule-l2"><span class="formule-plus">+</span>Tahajjud</div>
+      <div class="formule-ligne" id="formule-l3"><span class="formule-plus">+</span>Istighfar</div>
+      <div id="formule-regle"></div>
+      <div id="formule-resultat">= la réussite</div>
+      <div id="formule-quotidienne">quotidienne</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#formule-scene", { scale: 1 }, { scale: 1.035, duration: 3.8, ease: "sine.out" }, 0);
+    tl.fromTo("#formule-label", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+
+    // Les trois ingrédients s'empilent, un par un.
+    ["#formule-l1", "#formule-l2", "#formule-l3"].forEach((sel, i) => {
+      tl.fromTo(sel, { opacity: 0, y: 40, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0.12 + i * 0.32);
+    });
+
+    // Le trait de total se dessine, puis le résultat apparaît.
+    tl.fromTo("#formule-regle", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 1.1);
+    tl.fromTo("#formule-resultat", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 1.4);
+    tl.fromTo("#formule-resultat", { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: 2.4, ease: "none" }, 1.4);
+    tl.fromTo("#formule-quotidienne", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.55);
+
+    window.__timelines["formule"] = tl;
+  </script>
+</template>

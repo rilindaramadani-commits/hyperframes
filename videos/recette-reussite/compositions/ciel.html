@@ -1,0 +1,128 @@
+<template>
+  <style>
+    #ciel-root {
+      position: absolute;
+      inset: 0;
+    }
+      /* ── Fond : ciel de nuit (sera remplacé / complété par les séquences vidéo) ── */
+      #fond {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background: linear-gradient(180deg, #05081a 0%, #0b1030 45%, #161a3f 100%);
+      }
+      #halo {
+        position: absolute;
+        left: 0px;
+        top: 380px;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(228, 196, 127, 0.2) 0%, rgba(228, 196, 127, 0.06) 40%, rgba(228, 196, 127, 0) 70%);
+      }
+      #aube {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 900px;
+        background: linear-gradient(0deg, rgba(196, 120, 92, 0.32) 0%, rgba(120, 80, 120, 0.12) 45%, rgba(0, 0, 0, 0) 100%);
+      }
+      #motif {
+        position: absolute;
+        left: -420px;
+        top: -60px;
+        width: 1920px;
+        height: 2040px;
+        opacity: 0.07;
+      }
+      #etoiles {
+        position: absolute;
+        inset: 0;
+      }
+      .etoile {
+        position: absolute;
+        border-radius: 50%;
+        background: #fff7e0;
+      }
+      #vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 75% 60% at 50% 48%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+      }
+  </style>
+  <div id="ciel-root" data-composition-id="ciel" data-width="1080" data-height="1920">
+
+      <div id="fond">
+        <div id="aube"></div>
+        <div id="halo"></div>
+        <svg id="motif" viewBox="0 0 1920 2040" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="etoile8" width="240" height="240" patternUnits="userSpaceOnUse">
+              <g fill="none" stroke="#e4c47f" stroke-width="2">
+                <rect x="50" y="50" width="140" height="140" />
+                <rect x="50" y="50" width="140" height="140" transform="rotate(45 120 120)" />
+                <circle cx="120" cy="120" r="34" />
+                <path d="M0 0 L50 50 M240 0 L190 50 M0 240 L50 190 M240 240 L190 190" />
+              </g>
+            </pattern>
+          </defs>
+          <rect width="1920" height="2040" fill="url(#etoile8)" />
+        </svg>
+        <div id="etoiles"></div>
+        <div id="vignette"></div>
+      </div>
+
+  </div>
+    <script>
+      // Champ d'étoiles déterministe (pseudo-aléatoire à graine fixe).
+      let graine = 7;
+      const alea = () => {
+        graine = (graine * 16807) % 2147483647;
+        return (graine - 1) / 2147483646;
+      };
+      const ciel = document.getElementById("etoiles");
+      const etoiles = [];
+      for (let i = 0; i < 70; i++) {
+        const e = document.createElement("div");
+        e.className = "etoile";
+        const taille = 2 + Math.round(alea() * 4);
+        e.style.width = taille + "px";
+        e.style.height = taille + "px";
+        e.style.left = Math.round(alea() * 1060) + "px";
+        e.style.top = Math.round(alea() * 1300) + "px";
+        e.style.boxShadow = `0 0 ${taille * 3}px rgba(255, 240, 200, 0.8)`;
+        ciel.appendChild(e);
+        etoiles.push({ el: e, base: 0.25 + alea() * 0.6, phase: alea() * 2, periode: 1.6 + alea() * 1.8 });
+      }
+
+      const tl = gsap.timeline({ paused: true });
+
+      // Scintillement : chaque étoile oscille sur un nombre fini de cycles.
+      etoiles.forEach(({ el, base, phase, periode }) => {
+        const cycles = Math.ceil(17.8 / periode) + 1;
+        tl.fromTo(
+          el,
+          { opacity: base },
+          { opacity: base * 0.25, duration: periode / 2, ease: "sine.inOut", yoyo: true, repeat: cycles * 2 - 1 },
+          -phase,
+        );
+      });
+
+      // Le motif géométrique dérive lentement pendant toute la vidéo.
+      tl.fromTo("#motif", { x: 0, y: 0, rotation: 0 }, { x: 120, y: -90, rotation: 4, duration: 17.8, ease: "none" }, 0);
+
+      // Le halo respire à chaque nouvel ingrédient.
+      tl.fromTo("#halo", { scale: 0.9, opacity: 0.8 }, { scale: 1.05, opacity: 1, duration: 3.4, ease: "sine.inOut" }, 0);
+      tl.fromTo("#halo", { scale: 1.05, opacity: 1 }, { scale: 0.85, opacity: 0.55, duration: 3.4, ease: "sine.inOut", immediateRender: false }, 6.8);
+      tl.fromTo("#halo", { scale: 0.85, opacity: 0.55 }, { scale: 1.12, opacity: 1, duration: 7.6, ease: "sine.inOut", immediateRender: false }, 10.2);
+
+      // Nuit profonde pendant le Tahajjud, puis l'aube se lève pour « toute la journée ».
+      tl.fromTo("#aube", { opacity: 0.35 }, { opacity: 0, duration: 1.2, ease: "sine.inOut" }, 6.6);
+      tl.fromTo("#aube", { opacity: 0 }, { opacity: 1, duration: 2.6, ease: "sine.inOut", immediateRender: false }, 10.0);
+      tl.fromTo("#etoiles", { opacity: 1 }, { opacity: 0.35, duration: 2.6, ease: "sine.inOut" }, 10.0);
+      tl.fromTo("#etoiles", { opacity: 0.35 }, { opacity: 0.8, duration: 1.6, ease: "sine.inOut", immediateRender: false }, 14.0);
+
+      window.__timelines["ciel"] = tl;
+    </script>
+</template>

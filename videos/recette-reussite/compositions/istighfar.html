@@ -1,0 +1,152 @@
+<template>
+  <style>
+    #istighfar-root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #istighfar-scene {
+      position: absolute;
+      left: 110px;
+      right: 290px;
+      top: 320px;
+      height: 940px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #istighfar-tete {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+    #istighfar-badge {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #e4c47f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1;
+      color: #e4c47f;
+      padding-bottom: 6px;
+      box-shadow: 0 0 40px rgba(228, 196, 127, 0.22), inset 0 0 24px rgba(228, 196, 127, 0.12);
+    }
+    #istighfar-label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: 0.34em;
+      color: #e4c47f;
+      text-transform: uppercase;
+    }
+    .istighfar-illu {
+      margin-top: 40px;
+      width: 250px;
+      height: 175px;
+      overflow: visible;
+      filter: drop-shadow(0 0 18px rgba(228, 196, 127, 0.35));
+    }
+    #istighfar-ar-masque {
+      margin-top: 18px;
+      padding: 6px 30px 22px;
+    }
+    #istighfar-ar {
+      direction: rtl;
+      font-family: "Amiri", serif;
+      font-weight: 700;
+      font-size: 120px;
+      line-height: 1.35;
+      color: #e4c47f;
+      text-shadow: 0 0 34px rgba(228, 196, 127, 0.35);
+      white-space: nowrap;
+    }
+    #istighfar-fr {
+      margin-top: 4px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 92px;
+      line-height: 1.06;
+      color: #f8f2e4;
+      text-wrap: balance;
+    }
+    .istighfar-m {
+      display: inline-block;
+    }
+    .istighfar-em {
+      font-style: italic;
+      color: #f6e3b4;
+    }
+    #istighfar-sous {
+      margin-top: 24px;
+      max-width: 620px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.3;
+      color: #c9c3da;
+      text-wrap: balance;
+    }
+  </style>
+  <div id="istighfar-root" data-composition-id="istighfar" data-width="1080" data-height="1920">
+    <div id="istighfar-scene">
+      <div id="istighfar-tete">
+        <div id="istighfar-badge">3</div>
+        <div id="istighfar-label">Ingrédient</div>
+      </div>
+
+      <svg class="istighfar-illu" viewBox="0 0 300 210" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 180 A120 120 0 0 1 270 180" fill="none" stroke="rgba(228,196,127,0.3)" stroke-width="3" stroke-dasharray="6 10" />
+        <path id="istighfar-arc" pathLength="1" d="M30 180 A120 120 0 0 1 270 180" fill="none" stroke="#e4c47f" stroke-width="3" stroke-linecap="round" />
+        <path d="M10 180 L290 180" stroke="#e4c47f" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+        <g id="istighfar-soleil">
+          <circle cx="30" cy="180" r="26" fill="rgba(246,227,180,0.22)" />
+          <circle cx="30" cy="180" r="15" fill="#f6e3b4" />
+        </g>
+      </svg>
+      <div id="istighfar-ar-masque"><div id="istighfar-ar">أَسْتَغْفِرُ اللَّه</div></div>
+      <div id="istighfar-fr"><span class="istighfar-m istighfar-em">L'Istighfar</span></div>
+      <div id="istighfar-sous">Constamment, tout au long de la journée</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#istighfar-scene", { scale: 1 }, { scale: 1.03, duration: 3.8, ease: "sine.out" }, 0);
+
+    // Le numéro arrive, puis l'étiquette.
+    tl.fromTo("#istighfar-badge", { scale: 0.55, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 0);
+    tl.fromTo("#istighfar-label", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+
+    // Le soleil traverse le ciel : de l'aube au coucher, l'istighfar ne s'arrête pas.
+    const istighfarSoleil = document.querySelectorAll("#istighfar-soleil circle");
+    const istighfarCourse = { a: -90 };
+    const istighfarPlace = () => {
+      const r = (istighfarCourse.a * Math.PI) / 180;
+      const x = (150 + 120 * Math.sin(r)).toFixed(2);
+      const y = (180 - 120 * Math.cos(r)).toFixed(2);
+      istighfarSoleil.forEach((c) => {
+        c.setAttribute("cx", x);
+        c.setAttribute("cy", y);
+      });
+    };
+    tl.fromTo(istighfarCourse, { a: -90 }, { a: 90, duration: 3.0, ease: "sine.inOut", onUpdate: istighfarPlace }, 0.25);
+    tl.fromTo("#istighfar-arc", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 3.0, ease: "sine.inOut" }, 0.25);
+
+    // L'arabe s'écrit de droite à gauche.
+    tl.fromTo("#istighfar-ar-masque", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.85, ease: "power2.inOut" }, 0.4);
+    // Le français sort du flou, mot après mot.
+    tl.fromTo("#istighfar-fr .istighfar-m", { opacity: 0, filter: "blur(10px)", y: 18 }, { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.55, ease: "power2.out", stagger: 0.09 }, 0.85);
+    tl.fromTo("#istighfar-sous", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.1);
+
+    // Sortie : dissolution dans un léger flou.
+    tl.fromTo("#istighfar-scene", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(10px)", duration: 0.32, ease: "power2.in", immediateRender: false }, 3.46);
+
+    window.__timelines["istighfar"] = tl;
+  </script>
+</template>

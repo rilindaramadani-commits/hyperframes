@@ -1,0 +1,124 @@
+<template>
+  <style>
+    #accroche-root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #accroche-scene {
+      position: absolute;
+      left: 110px;
+      right: 290px;
+      top: 470px;
+      height: 760px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #accroche-sur {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      letter-spacing: 0.3em;
+      color: #e4c47f;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+    #accroche-titre {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 168px;
+      line-height: 1;
+      padding: 0 20px 18px;
+      background-image: linear-gradient(100deg, #c99f52 0%, #f6e3b4 18%, #e4c47f 34%, #c99f52 50%, #f6e3b4 68%, #e4c47f 84%, #c99f52 100%);
+      background-size: 300% 100%;
+      background-position: 100% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 6px 30px rgba(228, 196, 127, 0.25));
+    }
+    #accroche-sous {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: 112px;
+      line-height: 1;
+      color: #f8f2e4;
+    }
+    #accroche-orne {
+      margin-top: 56px;
+      width: 520px;
+      height: 24px;
+      position: relative;
+    }
+    .accroche-trait {
+      position: absolute;
+      top: 11px;
+      width: 230px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(228, 196, 127, 0), #e4c47f);
+    }
+    #accroche-trait-g {
+      left: 0;
+      transform-origin: 100% 50%;
+    }
+    #accroche-trait-d {
+      right: 0;
+      transform-origin: 0% 50%;
+      background: linear-gradient(270deg, rgba(228, 196, 127, 0), #e4c47f);
+    }
+    #accroche-losange {
+      position: absolute;
+      left: 248px;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #e4c47f;
+    }
+    #accroche-teaser {
+      margin-top: 56px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 500;
+      font-size: 42px;
+      letter-spacing: 0.04em;
+      color: #b8b2cc;
+    }
+    #accroche-teaser b {
+      color: #f8f2e4;
+      font-weight: 600;
+    }
+  </style>
+  <div id="accroche-root" data-composition-id="accroche" data-width="1080" data-height="1920">
+    <div id="accroche-scene">
+      <div id="accroche-sur">La recette de</div>
+      <div id="accroche-titre">la réussite</div>
+      <div id="accroche-sous">quotidienne</div>
+      <div id="accroche-orne">
+        <div class="accroche-trait" id="accroche-trait-g"></div>
+        <div id="accroche-losange"></div>
+        <div class="accroche-trait" id="accroche-trait-d"></div>
+      </div>
+      <div id="accroche-teaser">en <b>3 ingrédients</b></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // Le titre est lisible dès la première image (vignette TikTok), avec une lente poussée.
+    tl.fromTo("#accroche-scene", { scale: 1 }, { scale: 1.04, duration: 3.4, ease: "sine.out" }, 0);
+    // Reflet doré qui traverse « la réussite ».
+    tl.fromTo("#accroche-titre", { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: 3.4, ease: "none" }, 0);
+
+    // L'ornement se dessine depuis le centre.
+    tl.fromTo("#accroche-losange", { scale: 0, rotation: 0 }, { scale: 1, rotation: 45, duration: 0.5, ease: "back.out(2)" }, 0.35);
+    tl.fromTo(["#accroche-trait-g", "#accroche-trait-d"], { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.45);
+    tl.fromTo("#accroche-teaser", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.8);
+
+    // Sortie : dissolution dans un léger flou.
+    tl.fromTo("#accroche-scene", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(10px)", duration: 0.32, ease: "power2.in", immediateRender: false }, 3.06);
+
+    window.__timelines["accroche"] = tl;
+  </script>
+</template>
