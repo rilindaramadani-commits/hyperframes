@@ -86,14 +86,14 @@
 
     // Les trois ingrédients s'empilent, un par un.
     ["#formule-l1", "#formule-l2", "#formule-l3"].forEach((sel, i) => {
-      tl.fromTo(sel, { opacity: 0, y: 40, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0.12 + i * 0.32);
+      tl.fromTo(sel, { opacity: 0, y: 40, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 0.1 + i * 0.22);
     });
 
     // Le trait de total se dessine, puis le résultat apparaît.
-    tl.fromTo("#formule-regle", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 1.1);
-    tl.fromTo("#formule-resultat", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 1.4);
-    tl.fromTo("#formule-resultat", { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: 2.4, ease: "none" }, 1.4);
-    tl.fromTo("#formule-quotidienne", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.55);
+    tl.fromTo("#formule-regle", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.inOut" }, 0.75);
+    tl.fromTo("#formule-resultat", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.95);
+    tl.fromTo("#formule-resultat", { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%", duration: 2.6, ease: "none" }, 0.95);
+    tl.fromTo("#formule-quotidienne", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.1);
 
     window.__timelines["formule"] = tl;
   </script>

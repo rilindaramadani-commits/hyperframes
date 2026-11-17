@@ -16,11 +16,14 @@ prière Tahajjud, istighfar constamment tout au long de la journée ».
 
 ## Assets
 
-- Pas encore de séquences vidéo : l'utilisatrice enverra ses plans plus tard. Le fond animé
-  (`compositions/ciel.html`, piste 0) est l'emplacement prévu pour les y glisser.
+- Trois enregistrements d'écran fournis (mosquée de nuit, Coran sur une table au soleil, prière de
+  nuit avec chapelet puis main sur le Coran). Recadrés sans l'interface du téléphone, convertis en
+  1080x1920 dans `assets/plans/`. Leur son n'est pas utilisé.
+- Montage : accroche = mosquée ; Al-Baqara = main sur le Coran ; Tahajjud = prière de nuit ;
+  Istighfar = table, réveil et lumière du jour ; formule = minaret et palmiers.
 
 ## Customizations
 
-- Première version sans footage : ciel de nuit, motif géométrique islamique, accents dorés.
+- Voile bleu nuit sur les images pour la lisibilité, accents dorés, fondus au noir rapides aux coupes.
 - Structure « recette » : accroche → ingrédients 1, 2, 3 (arabe + français) → formule finale.
 - Sans musique : le son sera ajouté sur TikTok (ou fourni plus tard).
